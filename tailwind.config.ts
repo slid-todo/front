@@ -1,19 +1,21 @@
-import type { Config } from "tailwindcss";
+/* eslint-disable */
 
-const pxToRem = require("tailwindcss-preset-px-to-rem");
+import type { Config } from 'tailwindcss';
+
+const pxToRem = require('tailwindcss-preset-px-to-rem');
 
 export default {
   presets: [pxToRem],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
       },
     },
   },
