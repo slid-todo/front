@@ -1,0 +1,14 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# 현재 브랜치 이름 가져오기
+branch=$(git symbolic-ref --short HEAD)
+
+# main 또는 develop 브랜치에서의 커밋을 막기
+if [ "$branch" = "main" ] || [ "$branch" = "develop" ]; then
+  echo "⚠️  main 또는 develop 브랜치에 직접 커밋할 수 없습니다."
+  exit 1
+fi
+
+# lint-staged 실행
+npx lint-staged
