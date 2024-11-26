@@ -24,7 +24,8 @@ allowed_prefixes=(
 )
 
 # 커밋 메시지에서 Prefix 추출
-commit_prefix=$(echo "$commit_message" | sed -n '1s/^\s*\(\S\+\):.*/\1/p')
+# commit_prefix=$(echo "$commit_message" | sed -n '1s/^\s*\(\S\+\):.*/\1/p')
+commit_prefix=$(echo "$commit_message" | awk '{print $1}' | sed 's/:.*//')
 
 # Prefix가 허용되는지 검사
 prefix_valid=false
