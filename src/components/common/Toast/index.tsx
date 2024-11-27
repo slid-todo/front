@@ -42,7 +42,7 @@ export default function Toast() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className={`fixed left-[50vw] top-20 z-50 flex h-44 -translate-x-1/2 items-center gap-10 rounded-16 px-20 py-8 text-sm-medium shadow-lg ${style}`}
+          className={`fixed left-[50vw] top-20 z-50 flex h-44 -translate-x-1/2 items-center gap-6 rounded-16 px-14 py-8 text-sm-medium shadow-lg ${style}`}
           onClick={() => {
             hideToast();
           }}
