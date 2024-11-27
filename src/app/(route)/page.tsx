@@ -2,7 +2,7 @@
 
 import HeartIcon from '@/assets/icon-heart.svg';
 import { notify } from '@/store/useToastStore';
-import TodoModal from '@/components/common/Modal/TodoModal';
+import TodoModal from '@/components/common/Modal/TodoModal/TodoModal';
 
 export default function Home() {
   const handleSuccessClick = () => {
