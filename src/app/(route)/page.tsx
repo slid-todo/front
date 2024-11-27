@@ -1,5 +1,5 @@
 import HeartIcon from '@/assets/icon-heart.svg';
-import TodoModal from '@/components/common/Modal/TodoModal';
+import TodoModal from '@/components/common/Modal/TodoModal/TodoModal';
 
 export default function Home() {
   return (
