@@ -1,6 +1,21 @@
+'use client';
+
 import HeartIcon from '@/assets/icon-heart.svg';
+import { notify } from '@/store/useToastStore';
 
 export default function Home() {
+  const handleSuccessClick = () => {
+    notify('success', '성공 메시지입니다!', 3000);
+  };
+
+  const handleErrorClick = () => {
+    notify('error', '에러 메시지입니다!', 3000);
+  };
+
+  const handleInfoClick = () => {
+    notify('info', '정보 메시지입니다!', 3000);
+  };
+
   return (
     <div>
       <button className="size-100">안녕asdfasfd</button>
@@ -25,6 +40,28 @@ export default function Home() {
       <div className="text-3xl-light text-blue-900">3xl light</div>
 
       <div className="text-3xl-bold text-blue-950">3xl bold</div>
+
+      <button
+        type="button"
+        className="bg-green-70 text-white"
+        onClick={handleSuccessClick}
+      >
+        성공 토스트 띄우기
+      </button>
+      <button
+        type="button"
+        className="bg-red-500 text-white"
+        onClick={handleErrorClick}
+      >
+        에러 토스트 띄우기
+      </button>
+      <button
+        type="button"
+        className="bg-blue-500 text-white"
+        onClick={handleInfoClick}
+      >
+        정보 토스트 띄우기
+      </button>
     </div>
   );
 }
