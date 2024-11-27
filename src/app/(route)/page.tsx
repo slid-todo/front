@@ -2,7 +2,6 @@
 
 import HeartIcon from '@/assets/icon-heart.svg';
 import { notify } from '@/store/useToastStore';
-import TodoModal from '@/components/common/Modal/TodoModal/TodoModal';
 
 export default function Home() {
   const handleSuccessClick = () => {
@@ -21,7 +20,6 @@ export default function Home() {
     <div>
       <button className="size-100">안녕asdfasfd</button>
       <HeartIcon width="32" height="32" fill="#FF0000" />
-      <TodoModal />
 
       <div className="text-3xl-bold">3xl bold</div>
       <div className="text-3xl-semibold">3xl semibold</div>
@@ -64,7 +62,6 @@ export default function Home() {
       >
         정보 토스트 띄우기
       </button>
-      <TodoModal />
     </div>
   );
 }
