@@ -90,6 +90,12 @@ export default {
         "xs-light": ["12px", { lineHeight: "16px", fontWeight: "300" }],
 
       },
+
+      fontFamily: {
+        pretendard: ['var(--font-pretendard)'],
+      },
+
+      
     },
   },
   plugins: [],
