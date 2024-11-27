@@ -7,10 +7,10 @@ const TodoModalDocs = () => {
       <div className="flex flex-col items-start gap-12">
         <span className="text-base-semibold text-slate-800">자료</span>
         <div className="flex items-start gap-12">
-          <button className="text-sm-medium text-slate-800 sm:text-base-medium">
+          <button className="flex items-start gap-10 rounded-8 bg-slate-900 py-8 pl-8 pr-12 text-sm-medium text-white sm:text-base-medium">
             파일업로드
           </button>
-          <button className="text-sm-medium text-slate-800 sm:text-base-medium">
+          <button className="flex items-start gap-10 rounded-8 bg-slate-100 py-8 pl-8 pr-12 text-sm-medium text-slate-800 sm:text-base-medium">
             링크 첨부
           </button>
         </div>
