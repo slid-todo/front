@@ -1,3 +1,5 @@
+import HeartIcon from '@/assets/icon-heart.svg';
+
 export interface ButtonProps {
   primary?: boolean;
   backgroundColor?: string;
@@ -41,8 +43,8 @@ export const Button = ({
   label,
   ...props
 }: ButtonProps) => {
-  const baseStyle = `inline-block cursor-pointer border-0 rounded-full font-bold`;
-  const modeStyle = primary ? `bg-white` : `bg-blue`;
+  const baseStyle = `inline-block cursor-pointer border-1 border-black rounded-full font-bold`;
+  const modeStyle = primary ? `bg-white` : `bg-blue-300`;
   const sizeStyle = {
     small: `py-2 px-4 text-xs`,
     medium: `py-2.5 px-5 text-sm`,
@@ -52,10 +54,11 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={`${baseStyle} ${modeStyle} ${sizeStyle}`}
+      className={`${baseStyle} ${modeStyle} ${sizeStyle} `}
       style={{ backgroundColor }}
       {...props}
     >
+      <HeartIcon width="32" height="32" fill="#FF0000" />
       {label}
     </button>
   );
