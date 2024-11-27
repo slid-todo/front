@@ -57,6 +57,9 @@ importers:
       '@storybook/addon-onboarding':
         specifier: 8.4.5
         version: 8.4.5(react@18.2.0)(storybook@8.4.5(prettier@3.3.3))
+      '@storybook/addon-styling-webpack':
+        specifier: 1.0.1
+        version: 1.0.1(storybook@8.4.5(prettier@3.3.3))(webpack@5.96.1(esbuild@0.24.0))
       '@storybook/blocks':
         specifier: 8.4.5
         version: 8.4.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(storybook@8.4.5(prettier@3.3.3))
@@ -1201,6 +1204,11 @@ packages:
     peerDependencies:
       storybook: ^8.4.5
 
+  '@storybook/addon-styling-webpack@1.0.1':
+    resolution: {integrity: sha512-5n+SXPfMTc4m7sWaJWPWjoHYWc6/B111M2Ia55toQ3GV4ON4vVlTgH9FX+EgCkDticElj99HLTMDJkHRj2yvkg==}
+    peerDependencies:
+      webpack: ^5.0.0
+
   '@storybook/addon-toolbars@8.4.5':
     resolution: {integrity: sha512-hOq5560ONOU/qrslrwosWzxnC4nrF8HZWD43ciKwtethm8HuptU2M+Jrui1CRsMScEZLopWWVE9o0vJMdKpIFQ==}
     peerDependencies:
@@ -1293,6 +1301,11 @@ packages:
         optional: true
       webpack:
         optional: true
+
+  '@storybook/node-logger@8.4.5':
+    resolution: {integrity: sha512-AVK/w17vrjTnmdfkHQaIjSFJDP9lJ/fXCT2d9/POUz6KXH0sTWFDb6dPMnjX+Fcu5Ef28kT91RQ+lnWUmLql8Q==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
   '@storybook/preset-react-webpack@8.4.5':
     resolution: {integrity: sha512-BKPAN7G0yFXfojQdF8tvgwVJ0ldcl6+p1JtAPAieH69BMGni3TEPnvPhkefRWcM8oM8pl+Hch/J2PLHiZ6QKNQ==}
@@ -5668,6 +5681,13 @@ snapshots:
       storybook: 8.4.5(prettier@3.3.3)
       ts-dedent: 2.2.0
 
+  '@storybook/addon-styling-webpack@1.0.1(storybook@8.4.5(prettier@3.3.3))(webpack@5.96.1(esbuild@0.24.0))':
+    dependencies:
+      '@storybook/node-logger': 8.4.5(storybook@8.4.5(prettier@3.3.3))
+      webpack: 5.96.1(esbuild@0.24.0)
+    transitivePeerDependencies:
+      - storybook
+
   '@storybook/addon-toolbars@8.4.5(storybook@8.4.5(prettier@3.3.3))':
     dependencies:
       storybook: 8.4.5(prettier@3.3.3)
@@ -5846,6 +5866,10 @@ snapshots:
       - webpack-dev-server
       - webpack-hot-middleware
       - webpack-plugin-serve
+
+  '@storybook/node-logger@8.4.5(storybook@8.4.5(prettier@3.3.3))':
+    dependencies:
+      storybook: 8.4.5(prettier@3.3.3)
 
   '@storybook/preset-react-webpack@8.4.5(@storybook/test@8.4.5(storybook@8.4.5(prettier@3.3.3)))(esbuild@0.24.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(storybook@8.4.5(prettier@3.3.3))(typescript@5.7.2)':
     dependencies:
