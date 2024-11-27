@@ -1,4 +1,5 @@
 import { createPortal } from 'react-dom';
+import Lottie from 'lottie-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useToastStore } from '@/store/useToastStore';
 import { TOAST_VARIANTS } from '@/constants/ToastVariants';
@@ -41,13 +42,13 @@ export default function Toast() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className={`fixed left-[50vw] top-20 z-50 flex h-44 -translate-x-1/2 items-center gap-10 rounded-16 px-20 py-8 text-lg-medium shadow-lg ${style}`}
+          className={`fixed left-[50vw] top-20 z-50 flex h-44 -translate-x-1/2 items-center gap-10 rounded-16 px-20 py-8 text-sm-medium shadow-lg ${style}`}
           onClick={() => {
             hideToast();
           }}
         >
-          <Icon className="size-20" />
-          <span>{message}</span>
+          <Lottie animationData={Icon} className="size-24" />
+          <span className="text-white">{message}</span>
         </motion.div>
       ) : null}
     </AnimatePresence>,
