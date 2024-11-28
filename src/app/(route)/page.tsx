@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import HeartIcon from '@/assets/icon-heart.svg';
+import { Filter } from '@/components/common/Filter';
 import { Header } from '@/components/common/Header';
 import { notify } from '@/store/useToastStore';
-import { Filter } from '@/components/common/Filter';
 
 export default function Home() {
   const [currentFilter, setCurrentFilter] = useState<string>('All');
@@ -27,7 +27,7 @@ export default function Home() {
   };
 
   return (
-    <div className="sm:px-60">
+    <div className="pt-48 sm:px-60 sm:pt-0">
       <Header />
       <button className="size-100">안녕asdfasfd</button>
       <HeartIcon width="32" height="32" fill="#FF0000" />
