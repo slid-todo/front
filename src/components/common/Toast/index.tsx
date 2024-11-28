@@ -1,9 +1,10 @@
 import { createPortal } from 'react-dom';
-import Lottie from 'lottie-react';
 import { AnimatePresence, motion } from 'motion/react';
+import dynamic from 'next/dynamic';
 import { useToastStore } from '@/store/useToastStore';
 import { TOAST_VARIANTS } from '@/constants/ToastVariants';
 
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 /**
  * 알림 메시지를 표시하는 Toast 컴포넌트.
  *
