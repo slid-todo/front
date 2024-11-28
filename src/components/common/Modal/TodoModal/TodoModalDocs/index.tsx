@@ -15,7 +15,6 @@ export const TodoModalDocs = () => {
 
   return (
     <div className="flex flex-col items-start gap-12">
-      {/* 자료 */}
       <div className="flex flex-col items-start gap-12">
         <span className="text-base-semibold text-slate-800">자료</span>
         <div className="flex items-start gap-12">
@@ -33,10 +32,7 @@ export const TodoModalDocs = () => {
           </Chip>
         </div>
       </div>
-      {/* 자료 */}
-      {/* 파일업로드 */}
       {isFileActive ? <FileUpload /> : <LinkUpload />}
-      {/* 파일업로드 */}
     </div>
   );
 };
