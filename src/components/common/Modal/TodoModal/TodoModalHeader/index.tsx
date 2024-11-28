@@ -28,7 +28,7 @@ export const TodoModalHeader = ({
         <span className="text-lg-bold text-slate-800">
           {todoType === '생성' ? '할 일 생성' : '할 일 수정'}
         </span>
-        <IoMdClose size={24} className="cursor-pointer" onClick={handleClose} />
+        <IoMdClose className="size-24 cursor-pointer" onClick={handleClose} />
       </div>
       {todoType === '생성' ? (
         <></>
