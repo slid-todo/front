@@ -4,7 +4,7 @@ export const LinkUpload = () => {
   return (
     <div className="flex h-184 w-full shrink-0 items-center justify-center rounded-12 bg-slate-50">
       <div className="inline-flex flex-col items-center justify-center gap-8">
-        <FaLink size={24} className="text-slate-400" />
+        <FaLink className="size-24 text-slate-400" />
         <span className="text-sm-normal text-slate-400 sm:text-base-normal">
           링크를 첨부해주세요
         </span>

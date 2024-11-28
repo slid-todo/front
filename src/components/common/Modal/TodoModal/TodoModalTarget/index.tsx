@@ -9,7 +9,7 @@ export const TodoModalTarget = () => {
           className="bg-slate-50 focus:outline-none"
           placeholder="목표를 선택해주세요"
         />
-        <FaSortDown className="cursor-pointer" size={24} />
+        <FaSortDown className="size-24 cursor-pointer" />
       </div>
     </div>
   );
