@@ -26,7 +26,7 @@ import { TOAST_VARIANTS } from '@/constants/ToastVariants';
  * @returns {JSX.Element} 렌더링된 토스트 컴포넌트 또는 빈 `<div />` 요소.
  */
 
-export default function Toast() {
+export const Toast = () => {
   const { type, message, isVisible, hideToast } = useToastStore();
 
   if (!isVisible || !message || !type) return <div />;
@@ -54,4 +54,4 @@ export default function Toast() {
     </AnimatePresence>,
     document.body,
   );
-}
+};
