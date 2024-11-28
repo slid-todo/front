@@ -1,17 +1,9 @@
-'use client';
 import { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { FaCheck } from 'react-icons/fa6';
+import { TodoModalProps } from '@/types/TodoType';
 
-interface TodoModalHeaderProps {
-  onClose: () => void;
-  todoType: string;
-}
-
-export const TodoModalHeader = ({
-  onClose,
-  todoType,
-}: TodoModalHeaderProps) => {
+export const TodoModalHeader = ({ onClose, todoType }: TodoModalProps) => {
   const [isChkClick, setIstChkClick] = useState(false);
 
   const handleClose = () => {

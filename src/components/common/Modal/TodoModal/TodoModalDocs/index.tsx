@@ -1,4 +1,3 @@
-'use client';
 import { useState } from 'react';
 import { Chip } from '../../../Chip/Chip';
 import { FileUpload } from './FileUpload';
