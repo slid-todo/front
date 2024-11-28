@@ -16,7 +16,7 @@ export const TodoModalHeader = ({ onClose, todoType }: TodoModalProps) => {
 
   return (
     <div className="flex flex-col gap-8 self-stretch">
-      <div className="flex-center">
+      <div className="flex items-center justify-between">
         <span className="text-lg-bold text-slate-800">
           {todoType === '생성' ? '할 일 생성' : '할 일 수정'}
         </span>
