@@ -1,10 +1,11 @@
 'use client';
 import { useState } from 'react';
 import TodoModal from '@/components/common/Modal/TodoModal';
+import { TodoType } from '@/types/TodoType';
 
 export default function GiBeom() {
   const [isOpen, setIsOpen] = useState(true);
-  const [todoType, setTodoType] = useState('');
+  const [todoType, setTodoType] = useState<TodoType>('생성');
 
   const handleClose = () => {
     setIsOpen(false);

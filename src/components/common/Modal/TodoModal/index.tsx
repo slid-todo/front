@@ -1,14 +1,10 @@
+import { TodoModalProps } from '@/types/TodoType';
 import { ModalContainer } from '../ModalContainer';
 import { TodoModalBtn } from './TodoModalBtn';
 import { TodoModalDocs } from './TodoModalDocs';
 import { TodoModalHeader } from './TodoModalHeader';
 import { TodoModalTarget } from './TodoModalTarget';
 import { TodoModalTitle } from './TodoModalTitle';
-
-export interface TodoModalProps {
-  onClose: () => void;
-  todoType: string;
-}
 
 const TodoModal = ({ onClose, todoType }: TodoModalProps) => {
   return (
