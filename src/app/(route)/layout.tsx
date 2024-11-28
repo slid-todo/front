@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.variable} flex font-pretendard`}>
+      <body className={`${pretendard.variable} font-pretendard`}>
         <QueryProvider>
           <Sidebar />
           {children}

@@ -9,15 +9,19 @@ export const Sidebar = () => {
   const { isOpen, open, close } = useSidebarStore();
 
   const sidebarClass = cn(
-    'h-screen flex flex-col items-center gap-16 border-r border-slate-100 py-16 transition-all duration-200 ease-in-out',
-    isOpen ? 'md:w-375' : 'w-0 md:w-60 overflow-hidden',
-    'md:flex hidden',
+    'fixed top-0 left-0 z-20 flex flex-col items-center h-screen gap-16 py-16 transition-all duration-200 ease-in-out bg-white border-r border-slate-100 md:flex',
+    isOpen ? 'md:w-280 w-screen' : 'w-0 md:w-60 overflow-hidden',
   );
 
   const iconContainerClass = cn(
     isOpen
       ? 'flex w-full items-center justify-between px-16'
       : 'flex flex-col gap-16',
+  );
+
+  const backGroundClass = cn(
+    'fixed left-280 top-0 hidden h-screen w-full bg-black transition-opacity duration-200 ease-in-out md:block lg:hidden',
+    isOpen ? 'opacity-50' : 'opacity-0',
   );
 
   return (
@@ -45,6 +49,7 @@ export const Sidebar = () => {
           </div>
         </div>
       )}
+      <div className={backGroundClass} />
     </div>
   );
 };
