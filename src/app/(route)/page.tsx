@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import HeartIcon from '@/assets/icon-heart.svg';
+import { Header } from '@/components/common/Header';
 import { notify } from '@/store/useToastStore';
 import { Filter } from '@/components/common/Filter';
 
@@ -26,7 +27,8 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="sm:px-60">
+      <Header />
       <button className="size-100">안녕asdfasfd</button>
       <HeartIcon width="32" height="32" fill="#FF0000" />
 
