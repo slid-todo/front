@@ -5,9 +5,13 @@ import { FaCheck } from 'react-icons/fa6';
 
 interface TodoModalHeaderProps {
   onClose: () => void;
+  todoType: string;
 }
 
-export const TodoModalHeader = ({ onClose }: TodoModalHeaderProps) => {
+export const TodoModalHeader = ({
+  onClose,
+  todoType,
+}: TodoModalHeaderProps) => {
   const [isChkClick, setIstChkClick] = useState(false);
 
   const handleClose = () => {
@@ -21,19 +25,25 @@ export const TodoModalHeader = ({ onClose }: TodoModalHeaderProps) => {
   return (
     <div className="flex flex-col gap-8 self-stretch">
       <div className="flex items-center justify-between">
-        <span className="text-lg-bold text-slate-800">할 일 생성</span>
+        <span className="text-lg-bold text-slate-800">
+          {todoType === '생성' ? '할 일 생성' : '할 일 수정'}
+        </span>
         <IoMdClose size={24} className="cursor-pointer" onClick={handleClose} />
       </div>
-      <div className="flex items-center gap-6">
-        <button
-          className={`flex size-18 items-start justify-center rounded-6 border border-slate-200 ${isChkClick ? 'bg-blue-600' : 'bg-white'} `}
-          onClick={handleClick}
-        >
-          {isChkClick ? <FaCheck className="size-16 text-white" /> : <></>}
-        </button>
+      {todoType === '생성' ? (
+        <></>
+      ) : (
+        <div className="flex items-center gap-6">
+          <button
+            className={`flex size-18 items-start justify-center rounded-6 border border-slate-200 ${isChkClick ? 'bg-blue-600' : 'bg-white'} `}
+            onClick={handleClick}
+          >
+            {isChkClick ? <FaCheck className="size-16 text-white" /> : <></>}
+          </button>
 
-        <span className="text-base-semibold text-slate-600">Done</span>
-      </div>
+          <span className="text-base-semibold text-slate-600">Done</span>
+        </div>
+      )}
     </div>
   );
 };
