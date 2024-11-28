@@ -11,7 +11,7 @@ export const LinkUpload = () => {
         <input
           type="url"
           placeholder="링크를 입력하세요"
-          className="mt-4 w-full max-w-[500px] rounded-8 border px-4 py-2 text-sm text-slate-600" // 길이 늘림
+          className="mt-4 w-full max-w-[500px] rounded-8 border px-4 py-2 text-sm text-slate-600 focus:outline-none" // 길이 늘림
         />
       </div>
     </div>
