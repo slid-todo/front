@@ -1,4 +1,4 @@
-import { ModalContainer } from '../ModalContainer/ModalContainer';
+import { ModalContainer } from '../ModalContainer';
 import { TodoModalBtn } from './TodoModalBtn';
 import { TodoModalDocs } from './TodoModalDocs';
 import { TodoModalHeader } from './TodoModalHeader';

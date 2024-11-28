@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
-import { Chip } from '../../Chip/Chip';
+import { Chip } from '../../../Chip/Chip';
 
 export const TodoModalDocs = () => {
   const [isFileActive, setIsFileActive] = useState(true);

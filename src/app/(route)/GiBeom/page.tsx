@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import TodoModal from '@/components/common/Modal/TodoModal/TodoModal';
+import TodoModal from '@/components/common/Modal/TodoModal';
 
 export default function GiBeom() {
   const [isOpen, setIsOpen] = useState(true);
