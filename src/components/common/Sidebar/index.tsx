@@ -49,7 +49,7 @@ export const Sidebar = () => {
           </div>
         </div>
       )}
-      <div className={backGroundClass} />
+      <div className={backGroundClass} onClick={close} />
     </div>
   );
 };
