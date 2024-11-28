@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'motion/react';
 
 interface FilterProps {
   filters: string[];
@@ -13,24 +14,15 @@ interface FilterProps {
  * @param {function} props.onFilterChange - 필터가 선택될 때 호출되는 콜백 함수.
  *
  * @example
- * // 사용 예시
+ * const [currentFilter, setCurrentFilter] = useState<string>('All');
  *
- *   const [currentFilter, setCurrentFilter] = useState<string>('All');
- *
- *   const handleFilterChange = (filter: string) => {
- *     setCurrentFilter(filter);
- *     console.log('Selected filter:', filter);
- *   };
- *
- *   return (
- *       <Filter filters={['All', 'To Do', 'Completed', 'In Progress']} onFilterChange={handleFilterChange} />
- *       <div className="mt-4">
- *         <p>현재 선택된 필터: {currentFilter}</p>
- *       </div>
- *     </div>
- *   );
+ * const handleFilterChange = (filter: string) => {
+ *   setCurrentFilter(filter);
  * };
  *
+ * <Filter filters={['All', 'To Do', 'Completed', 'In Progress']} onFilterChange={handleFilterChange} />
+ *
+ * @author 배영준
  */
 
 export const Filter = (props: FilterProps) => {
@@ -45,17 +37,20 @@ export const Filter = (props: FilterProps) => {
   return (
     <div className="flex space-x-2">
       {filters.map((filter) => (
-        <button
+        <motion.button
           key={filter}
           onClick={() => handleFilterClick(filter)}
-          className={`rounded-full px-4 py-2 ${
-            selectedFilter === filter
-              ? 'bg-blue-500 text-white'
-              : 'bg-gray-200 text-gray-700'
-          }`}
+          whileTap={{ scale: 0.9 }}
+          animate={{
+            backgroundColor: selectedFilter === filter ? '#3B82F6' : '#FFFFFF',
+            color: selectedFilter === filter ? '#ffffff' : '#1E293B',
+            borderColor: selectedFilter === filter ? '#3B82F6' : '#e2e8f0',
+          }}
+          transition={{ duration: 0.3 }}
+          className="flex h-28 items-center gap-10 rounded-full border border-solid px-12 py-4 text-sm-medium"
         >
           {filter}
-        </button>
+        </motion.button>
       ))}
     </div>
   );
