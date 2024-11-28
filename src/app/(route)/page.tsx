@@ -43,7 +43,7 @@ export default function Home() {
 
       <button
         type="button"
-        className="bg-green-70 text-white"
+        className="bg-green-200 text-white"
         onClick={handleSuccessClick}
       >
         성공 토스트 띄우기
