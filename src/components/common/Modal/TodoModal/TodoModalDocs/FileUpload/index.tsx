@@ -1,4 +1,5 @@
 import { FaPlus } from 'react-icons/fa';
+import { PLACEHOLDERS } from '@/constants/Placeholders';
 
 export const FileUpload = () => {
   return (
@@ -6,7 +7,7 @@ export const FileUpload = () => {
       <button className="inline-flex flex-col items-center justify-center gap-8">
         <FaPlus className="size-24 text-slate-400" />
         <span className="text-sm-normal text-slate-400 sm:text-base-normal">
-          파일을 업로드해주세요
+          {PLACEHOLDERS.FILE}
         </span>
       </button>
     </div>
