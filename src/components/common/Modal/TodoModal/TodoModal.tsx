@@ -1,9 +1,9 @@
-import ModalContainer from '../ModalContainer/ModalContainer';
-import TodoModalBtn from './TodoModalBtn';
-import TodoModalDocs from './TodoModalDocs';
-import TodoModalHeader from './TodoModalHeader';
-import TodoModalTarget from './TodoModalTarget';
-import TodoModalTitle from './TodoModalTitle';
+import { ModalContainer } from '../ModalContainer/ModalContainer';
+import { TodoModalBtn } from './TodoModalBtn';
+import { TodoModalDocs } from './TodoModalDocs';
+import { TodoModalHeader } from './TodoModalHeader';
+import { TodoModalTarget } from './TodoModalTarget';
+import { TodoModalTitle } from './TodoModalTitle';
 
 export interface TodoModalProps {
   onClose: () => void;

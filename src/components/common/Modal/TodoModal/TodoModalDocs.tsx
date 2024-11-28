@@ -1,6 +1,6 @@
 import { FaPlus } from 'react-icons/fa';
 
-const TodoModalDocs = () => {
+export const TodoModalDocs = () => {
   return (
     <div className="flex flex-col items-start gap-12">
       {/* 자료 */}
@@ -30,5 +30,3 @@ const TodoModalDocs = () => {
     </div>
   );
 };
-
-export default TodoModalDocs;
