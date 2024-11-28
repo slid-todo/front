@@ -5,7 +5,7 @@ interface TodoModalHeaderProps {
   onClose: () => void;
 }
 
-const TodoModalHeader = ({ onClose }: TodoModalHeaderProps) => {
+export const TodoModalHeader = ({ onClose }: TodoModalHeaderProps) => {
   const handleClose = () => {
     onClose();
   };
@@ -17,5 +17,3 @@ const TodoModalHeader = ({ onClose }: TodoModalHeaderProps) => {
     </div>
   );
 };
-
-export default TodoModalHeader;

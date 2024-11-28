@@ -7,7 +7,7 @@ interface ModalContainerProps {
   onClose: () => void;
 }
 
-const ModalContainer = ({ children, onClose }: ModalContainerProps) => {
+export const ModalContainer = ({ children, onClose }: ModalContainerProps) => {
   const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
     // 배경 클릭 시 onClose 호출
     if (e.target === e.currentTarget) {
@@ -23,5 +23,3 @@ const ModalContainer = ({ children, onClose }: ModalContainerProps) => {
     </div>
   );
 };
-
-export default ModalContainer;

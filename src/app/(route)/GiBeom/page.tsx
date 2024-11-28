@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import TodoModal from '@/components/common/Modal/TodoModal/TodoModal';
 
-const GiBeom = () => {
+export default function GiBeom() {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => {
@@ -19,6 +19,4 @@ const GiBeom = () => {
       {isOpen ? <TodoModal onClose={handleClose} /> : <></>}
     </div>
   );
-};
-
-export default GiBeom;
+}
