@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaCheck } from 'react-icons/fa6';
 
 import { cn } from '@/utils/className';
@@ -46,7 +45,7 @@ export interface ChipProps
  * @returns {JSX.Element} - Chip 버튼 컴포넌트
  */
 
-const Chip: React.FC<ChipProps> = ({
+export const Chip: React.FC<ChipProps> = ({
   className,
   variant = 'default',
   size = 'sm',
@@ -69,5 +68,3 @@ const Chip: React.FC<ChipProps> = ({
     </button>
   );
 };
-
-export default Chip;
