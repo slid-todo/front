@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Chip } from '../../../Chip/Chip';
+
+import { Chip } from '@/components/common/Chip';
 import { FileUpload } from './FileUpload';
 import { LinkUpload } from './LinkUpload';
 
