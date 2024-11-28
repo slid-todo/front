@@ -1,9 +1,18 @@
 'use client';
 
+import { useState } from 'react';
 import HeartIcon from '@/assets/icon-heart.svg';
 import { notify } from '@/store/useToastStore';
+import { Filter } from '@/components/common/Filter';
 
 export default function Home() {
+  const [currentFilter, setCurrentFilter] = useState<string>('All');
+
+  const handleFilterChange = (filter: string) => {
+    setCurrentFilter(filter);
+    console.log('Selected filter:', filter);
+  };
+
   const handleSuccessClick = () => {
     notify('success', '성공 메시지입니다!', 3000);
   };
@@ -43,7 +52,7 @@ export default function Home() {
 
       <button
         type="button"
-        className="bg-green-200 text-white"
+        className="bg-black text-white"
         onClick={handleSuccessClick}
       >
         성공 토스트 띄우기
@@ -62,6 +71,17 @@ export default function Home() {
       >
         정보 토스트 띄우기
       </button>
+
+      <div className="p-4">
+        <h1 className="mb-4 text-xl font-bold">Todo List</h1>
+        <Filter
+          filters={['All', 'To Do', 'Completed', 'In Progress']}
+          onFilterChange={handleFilterChange}
+        />
+        <div className="mt-4">
+          <p>Currently selected filter: {currentFilter}</p>
+        </div>
+      </div>
     </div>
   );
 }
