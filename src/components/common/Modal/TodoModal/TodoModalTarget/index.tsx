@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { cn } from '@/utils/className';
-import { Dropdown } from '@/components/common/Dropdown/Dropdown';
+import { Dropdown } from '@/components/common/Dropdown';
 import { TODO_MOCK_DATA } from '@/constants/TodoMockData';
 
 export const TodoModalTarget = () => {
