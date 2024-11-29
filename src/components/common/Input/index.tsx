@@ -7,7 +7,7 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type = 'text', ...props }, ref) => {
     const inputClass = cn(
-      'w-full px-24 py-12 outline-none bg-slate-50 rounded-12 text-sm-normal md:text-base-normal',
+      'w-full px-24 py-12 outline-none bg-white rounded-12 text-sm-normal md:text-base-normal',
       className,
     );
 
