@@ -2,23 +2,21 @@
 import { useState } from 'react';
 import TodoModal from '@/components/common/Modal/TodoModal';
 import { TodoType } from '@/types/TodoType';
+import { useTodoModalStore } from '@/store/useTodoModalStore';
 
 export default function GiBeom() {
-  const [isOpen, setIsOpen] = useState(true);
-  const [todoType, setTodoType] = useState<TodoType>('생성');
+  const { isOpen, open } = useTodoModalStore();
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  const [todoType, setTodoType] = useState<TodoType>('생성');
 
   const handleOpenTypeAssign = () => {
     setTodoType('생성');
-    setIsOpen(true);
+    open();
   };
 
   const handleOpenTypeModify = () => {
     setTodoType('수정');
-    setIsOpen(true);
+    open();
   };
 
   return (
@@ -29,7 +27,7 @@ export default function GiBeom() {
       <button className="bg-red-700" onClick={handleOpenTypeModify}>
         할일 수정 열어
       </button>
-      {isOpen ? <TodoModal onClose={handleClose} todoType={todoType} /> : <></>}
+      {isOpen ? <TodoModal todoType={todoType} /> : <></>}
     </div>
   );
 }
