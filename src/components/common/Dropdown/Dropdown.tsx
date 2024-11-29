@@ -1,8 +1,13 @@
 interface DropdownProps {
   dropdownData: string[];
+  onSelectItem: (item: string) => void; // 콜백 함수 추가
 }
 
-export const Dropdown = ({ dropdownData }: DropdownProps) => {
+export const Dropdown = ({ dropdownData, onSelectItem }: DropdownProps) => {
+  const handleClickItem = (item: string) => {
+    onSelectItem(item);
+  };
+
   return (
     <ul className="absolute top-full inline-flex max-h-150 w-full flex-col items-start overflow-y-auto rounded-12 bg-white shadow-lg">
       <style jsx>{`
@@ -19,6 +24,7 @@ export const Dropdown = ({ dropdownData }: DropdownProps) => {
           <li
             className="flex-center mt-2 w-full cursor-pointer rounded-12 p-10 text-sm-normal hover:bg-slate-200 sm:text-lg-normal"
             key={item}
+            onClick={() => handleClickItem(item)}
           >
             {item}
           </li>

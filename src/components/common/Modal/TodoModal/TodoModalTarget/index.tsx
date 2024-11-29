@@ -7,6 +7,7 @@ import { TODO_MOCK_DATA } from '@/constants/TodoMockData';
 
 export const TodoModalTarget = () => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(''); // 추후 zustand로 변경할듯
 
   const dropdownIconClass = cn('size-24 cursor-pointer');
 
@@ -18,6 +19,12 @@ export const TodoModalTarget = () => {
     setIsOpenDropdown(false);
   };
 
+  // Dropdown에서 전달받은 아이템을 설정
+  const handleSelectItem = (item: string) => {
+    setSelectedItem(item); // 선택된 아이템 저장
+    setIsOpenDropdown(false); // 드롭다운 닫기
+  };
+
   return (
     <div className="relative flex flex-col items-start gap-12 self-stretch">
       <span className="text-base-semibold text-slate-800">목표</span>
@@ -25,6 +32,8 @@ export const TodoModalTarget = () => {
         <input
           className="bg-slate-50 focus:outline-none"
           placeholder={PLACEHOLDERS.TARGET}
+          value={selectedItem} // 선택된 아이템 표시
+          readOnly // 사용자 입력을 방지
         />
         {isOpenDropdown ? (
           <IoMdArrowDropdown
@@ -38,7 +47,14 @@ export const TodoModalTarget = () => {
           />
         )}
       </div>
-      {isOpenDropdown ? <Dropdown dropdownData={TODO_MOCK_DATA} /> : <></>}
+      {isOpenDropdown ? (
+        <Dropdown
+          dropdownData={TODO_MOCK_DATA}
+          onSelectItem={handleSelectItem}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
