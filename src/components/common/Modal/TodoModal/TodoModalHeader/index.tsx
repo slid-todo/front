@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { FaCheck } from 'react-icons/fa6';
 import { TodoModalProps } from '@/types/TodoType';
+import { useTodoModalStore } from '@/store/useTodoModalStore';
 
-export const TodoModalHeader = ({ onClose, todoType }: TodoModalProps) => {
+export const TodoModalHeader = ({ todoType }: TodoModalProps) => {
+  const { close } = useTodoModalStore();
   const [isChkClick, setIstChkClick] = useState(false);
 
   const handleClose = () => {
-    onClose();
+    close();
   };
 
   const handleClick = () => {
