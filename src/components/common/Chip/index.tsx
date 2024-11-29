@@ -9,8 +9,8 @@ const chipStyles = {
     active: 'bg-slate-900 !text-white',
   },
   size: {
-    sm: 'text-sm font-medium',
-    lg: 'text-base font-medium',
+    sm: 'text-sm-medium',
+    lg: 'text-base-medium',
   },
 };
 
