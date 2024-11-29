@@ -12,7 +12,7 @@ export const LinkUpload = () => {
         <input
           type="url"
           placeholder={PLACEHOLDERS.LINK_INPUT}
-          className="mt-4 w-full max-w-[500px] rounded-8 border px-4 py-2 text-sm text-slate-600 focus:outline-none" // 길이 늘림
+          className="mt-4 w-full max-w-500 rounded-8 border px-4 py-2 text-sm text-slate-600 focus:outline-none" // 길이 늘림
         />
       </div>
     </div>
