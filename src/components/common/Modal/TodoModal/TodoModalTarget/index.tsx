@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { cn } from '@/utils/className';
 import { Dropdown } from '@/components/common/Dropdown';
 import { TODO_MOCK_DATA } from '@/constants/TodoMockData';
 
 export const TodoModalTarget = () => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const [selectedItem, setSelectedItem] = useState(''); // 추후 zustand로 변경할듯
-
-  const dropdownIconClass = cn('size-24 cursor-pointer');
 
   const handleOpenDropdown = () => {
     setIsOpenDropdown(true);
@@ -36,13 +33,13 @@ export const TodoModalTarget = () => {
           readOnly // 사용자 입력을 방지
         />
         {isOpenDropdown ? (
-          <IoMdArrowDropdown
-            className={dropdownIconClass}
+          <IoMdArrowDropup
+            className="size-24 cursor-pointer"
             onClick={handleCloseDropdown}
           />
         ) : (
-          <IoMdArrowDropup
-            className={dropdownIconClass}
+          <IoMdArrowDropdown
+            className="size-24 cursor-pointer"
             onClick={handleOpenDropdown}
           />
         )}
