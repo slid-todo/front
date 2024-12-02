@@ -22,7 +22,11 @@ export default function Signin() {
           <button className="mt-auto flex w-full items-center justify-center gap-10 self-stretch rounded-12 bg-slate-400 py-12 sm:mt-0">
             <span className="text-base-semibold text-white">확인</span>
           </button>
-          <AuthFooter />
+          <AuthFooter
+            description="찍찍이가 처음이신가요?"
+            linkTo="/signup"
+            linkToDescription="회원가입"
+          />
         </div>
       </div>
     </div>
