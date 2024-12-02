@@ -14,7 +14,7 @@ export default function Signin() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignInType>();
+  } = useForm<SignInType>({ mode: 'onBlur' });
 
   const handleClick: SubmitHandler<SignInType> = (data) => {
     console.log(data);
