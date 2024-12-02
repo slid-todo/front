@@ -1,7 +1,8 @@
 'use client';
 
-import { FaBars } from 'react-icons/fa6';
-import { IoClose } from 'react-icons/io5';
+import { FaAnglesLeft, FaBars, FaChartSimple, FaFlag } from 'react-icons/fa6';
+
+import { AddButton } from '@/components/common/Sidebar/AddButton';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { cn } from '@/utils/className';
 
@@ -29,23 +30,47 @@ export const Sidebar = () => {
       <div className={iconContainerClass}>
         <div className="size-24 bg-slate-500">{/* 로고 들어갈 예정 */}</div>
         {isOpen ? (
-          <IoClose
-            className="size-24 cursor-pointer text-slate-400"
+          <FaAnglesLeft
+            className="size-24 cursor-pointer p-2 text-slate-400"
             onClick={close}
           />
         ) : (
           <FaBars
-            className="w-24 cursor-pointer text-slate-400"
+            className="size-24 cursor-pointer p-2 text-slate-400"
             onClick={open}
           />
         )}
       </div>
       {isOpen && (
-        <div className="size-full">
-          <div className="p-16">프로필</div>
-          <div className="w-full">
-            <div className="border-t border-slate-200 p-16">대시보드</div>
-            <div className="border-t border-slate-200 p-16">목표</div>
+        <div className="flex w-full flex-col items-center gap-16 px-16">
+          {/* 프로필 */}
+          <div className="flex w-full gap-8">
+            <div className="size-69 rounded-8 bg-slate-200" />
+            <div>
+              <div className="pb-16">
+                <p className="text-sm-medium">체다치즈</p>
+                <p className="text-xs-medium">email</p>
+              </div>
+              <button className="text-xs-normal">로그아웃</button>
+            </div>
+          </div>
+
+          {/* 대시보드 */}
+          <div className="flex w-full items-center justify-between border-t border-slate-200 pt-16 sm:block">
+            <div className="flex items-center gap-8 md:pb-16">
+              <FaChartSimple className="size-24 p-2" />
+              <span className="text-xl-semibold">대시보드</span>
+            </div>
+            <AddButton type="할일" onClick={() => {}} />
+          </div>
+
+          {/* 목표 */}
+          <div className="flex w-full items-center justify-between border-t border-slate-200 pt-16 sm:block">
+            <div className="flex items-center gap-8 md:pb-16">
+              <FaFlag className="size-24 p-2" />
+              <span className="text-xl-semibold">목표</span>
+            </div>
+            <AddButton type="목표" onClick={() => {}} />
           </div>
         </div>
       )}
