@@ -1,10 +1,18 @@
 import { MdVisibilityOff } from 'react-icons/md';
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Signin',
+  description: 'Signin Page',
+};
 
 export default function Signin() {
   return (
-    <div className="flex flex-col items-center gap-40 px-16 pt-48">
-      <div className="flex-center h-89 w-270 px-12 py-20 ">로고 이미지</div>
+    <div className="flex w-full flex-col items-center gap-40 px-16 sm:px-52 lg:w-640 lg:px-0 ">
+      <div className="flex-center h-89 w-270 px-12 py-20 ">
+        <MdVisibilityOff className="size-150 cursor-pointer" />
+      </div>
       {/*  */}
       <div className="flex w-full flex-col items-start gap-48">
         <div className="flex w-full flex-col items-start gap-24">
