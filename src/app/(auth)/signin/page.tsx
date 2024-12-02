@@ -1,29 +1,37 @@
 'use client';
 
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Logo } from '@/components/specific-feature/AuthPage/Logo';
 import { EmailInput } from '@/components/specific-feature/AuthPage/EmailInput';
 import { PasswordInput } from '@/components/specific-feature/AuthPage/PasswordInput';
 import { AuthFooter } from '@/components/specific-feature/AuthPage/AuthFooter';
 import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
 import { MetaData } from '@/components/specific-feature/AuthPage/MetaData';
+import { SignInType } from '@/types/SignInType';
 
 export default function Signin() {
-  const handleClick = () => {
-    console.log('ddddd');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInType>();
+
+  const handleClick: SubmitHandler<SignInType> = (data) => {
+    console.log(data);
   };
 
   return (
     <>
       <MetaData title="Signin" />
       <form
-        onSubmit={handleClick}
+        onSubmit={handleSubmit(handleClick)}
         className="flex w-full flex-col items-center gap-40 px-16 md:px-52 lg:w-640 lg:px-0 "
       >
         <Logo />
         <div className="flex w-full flex-col items-start gap-48">
           <div className="flex w-full flex-col items-start gap-24">
-            <EmailInput />
-            <PasswordInput />
+            <EmailInput register={register} error={errors.email} />
+            <PasswordInput register={register} error={errors.password} />
           </div>
           <div className="flex w-full flex-col items-center gap-40">
             <button
