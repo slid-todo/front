@@ -1,35 +1,49 @@
-import type { Metadata } from 'next';
+'use client';
+
+import Head from 'next/head';
 import { Logo } from '@/components/specific-feature/AuthPage/Logo';
 import { EmailInput } from '@/components/specific-feature/AuthPage/EmailInput';
 import { PasswordInput } from '@/components/specific-feature/AuthPage/PasswordInput';
 import { AuthFooter } from '@/components/specific-feature/AuthPage/AuthFooter';
 import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
 
-export const metadata: Metadata = {
-  title: 'Signin',
-  description: 'Signin Page',
-};
-
 export default function Signin() {
+  const handleClick = () => {
+    console.log('ddddd');
+  };
+
   return (
-    <div className="flex w-full flex-col items-center gap-40 px-16 sm:px-52 lg:w-640 lg:px-0 ">
-      <Logo />
-      <div className="flex w-full flex-col items-start gap-48">
-        <div className="flex w-full flex-col items-start gap-24">
-          <EmailInput />
-          <PasswordInput />
+    <>
+      <Head>
+        <title>Signin</title>
+        <meta name="description" content="Signin Page" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <form
+        onSubmit={handleClick}
+        className="flex w-full flex-col items-center gap-40 px-16 md:px-52 lg:w-640 lg:px-0 "
+      >
+        <Logo />
+        <div className="flex w-full flex-col items-start gap-48">
+          <div className="flex w-full flex-col items-start gap-24">
+            <EmailInput />
+            <PasswordInput />
+          </div>
+          <div className="flex w-full flex-col items-center gap-40">
+            <button
+              type="submit"
+              className="mt-auto flex w-full items-center justify-center gap-10 self-stretch rounded-12 bg-slate-400 py-12 sm:mt-0"
+            >
+              <span className="text-base-semibold text-white">확인</span>
+            </button>
+            <AuthFooter
+              description={AUTH_FOOTER_MESSAGES.SIGNIN}
+              linkTo="/signup"
+              linkToDescription="회원가입"
+            />
+          </div>
         </div>
-        <div className="flex w-full flex-col items-center gap-40">
-          <button className="mt-auto flex w-full items-center justify-center gap-10 self-stretch rounded-12 bg-slate-400 py-12 sm:mt-0">
-            <span className="text-base-semibold text-white">확인</span>
-          </button>
-          <AuthFooter
-            description={AUTH_FOOTER_MESSAGES.SIGNIN}
-            linkTo="/signup"
-            linkToDescription="회원가입"
-          />
-        </div>
-      </div>
-    </div>
+      </form>
+    </>
   );
 }
