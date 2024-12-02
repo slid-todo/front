@@ -1,11 +1,11 @@
 'use client';
 
-import Head from 'next/head';
 import { Logo } from '@/components/specific-feature/AuthPage/Logo';
 import { EmailInput } from '@/components/specific-feature/AuthPage/EmailInput';
 import { PasswordInput } from '@/components/specific-feature/AuthPage/PasswordInput';
 import { AuthFooter } from '@/components/specific-feature/AuthPage/AuthFooter';
 import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
+import { MetaData } from '@/components/specific-feature/AuthPage/MetaData';
 
 export default function Signin() {
   const handleClick = () => {
@@ -14,11 +14,7 @@ export default function Signin() {
 
   return (
     <>
-      <Head>
-        <title>Signin</title>
-        <meta name="description" content="Signin Page" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
+      <MetaData title="Signin" />
       <form
         onSubmit={handleClick}
         className="flex w-full flex-col items-center gap-40 px-16 md:px-52 lg:w-640 lg:px-0 "
