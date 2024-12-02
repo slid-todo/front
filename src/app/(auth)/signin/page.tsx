@@ -3,6 +3,7 @@ import { Logo } from '@/components/specific-feature/AuthPage/Logo';
 import { EmailInput } from '@/components/specific-feature/AuthPage/EmailInput';
 import { PasswordInput } from '@/components/specific-feature/AuthPage/PasswordInput';
 import { AuthFooter } from '@/components/specific-feature/AuthPage/AuthFooter';
+import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
 
 export const metadata: Metadata = {
   title: 'Signin',
@@ -23,7 +24,7 @@ export default function Signin() {
             <span className="text-base-semibold text-white">확인</span>
           </button>
           <AuthFooter
-            description="찍찍이가 처음이신가요?"
+            description={AUTH_FOOTER_MESSAGES.SIGNIN}
             linkTo="/signup"
             linkToDescription="회원가입"
           />
