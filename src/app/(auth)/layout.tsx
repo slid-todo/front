@@ -1,5 +1,3 @@
-import type { Metadata } from 'next';
-
 import localFont from 'next/font/local';
 import QueryProvider from '@/provider/QueryProvider';
 import '@/styles/globals.css';
@@ -11,11 +9,6 @@ const pretendard = localFont({
   variable: '--font-pretendard',
 });
 
-export const metadata: Metadata = {
-  title: 'Signin',
-  description: 'Signin Page',
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} font-pretendard`}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <div className="flex-center min-h-screen">{children}</div>
+        </QueryProvider>
       </body>
     </html>
   );
