@@ -3,6 +3,7 @@ import { MdVisibilityOff, MdVisibility } from 'react-icons/md';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { AuthInputProps } from '@/types/AuthType';
+import { passwordValidation } from '@/utils/authValidation';
 
 export const PasswordInput = ({ register, error }: AuthInputProps) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,17 +19,7 @@ export const PasswordInput = ({ register, error }: AuthInputProps) => {
         <Input
           type={isVisible ? 'text' : 'password'}
           placeholder={PLACEHOLDERS.PASSWORD}
-          {...register('password', {
-            required: '비밀번호를 입력해주세요.',
-            minLength: {
-              value: 6,
-              message: '비밀번호는 최소 6자 이상이어야 합니다.',
-            },
-            pattern: {
-              value: /^(?=.*[a-zA-Z])(?=.*\d).+$/,
-              message: '비밀번호는 영문자와 숫자를 포함해야 합니다.',
-            },
-          })}
+          {...register('password', passwordValidation)}
         />
         {isVisible ? (
           <MdVisibility

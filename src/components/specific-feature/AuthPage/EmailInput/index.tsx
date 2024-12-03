@@ -1,6 +1,7 @@
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { AuthInputProps } from '@/types/AuthType';
+import { emailValidation } from '@/utils/authValidation';
 
 export const EmailInput = ({ register, error }: AuthInputProps) => {
   return (
@@ -9,13 +10,7 @@ export const EmailInput = ({ register, error }: AuthInputProps) => {
       <Input
         type="text"
         placeholder={PLACEHOLDERS.EMAIL}
-        {...register('email', {
-          required: '이메일을 입력해주세요.',
-          pattern: {
-            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-            message: '올바른 이메일 형식을 입력해주세요.',
-          },
-        })}
+        {...register('email', emailValidation)}
       />
       {error && <span className="text-sm text-red-500">{error.message}</span>}
     </div>
