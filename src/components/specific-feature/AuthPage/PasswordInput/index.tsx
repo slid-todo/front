@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { MdVisibilityOff, MdVisibility } from 'react-icons/md';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { AuthInputProps } from '@/types/AuthType';
 import { passwordValidation } from '@/utils/authValidation';
+import { VisibilityIcon } from '../VisibilityIcon';
 
 export const PasswordInput = ({ register, error }: AuthInputProps) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -21,17 +21,7 @@ export const PasswordInput = ({ register, error }: AuthInputProps) => {
           placeholder={PLACEHOLDERS.PASSWORD}
           {...register('password', passwordValidation)}
         />
-        {isVisible ? (
-          <MdVisibility
-            className="size-24 cursor-pointer"
-            onClick={handleClickIcon}
-          />
-        ) : (
-          <MdVisibilityOff
-            className="size-24 cursor-pointer"
-            onClick={handleClickIcon}
-          />
-        )}
+        <VisibilityIcon isVisible={isVisible} onClick={handleClickIcon} />
       </div>
       {error && <span className="text-sm text-red-500">{error.message}</span>}
     </div>
