@@ -1,16 +1,21 @@
 import { useState } from 'react';
-import { UseFormRegister, FieldError } from 'react-hook-form';
+import { UseFormRegister, UseFormGetValues, FieldError } from 'react-hook-form';
 import { MdVisibilityOff, MdVisibility } from 'react-icons/md';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { AuthDataType } from '@/types/AuthType';
 
-interface PasswordInputProps {
+interface PasswordChkInputProps {
   register: UseFormRegister<AuthDataType>;
   error?: FieldError;
+  getValues: UseFormGetValues<AuthDataType>;
 }
 
-export const PasswordInput = ({ register, error }: PasswordInputProps) => {
+export const PasswordChkInput = ({
+  register,
+  error,
+  getValues,
+}: PasswordChkInputProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClickIcon = () => {
@@ -19,20 +24,17 @@ export const PasswordInput = ({ register, error }: PasswordInputProps) => {
 
   return (
     <div className="flex w-full flex-col items-start gap-12">
-      <span className="text-base-semibold text-slate-800 ">비밀번호</span>
+      <span className="text-base-semibold text-slate-800 ">비밀번호 확인</span>
       <div className="flex w-full items-center justify-between gap-10 pr-24">
         <Input
           type={isVisible ? 'text' : 'password'}
-          placeholder={PLACEHOLDERS.PASSWORD}
-          {...register('password', {
+          placeholder={PLACEHOLDERS.PASSWORDCHK}
+          {...register('passwordChk', {
             required: '비밀번호를 입력해주세요.',
-            minLength: {
-              value: 6,
-              message: '비밀번호는 최소 6자 이상이어야 합니다.',
-            },
-            pattern: {
-              value: /^(?=.*[a-zA-Z])(?=.*\d).+$/,
-              message: '비밀번호는 영문자와 숫자를 포함해야 합니다.',
+            validate: {
+              matchesPassword: (value) =>
+                value === getValues('password') ||
+                '비밀번호가 일치하지 않습니다.',
             },
           })}
         />
