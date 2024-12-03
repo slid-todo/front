@@ -5,6 +5,8 @@ export const PLACEHOLDERS = {
   LINK_ATTACH: '링크를 첨부해주세요',
   LINK_INPUT: '링크를 입력하세요',
   REPEAT: '주 5일',
+  NAME: '이름을 입력해주세요',
   EMAIL: '이메일을 입력해주세요',
   PASSWORD: '비밀번호를 입력해주세요',
+  PASSWORDCHK: '비밀번호를 다시 입력해주세요',
 };

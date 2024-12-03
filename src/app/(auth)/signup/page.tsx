@@ -8,9 +8,12 @@ import { AuthFooter } from '@/components/specific-feature/AuthPage/AuthFooter';
 import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
 import { MetaData } from '@/components/specific-feature/AuthPage/MetaData';
 import { AuthDataType } from '@/types/AuthType';
+import { NameInput } from '@/components/specific-feature/AuthPage/NameInput';
+import { PasswordChkInput } from '@/components/specific-feature/AuthPage/PasswordChkInput';
 
 export default function Signup() {
   const {
+    getValues,
     register,
     handleSubmit,
     formState: { errors },
@@ -30,8 +33,14 @@ export default function Signup() {
         <Logo />
         <div className="flex w-full flex-col items-start gap-48">
           <div className="flex w-full flex-col items-start gap-24">
+            <NameInput register={register} error={errors.name} />
             <EmailInput register={register} error={errors.email} />
             <PasswordInput register={register} error={errors.password} />
+            <PasswordChkInput
+              register={register}
+              error={errors.passwordChk}
+              getValues={getValues}
+            />
           </div>
           <div className="flex w-full flex-col items-center gap-40">
             <button
