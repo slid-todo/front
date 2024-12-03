@@ -2,14 +2,15 @@
 
 import { FaAnglesLeft, FaBars, FaChartSimple, FaFlag } from 'react-icons/fa6';
 
-import { AddButton } from '@/components/Sidebar/AddButton';
 import { useGoalsStore } from '@/store/useGoalStore';
 import { useSidebarStore } from '@/store/useSidebarStore';
-import { cn } from '@/utils/className';
 
-import { GoalList } from './GoalList';
-import { MenuItem } from './MenuItem';
-import { Profile } from './Profle';
+import { AddButton } from '@/components/Sidebar/AddButton';
+import { GoalList } from '@/components/Sidebar/GoalList';
+import { MenuItem } from '@/components/Sidebar/MenuItem';
+import { Profile } from '@/components/Sidebar/Profle';
+
+import { cn } from '@/utils/className';
 
 export const Sidebar = () => {
   const { isOpen, open, close } = useSidebarStore();
