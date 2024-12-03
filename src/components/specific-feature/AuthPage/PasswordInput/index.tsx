@@ -3,10 +3,10 @@ import { UseFormRegister, FieldError } from 'react-hook-form';
 import { MdVisibilityOff, MdVisibility } from 'react-icons/md';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { SignInType } from '@/types/SignInType';
+import { SignInDataType } from '@/types/AuthType';
 
 interface PasswordInputProps {
-  register: UseFormRegister<SignInType>;
+  register: UseFormRegister<SignInDataType>;
   error?: FieldError;
 }
 
