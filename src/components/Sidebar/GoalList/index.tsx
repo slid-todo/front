@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect, useRef } from 'react';
 
 import { useGoalsStore } from '@/store/useGoalStore';
 
@@ -6,6 +6,8 @@ import { Input } from '@/components/common/Input';
 import { GoalItem } from '@/components/Sidebar/GoalList/GoalItem';
 
 export const GoalList = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const { goals, setNewGoal, isNew, toggleIsNew, addGoal, newGoal } =
     useGoalsStore();
 
@@ -21,6 +23,12 @@ export const GoalList = () => {
     }
   };
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isNew]);
+
   return (
     <div className="flex w-full flex-col px-8">
       {goals.map((goal, index) => (
@@ -30,10 +38,11 @@ export const GoalList = () => {
         <div className="flex items-center gap-16 px-8">
           <div className="size-16 shrink-0 rounded-full bg-primary-100" />
           <Input
+            ref={inputRef}
             value={newGoal}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            className="bg-slate-200"
+            className=""
           />
         </div>
       )}
