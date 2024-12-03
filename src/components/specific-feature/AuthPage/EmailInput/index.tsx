@@ -1,10 +1,10 @@
 import { UseFormRegister, FieldError } from 'react-hook-form';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { SignInType } from '@/types/SignInType';
+import { SignInDataType } from '@/types/AuthType';
 
 interface EmailInputProps {
-  register: UseFormRegister<SignInType>;
+  register: UseFormRegister<SignInDataType>;
   error?: FieldError;
 }
 
