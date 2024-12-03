@@ -7,16 +7,16 @@ import { PasswordInput } from '@/components/specific-feature/AuthPage/PasswordIn
 import { AuthFooter } from '@/components/specific-feature/AuthPage/AuthFooter';
 import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
 import { MetaData } from '@/components/specific-feature/AuthPage/MetaData';
-import { SignInDataType } from '@/types/AuthType';
+import { AuthDataType } from '@/types/AuthType';
 
 export default function Signup() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignInDataType>({ mode: 'onBlur' });
+  } = useForm<AuthDataType>({ mode: 'onBlur' });
 
-  const handleClick: SubmitHandler<SignInDataType> = (data) => {
+  const handleClick: SubmitHandler<AuthDataType> = (data) => {
     console.log(data);
   };
 
