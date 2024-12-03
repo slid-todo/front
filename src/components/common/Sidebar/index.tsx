@@ -1,13 +1,35 @@
 'use client';
 
+import { ChangeEvent, useState } from 'react';
 import { FaAnglesLeft, FaBars, FaChartSimple, FaFlag } from 'react-icons/fa6';
 
 import { AddButton } from '@/components/common/Sidebar/AddButton';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { cn } from '@/utils/className';
+import { Input } from '../Input';
 
 export const Sidebar = () => {
   const { isOpen, open, close } = useSidebarStore();
+
+  const [goals, setGoals] = useState<string[]>([]);
+  const [isNew, setIsNew] = useState(false);
+  const [newGoal, setNewGoal] = useState('');
+
+  const handleAddGoal = () => {
+    setIsNew(true);
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNewGoal(e.target.value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && newGoal.trim()) {
+      setGoals((prev) => [...prev, newGoal.trim()]);
+      setNewGoal('');
+      setIsNew(false);
+    }
+  };
 
   const sidebarClass = cn(
     'fixed top-0 left-0 z-20 flex flex-col items-center h-screen gap-16 py-16 transition-all duration-200 ease-in-out bg-white border-r border-slate-100 md:flex',
@@ -45,8 +67,8 @@ export const Sidebar = () => {
         <div className="flex w-full flex-col items-center gap-16 px-16">
           {/* 프로필 */}
           <div className="flex w-full gap-8">
-            <div className="size-69 rounded-8 bg-slate-200" />
-            <div>
+            <div className="size-37 shrink-0 rounded-8 bg-slate-200" />
+            <div className="flex w-full justify-between">
               <div className="pb-16">
                 <p className="text-sm-medium">체다치즈</p>
                 <p className="text-xs-medium">email</p>
@@ -61,7 +83,6 @@ export const Sidebar = () => {
               <FaChartSimple className="size-24 p-2" />
               <span className="text-xl-semibold">대시보드</span>
             </div>
-            <AddButton type="할일" onClick={() => {}} />
           </div>
 
           {/* 목표 */}
@@ -70,7 +91,28 @@ export const Sidebar = () => {
               <FaFlag className="size-24 p-2" />
               <span className="text-xl-semibold">목표</span>
             </div>
-            <AddButton type="목표" onClick={() => {}} />
+            <AddButton onClick={handleAddGoal} />
+          </div>
+
+          {/* 목표 리스트 및 등록 */}
+          <div className="flex w-full flex-col px-8">
+            {goals.map((goal, index) => (
+              <div key={index} className="flex items-center gap-16 px-8">
+                <div className="size-16 shrink-0 rounded-full bg-primary-200" />
+                <span className="text-sm-medium">{goal}</span>
+              </div>
+            ))}
+            {isNew && (
+              <div className="flex items-center gap-16 px-8">
+                <div className="size-16 shrink-0 rounded-full bg-primary-100" />
+                <Input
+                  value={newGoal}
+                  onChange={handleInputChange}
+                  onKeyDown={handleKeyDown}
+                  className="bg-slate-200"
+                />
+              </div>
+            )}
           </div>
         </div>
       )}
