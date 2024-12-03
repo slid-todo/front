@@ -1,6 +1,6 @@
 'use client';
 
-import { FaBars } from 'react-icons/fa6';
+import { FaBarsStaggered } from 'react-icons/fa6';
 import { useSidebarStore } from '@/store/useSidebarStore';
 
 interface HeaderProps {
@@ -12,7 +12,10 @@ export const Header = ({ title = '' }: HeaderProps) => {
 
   return (
     <div className="fixed left-0 top-0 flex h-48 w-full items-center bg-white px-16 md:hidden">
-      <FaBars className="w-24 cursor-pointer text-slate-400" onClick={open} />
+      <FaBarsStaggered
+        className="w-24 cursor-pointer text-primary-100"
+        onClick={open}
+      />
       <p>{title}</p>
     </div>
   );

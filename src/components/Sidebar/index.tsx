@@ -1,12 +1,24 @@
 'use client';
 
-import { FaBars } from 'react-icons/fa6';
-import { IoClose } from 'react-icons/io5';
+import { FaAnglesLeft, FaBars, FaChartSimple, FaFlag } from 'react-icons/fa6';
+
+import { useGoalsStore } from '@/store/useGoalStore';
 import { useSidebarStore } from '@/store/useSidebarStore';
+
+import { AddButton } from '@/components/Sidebar/AddButton';
+import { GoalList } from '@/components/Sidebar/GoalList';
+import { MenuItem } from '@/components/Sidebar/MenuItem';
+import { Profile } from '@/components/Sidebar/Profle';
+
 import { cn } from '@/utils/className';
 
 export const Sidebar = () => {
   const { isOpen, open, close } = useSidebarStore();
+  const { toggleIsNew } = useGoalsStore();
+
+  const handleAddGoal = () => {
+    toggleIsNew(true);
+  };
 
   const sidebarClass = cn(
     'fixed top-0 left-0 z-20 flex flex-col items-center h-screen gap-16 py-16 transition-all duration-200 ease-in-out bg-white border-r border-slate-100 md:flex',
@@ -29,24 +41,30 @@ export const Sidebar = () => {
       <div className={iconContainerClass}>
         <div className="size-24 bg-slate-500">{/* 로고 들어갈 예정 */}</div>
         {isOpen ? (
-          <IoClose
-            className="size-24 cursor-pointer text-slate-400"
+          <FaAnglesLeft
+            className="size-24 cursor-pointer p-2 text-slate-400"
             onClick={close}
           />
         ) : (
           <FaBars
-            className="w-24 cursor-pointer text-slate-400"
+            className="size-24 cursor-pointer p-2 text-slate-400"
             onClick={open}
           />
         )}
       </div>
       {isOpen && (
-        <div className="size-full">
-          <div className="p-16">프로필</div>
-          <div className="w-full">
-            <div className="border-t border-slate-200 p-16">대시보드</div>
-            <div className="border-t border-slate-200 p-16">목표</div>
-          </div>
+        <div className="flex w-full flex-col items-center gap-16 px-16">
+          <Profile />
+          <MenuItem
+            icon={<FaChartSimple className="size-24 p-2" />}
+            label="대시보드"
+          />
+          <MenuItem
+            icon={<FaFlag className="size-24 p-2" />}
+            label="목표"
+            addButton={<AddButton onClick={handleAddGoal} />}
+          />
+          <GoalList />
         </div>
       )}
       <div className={backGroundClass} onClick={close} />
