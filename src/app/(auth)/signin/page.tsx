@@ -17,7 +17,7 @@ export default function Signin() {
   } = useForm<AuthDataType>({ mode: 'onBlur' });
 
   const handleClick: SubmitHandler<AuthDataType> = (data) => {
-    console.log(`아이디:${data.email} 비밀번호:${data.password}`);
+    console.log(data);
   };
 
   return (

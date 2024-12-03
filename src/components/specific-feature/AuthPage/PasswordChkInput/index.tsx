@@ -3,6 +3,7 @@ import { MdVisibilityOff, MdVisibility } from 'react-icons/md';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { AuthInputProps } from '@/types/AuthType';
+import { passwordChkValidation } from '@/utils/authValidation';
 
 export const PasswordChkInput = ({
   register,
@@ -22,15 +23,7 @@ export const PasswordChkInput = ({
         <Input
           type={isVisible ? 'text' : 'password'}
           placeholder={PLACEHOLDERS.PASSWORDCHK}
-          {...register('passwordChk', {
-            required: '비밀번호를 입력해주세요.',
-            validate: {
-              matchesPassword: (value) =>
-                getValues && value === getValues('password') // Check if getValues is defined
-                  ? true
-                  : '비밀번호가 일치하지 않습니다.',
-            },
-          })}
+          {...register('passwordChk', passwordChkValidation({ getValues }))}
         />
         {isVisible ? (
           <MdVisibility
