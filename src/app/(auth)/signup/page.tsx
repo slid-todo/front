@@ -9,7 +9,7 @@ import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
 import { MetaData } from '@/components/specific-feature/AuthPage/MetaData';
 import { SignInDataType } from '@/types/AuthType';
 
-export default function Signin() {
+export default function Signup() {
   const {
     register,
     handleSubmit,
@@ -22,7 +22,7 @@ export default function Signin() {
 
   return (
     <>
-      <MetaData title="Signin" />
+      <MetaData title="Signup" />
       <form
         onSubmit={handleSubmit(handleClick)}
         className="flex w-full flex-col items-center gap-40 px-16 md:px-52 lg:w-640 lg:px-0 "
@@ -42,8 +42,8 @@ export default function Signin() {
             </button>
             <AuthFooter
               description={AUTH_FOOTER_MESSAGES.SIGNIN}
-              linkTo="/signup"
-              linkToDescription="회원가입"
+              linkTo="/signin"
+              linkToDescription="로그인"
             />
           </div>
         </div>
