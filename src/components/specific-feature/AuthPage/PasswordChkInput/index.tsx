@@ -1,21 +1,14 @@
 import { useState } from 'react';
-import { UseFormRegister, UseFormGetValues, FieldError } from 'react-hook-form';
 import { MdVisibilityOff, MdVisibility } from 'react-icons/md';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { AuthDataType } from '@/types/AuthType';
-
-interface PasswordChkInputProps {
-  register: UseFormRegister<AuthDataType>;
-  error?: FieldError;
-  getValues: UseFormGetValues<AuthDataType>;
-}
+import { AuthInputProps } from '@/types/AuthType';
 
 export const PasswordChkInput = ({
   register,
   error,
   getValues,
-}: PasswordChkInputProps) => {
+}: AuthInputProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClickIcon = () => {
@@ -33,8 +26,9 @@ export const PasswordChkInput = ({
             required: '비밀번호를 입력해주세요.',
             validate: {
               matchesPassword: (value) =>
-                value === getValues('password') ||
-                '비밀번호가 일치하지 않습니다.',
+                getValues && value === getValues('password') // Check if getValues is defined
+                  ? true
+                  : '비밀번호가 일치하지 않습니다.',
             },
           })}
         />

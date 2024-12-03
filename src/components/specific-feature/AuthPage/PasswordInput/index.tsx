@@ -1,16 +1,10 @@
 import { useState } from 'react';
-import { UseFormRegister, FieldError } from 'react-hook-form';
 import { MdVisibilityOff, MdVisibility } from 'react-icons/md';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { AuthDataType } from '@/types/AuthType';
+import { AuthInputProps } from '@/types/AuthType';
 
-interface PasswordInputProps {
-  register: UseFormRegister<AuthDataType>;
-  error?: FieldError;
-}
-
-export const PasswordInput = ({ register, error }: PasswordInputProps) => {
+export const PasswordInput = ({ register, error }: AuthInputProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClickIcon = () => {

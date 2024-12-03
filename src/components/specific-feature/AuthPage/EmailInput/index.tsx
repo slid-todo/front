@@ -1,14 +1,8 @@
-import { UseFormRegister, FieldError } from 'react-hook-form';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { AuthDataType } from '@/types/AuthType';
+import { AuthInputProps } from '@/types/AuthType';
 
-interface EmailInputProps {
-  register: UseFormRegister<AuthDataType>;
-  error?: FieldError;
-}
-
-export const EmailInput = ({ register, error }: EmailInputProps) => {
+export const EmailInput = ({ register, error }: AuthInputProps) => {
   return (
     <div className="flex w-full flex-col items-start gap-12">
       <span className="text-base-semibold text-slate-800 ">아이디</span>
