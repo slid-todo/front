@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { cn } from '@/utils/className';
 import { Spinner } from '../Spinner';
 
@@ -8,7 +9,7 @@ interface ButtonProps {
   disabled?: boolean;
   pending?: boolean;
   onClick?: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const Button = ({
