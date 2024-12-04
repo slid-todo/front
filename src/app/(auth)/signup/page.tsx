@@ -50,7 +50,7 @@ export default function Signup() {
               <span className="text-base-semibold text-white">확인</span>
             </button>
             <AuthFooter
-              description={AUTH_FOOTER_MESSAGES.SIGNIN}
+              description={AUTH_FOOTER_MESSAGES.SIGNUP}
               linkTo="/signin"
               linkToDescription="로그인"
             />
