@@ -19,7 +19,7 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const className = cn(
-    'inline-flex items-center justify-center',
+    'inline-flex items-center justify-center transition-all duration-300',
     {
       'text-sm-medium py-8 px-18': size === 'small',
       'text-sm-medium py-12 px-52': size === 'medium',
@@ -31,21 +31,18 @@ export const Button = ({
         ? 'bg-slate-400 text-white cursor-not-allowed'
         : 'bg-slate-300 text-slate-500 border border-slate-500 cursor-not-allowed'
       : primary
-        ? 'bg-primary-100 text-white'
-        : 'bg-white text-primary-100 border border-primary-100',
+        ? 'bg-primary-100 text-white hover:bg-primary-200'
+        : 'bg-white text-primary-100 border border-primary-100 hover:text-primary-200',
   );
 
   return (
-    <>
-      <button
-        className={className}
-        onClick={onClick}
-        disabled={disabled}
-        {...props}
-      >
-        {children}
-      </button>
-      <div className=""></div>
-    </>
+    <button
+      className={className}
+      onClick={onClick}
+      disabled={disabled}
+      {...props}
+    >
+      {children}
+    </button>
   );
 };
