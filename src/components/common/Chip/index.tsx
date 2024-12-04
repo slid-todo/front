@@ -5,7 +5,7 @@ import { cn } from '@/utils/className';
 const chipStyles = {
   base: 'flex items-center gap-7 rounded-8 p-8 pl-12 transition-all duration-200 ease-in-out',
   variant: {
-    default: 'bg-slate-100 !text-black',
+    default: 'bg-white !text-black',
     active: 'bg-primary-100 !text-white',
   },
   size: {
@@ -60,7 +60,7 @@ export const Chip = ({
 
   const checkBoxClass = cn(
     'bg-white size-18 rounded-6',
-    variant === 'active' && 'border border-slate-200',
+    variant === 'default' && 'border border-custom-white-200',
   );
 
   return (
@@ -68,7 +68,7 @@ export const Chip = ({
       <div className={checkBoxClass}>
         {variant === 'active' && (
           <FaCheck
-            className="size-16 p-2 text-primary-100"
+            className="size-18 p-2 text-primary-100"
             style={{ strokeWidth: 30 }}
           />
         )}
