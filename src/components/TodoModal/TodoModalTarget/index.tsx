@@ -3,6 +3,7 @@ import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { TODO_MOCK_DATA } from '@/constants/TodoMockData';
 import { Dropdown } from '@/components/common/Dropdown';
+import { Input } from '@/components/common/Input';
 
 export const TodoModalTarget = () => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
@@ -25,9 +26,8 @@ export const TodoModalTarget = () => {
   return (
     <div className="relative flex flex-col items-start gap-12 self-stretch">
       <span className="text-base-semibold text-slate-800">목표</span>
-      <div className=" flex items-center justify-between self-stretch rounded-12 bg-slate-50 px-20 py-12 text-sm-normal sm:text-base-normal ">
-        <input
-          className="bg-slate-50 focus:outline-none"
+      <div className=" flex items-center justify-between self-stretch rounded-12 bg-white pr-16 ">
+        <Input
           placeholder={PLACEHOLDERS.TARGET}
           value={selectedItem} // 선택된 아이템 표시
           readOnly // 사용자 입력을 방지

@@ -10,14 +10,14 @@ import { TodoModalRepeat } from './TodoModalRepeat';
 const TodoModal = ({ todoType }: TodoModalProps) => {
   return (
     <ModalContainer>
-      <div className="flex size-full flex-col items-start gap-10 overflow-y-auto bg-white px-16 py-24 sm:h-auto sm:w-520 sm:rounded-12 sm:p-24">
+      <div className="flex size-full flex-col items-start gap-10 overflow-y-auto bg-custom-white-100 px-16 py-24 sm:h-auto sm:w-520 sm:rounded-12 sm:p-24">
         <div className="flex flex-1 flex-col items-start gap-40 self-stretch">
           <div className="flex flex-col gap-24 self-stretch">
             <TodoModalHeader todoType={todoType} />
             <TodoModalTitle />
-            <TodoModalDocs />
             <TodoModalTarget />
             <TodoModalRepeat />
+            <TodoModalDocs />
           </div>
           <TodoModalBtn />
         </div>
