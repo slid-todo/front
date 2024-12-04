@@ -113,6 +113,8 @@ export default function Home() {
       >
         클릭하세요22
       </Button>
+
+      <Button pending>제출 중...</Button>
     </div>
   );
 }
