@@ -43,7 +43,25 @@ export default {
         primary: {
           100: "#536894",
           200: "#374D7A"
-        }
+        },
+        sub: {
+          orange: '#FFAB76',
+          purple: '#B18AE0',
+          blue: '#A8D8F0',
+          yellow: '#FFEC8B',
+          pink: '#F49696',
+        },
+        'custom-white': {
+          100: '#F6F6F6',
+          200: '#E9E9E9',
+          300: '#C4C4C4',
+        },
+        'custom-gray': {
+          100: '#848484',
+          200: '#535353',
+          300: '#090909',
+        },
+        error: '#D72638'
       },
 
       fontFamily: {
