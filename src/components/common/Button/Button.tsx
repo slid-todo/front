@@ -1,10 +1,12 @@
 import { cn } from '@/utils/className';
+import { Spinner } from '../Spinner';
 
 interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   primary?: boolean;
   radius?: boolean;
   disabled?: boolean;
+  pending?: boolean;
   onClick?: () => void;
   children: React.ReactNode;
 }
@@ -14,19 +16,22 @@ export const Button = ({
   primary = false,
   radius = false,
   disabled = false,
+  pending = false,
   onClick,
   children,
   ...props
 }: ButtonProps) => {
+  const isDisabled = disabled || pending;
+
   const className = cn(
-    'inline-flex items-center justify-center transition-all duration-300',
+    'inline-flex items-center justify-center transition-all duration-300 h-46 max-h-46',
     {
       'text-sm-medium py-8 px-18': size === 'small',
       'text-sm-medium py-12 px-52': size === 'medium',
       'text-base-medium py-12 w-full': size === 'large',
     },
     radius ? 'rounded-xl' : 'rounded-3xl',
-    disabled
+    isDisabled
       ? primary
         ? 'bg-slate-400 text-white cursor-not-allowed'
         : 'bg-slate-300 text-slate-500 border border-slate-500 cursor-not-allowed'
@@ -42,7 +47,7 @@ export const Button = ({
       disabled={disabled}
       {...props}
     >
-      {children}
+      {pending ? <Spinner /> : children}
     </button>
   );
 };
