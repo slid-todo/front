@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import TodoModal from '@/components/common/Modal/TodoModal';
+import TodoModal from '@/components/TodoModal';
 import { TodoType } from '@/types/TodoType';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
 
