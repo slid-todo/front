@@ -21,25 +21,31 @@ export const Button = ({
   const className = cn(
     'inline-flex items-center justify-center',
     {
-      'text-sm py-1 px-2': size === 'small',
-      'text-base py-2 px-4': size === 'medium',
-      'text-lg py-3 px-6': size === 'large',
+      'text-sm-medium py-8 px-18': size === 'small',
+      'text-sm-medium py-12 px-52': size === 'medium',
+      'text-base-medium py-12 w-full': size === 'large',
     },
     radius ? 'rounded-xl' : 'rounded-3xl',
-    primary
-      ? 'bg-blue-500 text-white'
-      : 'bg-white text-blue-500 border border-blue-500',
-    disabled && 'opacity-50 cursor-not-allowed',
+    disabled
+      ? primary
+        ? 'bg-slate-400 text-white cursor-not-allowed'
+        : 'bg-slate-300 text-slate-500 border border-slate-500 cursor-not-allowed'
+      : primary
+        ? 'bg-primary-100 text-white'
+        : 'bg-white text-primary-100 border border-primary-100',
   );
 
   return (
-    <button
-      className={className}
-      onClick={onClick}
-      disabled={disabled}
-      {...props}
-    >
-      {children}
-    </button>
+    <>
+      <button
+        className={className}
+        onClick={onClick}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </button>
+      <div className=""></div>
+    </>
   );
 };
