@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { Dropdown } from '@/components/common/Dropdown';
 import { TODO_MOCK_DATA } from '@/constants/TodoMockData';
+import { Dropdown } from '@/components/common/Dropdown';
 
 export const TodoModalTarget = () => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
