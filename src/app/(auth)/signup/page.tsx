@@ -1,15 +1,15 @@
 'use client';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Logo } from '@/components/specific-feature/AuthPage/Logo';
-import { EmailInput } from '@/components/specific-feature/AuthPage/EmailInput';
-import { PasswordInput } from '@/components/specific-feature/AuthPage/PasswordInput';
-import { AuthFooter } from '@/components/specific-feature/AuthPage/AuthFooter';
+import { Logo } from '@/components/AuthPage/Logo';
+import { EmailInput } from '@/components/AuthPage/EmailInput';
+import { PasswordInput } from '@/components/AuthPage/PasswordInput';
+import { AuthFooter } from '@/components/AuthPage/AuthFooter';
 import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
-import { MetaData } from '@/components/specific-feature/AuthPage/MetaData';
+import { MetaData } from '@/components/AuthPage/MetaData';
+import { NameInput } from '@/components/AuthPage/NameInput';
+import { PasswordChkInput } from '@/components/AuthPage/PasswordChkInput';
 import { AuthDataType } from '@/types/AuthType';
-import { NameInput } from '@/components/specific-feature/AuthPage/NameInput';
-import { PasswordChkInput } from '@/components/specific-feature/AuthPage/PasswordChkInput';
 
 export default function Signup() {
   const {
