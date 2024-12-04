@@ -1,5 +1,5 @@
 import { TodoModalProps } from '@/types/TodoType';
-import { ModalContainer } from '../ModalContainer';
+import { ModalContainer } from '@/components/common/Modal/ModalContainer';
 import { TodoModalBtn } from './TodoModalBtn';
 import { TodoModalDocs } from './TodoModalDocs';
 import { TodoModalHeader } from './TodoModalHeader';
