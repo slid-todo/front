@@ -34,8 +34,8 @@ export const Button = ({
     radius ? 'rounded-xl' : 'rounded-3xl',
     isDisabled
       ? primary
-        ? 'bg-slate-400 text-white cursor-not-allowed'
-        : 'bg-slate-300 text-slate-500 border border-slate-500 cursor-not-allowed'
+        ? 'bg-custom-white-300 text-white cursor-not-allowed'
+        : 'bg-white text-custom-white-300 border border-custom-white-300 cursor-not-allowed'
       : primary
         ? 'bg-primary-100 text-white hover:bg-primary-200'
         : 'bg-white text-primary-100 border border-primary-100 hover:text-primary-200',
