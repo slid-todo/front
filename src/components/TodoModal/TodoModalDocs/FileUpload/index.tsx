@@ -1,5 +1,6 @@
 import { ChangeEvent, useRef, useState } from 'react';
 import { motion } from 'motion/react';
+import { todoModalVariants } from '@/utils/motionVariants';
 import { FileUploadBtn } from './FileUploadBtn';
 
 export const FileUpload = () => {
@@ -13,15 +14,10 @@ export const FileUpload = () => {
     }
   };
 
-  const variants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
-  };
-
   return (
     <motion.div
       className="flex h-184 w-full shrink-0 items-center justify-center rounded-12 bg-white"
-      variants={variants}
+      variants={todoModalVariants}
       initial="hidden"
       animate="visible"
     >

@@ -1,17 +1,13 @@
 import { motion } from 'motion/react';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { Input } from '@/components/common/Input';
+import { todoModalVariants } from '@/utils/motionVariants';
 
 export const LinkUpload = () => {
-  const variants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
-  };
-
   return (
     <motion.div
       className="w-full"
-      variants={variants}
+      variants={todoModalVariants}
       initial="hidden"
       animate="visible"
     >
