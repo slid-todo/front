@@ -15,7 +15,7 @@ interface ButtonProps {
 export const Button = ({
   size = 'medium',
   primary = false,
-  radius = false,
+  radius = true,
   disabled = false,
   pending = false,
   onClick,
@@ -29,7 +29,7 @@ export const Button = ({
     {
       'text-sm-medium py-8 px-18': size === 'small',
       'text-sm-medium py-12 px-52': size === 'medium',
-      'text-base-medium py-12 w-full': size === 'large',
+      'text-base-medium py-12 px-52 w-full': size === 'large',
     },
     radius ? 'rounded-xl' : 'rounded-3xl',
     isDisabled
