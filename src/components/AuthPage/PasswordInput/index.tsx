@@ -15,7 +15,7 @@ export const PasswordInput = ({ register, error }: AuthInputProps) => {
   return (
     <div className="flex w-full flex-col items-start gap-12">
       <span className="text-base-semibold text-slate-800 ">비밀번호</span>
-      <div className="flex w-full items-center justify-between gap-10 pr-24">
+      <div className="flex w-full items-center justify-between gap-10 rounded-12 bg-white pr-24">
         <Input
           type={isVisible ? 'text' : 'password'}
           placeholder={PLACEHOLDERS.PASSWORD}

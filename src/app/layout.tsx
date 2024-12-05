@@ -16,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.variable} font-pretendard`}>
+      <body
+        className={`${pretendard.variable} bg-custom-white-100 font-pretendard`}
+      >
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
