@@ -1,7 +1,9 @@
+import { Button } from '@/components/common/Button/Button';
+
 export const TodoModalBtn = () => {
   return (
-    <button className="mt-auto flex w-full items-center justify-center gap-10 self-stretch rounded-12 bg-primary-200 py-12 sm:mt-0">
-      <span className="text-base-semibold text-white">확인</span>
-    </button>
+    <Button size="large" primary={true} className="mt-auto">
+      확인
+    </Button>
   );
 };
