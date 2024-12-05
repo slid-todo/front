@@ -26,7 +26,7 @@ export const TodoModalTarget = () => {
         className={`flex items-center justify-between self-stretch ${isOpenDropdown ? 'rounded-t-12' : 'rounded-12'} bg-white pr-16`}
       >
         <Input
-          className=" cursor-pointer"
+          className="cursor-pointer"
           placeholder={PLACEHOLDERS.TARGET}
           value={selectedItem} // 선택된 아이템 표시
           readOnly // 사용자 입력을 방지
@@ -37,14 +37,12 @@ export const TodoModalTarget = () => {
           onClick={handleDropdown}
         />
       </div>
-      {isOpenDropdown ? (
-        <Dropdown
-          dropdownData={TODO_MOCK_DATA}
-          onSelectItem={handleSelectItem}
-        />
-      ) : (
-        <></>
-      )}
+
+      <Dropdown
+        dropdownData={TODO_MOCK_DATA}
+        onSelectItem={handleSelectItem}
+        isOpenDropdown={isOpenDropdown}
+      />
     </div>
   );
 };

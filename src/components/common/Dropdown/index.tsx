@@ -1,6 +1,9 @@
+import { motion } from 'motion/react';
+
 interface DropdownProps {
   dropdownData: string[];
   onSelectItem: (item: string) => void; // 콜백 함수 추가
+  isOpenDropdown: boolean;
 }
 
 /**
@@ -26,13 +29,35 @@ interface DropdownProps {
  * @returns {JSX.Element} 드롭다운 메뉴 JSX 출력
  */
 
-export const Dropdown = ({ dropdownData, onSelectItem }: DropdownProps) => {
+export const Dropdown = ({
+  dropdownData,
+  onSelectItem,
+  isOpenDropdown,
+}: DropdownProps) => {
   const handleClickItem = (item: string) => {
     onSelectItem(item);
   };
 
+  const dropdownVariants = {
+    open: {
+      opacity: 1,
+      scaleY: 1,
+      transition: { duration: 0.3, ease: 'easeOut' },
+    },
+    closed: {
+      opacity: 0,
+      scaleY: 0,
+      transition: { duration: 0.3, ease: 'easeIn' },
+    },
+  };
+
   return (
-    <ul className="absolute top-full inline-flex max-h-150 w-full flex-col items-start overflow-y-auto rounded-b-12 bg-white shadow-lg scrollbar-hide">
+    <motion.ul
+      initial="closed"
+      animate={isOpenDropdown ? 'open' : 'closed'}
+      variants={dropdownVariants}
+      className="absolute top-full inline-flex max-h-150 w-full origin-top flex-col items-start overflow-y-auto rounded-b-12 bg-white shadow-lg scrollbar-hide"
+    >
       {dropdownData.map((item) => {
         return (
           <li
@@ -44,6 +69,6 @@ export const Dropdown = ({ dropdownData, onSelectItem }: DropdownProps) => {
           </li>
         );
       })}
-    </ul>
+    </motion.ul>
   );
 };
