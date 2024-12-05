@@ -23,7 +23,7 @@ export const PasswordInput = ({ register, error }: AuthInputProps) => {
         />
         <VisibilityIcon isVisible={isVisible} onClick={handleClickIcon} />
       </div>
-      {error && <span className="text-sm text-red-500">{error.message}</span>}
+      {error && <span className="text-sm text-error">{error.message}</span>}
     </div>
   );
 };

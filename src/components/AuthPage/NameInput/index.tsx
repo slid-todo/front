@@ -12,7 +12,7 @@ export const NameInput = ({ register, error }: AuthInputProps) => {
         placeholder={PLACEHOLDERS.NAME}
         {...register('name', nameValidation)}
       />
-      {error && <span className="text-sm text-red-500">{error.message}</span>}
+      {error && <span className="text-sm text-error">{error.message}</span>}
     </div>
   );
 };

@@ -12,7 +12,7 @@ export const EmailInput = ({ register, error }: AuthInputProps) => {
         placeholder={PLACEHOLDERS.EMAIL}
         {...register('email', emailValidation)}
       />
-      {error && <span className="text-sm text-red-500">{error.message}</span>}
+      {error && <span className="text-sm text-error">{error.message}</span>}
     </div>
   );
 };
