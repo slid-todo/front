@@ -6,6 +6,18 @@ const meta: Meta<typeof Button> = {
   component: Button,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: `
+        Button 컴포넌트는 onClick 이벤트를 처리할 수 있는 컴포넌트입니다.
+        
+    프로젝트의 디자인 시스템에 맞춰 
+    size, primary, radius, disabled, pending, onClick, children의 Props를 가지고 있습니다.
+    children을 제외한 Props는 기본 설정값이 존재하기에, 작성하지 않아도 Button 컴포넌트를 사용할 수 있습니다.
+
+    className을 추가하여 css를 커스텀할 수 있습니다. 대표적으로 width 값을 지정할 수 있습니다.`,
+      },
+    },
   },
   argTypes: {
     size: {
@@ -25,10 +37,14 @@ const meta: Meta<typeof Button> = {
       control: { type: 'boolean' },
     },
     onClick: { action: 'clicked' },
+    className: {
+      control: `text`,
+    },
     children: {
       control: 'text',
     },
   },
+
   tags: ['autodocs'],
 };
 
