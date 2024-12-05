@@ -1,7 +1,8 @@
 // Toast.stories.tsx
 import { Meta, StoryObj } from '@storybook/react';
 import { notify } from '@/store/useToastStore';
-import { Toast } from '.'; // 파일 구조에 따라 경로를 조정하세요
+import { Button } from '../Button/Button';
+import { Toast } from '.';
 
 const meta: Meta<typeof Toast> = {
   title: 'Components/Toast',
@@ -43,7 +44,7 @@ export const Default: Story = {
 
     return (
       <div>
-        <button onClick={handleClick}>Show Toast</button>
+        <Button onClick={handleClick}>Show Toast</Button>
         <Toast /> {/* Toast 컴포넌트를 렌더링합니다 */}
       </div>
     );
