@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { dropdownVariants } from '@/utils/motionVariants';
 
 interface DropdownProps {
   dropdownData: string[];
@@ -36,19 +37,6 @@ export const Dropdown = ({
 }: DropdownProps) => {
   const handleClickItem = (item: string) => {
     onSelectItem(item);
-  };
-
-  const dropdownVariants = {
-    open: {
-      opacity: 1,
-      scaleY: 1,
-      transition: { duration: 0.3, ease: 'easeOut' },
-    },
-    closed: {
-      opacity: 0,
-      scaleY: 0,
-      transition: { duration: 0.3, ease: 'easeIn' },
-    },
   };
 
   return (

@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { TodoModalProps } from '@/types/TodoType';
 import { ModalContainer } from '@/components/common/Modal/ModalContainer';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
+import { todoModalVariants } from '@/utils/motionVariants';
 import { TodoModalBtn } from './TodoModalBtn';
 import { TodoModalDocs } from './TodoModalDocs';
 import { TodoModalHeader } from './TodoModalHeader';
@@ -10,11 +11,6 @@ import { TodoModalTitle } from './TodoModalTitle';
 import { TodoModalRepeat } from './TodoModalRepeat';
 
 const TodoModal = ({ todoType }: TodoModalProps) => {
-  const variants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
-  };
-
   const { close } = useTodoModalStore();
 
   const handleClose = () => {
@@ -24,7 +20,7 @@ const TodoModal = ({ todoType }: TodoModalProps) => {
   return (
     <ModalContainer onClose={handleClose}>
       <motion.div
-        variants={variants}
+        variants={todoModalVariants}
         initial="hidden"
         animate="visible"
         className="flex size-full flex-col items-start gap-10 overflow-y-auto bg-custom-white-100 px-16 py-24 sm:h-auto sm:w-520 sm:rounded-12 sm:p-24"
