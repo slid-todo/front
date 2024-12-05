@@ -2,11 +2,9 @@ import { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { FaCheck } from 'react-icons/fa6';
 import { TodoModalProps } from '@/types/TodoType';
-import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { cn } from '@/utils/className';
 
-export const TodoModalHeader = ({ todoType }: TodoModalProps) => {
-  const { close } = useTodoModalStore();
+export const TodoModalHeader = ({ todoType, onClose }: TodoModalProps) => {
   const [isChkClick, setIstChkClick] = useState(false);
 
   const iconContainerClass = cn(
@@ -15,7 +13,7 @@ export const TodoModalHeader = ({ todoType }: TodoModalProps) => {
   );
 
   const handleClose = () => {
-    close();
+    onClose?.();
   };
 
   const handleClick = () => {

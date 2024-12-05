@@ -3,6 +3,7 @@ import { useState } from 'react';
 import TodoModal from '@/components/TodoModal';
 import { TodoType } from '@/types/TodoType';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
+import { Header } from '@/components/common/Header';
 
 export default function GiBeom() {
   const { isOpen, open } = useTodoModalStore();
@@ -20,14 +21,17 @@ export default function GiBeom() {
   };
 
   return (
-    <div>
-      <button className="bg-blue-700" onClick={handleOpenTypeAssign}>
-        할일 생성 열어
-      </button>
-      <button className="bg-red-700" onClick={handleOpenTypeModify}>
-        할일 수정 열어
-      </button>
-      {isOpen ? <TodoModal todoType={todoType} /> : <></>}
+    <div className="h-screen">
+      <Header />
+      <div className="flex-center h-full">
+        <button className="bg-blue-700" onClick={handleOpenTypeAssign}>
+          할일 생성 열어
+        </button>
+        <button className="bg-red-700" onClick={handleOpenTypeModify}>
+          할일 수정 열어
+        </button>
+        {isOpen ? <TodoModal todoType={todoType} /> : <></>}
+      </div>
     </div>
   );
 }
