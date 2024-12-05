@@ -22,7 +22,9 @@ export const TodoModalTarget = () => {
   return (
     <div className="relative flex flex-col items-start gap-12 self-stretch">
       <span className="text-base-semibold text-slate-800">목표</span>
-      <div className=" flex items-center justify-between self-stretch rounded-12 bg-white pr-16">
+      <div
+        className={`flex items-center justify-between self-stretch ${isOpenDropdown ? 'rounded-t-12' : 'rounded-12'} bg-white pr-16`}
+      >
         <Input
           className=" cursor-pointer"
           placeholder={PLACEHOLDERS.TARGET}
