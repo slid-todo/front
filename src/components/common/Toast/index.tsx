@@ -1,10 +1,15 @@
 import { createPortal } from 'react-dom';
-import { AnimatePresence, motion } from 'motion/react';
 import dynamic from 'next/dynamic';
+import { AnimatePresence, motion } from 'motion/react';
 import { useToastStore } from '@/store/useToastStore';
-import { TOAST_VARIANTS } from '@/constants/ToastVariants';
+import { cn } from '@/utils/className';
+
+import ToastError from '@/assets/lotties/ToastError.json';
+import ToastSuccess from '@/assets/lotties/ToastSuccess.json';
+import ToastInfo from '@/assets/lotties/ToastInfo.json';
 
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+
 /**
  * 알림 메시지를 표시하는 Toast 컴포넌트.
  *
@@ -12,9 +17,9 @@ const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
  * `type`, `message`, `isVisible` 상태에 따라 토스트 메시지를 화면에 표시합니다.
  *
  * 각 토스트 타입(`success`, `error`, `info`)에 따라 스타일과 아이콘이 변경되며,
- * `TOAST_VARIANTS`에서 해당 정보를 가져옵니다.
+ * 내부에서 해당 정보를 결정합니다.
  *
- * `motion` 라이브러리의 `AnimatePresence`와 `motion.div`를 사용하여
+ * `framer-motion` 라이브러리의 `AnimatePresence`와 `motion.div`를 사용하여
  * 토스트의 등장 및 퇴장 시 애니메이션 효과를 제공합니다.
  *
  * 토스트는 `createPortal`을 사용하여 `document.body`에 렌더링되며,
@@ -32,26 +37,52 @@ export const Toast = () => {
 
   if (!isVisible || !message || !type) return <div />;
 
-  const { style, icon: Icon } = TOAST_VARIANTS[type];
+  // 스타일과 아이콘을 내부에서 결정
+  let style = '';
+  let iconData = null;
+
+  switch (type) {
+    case 'success':
+      style = 'bg-blue-400';
+      iconData = ToastSuccess;
+      break;
+    case 'error':
+      style = 'bg-red-500';
+      iconData = ToastError;
+      break;
+    case 'info':
+      style = 'bg-slate-700';
+      iconData = ToastInfo;
+      break;
+    default:
+      style = 'bg-gray-500';
+      break;
+  }
+
+  // cn 함수를 사용하여 클래스명 생성
+  const ToastClassName = cn(
+    'fixed left-1/2 top-20 z-50 flex h-44 -translate-x-1/2 items-center gap-6 rounded-[16px] px-14 py-8 text-sm-medium shadow-lg',
+    style,
+  );
 
   return createPortal(
     <AnimatePresence>
-      {isVisible ? (
+      {isVisible && (
         <motion.div
           key={type}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className={`fixed left-[50vw] top-20 z-50 flex h-44 -translate-x-1/2 items-center gap-6 rounded-16 px-14 py-8 text-sm-medium shadow-lg ${style}`}
+          className={ToastClassName}
           onClick={() => {
             hideToast();
           }}
         >
-          <Lottie animationData={Icon} className="size-24" />
+          {iconData && <Lottie animationData={iconData} className="size-20" />}
           <span className="text-white">{message}</span>
         </motion.div>
-      ) : null}
+      )}
     </AnimatePresence>,
     document.body,
   );
