@@ -71,8 +71,24 @@ export const Disabled: StoryObj<typeof Button> = {
   },
 };
 
+export const DisabledAndPrimaryFalse: StoryObj<typeof Button> = {
+  args: {
+    primary: false,
+    disabled: true,
+    children: '비활성화된 버튼',
+  },
+};
+
 export const Pending: StoryObj<typeof Button> = {
   args: {
+    pending: true,
+    children: '로딩 중',
+  },
+};
+
+export const PendingAndPrimaryFalse: StoryObj<typeof Button> = {
+  args: {
+    primary: false,
     pending: true,
     children: '로딩 중',
   },
