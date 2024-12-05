@@ -32,7 +32,7 @@ export const Dropdown = ({ dropdownData, onSelectItem }: DropdownProps) => {
   };
 
   return (
-    <ul className="absolute top-full inline-flex max-h-150 w-full flex-col items-start overflow-y-auto rounded-12 bg-white shadow-lg scrollbar-hide">
+    <ul className="absolute top-full inline-flex max-h-150 w-full flex-col items-start overflow-y-auto rounded-b-12 bg-white shadow-lg scrollbar-hide">
       {dropdownData.map((item) => {
         return (
           <li
