@@ -5,7 +5,6 @@ import HeartIcon from '@/assets/icon-heart.svg';
 import { Filter } from '@/components/common/Filter';
 import { Header } from '@/components/common/Header';
 import { notify } from '@/store/useToastStore';
-import { Button } from '@/components/common/Button/Button';
 
 export default function Home() {
   const [currentFilter, setCurrentFilter] = useState<string>('All');
@@ -85,36 +84,6 @@ export default function Home() {
           <p>Currently selected filter: {currentFilter}</p>
         </div>
       </div>
-
-      <Button
-        size="large"
-        primary
-        radius
-        onClick={() => console.log('Button clicked')}
-        data-testid="custom-button"
-      >
-        클릭하세요
-      </Button>
-
-      <Button
-        size="small"
-        radius
-        onClick={() => console.log('Button clicked')}
-        data-testid="custom-button"
-      >
-        클릭하세요22
-      </Button>
-      <Button
-        size="small"
-        radius
-        onClick={() => console.log('Button clicked')}
-        data-testid="custom-button"
-        disabled
-      >
-        클릭하세요22
-      </Button>
-
-      <Button pending>제출 중...</Button>
     </div>
   );
 }
