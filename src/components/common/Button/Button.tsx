@@ -9,6 +9,7 @@ interface ButtonProps {
   disabled?: boolean;
   pending?: boolean;
   onClick?: () => void;
+  className?: string;
   children: ReactNode;
 }
 
@@ -19,12 +20,13 @@ export const Button = ({
   disabled = false,
   pending = false,
   onClick,
+  className,
   children,
   ...props
 }: ButtonProps) => {
   const isDisabled = disabled || pending;
 
-  const className = cn(
+  const ButtonClassName = cn(
     'inline-flex items-center justify-center transition-all duration-300 h-46 max-h-46',
     {
       'text-sm-medium py-8 px-18': size === 'small',
@@ -39,13 +41,14 @@ export const Button = ({
       : primary
         ? 'bg-primary-100 text-white hover:bg-primary-200'
         : 'bg-white text-primary-100 border border-primary-100 hover:text-primary-200',
+    className,
   );
 
   return (
     <button
-      className={className}
+      className={ButtonClassName}
       onClick={onClick}
-      disabled={disabled}
+      disabled={isDisabled}
       {...props}
     >
       {pending ? <Spinner /> : children}
