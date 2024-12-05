@@ -15,7 +15,7 @@ interface ButtonProps {
 
 export const Button = ({
   size = 'medium',
-  primary = false,
+  primary = true,
   radius = true,
   disabled = false,
   pending = false,
