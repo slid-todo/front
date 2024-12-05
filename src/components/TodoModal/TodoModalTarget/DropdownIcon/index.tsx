@@ -1,4 +1,4 @@
-import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
+import { IoMdArrowDropdown } from 'react-icons/io';
 
 interface DropdownIconProps {
   isOpenDropdown: boolean;
@@ -15,17 +15,10 @@ export const DropdownIcon = ({
 
   return (
     <>
-      {isOpenDropdown ? (
-        <IoMdArrowDropup
-          className="size-24 cursor-pointer"
-          onClick={handleDropdown}
-        />
-      ) : (
-        <IoMdArrowDropdown
-          className="size-24 cursor-pointer"
-          onClick={handleDropdown}
-        />
-      )}
+      <IoMdArrowDropdown
+        className={`size-24 cursor-pointer transition-transform duration-300 ${isOpenDropdown ? 'rotate-180' : ''}`}
+        onClick={handleDropdown}
+      />
     </>
   );
 };
