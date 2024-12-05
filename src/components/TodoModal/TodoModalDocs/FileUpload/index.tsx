@@ -1,4 +1,5 @@
 import { ChangeEvent, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import { GrDocument } from 'react-icons/gr';
 import { FaPlus } from 'react-icons/fa';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
@@ -14,8 +15,18 @@ export const FileUpload = () => {
     }
   };
 
+  const variants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+  };
+
   return (
-    <div className="flex h-184 w-full shrink-0 items-center justify-center rounded-12 bg-white">
+    <motion.div
+      className="flex h-184 w-full shrink-0 items-center justify-center rounded-12 bg-white"
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+    >
       <button
         className="inline-flex flex-col items-center justify-center gap-8"
         onClick={() => fileUploadRef.current?.click()}
@@ -37,6 +48,6 @@ export const FileUpload = () => {
         accept="image/*"
         onChange={handleFileName}
       />
-    </div>
+    </motion.div>
   );
 };
