@@ -70,7 +70,7 @@ export default function DashBoardPage() {
               <div>
                 <div className="mt-8">
                   <p className="text-base-semibold">모의고사 풀기</p>
-                  <p className="text-xs-semibold text-custom-gray-100">
+                  <p className="text-xs-semibold leading-6 text-custom-gray-100">
                     매일 반복
                   </p>
                 </div>
