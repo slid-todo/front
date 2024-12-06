@@ -29,7 +29,7 @@ export default function Signin() {
       >
         <Logo />
         <div className="flex w-full flex-col items-start gap-48">
-          <div className="flex w-full flex-col items-start gap-18">
+          <div className="flex w-full flex-col items-start gap-16">
             <EmailInput register={register} error={errors.email} />
             <PasswordInput register={register} error={errors.password} />
           </div>
