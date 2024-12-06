@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { FaAngleRight, FaPlus } from 'react-icons/fa6';
 import { Header } from '@/components/common/Header';
-import { Circle } from '@/components/Dashboard/Circle';
+import { ProgressCircle } from '@/components/Dashboard/ProgressCircle';
 
 const GOALS = [
   {
@@ -40,7 +40,7 @@ export default function DashBoardPage() {
 
         {/* 진행 상황 */}
         <div className="flex w-full items-center rounded-12 bg-primary-100 p-16">
-          <Circle progress={progress} />
+          <ProgressCircle progress={progress} />
           <p className="text-3xl-bold text-white">{progress} %</p>
         </div>
 

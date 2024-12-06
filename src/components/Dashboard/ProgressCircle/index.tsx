@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-export const Circle = ({ progress }: { progress: number }) => {
+export const ProgressCircle = ({ progress }: { progress: number }) => {
   const radius = 32;
   const circumference = 2 * Math.PI * radius;
   const currentProgress = Math.floor((progress / 100) * circumference);
