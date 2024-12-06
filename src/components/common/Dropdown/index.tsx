@@ -45,7 +45,7 @@ export const Dropdown = ({
       initial="closed"
       animate={isOpenDropdown ? 'open' : 'closed'}
       variants={dropdownVariants}
-      className="absolute top-full inline-flex max-h-150 w-full origin-top flex-col items-start overflow-y-auto rounded-b-12 bg-white shadow-lg scrollbar-hide"
+      className="absolute top-full z-10 inline-flex max-h-150 w-full origin-top flex-col items-start overflow-y-auto rounded-b-12 bg-white shadow-lg scrollbar-hide"
     >
       {dropdownData.map((item) => {
         return (
