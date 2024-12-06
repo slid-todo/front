@@ -32,7 +32,7 @@ export default function Signup() {
       >
         <Logo />
         <div className="flex w-full flex-col items-start gap-48">
-          <div className="flex w-full flex-col items-start gap-24">
+          <div className="flex w-full flex-col items-start gap-16">
             <NameInput register={register} error={errors.name} />
             <EmailInput register={register} error={errors.email} />
             <PasswordInput register={register} error={errors.password} />

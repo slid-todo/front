@@ -17,17 +17,21 @@ export const PasswordChkInput = ({
   };
 
   return (
-    <div className="flex w-full flex-col items-start gap-12">
-      <span className="text-base-semibold text-slate-800 ">비밀번호 확인</span>
-      <div className="flex w-full items-center justify-between gap-10 rounded-12 bg-white pr-24">
-        <Input
-          type={isVisible ? 'text' : 'password'}
-          placeholder={PLACEHOLDERS.PASSWORDCHK}
-          {...register('passwordChk', passwordChkValidation({ getValues }))}
-        />
-        <VisibilityIcon isVisible={isVisible} onClick={handleClickIcon} />
+    <div className="flex w-full flex-col items-start gap-5">
+      <div className="flex w-full flex-col gap-12">
+        <span className="text-base-semibold text-slate-800 ">
+          비밀번호 확인
+        </span>
+        <div className="flex w-full items-center justify-between gap-10 rounded-12 bg-white pr-24">
+          <Input
+            type={isVisible ? 'text' : 'password'}
+            placeholder={PLACEHOLDERS.PASSWORDCHK}
+            {...register('passwordChk', passwordChkValidation({ getValues }))}
+          />
+          <VisibilityIcon isVisible={isVisible} onClick={handleClickIcon} />
+        </div>
       </div>
-      {error && <span className="text-sm text-error">{error.message}</span>}
+      <span className="h-20 text-sm text-error">{error?.message}</span>
     </div>
   );
 };

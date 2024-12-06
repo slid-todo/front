@@ -5,14 +5,16 @@ import { nameValidation } from '@/utils/authValidation';
 
 export const NameInput = ({ register, error }: AuthInputProps) => {
   return (
-    <div className="flex w-full flex-col items-start gap-12">
-      <span className="text-base-semibold text-slate-800 ">이름</span>
-      <Input
-        type="text"
-        placeholder={PLACEHOLDERS.NAME}
-        {...register('name', nameValidation)}
-      />
-      {error && <span className="text-sm text-error">{error.message}</span>}
+    <div className="flex w-full flex-col items-start gap-5">
+      <div className="flex w-full flex-col gap-12">
+        <span className="text-base-semibold text-slate-800">이름</span>
+        <Input
+          type="text"
+          placeholder={PLACEHOLDERS.NAME}
+          {...register('name', nameValidation)}
+        />
+      </div>
+      <span className="h-20 text-sm text-error">{error?.message}</span>
     </div>
   );
 };
