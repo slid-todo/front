@@ -78,7 +78,7 @@ export default function DashBoardPage() {
                   {Array.from({ length: 11 }).map((_, index) => (
                     <div
                       key={index}
-                      className="flex-center aspect-square rounded-12 bg-sub-purple"
+                      className="flex-center aspect-square rounded-16 bg-sub-purple"
                     >
                       {index + 1}
                     </div>
