@@ -49,6 +49,7 @@ export const TodoModalRepeat = () => {
           isOpenCalendar={isOpenCalendar}
           selected={selectedRange}
           onSelectRange={setSelectedRange}
+          onClose={handleCalendar}
         />
       </div>
     </div>
