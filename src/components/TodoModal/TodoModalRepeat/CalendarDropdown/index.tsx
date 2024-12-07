@@ -30,11 +30,11 @@ export const CalendarDropdown = ({
         selected={selected}
         onSelect={onSelectRange}
         disabled={{
-          before: new Date(),
+          before: selected?.from || new Date(), // 기본값 제공
           after: new Date(
-            new Date().getFullYear(),
-            new Date().getMonth(),
-            new Date().getDate() + 29,
+            (selected?.from || new Date()).getFullYear(),
+            (selected?.from || new Date()).getMonth(),
+            (selected?.from || new Date()).getDate() + 29,
           ),
         }}
       />

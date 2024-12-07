@@ -50,7 +50,7 @@ export const Dropdown = ({
       {dropdownData.map((item) => {
         return (
           <li
-            className="flex-center mt-2 w-full cursor-pointer border-b-2 border-gray-100 p-10 text-sm-normal hover:bg-slate-200 sm:text-lg-normal"
+            className="flex-center mt-2 w-full cursor-pointer border-b-2 border-gray-100 p-10 text-sm-normal hover:bg-slate-200 sm:text-base-normal"
             key={item}
             onClick={() => handleClickItem(item)}
           >
