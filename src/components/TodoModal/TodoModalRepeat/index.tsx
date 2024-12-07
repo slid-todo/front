@@ -3,6 +3,7 @@ import { DateRange } from 'react-day-picker';
 import { IoCalendarNumberOutline } from 'react-icons/io5';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
+import { formatDateRange } from '@/utils/formatDateRange';
 import { CalendarDropdown } from './CalendarDropdown';
 
 export const TodoModalRepeat = () => {
@@ -11,19 +12,6 @@ export const TodoModalRepeat = () => {
 
   const handleCalendar = () => {
     setIsOpenCalendar(!isOpenCalendar);
-  };
-
-  const formatDateRange = (range: DateRange | undefined) => {
-    if (!range || !range.from || !range.to) return PLACEHOLDERS.DATE_RANGE;
-    const options: Intl.DateTimeFormatOptions = {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    };
-    return `${range.from.toLocaleDateString('ko-KR', options)} ~ ${range.to.toLocaleDateString(
-      'ko-KR',
-      options,
-    )}`;
   };
 
   return (
