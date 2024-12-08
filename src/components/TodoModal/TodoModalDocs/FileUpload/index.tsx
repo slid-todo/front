@@ -1,10 +1,11 @@
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useRef } from 'react';
 import { motion } from 'motion/react';
 import { todoModalVariants } from '@/utils/motionVariants';
+import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { FileUploadBtn } from './FileUploadBtn';
 
 export const FileUpload = () => {
-  const [fileName, setFileName] = useState<string | null>(null);
+  const { fileName, setFileName } = useTodoDataStore();
   const fileUploadRef = useRef<HTMLInputElement>(null);
 
   const handleFileName = (e: ChangeEvent<HTMLInputElement>) => {

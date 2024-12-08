@@ -4,14 +4,18 @@ import { IoCalendarNumberOutline } from 'react-icons/io5';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { formatDateRange } from '@/utils/formatDateRange';
+import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { CalendarDropdown } from './CalendarDropdown';
 
 export const TodoModalRepeat = () => {
+  const { setDate } = useTodoDataStore();
+
   const [isOpenCalendar, setIsOpenCalendar] = useState(false);
   const [selectedRange, setSelectedRange] = useState<DateRange | undefined>();
 
   const handleCalendar = () => {
     setIsOpenCalendar(!isOpenCalendar);
+    setDate(selectedRange?.from, selectedRange?.to);
   };
 
   return (

@@ -3,11 +3,12 @@ import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { TODO_MOCK_DATA } from '@/constants/TodoMockData';
 import { Dropdown } from '@/components/common/Dropdown';
 import { Input } from '@/components/common/Input';
+import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { DropdownIcon } from './DropdownIcon';
 
 export const TodoModalTarget = () => {
+  const { target, setTarget } = useTodoDataStore();
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(''); // 추후 zustand로 변경할듯
 
   const handleDropdown = () => {
     setIsOpenDropdown(!isOpenDropdown);
@@ -15,7 +16,7 @@ export const TodoModalTarget = () => {
 
   // Dropdown에서 전달받은 아이템을 설정
   const handleSelectItem = (item: string) => {
-    setSelectedItem(item); // 선택된 아이템 저장
+    setTarget(item); // 선택된 아이템 저장
     setIsOpenDropdown(false); // 드롭다운 닫기
   };
 
@@ -28,7 +29,7 @@ export const TodoModalTarget = () => {
         <Input
           className="cursor-pointer"
           placeholder={PLACEHOLDERS.TARGET}
-          value={selectedItem} // 선택된 아이템 표시
+          value={target} // 선택된 아이템 표시
           readOnly // 사용자 입력을 방지
           onClick={handleDropdown}
         />

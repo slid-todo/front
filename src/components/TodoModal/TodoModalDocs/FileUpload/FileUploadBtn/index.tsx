@@ -3,7 +3,7 @@ import { FaPlus } from 'react-icons/fa';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 
 interface FileUploadBtnProps {
-  fileName: string | null;
+  fileName: string | undefined;
   onClick: () => void;
 }
 
