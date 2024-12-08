@@ -1,16 +1,24 @@
 import { useState } from 'react';
-
+import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { Chip } from '@/components/common/Chip';
 import { FileUpload } from './FileUpload';
 import { LinkUpload } from './LinkUpload';
 
 export const TodoModalDocs = () => {
+  const { resetFileName, resetLink } = useTodoDataStore();
   const [isFileActive, setIsFileActive] = useState(true);
   const [isLinkActive, setIsLinkActive] = useState(false);
 
-  const onClickChip = () => {
+  const onClickFileChip = () => {
     setIsFileActive(!isFileActive);
     setIsLinkActive(!isLinkActive);
+    resetLink();
+  };
+
+  const onClickLinkChip = () => {
+    setIsFileActive(!isFileActive);
+    setIsLinkActive(!isLinkActive);
+    resetFileName();
   };
 
   return (
@@ -20,13 +28,13 @@ export const TodoModalDocs = () => {
         <div className="flex items-start gap-12">
           <Chip
             variant={isFileActive ? 'active' : 'default'}
-            onClick={onClickChip}
+            onClick={onClickFileChip}
           >
             파일 업로드
           </Chip>
           <Chip
             variant={isLinkActive ? 'active' : 'default'}
-            onClick={onClickChip}
+            onClick={onClickLinkChip}
           >
             링크 첨부
           </Chip>

@@ -3,6 +3,7 @@ import { TodoModalProps } from '@/types/TodoType';
 import { ModalContainer } from '@/components/common/Modal/ModalContainer';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { todoModalVariants } from '@/utils/motionVariants';
+import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { TodoModalBtn } from './TodoModalBtn';
 import { TodoModalDocs } from './TodoModalDocs';
 import { TodoModalHeader } from './TodoModalHeader';
@@ -12,9 +13,11 @@ import { TodoModalRepeat } from './TodoModalRepeat';
 
 const TodoModal = ({ todoType }: TodoModalProps) => {
   const { close } = useTodoModalStore();
+  const { resetAll } = useTodoDataStore();
 
   const handleClose = () => {
     close();
+    resetAll();
   };
 
   return (
