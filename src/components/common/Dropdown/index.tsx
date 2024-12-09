@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { dropdownVariants } from '@/utils/motionVariants';
+import { dropdownVariants } from '@/constants/motionVariants';
 
 interface DropdownProps {
   dropdownData: string[];
