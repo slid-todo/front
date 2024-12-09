@@ -14,10 +14,9 @@ export const TodoModalTarget = () => {
     setIsOpenDropdown(!isOpenDropdown);
   };
 
-  // Dropdown에서 전달받은 아이템을 설정
   const handleSelectItem = (item: string) => {
-    setTarget(item); // 선택된 아이템 저장
-    setIsOpenDropdown(false); // 드롭다운 닫기
+    setTarget(item);
+    setIsOpenDropdown(false);
   };
 
   return (
@@ -29,8 +28,8 @@ export const TodoModalTarget = () => {
         <Input
           className="cursor-pointer"
           placeholder={PLACEHOLDERS.TARGET}
-          value={target} // 선택된 아이템 표시
-          readOnly // 사용자 입력을 방지
+          value={target}
+          readOnly
           onClick={handleDropdown}
         />
         <DropdownIcon
