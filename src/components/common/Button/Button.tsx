@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/utils/className';
 import { Spinner } from '../Spinner';
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'small' | 'medium' | 'large';
   primary?: boolean;
   radius?: boolean;
