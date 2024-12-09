@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
@@ -5,7 +6,7 @@ import { useTodoDataStore } from '@/store/useTodoDataStore';
 export const TodoModalTitle = () => {
   const { title, setTitle } = useTodoDataStore();
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
 
