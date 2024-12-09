@@ -4,7 +4,8 @@ import { ModalContainer } from '@/components/common/Modal/ModalContainer';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { todoModalVariants } from '@/utils/motionVariants';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
-import { TodoModalBtn } from './TodoModalBtn';
+import { todoDataValidation } from '@/utils/todoDataValidation';
+import { Button } from '../common/Button/Button';
 import { TodoModalDocs } from './TodoModalDocs';
 import { TodoModalHeader } from './TodoModalHeader';
 import { TodoModalTarget } from './TodoModalTarget';
@@ -13,7 +14,11 @@ import { TodoModalRepeat } from './TodoModalRepeat';
 
 const TodoModal = ({ todoType }: TodoModalProps) => {
   const { close } = useTodoModalStore();
-  const { resetAll } = useTodoDataStore();
+  const { resetAll, title, target, date, fileName, link } = useTodoDataStore();
+
+  const viewData = () => {
+    console.log(title, target, date, fileName, link);
+  };
 
   const handleClose = () => {
     close();
@@ -36,7 +41,15 @@ const TodoModal = ({ todoType }: TodoModalProps) => {
             <TodoModalRepeat />
             <TodoModalDocs />
           </div>
-          <TodoModalBtn />
+          <Button
+            size="large"
+            primary={true}
+            className="mt-auto"
+            onClick={viewData}
+            disabled={todoDataValidation(title, target, date)}
+          >
+            확인
+          </Button>
         </div>
       </motion.div>
     </ModalContainer>
