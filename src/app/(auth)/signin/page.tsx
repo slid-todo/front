@@ -8,6 +8,7 @@ import { AuthFooter } from '@/components/AuthPage/AuthFooter';
 import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
 import { MetaData } from '@/components/AuthPage/MetaData';
 import { AuthDataType } from '@/types/AuthType';
+import { Button } from '@/components/common/Button/Button';
 
 export default function Signin() {
   const {
@@ -34,12 +35,9 @@ export default function Signin() {
             <PasswordInput register={register} error={errors.password} />
           </div>
           <div className="flex w-full flex-col items-center gap-40">
-            <button
-              type="submit"
-              className="mt-auto flex w-full items-center justify-center gap-10 self-stretch rounded-12 bg-slate-400 py-12 sm:mt-0"
-            >
-              <span className="text-base-semibold text-white">확인</span>
-            </button>
+            <Button type="submit" size="large">
+              확인
+            </Button>
             <AuthFooter
               description={AUTH_FOOTER_MESSAGES.SIGNIN}
               linkTo="/signup"
