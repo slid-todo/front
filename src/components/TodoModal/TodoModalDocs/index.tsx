@@ -10,14 +10,14 @@ export const TodoModalDocs = () => {
   const [isLinkActive, setIsLinkActive] = useState(false);
 
   const onClickFileChip = () => {
-    setIsFileActive(!isFileActive);
-    setIsLinkActive(!isLinkActive);
+    setIsFileActive((prev) => !prev);
+    setIsLinkActive((prev) => !prev);
     resetLink();
   };
 
   const onClickLinkChip = () => {
-    setIsFileActive(!isFileActive);
-    setIsLinkActive(!isLinkActive);
+    setIsFileActive((prev) => !prev);
+    setIsLinkActive((prev) => !prev);
     resetFileName();
   };
 
