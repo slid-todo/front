@@ -1,6 +1,6 @@
 import { ChangeEvent, useRef } from 'react';
 import { motion } from 'motion/react';
-import { todoModalVariants } from '@/utils/motionVariants';
+import { todoModalVariants } from '@/constants/motionVariants';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { FileUploadBtn } from './FileUploadBtn';
 

@@ -1,6 +1,6 @@
 import { DayPicker, DateRange } from 'react-day-picker';
 import { motion } from 'motion/react';
-import { calendarVariants } from '@/utils/motionVariants';
+import { calendarVariants } from '@/constants/motionVariants';
 import { Button } from '@/components/common/Button/Button';
 
 import 'react-day-picker/style.css';
