@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react';
 import { motion } from 'motion/react';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { Input } from '@/components/common/Input';
@@ -7,7 +8,7 @@ import { useTodoDataStore } from '@/store/useTodoDataStore';
 export const LinkUpload = () => {
   const { link, setLink } = useTodoDataStore();
 
-  const handleLinkInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleLinkInput = (e: ChangeEvent<HTMLInputElement>) => {
     setLink(e.target.value);
   };
 
