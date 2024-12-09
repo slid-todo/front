@@ -1,9 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { FaAngleRight, FaPlus } from 'react-icons/fa6';
 import { Header } from '@/components/common/Header';
-import { ProgressCircle } from '@/components/Dashboard/ProgressCircle';
+import { MyProgress } from '@/components/Dashboard/MyProgress';
 
 const GOALS = [
   {
@@ -13,8 +12,6 @@ const GOALS = [
 ];
 
 export default function DashBoardPage() {
-  const [progress] = useState(74);
-
   return (
     <>
       <Header title="대시보드" />
@@ -38,11 +35,7 @@ export default function DashBoardPage() {
           </ul>
         </div>
 
-        {/* 진행 상황 */}
-        <div className="flex w-full items-center rounded-12 bg-primary-100 p-16">
-          <ProgressCircle progress={progress} />
-          <p className="text-3xl-bold text-white">{progress} %</p>
-        </div>
+        <MyProgress progressPercent={74} />
 
         {/* 목표 별 할 일 */}
         <div>
