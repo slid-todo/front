@@ -4,32 +4,32 @@ import { TodoItem } from '@/components/Todos';
 
 interface TodoSectionProps {
   title: string;
-  tasks: Todo[];
+  todos: Todo[];
   emptyMessage: string;
   showAddButton?: boolean;
 }
 
 export const TodoSection = (props: TodoSectionProps) => {
-  const { title, tasks, emptyMessage, showAddButton } = props;
+  const { title, todos, emptyMessage, showAddButton } = props;
 
   return (
     <div className="mt-24 first:mt-0">
       <div className="flex justify-between text-xs-bold text-custom-gray-100">
-        {title} ({tasks.length})
+        {title} ({todos.length})
         {showAddButton && (
           <div className="flex cursor-pointer items-center gap-2 text-sm-medium text-primary-100">
             <FaPlus /> 할 일 추가
           </div>
         )}
       </div>
-      {tasks.length > 0 ? (
+      {todos.length > 0 ? (
         <div className="mt-12 space-y-2">
-          {tasks.map((task, index) => {
-            const isLastItem = index === tasks.length - 1;
+          {todos.map((todo, index) => {
+            const isLastItem = index === todos.length - 1;
             return (
               <TodoItem
-                key={task.id}
-                {...task}
+                key={todo.id}
+                {...todo}
                 className={isLastItem ? '' : 'border-b border-custom-white-200'}
               />
             );

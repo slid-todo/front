@@ -3,24 +3,24 @@ import { TODO_EMPTY_STATE_MESSAGES } from '@/constants/Todos/TodoMessages';
 import { TodoSection } from '@/components/Todos';
 
 interface TodoListProps {
-  inProgressTasks: Todo[];
-  completedTasks: Todo[];
+  inProgressTodos: Todo[];
+  completedTodos: Todo[];
 }
 
 export const TodoList = (props: TodoListProps) => {
-  const { inProgressTasks, completedTasks } = props;
+  const { inProgressTodos, completedTodos } = props;
 
   return (
     <>
       <TodoSection
         title="진행 중"
-        tasks={inProgressTasks}
+        todos={inProgressTodos}
         emptyMessage={TODO_EMPTY_STATE_MESSAGES.IN_PROGRESS}
         showAddButton={true}
       />
       <TodoSection
         title="완료"
-        tasks={completedTasks}
+        todos={completedTodos}
         emptyMessage={TODO_EMPTY_STATE_MESSAGES.COMPLETED}
       />
     </>
