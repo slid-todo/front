@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Filter } from '@/components/common/Filter';
 import { TodoList } from '@/components/Todos';
