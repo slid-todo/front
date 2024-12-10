@@ -42,9 +42,9 @@ export const Filter = (props: FilterProps) => {
           onClick={() => handleFilterClick(filter)}
           whileTap={{ scale: 0.9 }}
           animate={{
-            backgroundColor: selectedFilter === filter ? '#3B82F6' : '#FFFFFF',
+            backgroundColor: selectedFilter === filter ? '#536894' : '#FFFFFF',
             color: selectedFilter === filter ? '#ffffff' : '#1E293B',
-            borderColor: selectedFilter === filter ? '#3B82F6' : '#e2e8f0',
+            borderColor: selectedFilter === filter ? '#536894' : '#e2e8f0',
           }}
           transition={{ duration: 0.3 }}
           className="flex h-28 items-center gap-10 rounded-full border border-solid px-12 py-4 text-sm-medium"
