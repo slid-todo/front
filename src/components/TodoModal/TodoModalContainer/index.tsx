@@ -1,16 +1,18 @@
 import { motion } from 'motion/react';
+import {
+  TodoModalDocs,
+  TodoModalHeader,
+  TodoModalRepeat,
+  TodoModalTarget,
+  TodoModalTitle,
+} from '@/components/TodoModal';
+import { ModalContainer } from '@/components/common/ModalContainer';
+import { Button } from '@/components/common/Button/Button';
 import { TodoModalProps } from '@/types/TodoType';
-import { ModalContainer } from '@/components/common/Modal/ModalContainer';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
-import { todoModalVariants } from '@/constants/motionVariants';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
+import { todoModalVariants } from '@/constants/motionVariants';
 import { todoDataValidation } from '@/utils/todoDataValidation';
-import { Button } from '../common/Button/Button';
-import { TodoModalDocs } from './TodoModalDocs';
-import { TodoModalHeader } from './TodoModalHeader';
-import { TodoModalTarget } from './TodoModalTarget';
-import { TodoModalTitle } from './TodoModalTitle';
-import { TodoModalRepeat } from './TodoModalRepeat';
 
 const TodoModal = ({ todoType }: TodoModalProps) => {
   const { close } = useTodoModalStore();
