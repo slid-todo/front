@@ -7,10 +7,10 @@ interface TodoItemProps {
 }
 
 export const TodoItem = (props: TodoItemProps) => {
-  const { title, goal, className } = props;
+  const { title, goal, className = '' } = props;
 
   return (
-    <div className={`flex h-72 ${className ? className : ''}`}>
+    <div className={`flex h-72 ${className}`}>
       <div className="my-8 flex size-56 items-center justify-center rounded-16 bg-sub-purple">
         <FaCamera fill="white" />
       </div>
