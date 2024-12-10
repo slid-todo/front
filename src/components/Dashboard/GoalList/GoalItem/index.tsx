@@ -1,7 +1,7 @@
+import { GoalHeader } from '@/components/Dashboard/GoalList/GoalItem/GoalHeader';
+import { ProgressLine } from '@/components/Dashboard/GoalList/GoalItem/ProgressLine';
+import { TodoList } from '@/components/Dashboard/GoalList/GoalItem/TodoList';
 import { TodoTypes } from '@/constants/DashboardMockData';
-import { GoalHeader } from './GoalHeader';
-import { ProgressLine } from './ProgressLine';
-import { TodoList } from './TodoList';
 
 interface GaolItemProps {
   name: string;

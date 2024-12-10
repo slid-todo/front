@@ -1,5 +1,5 @@
+import { GoalItem } from '@/components/Dashboard/GoalList/GoalItem';
 import { GoalTypes } from '@/constants/DashboardMockData';
-import { GoalItem } from './GoalItem';
 
 interface GoalListProps {
   goals: GoalTypes[];
