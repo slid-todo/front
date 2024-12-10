@@ -1,15 +1,5 @@
+import { GoalTypes } from '@/constants/DashboardMockData';
 import { GoalItem } from './GoalItem';
-
-export interface TodoTypes {
-  id: string;
-  name: string;
-}
-
-interface GoalTypes {
-  id: number;
-  name: string;
-  todos: TodoTypes[];
-}
 
 interface GoalListProps {
   goals: GoalTypes[];

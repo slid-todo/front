@@ -1,4 +1,4 @@
-import { TodoTypes } from '..';
+import { TodoTypes } from '@/constants/DashboardMockData';
 import { GoalHeader } from './GoalHeader';
 import { ProgressLine } from './ProgressLine';
 import { TodoList } from './TodoList';
