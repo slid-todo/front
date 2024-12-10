@@ -1,9 +1,16 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { MyProgressProps } from '..';
 
 export const ProgressCircle = ({ progressPercent }: MyProgressProps) => {
+  const [percent, setPercent] = useState(0);
+
+  useEffect(() => {
+    setPercent(progressPercent);
+  }, [progressPercent]);
+
   return (
     <figure>
       <svg
@@ -21,7 +28,7 @@ export const ProgressCircle = ({ progressPercent }: MyProgressProps) => {
           fill="none"
           className="text-custom-white-200"
         />
-        {progressPercent > 0 && (
+        {percent > 0 && (
           <motion.circle
             cx="50"
             cy="50"
@@ -32,8 +39,8 @@ export const ProgressCircle = ({ progressPercent }: MyProgressProps) => {
             className="text-primary-100"
             strokeLinecap="round"
             initial={{ pathLength: 0 }}
-            animate={{ pathLength: progressPercent / 100 }}
-            transition={{ duration: 0.5 }}
+            animate={{ pathLength: percent / 100 }}
+            transition={{ duration: 0.8 }}
             style={{
               transform: 'rotate(-90deg) scaleY(-1)',
               transformOrigin: '50% 50%',
