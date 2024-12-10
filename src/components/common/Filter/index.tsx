@@ -27,7 +27,7 @@ interface FilterProps {
  */
 
 export const Filter = (props: FilterProps) => {
-  const { filters, className, onFilterChange } = props;
+  const { filters, className = '', onFilterChange } = props;
   const [selectedFilter, setSelectedFilter] = useState<string>(filters[0]);
 
   const handleFilterClick = (filter: string) => {
@@ -36,7 +36,7 @@ export const Filter = (props: FilterProps) => {
   };
 
   return (
-    <div className={`flex ${className ? className : ''}`}>
+    <div className={`flex ${className}`}>
       {filters.map((filter) => (
         <motion.button
           key={filter}
