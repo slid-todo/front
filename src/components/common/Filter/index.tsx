@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 
 interface FilterProps {
   filters: string[];
+  className?: string;
   onFilterChange: (filter: string) => void;
 }
 
@@ -26,7 +27,7 @@ interface FilterProps {
  */
 
 export const Filter = (props: FilterProps) => {
-  const { filters, onFilterChange } = props;
+  const { filters, className, onFilterChange } = props;
   const [selectedFilter, setSelectedFilter] = useState<string>(filters[0]);
 
   const handleFilterClick = (filter: string) => {
@@ -35,7 +36,7 @@ export const Filter = (props: FilterProps) => {
   };
 
   return (
-    <div className="flex space-x-2">
+    <div className={`flex ${className ? className : ''}`}>
       {filters.map((filter) => (
         <motion.button
           key={filter}
