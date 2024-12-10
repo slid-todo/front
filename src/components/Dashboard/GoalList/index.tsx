@@ -1,8 +1,14 @@
 import { GoalItem } from './GoalItem';
 
+export interface TodoTypes {
+  id: string;
+  name: string;
+}
+
 interface GoalTypes {
   id: number;
   name: string;
+  todos: TodoTypes[];
 }
 
 interface GoalListProps {
@@ -14,7 +20,7 @@ export const GoalList = ({ goals }: GoalListProps) => {
     <>
       <p className="text-xl-semibold">목표 별 할 일</p>
       {goals.map((goal) => (
-        <GoalItem key={goal.id} name={goal.name} />
+        <GoalItem key={goal.id} name={goal.name} todos={goal.todos} />
       ))}
     </>
   );
