@@ -1,4 +1,5 @@
 import { TodoTypes } from '@/constants/DashboardMockData';
+import { formatDateToPoint } from '@/utils/date';
 import { TodoItem } from './TodoItem';
 
 interface TodoListProps {
@@ -10,8 +11,8 @@ export const TodoList = ({ todo }: TodoListProps) => {
     <div key={todo.id} className="pb-16">
       <div className="my-8">
         <p className="text-base-semibold">{todo.name}</p>
-        <p className="text-xs-semibold leading-6 text-custom-gray-100">
-          {todo.startDate} ~ {todo.endDate}
+        <p className="text-xs-medium leading-6 text-custom-gray-100">
+          {formatDateToPoint(todo.startDate)} ~{formatDateToPoint(todo.endDate)}
         </p>
       </div>
       <div className="mt-8 grid grid-cols-4 gap-x-4 gap-y-8">
