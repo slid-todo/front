@@ -17,7 +17,7 @@ export const FileUpload = () => {
 
   return (
     <motion.div
-      className="flex h-184 w-full shrink-0 items-center justify-center rounded-12 bg-white"
+      className="flex-center h-184 w-full shrink-0  rounded-12 bg-white"
       variants={todoModalVariants}
       initial="hidden"
       animate="visible"

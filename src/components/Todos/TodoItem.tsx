@@ -11,7 +11,7 @@ export const TodoItem = (props: TodoItemProps) => {
 
   return (
     <div className={`flex h-72 ${className}`}>
-      <div className="my-8 flex size-56 items-center justify-center rounded-16 bg-sub-purple">
+      <div className="flex-center my-8 size-56 rounded-16 bg-sub-purple">
         <FaCamera fill="white" />
       </div>
       <div className="my-14 ml-16">

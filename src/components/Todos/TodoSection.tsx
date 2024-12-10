@@ -36,7 +36,7 @@ export const TodoSection = (props: TodoSectionProps) => {
           })}
         </div>
       ) : (
-        <div className="flex h-120 items-center justify-center text-sm-normal text-custom-gray-100">
+        <div className="flex-center h-120 text-sm-normal text-custom-gray-100">
           {emptyMessage}
         </div>
       )}
