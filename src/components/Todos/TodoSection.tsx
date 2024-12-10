@@ -6,18 +6,21 @@ interface TodoSectionProps {
   title: string;
   tasks: Todo[];
   emptyMessage: string;
+  showAddButton?: boolean;
 }
 
 export const TodoSection = (props: TodoSectionProps) => {
-  const { title, tasks, emptyMessage } = props;
+  const { title, tasks, emptyMessage, showAddButton } = props;
 
   return (
     <div className="mt-24 first:mt-0">
       <div className="flex justify-between text-xs-bold text-custom-gray-100">
         {title} ({tasks.length})
-        <div className="flex cursor-pointer items-center gap-2 text-sm-medium text-primary-100">
-          <FaPlus /> 할 일 추가
-        </div>
+        {showAddButton && (
+          <div className="flex cursor-pointer items-center gap-2 text-sm-medium text-primary-100">
+            <FaPlus /> 할 일 추가
+          </div>
+        )}
       </div>
       {tasks.length > 0 ? (
         <div className="mt-12 space-y-2">
