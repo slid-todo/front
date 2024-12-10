@@ -49,5 +49,6 @@ jobs:
       - name: Comment PR with Preview URL
         uses: thollander/actions-comment-pull-request@v2
         with:
+          comment_tag: ${{ github.event.number }}-vercel-preview
           message: |
             🎉 구현한 기능 Preview: ${{ steps.deploy.outputs.preview_url }}
