@@ -1,6 +1,6 @@
 import { Todo } from '@/types/Todos';
 import { TODO_EMPTY_STATE_MESSAGES } from '@/constants/Todos/TodoMessages';
-import { TodoSection } from './TodoSection';
+import { TodoSection } from '@/components/Todos';
 
 interface TodoListProps {
   inProgressTasks: Todo[];

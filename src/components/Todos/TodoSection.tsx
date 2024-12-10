@@ -1,6 +1,6 @@
 import { FaPlus } from 'react-icons/fa6';
 import { Todo } from '@/types/Todos';
-import { TodoItem } from './TodoItem';
+import { TodoItem } from '@/components/Todos';
 
 interface TodoSectionProps {
   title: string;
