@@ -3,6 +3,7 @@ import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
 
 export const VerificationNoteTextarea = () => {
   const { review, setReview } = useVerificationNoteStore();
+
   const handleTextarea = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setReview(e.target.value);
   };
