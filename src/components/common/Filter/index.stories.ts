@@ -12,6 +12,9 @@ const meta: Meta<typeof Filter> = {
     filters: {
       options: ['default', 'active'],
     },
+    className: {
+      control: `text`,
+    },
   },
 };
 
