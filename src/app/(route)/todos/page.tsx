@@ -5,12 +5,13 @@ import { Header } from '@/components/common/Header';
 import { Filter } from '@/components/common/Filter';
 import { todos } from '@/mocks/todoData';
 import { TodoList } from '@/components/Todos';
+import { useFilteredTodos } from '@/hooks/useFilteredTodos';
 
-const sortFilters = ['전체', '최신순', '오래된 순'];
+const sortFilters = ['최신순', '오래된 순'];
 const goalFilters = ['전체', '목표 1', '목표 2', '목표 3'];
 
 export default function DashBoardPage() {
-  const [currentSortFilter, setCurrentSortFilter] = useState<string>('전체');
+  const [currentSortFilter, setCurrentSortFilter] = useState<string>('최신순');
   const [currentGoalFilter, setCurrentGoalFilter] = useState<string>('전체');
 
   const handleSortFilterChange = (filter: string) => {
@@ -21,22 +22,10 @@ export default function DashBoardPage() {
     setCurrentGoalFilter(filter);
   };
 
-  const filteredTodos = todos.filter((todos) => {
-    if (currentGoalFilter === '전체') return true;
-    return todos.goal === currentGoalFilter;
-  });
-
-  if (currentSortFilter === '최신순') {
-    filteredTodos.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
-  } else if (currentSortFilter === '오래된 순') {
-    filteredTodos.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
-  }
-
-  const inProgressTasks = filteredTodos.filter(
-    (task) => task.status === 'In Progress',
-  );
-  const completedTasks = filteredTodos.filter(
-    (task) => task.status === 'Completed',
+  const { inProgressTasks, completedTasks } = useFilteredTodos(
+    todos,
+    currentGoalFilter,
+    currentSortFilter,
   );
 
   return (
