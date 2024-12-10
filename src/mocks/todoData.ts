@@ -28,3 +28,6 @@ export const todos = [
     createdAt: new Date('2024-11-30'),
   },
 ];
+
+export const sortFilters = ['최신순', '오래된 순'];
+export const goalFilters = ['전체', '목표 1', '목표 2', '목표 3'];
