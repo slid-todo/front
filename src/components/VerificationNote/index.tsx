@@ -21,7 +21,7 @@ export const VerificationNote = () => {
       <div className="flex w-full flex-col gap-24 px-16">
         <VerificationNoteTarget />
         <VerificationNoteTodo />
-        <VerificationNoteFile fileName="" />
+        <VerificationNoteFile />
       </div>
       {/* 4th content */}
       <VerificationNoteFooter />
