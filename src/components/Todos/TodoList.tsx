@@ -16,6 +16,7 @@ export const TodoList = (props: TodoListProps) => {
         title="진행 중"
         tasks={inProgressTasks}
         emptyMessage={TODO_EMPTY_STATE_MESSAGES.IN_PROGRESS}
+        showAddButton={true}
       />
       <TodoSection
         title="완료"
