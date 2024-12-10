@@ -1,12 +1,9 @@
+import { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 
-interface VerificationNoteFileProps {
-  fileName: string;
-}
+export const VerificationNoteFile = () => {
+  const [fileName] = useState<string>(''); //임의의 변수
 
-export const VerificationNoteFile = ({
-  fileName,
-}: VerificationNoteFileProps) => {
   return (
     <div
       className={`flex-col items-start gap-12 self-stretch ${fileName ? 'flex' : 'hidden'}`}
