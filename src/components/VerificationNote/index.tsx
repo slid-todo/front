@@ -4,6 +4,7 @@ import { VerificationNoteTextarea } from './VerificationNoteTextarea';
 import { VerificationNoteTarget } from './VerificationNoteTarget';
 import { VerificationNoteTodo } from './VerificationNoteTodo';
 import { VerificationNoteFooter } from './VerificationNoteFooter';
+import { VerificationNoteFile } from './VerificationNoteFile';
 
 export const VerificationNote = () => {
   return (
@@ -20,6 +21,7 @@ export const VerificationNote = () => {
       <div className="flex w-full flex-col gap-24 px-16">
         <VerificationNoteTarget />
         <VerificationNoteTodo />
+        <VerificationNoteFile fileName="" />
       </div>
       {/* 4th content */}
       <VerificationNoteFooter />
