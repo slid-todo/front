@@ -4,7 +4,7 @@
 // import { TodoType } from '@/types/TodoType';
 // import { useTodoModalStore } from '@/store/useTodoModalStore';
 // import { Header } from '@/components/common/Header';
-import { VerificationNote } from '@/components/VerificationNote';
+import { VerificationNote } from '@/components/VerificationNote/VerificationNoteContainer';
 
 export default function GiBeom() {
   // const { isOpen, open } = useTodoModalStore();

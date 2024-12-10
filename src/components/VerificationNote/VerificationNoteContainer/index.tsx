@@ -1,10 +1,12 @@
-import { VerificationNoteHeader } from './VerificationNoteHeader';
-import { VerificationNoteImage } from './VerificationNoteImage';
-import { VerificationNoteTextarea } from './VerificationNoteTextarea';
-import { VerificationNoteTarget } from './VerificationNoteTarget';
-import { VerificationNoteTodo } from './VerificationNoteTodo';
-import { VerificationNoteFooter } from './VerificationNoteFooter';
-import { VerificationNoteFile } from './VerificationNoteFile';
+import {
+  VerificationNoteHeader,
+  VerificationNoteImage,
+  VerificationNoteTextarea,
+  VerificationNoteTarget,
+  VerificationNoteTodo,
+  VerificationNoteFooter,
+  VerificationNoteFile,
+} from '@/components/VerificationNote';
 
 export const VerificationNote = () => {
   return (
