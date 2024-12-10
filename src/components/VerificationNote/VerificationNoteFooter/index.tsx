@@ -3,6 +3,7 @@ import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
 
 export const VerificationNoteFooter = () => {
   const { review } = useVerificationNoteStore();
+
   return (
     <div className="mt-auto flex w-full items-center justify-between bg-custom-white-200 p-16">
       <div className="flex items-center gap-8">
