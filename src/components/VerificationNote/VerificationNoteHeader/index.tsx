@@ -9,7 +9,7 @@ export const VerificationNoteHeader = () => {
     <div className="flex w-full items-center justify-between py-4">
       <div className="flex items-center gap-16">
         <IoMdClose className="size-24 cursor-pointer" />
-        <span className="text-xl-semibold">할 일 상세보기 </span>
+        <span className="text-xl-semibold">인증</span>
       </div>
       <Button
         className="h-36"
