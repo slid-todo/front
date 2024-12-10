@@ -14,7 +14,7 @@ export const GoalItem = ({ name, todos }: GaolItemProps) => {
       <GoalHeader title={name} />
       <ProgressLine percent={64} />
       {todos.map((todo) => (
-        <TodoList key={todo.id} todo={todo} />
+        <TodoList key={todo.todoId} todo={todo} />
       ))}
     </div>
   );

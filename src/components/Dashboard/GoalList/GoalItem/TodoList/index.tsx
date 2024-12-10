@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { TodoTypes } from '@/constants/DashboardMockData';
 import { TodoHeader } from './TodoHeader';
-import { TodoItem } from './TodoItem';
+import { TodoPic } from './TodoPic';
 
 interface TodoListProps {
   todo: TodoTypes;
@@ -18,23 +18,23 @@ export const TodoList = ({ todo }: TodoListProps) => {
   };
 
   return (
-    <div key={todo.id} className="pb-16">
+    <>
       <TodoHeader open={handleClickToggle} todo={todo} isOpen={isOpen} />
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="mt-8 grid grid-cols-4 gap-x-4 gap-y-8"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            className="grid origin-top grid-cols-4 gap-x-4 gap-y-8"
+            initial={{ scaleY: 0, height: 0, opacity: 0 }}
+            animate={{ scaleY: 1, height: 'auto', opacity: 1 }}
+            exit={{ scaleY: 0, height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
-            {Array.from({ length: 11 }).map((_, index) => (
-              <TodoItem key={index} index={index} />
+            {todo.completes.map((complete, index) => (
+              <TodoPic key={complete.completeId} index={index} />
             ))}
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };

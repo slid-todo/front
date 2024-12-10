@@ -1,3 +1,13 @@
+export interface CompleteTyps {
+  completeId: number;
+  completePic: string | null;
+  note: string | null;
+  completeLink: string | null;
+  completeFile: string | null;
+  createdAt: string;
+  completedDate: string;
+}
+
 export interface TodoTypes {
   todoId: number;
   todoTitle: string;
@@ -7,6 +17,7 @@ export interface TodoTypes {
   todoLink?: string;
   todoPic?: string;
   createdAt: string;
+  completes: CompleteTyps[];
 }
 
 export interface GoalTypes {
@@ -24,9 +35,38 @@ export const GOALS: GoalTypes[] = [
         todoId: 1,
         todoTitle: '모의고사 풀기',
         startDate: '2024-01-01',
-        endDate: '2024-01-10',
+        endDate: '2024-01-03',
         todoStatus: false,
         createdAt: '2024-01-01',
+        completes: [
+          {
+            completeId: 11,
+            completePic: null,
+            note: null,
+            completeLink: null,
+            completeFile: null,
+            createdAt: '2024-12-10T20:23:02',
+            completedDate: '2024-01-01',
+          },
+          {
+            completeId: 12,
+            completePic: null,
+            note: null,
+            completeLink: null,
+            completeFile: null,
+            createdAt: '2024-12-10T20:23:02',
+            completedDate: '2024-01-02',
+          },
+          {
+            completeId: 13,
+            completePic: null,
+            note: null,
+            completeLink: null,
+            completeFile: null,
+            createdAt: '2024-12-10T20:23:02',
+            completedDate: '2024-01-03',
+          },
+        ],
       },
       {
         todoId: 2,
@@ -34,7 +74,18 @@ export const GOALS: GoalTypes[] = [
         startDate: '2024-01-05',
         endDate: '2024-01-05',
         todoStatus: true,
-        createdAt: '2024-01-02',
+        createdAt: '2024-01-05',
+        completes: [
+          {
+            completeId: 13,
+            completePic: null,
+            note: null,
+            completeLink: null,
+            completeFile: null,
+            createdAt: '2024-12-10T20:23:02',
+            completedDate: '2024-01-53',
+          },
+        ],
       },
     ],
   },
@@ -49,6 +100,7 @@ export const GOALS: GoalTypes[] = [
         endDate: '2024-02-05',
         todoStatus: true,
         createdAt: '2024-02-01',
+        completes: [],
       },
       {
         todoId: 4,
@@ -57,28 +109,7 @@ export const GOALS: GoalTypes[] = [
         endDate: '2024-02-08',
         todoStatus: false,
         createdAt: '2024-02-02',
-      },
-    ],
-  },
-  {
-    id: 3,
-    name: '운동 목표 달성',
-    todos: [
-      {
-        todoId: 5,
-        todoTitle: '매일 30분 달리기',
-        startDate: '2024-03-01',
-        endDate: '2024-03-31',
-        todoStatus: false,
-        createdAt: '2024-03-01',
-      },
-      {
-        todoId: 6,
-        todoTitle: '근력 운동 3회/주',
-        startDate: '2024-03-01',
-        endDate: '2024-03-31',
-        todoStatus: true,
-        createdAt: '2024-03-01',
+        completes: [],
       },
     ],
   },

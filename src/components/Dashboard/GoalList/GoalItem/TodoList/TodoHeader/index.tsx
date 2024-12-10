@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { FaAngleDown } from 'react-icons/fa6';
 import { TodoTypes } from '@/constants/DashboardMockData';
@@ -11,12 +13,14 @@ interface TodoHeaderProps {
 
 export const TodoHeader = ({ open, todo, isOpen }: TodoHeaderProps) => {
   return (
-    <div onClick={open} className="relative my-8">
-      <p className="text-base-semibold">{todo.name}</p>
-      <p className="text-xs-medium leading-6 text-custom-gray-100">
-        {`${formatDateToPoint(todo.startDate)} - 
+    <div onClick={open} className="relative my-16">
+      <div className="">
+        <p className="text-base-semibold">{todo.todoTitle}</p>
+        <p className="text-xs-medium leading-6 text-custom-gray-100">
+          {`${formatDateToPoint(todo.startDate)} - 
           ${formatDateToPoint(todo.endDate)}`}
-      </p>
+        </p>
+      </div>
       <motion.span
         initial={{ rotate: 0 }}
         animate={{ rotate: isOpen ? 180 : 0 }}
