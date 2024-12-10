@@ -18,7 +18,7 @@ export const TodoContainer = () => {
     setCurrentGoalFilter(filter);
   };
 
-  const { inProgressTasks, completedTasks } = useFilteredTodos(
+  const { inProgressTodos, completedTodos } = useFilteredTodos(
     todos,
     currentGoalFilter,
     currentSortFilter,
@@ -38,8 +38,8 @@ export const TodoContainer = () => {
         className="space-x-8"
       />
       <TodoList
-        inProgressTasks={inProgressTasks}
-        completedTasks={completedTasks}
+        inProgressTodos={inProgressTodos}
+        completedTodos={completedTodos}
       />
     </div>
   );

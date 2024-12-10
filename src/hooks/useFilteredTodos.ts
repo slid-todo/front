@@ -6,7 +6,7 @@ export function useFilteredTodos(
   currentGoalFilter: string,
   currentSortFilter: string,
 ) {
-  const { inProgressTasks, completedTasks } = useMemo(() => {
+  const { inProgressTodos, completedTodos } = useMemo(() => {
     const filtered = todos.filter((todo) => {
       if (currentGoalFilter === '전체') return true;
       return todo.goal === currentGoalFilter;
@@ -18,11 +18,11 @@ export function useFilteredTodos(
       filtered.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
     }
 
-    const inProgress = filtered.filter((task) => task.status === 'In Progress');
-    const completed = filtered.filter((task) => task.status === 'Completed');
+    const inProgress = filtered.filter((todo) => todo.status === 'In Progress');
+    const completed = filtered.filter((todo) => todo.status === 'Completed');
 
-    return { inProgressTasks: inProgress, completedTasks: completed };
+    return { inProgressTodos: inProgress, completedTodos: completed };
   }, [todos, currentGoalFilter, currentSortFilter]);
 
-  return { inProgressTasks, completedTasks };
+  return { inProgressTodos, completedTodos };
 }
