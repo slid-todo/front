@@ -1,5 +1,5 @@
 import { ProgressCircle } from '@/components/Dashboard/MyProgress/ProgressCircle';
-import { ProgressNumber } from './ProgressNumber';
+import { ProgressNumber } from '@/components/Dashboard/MyProgress/ProgressNumber';
 
 export interface MyProgressProps {
   progressPercent: number;

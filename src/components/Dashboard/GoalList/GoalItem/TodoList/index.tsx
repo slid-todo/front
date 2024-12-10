@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import { TodoHeader } from '@/components/Dashboard/GoalList/GoalItem/TodoList/TodoHeader';
+import { TodoPic } from '@/components/Dashboard/GoalList/GoalItem/TodoList/TodoPic';
 import { TodoTypes } from '@/constants/DashboardMockData';
-import { TodoHeader } from './TodoHeader';
-import { TodoPic } from './TodoPic';
 
 interface TodoListProps {
   todo: TodoTypes;
