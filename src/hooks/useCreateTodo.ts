@@ -10,7 +10,7 @@ export const useCreateTodo = (): UseMutationResult<
   CreateTodosRequest
 > => {
   return useMutation<CreateTodoResponse, AxiosError, CreateTodosRequest>({
-    mutationFn: (data: CreateTodosRequest) => createTodo(data),
+    mutationFn: (data) => createTodo(data),
     onSuccess: (data) => {
       console.log('Todo successfully created:', data);
     },
