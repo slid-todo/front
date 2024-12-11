@@ -1,9 +1,9 @@
 import { ChangeEvent, useEffect, useRef } from 'react';
 
-import { useGoalsStore } from '@/store/useGoalStore';
-
 import { Input } from '@/components/common/Input';
 import { GoalItem } from '@/components/Sidebar/GoalList/GoalItem';
+
+import { useGoalsStore } from '@/store/useGoalStore';
 
 export const GoalList = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -35,7 +35,7 @@ export const GoalList = () => {
         <GoalItem key={index} text={goal} />
       ))}
       {isNew && (
-        <div className="flex items-center gap-16 px-8">
+        <div className="flex items-center gap-16 px-8 pb-16">
           <div className="size-16 shrink-0 rounded-full bg-primary-100" />
           <Input
             ref={inputRef}
