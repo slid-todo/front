@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { TODO_MOCK_DATA } from '@/constants/TodoMockData';
+import { TODO_MOCK_DATA } from '@/mocks/TodoMockData';
 import { Dropdown } from '@/components/common/Dropdown';
 import { Input } from '@/components/common/Input';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
