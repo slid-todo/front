@@ -1,18 +1,17 @@
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useRef } from 'react';
 import { motion } from 'motion/react';
 import { todoModalVariants } from '@/constants/motionVariants';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { FileUploadBtn } from './FileUploadBtn';
 
 export const FileUpload = () => {
-  const { setImageEncodedBase64 } = useTodoDataStore();
-  const [fileName, setFileName] = useState<string>('');
+  const { setImageEncodedBase64, imageName, setImageName } = useTodoDataStore();
   const fileUploadRef = useRef<HTMLInputElement>(null);
 
   const handleFileName = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
-      setFileName(selectedFile.name);
+      setImageName(selectedFile.name);
       encodeFileToBase64(selectedFile);
     }
   };
@@ -35,7 +34,7 @@ export const FileUpload = () => {
       animate="visible"
     >
       <FileUploadBtn
-        fileName={fileName}
+        fileName={imageName}
         onClick={() => fileUploadRef.current?.click()}
       />
       <input

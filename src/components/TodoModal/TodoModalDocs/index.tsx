@@ -5,7 +5,7 @@ import { FileUpload } from './FileUpload';
 import { LinkUpload } from './LinkUpload';
 
 export const TodoModalDocs = () => {
-  const { resetFileName, resetLink } = useTodoDataStore();
+  const { resetFile, resetLink } = useTodoDataStore();
   const [isFileActive, setIsFileActive] = useState(true);
   const [isLinkActive, setIsLinkActive] = useState(false);
 
@@ -18,7 +18,7 @@ export const TodoModalDocs = () => {
   const onClickLinkChip = () => {
     setIsFileActive((prev) => !prev);
     setIsLinkActive((prev) => !prev);
-    resetFileName();
+    resetFile();
   };
 
   return (
