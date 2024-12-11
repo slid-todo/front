@@ -2,13 +2,13 @@ import { create } from 'zustand';
 
 interface TodoDataType {
   title: string;
-  date: { startDate: Date | undefined; endDate: Date | undefined };
+  date: { startDate: string; endDate: string };
   todoLink?: string;
   imageName?: string;
   imageEncodedBase64?: string;
   goal: { goalId: number; goalTitle: string };
   setTitle: (title: string) => void;
-  setDate: (startDate: Date | undefined, endDate: Date | undefined) => void;
+  setDate: (startDate: string, endDate: string) => void;
   setTodoLink: (todoLink: string) => void;
   setImageName: (imageName: string) => void;
   setImageEncodedBase64: (encodedFile: string) => void;
@@ -20,13 +20,13 @@ interface TodoDataType {
 
 export const useTodoDataStore = create<TodoDataType>((set) => ({
   title: '',
-  date: { startDate: undefined, endDate: undefined },
+  date: { startDate: '', endDate: '' },
   todoLink: '',
   imageName: '',
   imageEncodedBase64: '',
   goal: { goalId: 0, goalTitle: '' },
   setTitle: (title: string) => set({ title: title }),
-  setDate: (startDate: Date | undefined, endDate: Date | undefined) =>
+  setDate: (startDate: string, endDate: string) =>
     set({ date: { startDate: startDate, endDate: endDate } }),
   setTodoLink: (todoLink: string) => set({ todoLink: todoLink }),
   setImageName: (imageName: string) => set({ imageName: imageName }),
@@ -40,7 +40,7 @@ export const useTodoDataStore = create<TodoDataType>((set) => ({
     set({
       title: '',
       goal: { goalId: 0, goalTitle: '' },
-      date: { startDate: undefined, endDate: undefined },
+      date: { startDate: '', endDate: '' },
       imageEncodedBase64: '',
       imageName: '',
       todoLink: '',

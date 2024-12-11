@@ -1,7 +1,7 @@
 export const todoDataValidation = (
   title: string,
   goalTitle: number,
-  date: { startDate: Date | undefined; endDate: Date | undefined },
+  date: { startDate: string; endDate: string },
 ) => {
   if (title && goalTitle && date.startDate && date.endDate) {
     return false;
