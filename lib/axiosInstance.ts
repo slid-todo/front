@@ -8,7 +8,8 @@ const axiosInstance = axios.create({
   baseURL: apiUrl,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
+    Accept: '*/*',
+    token: token, // 여기서 기본 헤더를 설정
   },
 });
 
