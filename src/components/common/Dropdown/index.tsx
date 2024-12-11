@@ -1,9 +1,10 @@
 import { motion } from 'motion/react';
 import { dropdownVariants } from '@/constants/motionVariants';
+import { Goal } from '@/types/Goals';
 
 interface DropdownProps {
-  dropdownData: string[];
-  onSelectItem: (item: string) => void; // 콜백 함수 추가
+  dropdownData: Goal[];
+  onSelectItem: (id: number, title: string) => void; // 콜백 함수 추가
   isOpenDropdown: boolean;
 }
 
@@ -36,8 +37,8 @@ export const Dropdown = ({
   onSelectItem,
   isOpenDropdown,
 }: DropdownProps) => {
-  const handleClickItem = (item: string) => {
-    onSelectItem(item);
+  const handleClickItem = (id: number, title: string) => {
+    onSelectItem(id, title);
   };
 
   return (
@@ -51,10 +52,10 @@ export const Dropdown = ({
         return (
           <li
             className="flex-center mt-2 w-full cursor-pointer border-b-2 border-gray-100 p-10 text-sm-normal hover:bg-slate-200 sm:text-base-normal"
-            key={item}
-            onClick={() => handleClickItem(item)}
+            key={item.goalId}
+            onClick={() => handleClickItem(item.goalId, item.goalTitle)}
           >
-            {item}
+            {item.goalTitle}
           </li>
         );
       })}

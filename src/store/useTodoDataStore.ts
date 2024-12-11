@@ -2,12 +2,12 @@ import { create } from 'zustand';
 
 interface TodoDataType {
   title: string;
-  target: string;
+  goal: { goalId: number; goalTitle: string };
   date: { startDate: Date | undefined; endDate: Date | undefined };
   fileName?: string;
   link?: string;
   setTitle: (title: string) => void;
-  setTarget: (target: string) => void;
+  setGoal: (goalId: number, goalTitle: string) => void;
   setDate: (startDate: Date | undefined, endDate: Date | undefined) => void;
   setFileName: (fileName: string) => void;
   setLink: (link: string) => void;
@@ -18,12 +18,13 @@ interface TodoDataType {
 
 export const useTodoDataStore = create<TodoDataType>((set) => ({
   title: '',
-  target: '',
+  goal: { goalId: 0, goalTitle: '' },
   date: { startDate: undefined, endDate: undefined },
   fileName: '',
   link: '',
   setTitle: (title: string) => set({ title: title }),
-  setTarget: (target: string) => set({ target: target }),
+  setGoal: (goalId: number, goalTitle: string) =>
+    set({ goal: { goalId: goalId, goalTitle: goalTitle } }),
   setDate: (startDate: Date | undefined, endDate: Date | undefined) =>
     set({ date: { startDate: startDate, endDate: endDate } }),
   setFileName: (fileName: string) => set({ fileName: fileName }),
@@ -33,7 +34,7 @@ export const useTodoDataStore = create<TodoDataType>((set) => ({
   resetAll: () =>
     set({
       title: '',
-      target: '',
+      goal: { goalId: 0, goalTitle: '' },
       date: { startDate: undefined, endDate: undefined },
       fileName: '',
       link: '',
