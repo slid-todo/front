@@ -3,7 +3,7 @@ import { DateRange } from 'react-day-picker';
 import { IoCalendarNumberOutline } from 'react-icons/io5';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { formatDateRange } from '@/utils/formatDateRange';
+import { formatDate, formatDateRange } from '@/utils/formatDateRange';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { CalendarDropdown } from './CalendarDropdown';
 
@@ -15,7 +15,7 @@ export const TodoModalRepeat = () => {
 
   const handleCalendar = () => {
     setIsOpenCalendar(!isOpenCalendar);
-    setDate(selectedRange?.from, selectedRange?.to);
+    setDate(formatDate(selectedRange?.from), formatDate(selectedRange?.to));
   };
 
   return (
