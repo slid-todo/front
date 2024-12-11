@@ -2,9 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { MyProgressProps } from '..';
 
-export const ProgressCircle = ({ progressPercent }: MyProgressProps) => {
+export const ProgressCircle = ({
+  progressPercent,
+}: {
+  progressPercent: number;
+}) => {
   const [percent, setPercent] = useState(0);
 
   useEffect(() => {
