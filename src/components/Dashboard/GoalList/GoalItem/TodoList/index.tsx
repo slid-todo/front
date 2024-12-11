@@ -14,7 +14,9 @@ export const TodoList = ({ todo }: TodoListProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClickToggle = () => {
-    setIsOpen((prev) => !prev);
+    if (todo.completes.length > 0) {
+      setIsOpen((prev) => !prev);
+    }
   };
 
   return (
