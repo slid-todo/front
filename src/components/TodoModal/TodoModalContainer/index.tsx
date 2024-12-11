@@ -13,6 +13,7 @@ import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { todoModalVariants } from '@/constants/motionVariants';
 import { todoDataValidation } from '@/utils/todoDataValidation';
+import { useCreateTodo } from '@/hooks/useCreateTodo';
 
 const TodoModal = ({ todoType }: TodoModalProps) => {
   const { close } = useTodoModalStore();
@@ -26,8 +27,20 @@ const TodoModal = ({ todoType }: TodoModalProps) => {
     todoLink,
   } = useTodoDataStore();
 
+  const { mutate } = useCreateTodo();
+
   const viewData = () => {
-    console.log(title, goal, date, imageEncodedBase64, imageName, todoLink);
+    const todoData = {
+      title,
+      startDate: date.startDate, // Assuming date is in an appropriate format
+      endDate: date.endDate, // Adjust accordingly
+      todoLink,
+      imageName,
+      imageEncodedBase64,
+      goalId: goal.goalId,
+    };
+    mutate(todoData);
+    // console.log(title, goal, date, imageEncodedBase64, imageName, todoLink);
   };
 
   const handleClose = () => {
