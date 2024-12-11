@@ -21,15 +21,15 @@ export interface TodoTypes {
 }
 
 export interface GoalTypes {
-  id: number;
-  name: string;
+  goalId: number;
+  goalTitle: string;
   todos: TodoTypes[];
 }
 
 export const GOALS: GoalTypes[] = [
   {
-    id: 1,
-    name: '토익 700점 맞기',
+    goalId: 1,
+    goalTitle: '토익 700점 맞기',
     todos: [
       {
         todoId: 1,
@@ -90,8 +90,8 @@ export const GOALS: GoalTypes[] = [
     ],
   },
   {
-    id: 2,
-    name: 'JavaScript 기본 공부하기',
+    goalId: 2,
+    goalTitle: 'JavaScript 기본 공부하기',
     todos: [
       {
         todoId: 3,
