@@ -16,10 +16,18 @@ import { todoDataValidation } from '@/utils/todoDataValidation';
 
 const TodoModal = ({ todoType }: TodoModalProps) => {
   const { close } = useTodoModalStore();
-  const { resetAll, title, goal, date, fileName, link } = useTodoDataStore();
+  const {
+    resetAll,
+    title,
+    goal,
+    date,
+    imageEncodedBase64,
+    imageName,
+    todoLink,
+  } = useTodoDataStore();
 
   const viewData = () => {
-    console.log(title, goal, date, fileName, link);
+    console.log(title, goal, date, imageEncodedBase64, imageName, todoLink);
   };
 
   const handleClose = () => {

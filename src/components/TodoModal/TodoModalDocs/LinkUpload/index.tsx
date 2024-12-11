@@ -6,10 +6,10 @@ import { todoModalVariants } from '@/constants/motionVariants';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 
 export const LinkUpload = () => {
-  const { link, setLink } = useTodoDataStore();
+  const { todoLink, setTodoLink } = useTodoDataStore();
 
   const handleLinkInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setLink(e.target.value);
+    setTodoLink(e.target.value);
   };
 
   return (
@@ -22,7 +22,7 @@ export const LinkUpload = () => {
       <Input
         type="url"
         placeholder={PLACEHOLDERS.LINK_INPUT}
-        value={link}
+        value={todoLink}
         onChange={handleLinkInput}
       />
     </motion.div>
