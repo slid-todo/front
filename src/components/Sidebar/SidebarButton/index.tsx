@@ -6,29 +6,33 @@ import { cn } from '@/utils/className';
 
 interface SidebarButtonProps {
   type: 'default' | 'invert';
+  disabled?: boolean;
   onClick: () => void;
   children: ReactNode;
 }
 
 export const SidebarButton = ({
   type,
-  onClick,
+  disabled = false,
+  onClick = () => {},
   children,
 }: SidebarButtonProps) => {
   const buttonClass = cn(
-    'rounded-12 border border-primary-100 px-10 py-8 md:w-248 md:py-12',
-    type === 'default' && 'bg-white text-primary-100',
-    type === 'invert' && 'bg-primary-100 text-white',
+    'rounded-12 px-10 py-8 md:w-248 md:py-12 flex-center',
+    {
+      default: 'bg-white border border-primary-100 text-primary-100',
+      invert: disabled
+        ? 'bg-custom-white-300 text-white'
+        : 'bg-primary-100 text-white',
+    }[type],
   );
 
   return (
-    <button onClick={onClick} className={buttonClass}>
-      <span className="mr-4 inline-block align-middle">
+    <button onClick={onClick} disabled={disabled} className={buttonClass}>
+      <span className="mr-4">
         <FaPlus className="size-18 p-2 md:size-24" />
       </span>
-      <span className="inline-block align-middle text-sm-medium md:text-base-medium">
-        {children}
-      </span>
+      <span className="text-sm-medium md:text-base-medium">{children}</span>
     </button>
   );
 };

@@ -21,7 +21,7 @@ import { cn } from '@/utils/className';
 
 export const Sidebar = () => {
   const { isOpen, open, close } = useSidebarStore();
-  const { toggleIsNew } = useGoalsStore();
+  const { goals, toggleIsNew } = useGoalsStore();
 
   const handleAddGoal = () => {
     toggleIsNew(true);
@@ -80,7 +80,11 @@ export const Sidebar = () => {
             icon={<FaListUl className="size-28 p-4" />}
             label="내 할일"
             addButton={
-              <SidebarButton type="invert" onClick={handleAddGoal}>
+              <SidebarButton
+                type="invert"
+                disabled={goals.length === 0}
+                onClick={() => {}}
+              >
                 새 할일
               </SidebarButton>
             }
