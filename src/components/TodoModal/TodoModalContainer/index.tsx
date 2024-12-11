@@ -29,18 +29,19 @@ const TodoModal = ({ todoType }: TodoModalProps) => {
 
   const { mutate } = useCreateTodo();
 
-  const viewData = () => {
+  const handleClick = () => {
     const todoData = {
       title,
-      startDate: date.startDate, // Assuming date is in an appropriate format
-      endDate: date.endDate, // Adjust accordingly
+      startDate: date.startDate,
+      endDate: date.endDate,
       todoLink,
       imageName,
       imageEncodedBase64,
       goalId: goal.goalId,
     };
+
     mutate(todoData);
-    // console.log(title, goal, date, imageEncodedBase64, imageName, todoLink);
+    console.log(todoData);
   };
 
   const handleClose = () => {
@@ -68,7 +69,7 @@ const TodoModal = ({ todoType }: TodoModalProps) => {
             size="large"
             primary={true}
             className="mt-auto"
-            onClick={viewData}
+            onClick={handleClick}
             disabled={todoDataValidation(title, goal.goalId, date)}
           >
             확인
