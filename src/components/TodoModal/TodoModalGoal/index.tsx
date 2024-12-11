@@ -6,16 +6,16 @@ import { Input } from '@/components/common/Input';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { DropdownIcon } from './DropdownIcon';
 
-export const TodoModalTarget = () => {
-  const { target, setTarget } = useTodoDataStore();
+export const TodoModalGoal = () => {
+  const { goal, setGoal } = useTodoDataStore();
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
 
   const handleDropdown = () => {
     setIsOpenDropdown(!isOpenDropdown);
   };
 
-  const handleSelectItem = (item: string) => {
-    setTarget(item);
+  const handleSelectItem = (id: number, title: string) => {
+    setGoal(id, title);
     setIsOpenDropdown(false);
   };
 
@@ -28,7 +28,7 @@ export const TodoModalTarget = () => {
         <Input
           className="cursor-pointer"
           placeholder={PLACEHOLDERS.TARGET}
-          value={target}
+          value={goal.goalTitle}
           readOnly
           onClick={handleDropdown}
         />
