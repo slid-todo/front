@@ -12,7 +12,11 @@ export const GoalList = () => {
       {goals.length > 0 ? (
         <>
           {GOALS.map((goal) => (
-            <GoalItem key={goal.id} name={goal.name} todos={goal.todos} />
+            <GoalItem
+              key={goal.goalId}
+              name={goal.goalTitle}
+              todos={goal.todos}
+            />
           ))}
         </>
       ) : (
