@@ -1,18 +1,30 @@
-import { ChangeEvent, useRef } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { todoModalVariants } from '@/constants/motionVariants';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { FileUploadBtn } from './FileUploadBtn';
 
 export const FileUpload = () => {
-  const { fileName, setFileName } = useTodoDataStore();
+  const { setImageEncodedBase64 } = useTodoDataStore();
+  const [fileName, setFileName] = useState<string>('');
   const fileUploadRef = useRef<HTMLInputElement>(null);
 
   const handleFileName = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
       setFileName(selectedFile.name);
+      encodeFileToBase64(selectedFile);
     }
+  };
+
+  const encodeFileToBase64 = (file: File) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (reader.result) {
+        setImageEncodedBase64(reader.result as string); // Base64 문자열 저장
+      }
+    };
+    reader.readAsDataURL(file); // 파일을 Base64로 읽음
   };
 
   return (
