@@ -28,6 +28,8 @@ export const useGoalInput = () => {
   const handleBlur = () => {
     if (newGoal.trim()) {
       handlePostNewGoal();
+    } else {
+      toggleIsNew(false);
     }
   };
 
