@@ -2,35 +2,39 @@ import { create } from 'zustand';
 
 interface TodoDataType {
   title: string;
-  goal: { goalId: number; goalTitle: string };
   date: { startDate: Date | undefined; endDate: Date | undefined };
-  imageEncodedBase64?: string;
   link?: string;
+  imageName?: string;
+  imageEncodedBase64?: string;
+  goal: { goalId: number; goalTitle: string };
   setTitle: (title: string) => void;
-  setGoal: (goalId: number, goalTitle: string) => void;
   setDate: (startDate: Date | undefined, endDate: Date | undefined) => void;
-  setImageEncodedBase64: (encodedFile: string) => void;
   setLink: (link: string) => void;
+  setImageName: (imageName: string) => void;
+  setImageEncodedBase64: (encodedFile: string) => void;
+  setGoal: (goalId: number, goalTitle: string) => void;
   resetAll: () => void;
-  resetFileName: () => void;
+  resetFile: () => void;
   resetLink: () => void;
 }
 
 export const useTodoDataStore = create<TodoDataType>((set) => ({
   title: '',
-  goal: { goalId: 0, goalTitle: '' },
   date: { startDate: undefined, endDate: undefined },
-  imageEncodedBase64: '',
   link: '',
+  imageName: '',
+  imageEncodedBase64: '',
+  goal: { goalId: 0, goalTitle: '' },
   setTitle: (title: string) => set({ title: title }),
-  setGoal: (goalId: number, goalTitle: string) =>
-    set({ goal: { goalId: goalId, goalTitle: goalTitle } }),
   setDate: (startDate: Date | undefined, endDate: Date | undefined) =>
     set({ date: { startDate: startDate, endDate: endDate } }),
+  setLink: (link: string) => set({ link: link }),
+  setImageName: (imageName: string) => set({ imageName: imageName }),
   setImageEncodedBase64: (encodedFile: string) =>
     set({ imageEncodedBase64: encodedFile }),
-  setLink: (link: string) => set({ link: link }),
-  resetFileName: () => set({ imageEncodedBase64: '' }),
+  setGoal: (goalId: number, goalTitle: string) =>
+    set({ goal: { goalId: goalId, goalTitle: goalTitle } }),
+  resetFile: () => set({ imageEncodedBase64: '', imageName: '' }),
   resetLink: () => set({ link: '' }),
   resetAll: () =>
     set({
@@ -38,6 +42,7 @@ export const useTodoDataStore = create<TodoDataType>((set) => ({
       goal: { goalId: 0, goalTitle: '' },
       date: { startDate: undefined, endDate: undefined },
       imageEncodedBase64: '',
+      imageName: '',
       link: '',
     }),
 }));
