@@ -5,7 +5,6 @@ import { cn } from '@/utils/className';
 interface CardProps {
   children: ReactNode;
   className?: string;
-  hasShadow?: boolean;
 }
 
 export const Card = ({ children, className }: CardProps) => {
