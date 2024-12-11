@@ -15,11 +15,21 @@ export const GoalList = () => {
     setNewGoal(e.target.value);
   };
 
+  const handlePostNewGoal = () => {
+    addGoal();
+    setNewGoal('');
+    toggleIsNew(false);
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && newGoal.trim()) {
-      addGoal();
-      setNewGoal('');
-      toggleIsNew(false);
+      handlePostNewGoal();
+    }
+  };
+
+  const handleBlur = () => {
+    if (newGoal.trim()) {
+      handlePostNewGoal();
     }
   };
 
@@ -42,7 +52,7 @@ export const GoalList = () => {
             value={newGoal}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            className=""
+            onBlur={handleBlur}
           />
         </div>
       )}
