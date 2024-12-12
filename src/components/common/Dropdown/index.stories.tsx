@@ -6,31 +6,31 @@ const TODO_MOCK_DATA = [
   {
     goalId: 1,
     goalTitle: '토익 900점 맞기',
-    color: 'blue', // 색상은 임의로 설정
-    createdAt: new Date().toISOString(), // 현재 날짜와 시간을 ISO 형식으로 생성
+    color: 'blue',
+    createdAt: new Date().toISOString(),
   },
   {
     goalId: 2,
     goalTitle: '달리기 1등 하기',
-    color: 'green', // 색상은 임의로 설정
+    color: 'green',
     createdAt: new Date().toISOString(),
   },
   {
     goalId: 3,
     goalTitle: '체중 10kg 감량',
-    color: 'red', // 색상은 임의로 설정
+    color: 'red',
     createdAt: new Date().toISOString(),
   },
   {
     goalId: 4,
     goalTitle: '복근 만들기',
-    color: 'yellow', // 색상은 임의로 설정
+    color: 'yellow',
     createdAt: new Date().toISOString(),
   },
   {
     goalId: 5,
     goalTitle: '복싱 배우기',
-    color: 'purple', // 색상은 임의로 설정
+    color: 'purple',
     createdAt: new Date().toISOString(),
   },
 ];
@@ -39,14 +39,14 @@ interface DropdownProps<T> {
   dropdownData: T[];
   onSelectItem: (item: T) => void;
   isOpenDropdown: boolean;
-  renderItem: (item: T) => JSX.Element; // renderItem prop added
+  renderItem: (item: T) => JSX.Element;
 }
 
 const meta: Meta<DropdownProps<(typeof TODO_MOCK_DATA)[number]>> = {
   title: 'Components/Dropdown',
   component: Dropdown,
   parameters: {
-    layout: 'centered', // Centered layout을 유지
+    layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {
@@ -78,9 +78,9 @@ export default meta;
 
 export const Default: Story = {
   args: {
-    dropdownData: TODO_MOCK_DATA, // Use the mock data for dropdown
+    dropdownData: TODO_MOCK_DATA,
     onSelectItem: (item: (typeof TODO_MOCK_DATA)[0]) =>
-      console.log(`Selected goal: ${item.goalTitle}`), // Callback for selected item
+      console.log(`Selected goal: ${item.goalTitle}`),
     isOpenDropdown: false,
     renderItem: (item: (typeof TODO_MOCK_DATA)[0]) => (
       <span>{item.goalTitle}</span>
@@ -94,7 +94,7 @@ export const Default: Story = {
 
     const handleSelectItem = (item: (typeof TODO_MOCK_DATA)[0]) => {
       setSelectedItem(item);
-      args.onSelectItem(item); // Trigger the Storybook action
+      args.onSelectItem(item);
     };
 
     const toggleDropdown = () => {
@@ -116,7 +116,7 @@ export const Default: Story = {
           dropdownData={args.dropdownData}
           onSelectItem={handleSelectItem}
           isOpenDropdown={isOpen}
-          renderItem={args.renderItem} // Pass the renderItem prop here
+          renderItem={args.renderItem}
         />
       </div>
     );

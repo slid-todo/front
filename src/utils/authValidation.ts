@@ -1,5 +1,5 @@
 import { UseFormGetValues } from 'react-hook-form';
-import { AuthDataType } from '@/types/AuthType'; // Assuming this exists
+import { AuthDataType } from '@/types/AuthType';
 
 export const nameValidation = {
   required: '이름을 입력해주세요.',
@@ -36,7 +36,7 @@ export const passwordChkValidation = ({
     required: '비밀번호를 입력해주세요.',
     validate: {
       matchesPassword: (value: string | undefined) =>
-        getValues && value === getValues('password') // Check if getValues is defined
+        getValues && value === getValues('password')
           ? true
           : '비밀번호가 일치하지 않습니다.',
     },
