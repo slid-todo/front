@@ -41,7 +41,6 @@ const TodoModal = ({ todoType }: TodoModalProps) => {
     };
 
     mutate(todoData);
-    console.log(todoData);
   };
 
   const handleClose = () => {
