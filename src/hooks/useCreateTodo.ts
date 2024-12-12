@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { createTodo } from '@/apis/createTodo';
+import { createTodo } from '@/apis/Todo/createTodo';
 import { CreateTodosRequest } from '@/types/CreateTodos/CreateTodosRequest';
 import { CreateTodoResponse } from '@/types/CreateTodos/CreateTodosResponse';
 import { notify } from '@/store/useToastStore';
