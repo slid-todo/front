@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 
 export const VerificationNoteFile = () => {
-  const [fileName] = useState<string>(''); //임의의 변수
+  const [fileName] = useState<string>('');
 
   return (
     <div
