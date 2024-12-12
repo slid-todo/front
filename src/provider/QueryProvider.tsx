@@ -1,16 +1,18 @@
 'use client';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { Toast } from '@/components/common/Toast';
 
-const queryClient = new QueryClient();
+import { Toast } from '@/components/common/Toast';
+import { getQueryClient } from '@/lib/query/getQueryClient';
 
 interface QueryProviderProps {
   children: React.ReactNode;
 }
 
 const QueryProvider: React.FC<QueryProviderProps> = ({ children }) => {
+  const queryClient = getQueryClient();
+
   return (
     <QueryClientProvider client={queryClient}>
       {children}
