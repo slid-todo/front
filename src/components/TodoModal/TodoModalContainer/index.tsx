@@ -17,29 +17,10 @@ import { useCreateTodo } from '@/hooks/useCreateTodo';
 
 const TodoModal = ({ todoType }: TodoModalProps) => {
   const { close } = useTodoModalStore();
-  const {
-    resetAll,
-    title,
-    goal,
-    date,
-    imageEncodedBase64,
-    imageName,
-    todoLink,
-  } = useTodoDataStore();
-
+  const { resetAll, todoData } = useTodoDataStore();
   const { mutate } = useCreateTodo();
 
   const handleClick = () => {
-    const todoData = {
-      title,
-      startDate: date.startDate,
-      endDate: date.endDate,
-      todoLink,
-      imageName,
-      imageEncodedBase64,
-      goalId: goal.goalId,
-    };
-
     mutate(todoData);
   };
 
@@ -69,7 +50,12 @@ const TodoModal = ({ todoType }: TodoModalProps) => {
             primary={true}
             className="mt-auto"
             onClick={handleClick}
-            disabled={todoDataValidation(title, goal.goalId, date)}
+            disabled={todoDataValidation(
+              todoData.title,
+              todoData.goalId,
+              todoData.startDate,
+              todoData.endDate,
+            )}
           >
             확인
           </Button>

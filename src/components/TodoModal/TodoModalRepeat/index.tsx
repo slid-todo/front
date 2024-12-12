@@ -8,14 +8,16 @@ import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { CalendarDropdown } from './CalendarDropdown';
 
 export const TodoModalRepeat = () => {
-  const { setDate } = useTodoDataStore();
-
+  const { setTodoData } = useTodoDataStore();
   const [isOpenCalendar, setIsOpenCalendar] = useState(false);
   const [selectedRange, setSelectedRange] = useState<DateRange | undefined>();
 
   const handleCalendar = () => {
     setIsOpenCalendar(!isOpenCalendar);
-    setDate(formatDate(selectedRange?.from), formatDate(selectedRange?.to));
+    setTodoData({
+      startDate: formatDate(selectedRange?.from),
+      endDate: formatDate(selectedRange?.to),
+    });
   };
 
   return (

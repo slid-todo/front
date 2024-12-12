@@ -8,7 +8,8 @@ import { Goal } from '@/types/Goals';
 import { DropdownIcon } from './DropdownIcon';
 
 export const TodoModalGoal = () => {
-  const { goal, setGoal } = useTodoDataStore();
+  const { setTodoData } = useTodoDataStore();
+  const [goalTitle, setGoalTitle] = useState<string>('');
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
 
   const handleDropdown = () => {
@@ -16,7 +17,8 @@ export const TodoModalGoal = () => {
   };
 
   const handleSelectItem = (item: Goal) => {
-    setGoal(item.goalId, item.goalTitle);
+    setTodoData({ goalId: item.goalId });
+    setGoalTitle(item.goalTitle);
     setIsOpenDropdown(false);
   };
 
@@ -33,7 +35,7 @@ export const TodoModalGoal = () => {
         <Input
           className="cursor-pointer"
           placeholder={PLACEHOLDERS.TARGET}
-          value={goal.goalTitle}
+          value={goalTitle}
           readOnly
           onClick={handleDropdown}
         />
