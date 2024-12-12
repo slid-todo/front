@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { AuthInputProps } from '@/types/AuthType';
 import { passwordChkValidation } from '@/utils/authValidation';
+import { AuthInputProps } from '@/types/Auth/AuthInputProps';
 import { VisibilityIcon } from '../VisibilityIcon';
 
 export const PasswordChkInput = ({

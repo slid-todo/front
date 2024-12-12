@@ -1,6 +1,6 @@
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { AuthInputProps } from '@/types/AuthType';
+import { AuthInputProps } from '@/types/Auth/AuthInputProps';
 import { nameValidation } from '@/utils/authValidation';
 
 export const NameInput = ({ register, error }: AuthInputProps) => {

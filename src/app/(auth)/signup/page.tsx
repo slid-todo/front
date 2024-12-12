@@ -9,8 +9,8 @@ import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
 import { MetaData } from '@/components/AuthPage/MetaData';
 import { NameInput } from '@/components/AuthPage/NameInput';
 import { PasswordChkInput } from '@/components/AuthPage/PasswordChkInput';
-import { AuthDataType } from '@/types/AuthType';
 import { Button } from '@/components/common/Button/Button';
+import { AuthDataRequest } from '@/types/Auth/AuthDataRequest';
 
 export default function Signup() {
   const {
@@ -18,9 +18,9 @@ export default function Signup() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AuthDataType>({ mode: 'onBlur' });
+  } = useForm<AuthDataRequest>({ mode: 'onBlur' });
 
-  const handleClick: SubmitHandler<AuthDataType> = (data) => {
+  const handleClick: SubmitHandler<AuthDataRequest> = (data) => {
     console.log(data);
   };
 

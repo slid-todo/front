@@ -6,4 +6,7 @@ export const API_ENDPOINTS = {
     GET_GOAL_BY_ID: (goalId: string | number) =>
       `/api/v1/todos/goals/${goalId}`,
   },
+  AUTH: {
+    SIGN_IN: '/api/v1/auths/login',
+  },
 };

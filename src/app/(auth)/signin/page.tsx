@@ -7,18 +7,21 @@ import { PasswordInput } from '@/components/AuthPage/PasswordInput';
 import { AuthFooter } from '@/components/AuthPage/AuthFooter';
 import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
 import { MetaData } from '@/components/AuthPage/MetaData';
-import { AuthDataType } from '@/types/AuthType';
 import { Button } from '@/components/common/Button/Button';
+import { useSignin } from '@/hooks/useSignin';
+import { AuthDataRequest } from '@/types/Auth/AuthDataRequest';
 
 export default function Signin() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AuthDataType>({ mode: 'onBlur' });
+  } = useForm<AuthDataRequest>({ mode: 'onBlur' });
 
-  const handleClick: SubmitHandler<AuthDataType> = (data) => {
-    console.log(data);
+  const { mutate } = useSignin();
+
+  const handleClick: SubmitHandler<AuthDataRequest> = (data) => {
+    mutate({ email: data.email, password: data.password });
   };
 
   return (
