@@ -4,10 +4,10 @@ import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 
 export const TodoModalTitle = () => {
-  const { title, setTitle } = useTodoDataStore();
+  const { todoData, setTodoData } = useTodoDataStore();
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
+    setTodoData({ title: e.target.value });
   };
 
   return (
@@ -15,7 +15,7 @@ export const TodoModalTitle = () => {
       <span className="text-base-semibold text-slate-800">제목</span>
       <Input
         placeholder={PLACEHOLDERS.TITLE_TODO}
-        value={title}
+        value={todoData.title}
         onChange={handleInput}
       />
     </div>
