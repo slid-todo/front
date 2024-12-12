@@ -1,22 +1,22 @@
 'use client';
 
-import { ChangeEvent, useEffect, useRef } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
-import { useGoalsStore } from '@/store/useGoalStore';
+import { useNewGoalsStore } from '@/store/useNewGoalStore';
 
 export const useGoalInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [newGoal, setNewGoal] = useState('');
 
-  const { setNewGoal, isNew, toggleIsNew, addGoal, newGoal } = useGoalsStore();
+  const { isNew, toggleIsNew } = useNewGoalsStore();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewGoal(e.target.value);
   };
 
   const handlePostNewGoal = () => {
-    addGoal();
     setNewGoal('');
-    toggleIsNew(false);
+    toggleIsNew();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -29,7 +29,7 @@ export const useGoalInput = () => {
     if (newGoal.trim()) {
       handlePostNewGoal();
     } else {
-      toggleIsNew(false);
+      toggleIsNew();
     }
   };
 
@@ -41,6 +41,7 @@ export const useGoalInput = () => {
 
   return {
     inputRef,
+    newGoal,
     handleInputChange,
     handleKeyDown,
     handleBlur,

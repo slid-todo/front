@@ -14,18 +14,19 @@ import { MenuItem } from '@/components/Sidebar/MenuItem';
 import { Profile } from '@/components/Sidebar/Profle';
 import { SidebarButton } from '@/components/Sidebar/SidebarButton';
 
-import { useGoalsStore } from '@/store/useGoalStore';
+import { useSidebarGoalsQuery } from '@/hooks/api/useSidebarGoalsQuery';
+
+import { useNewGoalsStore } from '@/store/useNewGoalStore';
 import { useSidebarStore } from '@/store/useSidebarStore';
 
 import { cn } from '@/utils/className';
 
 export const Sidebar = () => {
-  const { isOpen, open, close } = useSidebarStore();
-  const { goals, toggleIsNew } = useGoalsStore();
+  const { goals } = useSidebarGoalsQuery();
 
-  const handleAddGoal = () => {
-    toggleIsNew(true);
-  };
+  const { isOpen, open, close } = useSidebarStore();
+
+  const handleToggle = useNewGoalsStore((state) => state.toggleIsNew);
 
   const sidebarClass = cn(
     'fixed top-0 left-0 z-20 flex flex-col items-center h-screen py-16 transition-all duration-200 ease-in-out bg-white border-r border-slate-100 md:flex',
@@ -70,12 +71,12 @@ export const Sidebar = () => {
             icon={<FaFlag className="size-28 p-4" />}
             label="목표"
             addButton={
-              <SidebarButton type="default" onClick={handleAddGoal}>
+              <SidebarButton type="default" onClick={handleToggle}>
                 새 목표
               </SidebarButton>
             }
           />
-          <GoalList />
+          <GoalList goals={goals} />
           <MenuItem
             icon={<FaListUl className="size-28 p-4" />}
             label="내 할일"
@@ -83,7 +84,9 @@ export const Sidebar = () => {
               <SidebarButton
                 type="invert"
                 disabled={goals.length === 0}
-                onClick={() => {}}
+                onClick={() => {
+                  console.log('할일 생성 모달 열기');
+                }}
               >
                 새 할일
               </SidebarButton>
