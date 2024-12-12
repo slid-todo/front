@@ -14,11 +14,11 @@ export const useSignin = (): UseMutationResult<
     mutationFn: (data) => signin(data),
     onSuccess: (data) => {
       notify('success', '로그인에 성공하였습니다', 2000);
-      console.log(data);
+      console.log(data); //응답 값 확인을 위한
     },
     onError: (error: AxiosError) => {
       notify('error', '로그인에 실패하였습니다', 2000);
-      console.error('Error creating todo:', error.message);
+      console.error('Error Sign in:', error.message);
     },
   });
 };
