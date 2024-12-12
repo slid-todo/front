@@ -4,6 +4,7 @@ import { TODO_MOCK_DATA } from '@/mocks/TodoMockData';
 import { Dropdown } from '@/components/common/Dropdown';
 import { Input } from '@/components/common/Input';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
+import { Goal } from '@/types/Goals';
 import { DropdownIcon } from './DropdownIcon';
 
 export const TodoModalGoal = () => {
@@ -14,9 +15,13 @@ export const TodoModalGoal = () => {
     setIsOpenDropdown(!isOpenDropdown);
   };
 
-  const handleSelectItem = (id: number, title: string) => {
-    setGoal(id, title);
+  const handleSelectItem = (item: Goal) => {
+    setGoal(item.goalId, item.goalTitle);
     setIsOpenDropdown(false);
+  };
+
+  const renderDropdownItem = (item: Goal) => {
+    return <span>{item.goalTitle}</span>;
   };
 
   return (
@@ -42,6 +47,7 @@ export const TodoModalGoal = () => {
         dropdownData={TODO_MOCK_DATA}
         onSelectItem={handleSelectItem}
         isOpenDropdown={isOpenDropdown}
+        renderItem={renderDropdownItem}
       />
     </div>
   );
