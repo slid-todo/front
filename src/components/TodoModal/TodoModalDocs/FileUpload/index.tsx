@@ -20,10 +20,10 @@ export const FileUpload = () => {
     const reader = new FileReader();
     reader.onloadend = () => {
       if (reader.result) {
-        setImageEncodedBase64(reader.result as string); // Base64 문자열 저장
+        setImageEncodedBase64(reader.result as string);
       }
     };
-    reader.readAsDataURL(file); // 파일을 Base64로 읽음
+    reader.readAsDataURL(file);
   };
 
   return (
