@@ -1,44 +1,42 @@
 import { motion } from 'motion/react';
 import { dropdownVariants } from '@/constants/motionVariants';
-import { Goal } from '@/types/Goals';
 
-interface DropdownProps {
-  dropdownData: Goal[];
-  onSelectItem: (id: number, title: string) => void; // 콜백 함수 추가
+interface DropdownProps<T> {
+  dropdownData: T[];
+  onSelectItem: (item: T) => void;
   isOpenDropdown: boolean;
+  renderItem: (item: T) => JSX.Element;
 }
 
 /**
- * Dropdown 컴포넌트
+ * 재사용 가능한 드롭다운 컴포넌트로, 아이템 목록을 표시하고 사용자가 하나를 선택할 수 있습니다.
  *
- * 사용자가 선택할 수 있는 항목들이 표시되는 드롭다운 메뉴 컴포넌트입니다.
+ * 드롭다운 항목은 `dropdownData`를 통해 전달되며, 드롭다운의 열림/닫힘 상태는 `isOpenDropdown` prop으로 제어됩니다.
+ * `renderItem` prop을 사용하면 각 항목의 렌더링 방식을 커스터마이징할 수 있습니다.
  *
- * `dropdownData`로 전달된 항목들을 리스트로 렌더링하며,
- * 각 항목을 클릭하면 `onSelectItem` 콜백 함수가 호출됩니다.
+ * 항목을 클릭하면 `onSelectItem` 콜백이 선택된 항목과 함께 호출됩니다.
  *
- * 드롭다운은 스크롤 가능하며, 선택된 항목은 시각적으로 구분됩니다.
- *
- * `isOpenDropdown` prop을 통해 드롭다운의 열림/닫힘 상태를 제어할 수 있습니다.
+ * @param {T[]} dropdownData - 드롭다운에 표시할 항목 배열입니다. 각 항목은 제네릭 타입 `T`로 정의됩니다.
  *
  *
- * @component
+ * @param {(item: T) => void} onSelectItem - 항목이 선택되었을 때 호출되는 콜백 함수입니다.
  *
- * @param {string[]} dropdownData - 드롭다운에 표시될 항목들을 담은 배열
  *
- * @param {(item: string) => void} onSelectItem - 항목이 선택되었을 때 호출되는 콜백 함수
+ * @param {boolean} isOpenDropdown - 드롭다운의 가시성을 제어하는 불리언 값입니다. `true`이면 열리고, `false`이면 닫힙니다.
  *
- * @param {boolean} isOpenDropdown - 드롭다운의 열림(true) 또는 닫힘(false) 상태를 제어하는 불리언 값.
  *
- * @returns {JSX.Element} 드롭다운 메뉴 JSX 출력
+ * @param {(item: T) => JSX.Element} renderItem - 각 항목의 렌더링 방식을 커스터마이징하는 함수입니다. 제네릭 타입 `T`의 항목을 받아 JSX를 반환합니다.
+ * @returns {JSX.Element} JSX 요소로 된 드롭다운 메뉴를 반환하며, 이는 항목 목록을 포함합니다.
  */
 
-export const Dropdown = ({
+export const Dropdown = <T extends object>({
   dropdownData,
   onSelectItem,
   isOpenDropdown,
-}: DropdownProps) => {
-  const handleClickItem = (id: number, title: string) => {
-    onSelectItem(id, title);
+  renderItem,
+}: DropdownProps<T>) => {
+  const handleClickItem = (item: T) => {
+    onSelectItem(item);
   };
 
   return (
@@ -48,17 +46,15 @@ export const Dropdown = ({
       variants={dropdownVariants}
       className="absolute top-full z-20 inline-flex max-h-150 w-full origin-top flex-col items-start overflow-y-auto rounded-b-12 bg-white shadow-lg scrollbar-hide"
     >
-      {dropdownData.map((item) => {
-        return (
-          <li
-            className="flex-center mt-2 w-full cursor-pointer border-b-2 border-gray-100 p-10 text-sm-normal hover:bg-slate-200 sm:text-base-normal"
-            key={item.goalId}
-            onClick={() => handleClickItem(item.goalId, item.goalTitle)}
-          >
-            {item.goalTitle}
-          </li>
-        );
-      })}
+      {dropdownData.map((item, index) => (
+        <li
+          key={index}
+          className="flex-center mt-2 w-full cursor-pointer border-b-2 border-gray-100 p-10 text-sm-normal hover:bg-slate-200 sm:text-base-normal"
+          onClick={() => handleClickItem(item)}
+        >
+          {renderItem(item)}
+        </li>
+      ))}
     </motion.ul>
   );
 };
