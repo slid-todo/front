@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { AuthType } from '@/types/AuthType';
+import { AuthType } from '@/types/Auth/AuthType';
 
 interface AuthFooterProps {
   description: string;
