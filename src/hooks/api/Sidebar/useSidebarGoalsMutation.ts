@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-import axiosInstance from '@/lib/axiosInstance';
+import axiosInstance from '../../../../lib/axiosInstance';
 
 interface PostGoalTypes {
   title: string;
