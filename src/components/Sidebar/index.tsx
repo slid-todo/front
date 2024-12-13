@@ -19,12 +19,14 @@ import { useSidebarGoalsQuery } from '@/hooks/apis/Sidebar/useSidebarGoalsQuery'
 import { useNewGoalsStore } from '@/store/useNewGoalStore';
 import { useSidebarStore } from '@/store/useSidebarStore';
 
+import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { cn } from '@/utils/className';
 
 export const Sidebar = () => {
   const { goals } = useSidebarGoalsQuery();
 
   const { isOpen, open, close } = useSidebarStore();
+  const { open: openModal } = useTodoModalStore();
 
   const handleToggle = useNewGoalsStore((state) => state.toggleIsNew);
 
@@ -85,7 +87,8 @@ export const Sidebar = () => {
                 type="invert"
                 disabled={goals.length === 0}
                 onClick={() => {
-                  console.log('할일 생성 모달 열기');
+                  close();
+                  openModal();
                 }}
               >
                 새 할일
