@@ -3,7 +3,7 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 import { useNewGoalsStore } from '@/store/useNewGoalStore';
-import { useSidebarGoalsMutation } from './api/Sidebar/useSidebarGoalsMutation';
+import { useSidebarGoalsMutation } from './apis/Sidebar/useSidebarGoalsMutation';
 
 export const useGoalInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);

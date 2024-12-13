@@ -14,7 +14,7 @@ import { MenuItem } from '@/components/Sidebar/MenuItem';
 import { Profile } from '@/components/Sidebar/Profle';
 import { SidebarButton } from '@/components/Sidebar/SidebarButton';
 
-import { useSidebarGoalsQuery } from '@/hooks/api/Sidebar/useSidebarGoalsQuery';
+import { useSidebarGoalsQuery } from '@/hooks/apis/Sidebar/useSidebarGoalsQuery';
 
 import { useNewGoalsStore } from '@/store/useNewGoalStore';
 import { useSidebarStore } from '@/store/useSidebarStore';
