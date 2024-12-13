@@ -1,0 +1,36 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
+import { QUERY_KEYS } from '@/constants/QueryKeys';
+import axiosInstance from '@/lib/axiosInstance';
+
+interface PostGoalTypes {
+  title: string;
+  userId: number;
+}
+
+const postSidebarGoals = async (newGoal: PostGoalTypes) => {
+  try {
+    const response = await axiosInstance.post(
+      API_ENDPOINTS.GOAL.GOALS,
+      newGoal,
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error('사이드바 목표 추가 에러', error);
+    throw error;
+  }
+};
+
+export const useSidebarGoalsMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: postSidebarGoals,
+    onSuccess: () => {
+      console.log('성공');
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.SIDEBAR_GOALS] });
+    },
+  });
+};
