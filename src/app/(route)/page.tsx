@@ -4,9 +4,13 @@ import { useState } from 'react';
 import HeartIcon from '@/assets/icon-heart.svg';
 import { Filter } from '@/components/common/Filter';
 import { Header } from '@/components/common/Header';
+import TodoModal from '@/components/TodoModal/TodoModalContainer';
 import { notify } from '@/store/useToastStore';
+import { useTodoModalStore } from '@/store/useTodoModalStore';
 
 export default function Home() {
+  const { isOpen } = useTodoModalStore();
+
   const [currentFilter, setCurrentFilter] = useState<string>('All');
 
   const handleFilterChange = (filter: string) => {
@@ -84,6 +88,7 @@ export default function Home() {
           <p>Currently selected filter: {currentFilter}</p>
         </div>
       </div>
+      {isOpen && <TodoModal todoType="생성" />}
     </div>
   );
 }
