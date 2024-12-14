@@ -25,8 +25,8 @@ export const PasswordChkInput = ({
         <div className="flex w-full items-center justify-between gap-10 rounded-12 bg-white pr-24">
           <Input
             type={isVisible ? 'text' : 'password'}
-            placeholder={PLACEHOLDERS.PASSWORDCHK}
-            {...register('passwordChk', passwordChkValidation({ getValues }))}
+            placeholder={PLACEHOLDERS.PASSWORD_CHECK}
+            {...register('passwordCheck', passwordChkValidation({ getValues }))}
           />
           <VisibilityIcon isVisible={isVisible} onClick={handleClickIcon} />
         </div>
