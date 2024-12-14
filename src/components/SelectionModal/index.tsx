@@ -1,5 +1,6 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
+import { motion } from 'motion/react';
 import { ModalContainer } from '../common/ModalContainer';
 import { Button } from '../common/Button/Button';
 
@@ -44,7 +45,12 @@ export const SelectionModal = (props: SelectionModalProps) => {
 
   return createPortal(
     <ModalContainer onClose={onClose}>
-      <div className="flex min-h-174 w-300 flex-col items-center justify-between rounded-8 bg-white pb-32 pt-40 shadow-md">
+      <motion.div
+        className="flex min-h-174 w-300 flex-col items-center justify-between rounded-8 bg-white pb-32 pt-40 shadow-md"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
         <h2 className="text-base-medium text-primary-100">
           {message}
           <span className=" text-slate-800"> 인증하기</span>
@@ -57,7 +63,7 @@ export const SelectionModal = (props: SelectionModalProps) => {
             {confirmButtonMessage}
           </Button>
         </div>
-      </div>
+      </motion.div>
     </ModalContainer>,
     document.body,
   );
