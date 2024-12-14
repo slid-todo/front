@@ -8,10 +8,10 @@ import { DashboardItemContainer } from '@/components/Dashboard/DashboardItemCont
 import { TodoItem } from '@/components/Todos';
 import { Button } from '@/components/common/Button/Button';
 import { Card } from '@/components/common/Card';
-import { useTodayTodosQuery } from '@/hooks/apis/Dashboard/useTodayTodosQuery';
+import { useRecentTodosQuery } from '@/hooks/apis/Dashboard/useRecnetTodosQuery';
 
 export const RecentTodos = () => {
-  const { todos } = useTodayTodosQuery();
+  const { todos } = useRecentTodosQuery();
 
   return (
     <DashboardItemContainer title="최근 등록한 할일" className="relative">
@@ -34,7 +34,7 @@ export const RecentTodos = () => {
             <TodoItem
               key={todo.todoId}
               title={todo.todoTitle}
-              goal={'목표는 아직 안받아옴'}
+              goal={'어떤 목표일까요??'}
             />
           ))}
         </ul>
