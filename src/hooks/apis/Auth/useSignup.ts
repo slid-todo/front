@@ -15,11 +15,11 @@ export const useSignup = (): UseMutationResult<
   return useMutation({
     mutationFn: (data) => signup(data),
     onSuccess: () => {
-      notify('success', '회원가입에 성공하였습니다', 2000);
+      notify('success', '회원가입에 성공하였습니다', 3000);
       router.push('/signin');
     },
     onError: (error: AxiosError) => {
-      notify('error', '회원가입에 실패하였습니다', 2000);
+      notify('error', '회원가입에 실패하였습니다', 3000);
       console.error('Error Sign up:', error.message);
     },
   });
