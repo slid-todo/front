@@ -4,7 +4,7 @@ import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { notify } from '@/store/useToastStore';
 
-import axiosInstance from '../../../../lib/axiosInstance';
+import axiosInstance from '../../../lib/axiosInstance';
 
 interface PostGoalTypes {
   title: string;
