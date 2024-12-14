@@ -13,7 +13,7 @@ interface GoalItemProps {
 
 export const GoalItem = ({ title, todos }: GoalItemProps) => {
   return (
-    <div className="relative w-full rounded-12 bg-white p-16">
+    <div className="relative w-full rounded-12 bg-white p-16 shadow-sm">
       <GoalHeader title={title} />
       <ProgressLine percent={0} />
       {todos.map((todo) => (
