@@ -7,11 +7,15 @@ import { Header } from '@/components/common/Header';
 import TodoModal from '@/components/TodoModal/TodoModalContainer';
 import { notify } from '@/store/useToastStore';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
+import { SelectionModal } from '@/components/SelectionModal';
 
 export default function Home() {
   const { isOpen } = useTodoModalStore();
 
   const [currentFilter, setCurrentFilter] = useState<string>('All');
+  const [isSelectionModalOpen, setIsSelectionModalOpen] =
+    useState<boolean>(false);
+  const [selectedValue, setSelectedValue] = useState<string>('');
 
   const handleFilterChange = (filter: string) => {
     setCurrentFilter(filter);
@@ -28,6 +32,22 @@ export default function Home() {
 
   const handleInfoClick = () => {
     notify('info', '정보 메시지입니다!', 3000);
+  };
+
+  // SelectionModal을 열기 위한 핸들러
+  const handleOpenSelectionModal = () => {
+    setIsSelectionModalOpen(true);
+  };
+
+  // SelectionModal에서 Confirm 시 호출되는 핸들러
+  const handleConfirmSelection = (value: string) => {
+    setSelectedValue(value);
+    console.log('SelectionModal 입력값:', value);
+  };
+
+  // SelectionModal 닫기 핸들러
+  const handleCloseSelectionModal = () => {
+    setIsSelectionModalOpen(false);
   };
 
   return (
@@ -89,6 +109,26 @@ export default function Home() {
         </div>
       </div>
       {isOpen && <TodoModal todoType="생성" />}
+
+      <div className="mt-8 rounded border p-4">
+        <h2 className="mb-4 text-lg font-semibold">SelectionModal 사용 예시</h2>
+        <p>선택된 값: {selectedValue || '없음'}</p>
+        <button
+          className="mt-4 rounded bg-green-500 px-4 py-2 text-white"
+          onClick={handleOpenSelectionModal}
+        >
+          SelectionModal 열기
+        </button>
+      </div>
+
+      {/* SelectionModal 렌더링 */}
+      {isSelectionModalOpen && (
+        <SelectionModal
+          isOpen={isSelectionModalOpen}
+          onClose={handleCloseSelectionModal}
+          onConfirm={handleConfirmSelection}
+        />
+      )}
     </div>
   );
 }
