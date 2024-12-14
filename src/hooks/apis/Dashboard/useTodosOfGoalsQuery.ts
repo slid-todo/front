@@ -46,7 +46,7 @@ const todosOfGoalsOptions = (): UseQueryOptions<
   queryFn: getTodosOfGoals,
 });
 
-export const useTodosOfGoals = () => {
+export const useTodosOfGoalsQuery = () => {
   const { data, isLoading, isError, error } = useQuery(todosOfGoalsOptions());
   const goals = data?.data ?? [];
 
