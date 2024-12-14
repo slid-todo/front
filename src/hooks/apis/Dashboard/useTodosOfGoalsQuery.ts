@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 import { getTodosOfGoals } from '@/apis/Dashboard/getTodosOfGoals';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 
-interface CompletesResponse {
+export interface CompletesResponse {
   completeId: number;
   completePic: string;
   note: string;
@@ -14,7 +14,7 @@ interface CompletesResponse {
   completedDate: string;
 }
 
-interface TodosResponse {
+export interface TodosResponse {
   todoId: number;
   todoTitle: string;
   startDate: string;
@@ -26,13 +26,13 @@ interface TodosResponse {
   completes: CompletesResponse[];
 }
 
-interface GoalsResponse {
+export interface GoalsResponse {
   goalId: number;
   goalTitle: string;
   todos: TodosResponse[];
 }
 
-interface TodosOfGoalsResponse {
+export interface TodosOfGoalsResponse {
   data: GoalsResponse[];
   statusCode: number;
   timestamp: string;
@@ -45,7 +45,7 @@ const todosOfGoalsOptions: UseQueryOptions<TodosOfGoalsResponse, AxiosError> = {
 
 export const useTodosOfGoals = () => {
   const { data, isLoading, isError, error } = useQuery(todosOfGoalsOptions);
-  console.log(data);
+  const goals = data?.data ?? [];
 
-  return { data, isLoading, isError, error };
+  return { goals, isLoading, isError, error };
 };

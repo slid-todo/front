@@ -1,17 +1,19 @@
+'use client';
+
 import { Card } from '@/components/common/Card';
 import { DashboardItemContainer } from '@/components/Dashboard/DashboardItemContainer';
 import { GoalItem } from '@/components/Dashboard/GoalList/GoalItem';
 
-import { GOALS } from '@/constants/DashboardMockData';
+import { useTodosOfGoals } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
 
 export const GoalList = () => {
-  const goals = [];
+  const { goals } = useTodosOfGoals();
 
   return (
     <DashboardItemContainer title="목표 별 할 일">
       {goals.length > 0 ? (
         <>
-          {GOALS.map((goal) => (
+          {goals.map((goal) => (
             <GoalItem
               key={goal.goalId}
               name={goal.goalTitle}

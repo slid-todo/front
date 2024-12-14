@@ -1,13 +1,12 @@
-'use client';
-
 import { motion } from 'motion/react';
 import { FaAngleDown } from 'react-icons/fa6';
-import { TodoTypes } from '@/constants/DashboardMockData';
+
+import { TodosResponse } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
 import { formatDateToPoint } from '@/utils/date';
 
 interface TodoHeaderProps {
   open: () => void;
-  todo: TodoTypes;
+  todo: TodosResponse;
   isOpen: boolean;
 }
 
