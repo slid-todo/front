@@ -8,6 +8,7 @@ export const API_ENDPOINTS = {
   },
   AUTH: {
     SIGN_IN: '/api/v1/auths/login',
+    SIGN_UP: '/api/v1/auths/signup',
   },
   GOAL: {
     GOALS: '/api/v1/goals',
