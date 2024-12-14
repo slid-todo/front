@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
 import HeartIcon from '@/assets/icon-heart.svg';
 import { Filter } from '@/components/common/Filter';
 import { Header } from '@/components/common/Header';
+import { SelectionModal } from '@/components/SelectionModal';
 import TodoModal from '@/components/TodoModal/TodoModalContainer';
 import { notify } from '@/store/useToastStore';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
-import { SelectionModal } from '@/components/SelectionModal';
+import { useState } from 'react';
 
 export default function Home() {
   const { isOpen } = useTodoModalStore();
@@ -34,18 +34,20 @@ export default function Home() {
     notify('info', '정보 메시지입니다!', 3000);
   };
 
+  // SelectionModal을 열기 위한 핸들러
   const handleOpenSelectionModal = () => {
     setIsSelectionModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsSelectionModalOpen(false);
-    setSelectedValue('취소버튼클릭');
+  // SelectionModal에서 Confirm 시 호출되는 핸들러
+  const handleConfirmSelection = (value: string) => {
+    setSelectedValue(value);
+    console.log('SelectionModal 입력값:', value);
   };
 
-  const handleConfirmModal = () => {
+  // SelectionModal 닫기 핸들러
+  const handleCloseSelectionModal = () => {
     setIsSelectionModalOpen(false);
-    setSelectedValue('확인버튼클릭');
   };
 
   return (
@@ -90,7 +92,7 @@ export default function Home() {
 
       <div className="mt-8 rounded border p-4">
         <h2 className="mb-4 text-lg font-semibold">SelectionModal 사용 예시</h2>
-        <p>선택된 값: {selectedValue}</p>
+        <p>선택된 값: {selectedValue || '없음'}</p>
         <button
           className="mt-4 rounded bg-green-500 px-4 py-2 text-white"
           onClick={handleOpenSelectionModal}
@@ -99,14 +101,12 @@ export default function Home() {
         </button>
       </div>
 
+      {/* SelectionModal 렌더링 */}
       {isSelectionModalOpen && (
         <SelectionModal
           isOpen={isSelectionModalOpen}
-          onClose={handleCloseModal}
-          onConfirm={handleConfirmModal}
-          message="할 일 제목이에요~"
-          cancelButtonMessage="취소"
-          confirmButtonMessage="확인"
+          onClose={handleCloseSelectionModal}
+          onConfirm={handleConfirmSelection}
         />
       )}
     </div>
