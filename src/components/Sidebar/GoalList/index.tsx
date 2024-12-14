@@ -29,6 +29,7 @@ export const GoalList = ({ goals }: GoalListProps) => {
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             onBlur={handleBlur}
+            className="bg-custom-white-100"
           />
         </div>
       )}
