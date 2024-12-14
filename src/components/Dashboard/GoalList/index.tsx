@@ -4,10 +4,10 @@ import { Card } from '@/components/common/Card';
 import { DashboardItemContainer } from '@/components/Dashboard/DashboardItemContainer';
 import { GoalItem } from '@/components/Dashboard/GoalList/GoalItem';
 
-import { useTodosOfGoals } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
+import { useTodosOfGoalsQuery } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
 
 export const GoalList = () => {
-  const { goals } = useTodosOfGoals();
+  const { goals } = useTodosOfGoalsQuery();
 
   return (
     <DashboardItemContainer title="목표 별 할 일">
