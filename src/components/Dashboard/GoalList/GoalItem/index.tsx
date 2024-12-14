@@ -7,15 +7,15 @@ import { TodoList } from '@/components/Dashboard/GoalList/GoalItem/TodoList';
 import { TodosResponse } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
 
 interface GoalItemProps {
-  name: string;
+  title: string;
   todos: TodosResponse[];
 }
 
-export const GoalItem = ({ name, todos }: GoalItemProps) => {
+export const GoalItem = ({ title, todos }: GoalItemProps) => {
   return (
     <div className="relative w-full rounded-12 bg-white p-16">
-      <GoalHeader title={name} />
-      <ProgressLine percent={64} />
+      <GoalHeader title={title} />
+      <ProgressLine percent={0} />
       {todos.map((todo) => (
         <TodoList key={todo.todoId} todo={todo} />
       ))}
