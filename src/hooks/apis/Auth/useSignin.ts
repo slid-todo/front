@@ -12,11 +12,11 @@ export const useSignin = (): UseMutationResult<
   return useMutation({
     mutationFn: (data) => signin(data),
     onSuccess: (response) => {
-      notify('success', '로그인에 성공하였습니다', 2000);
+      notify('success', '로그인에 성공하였습니다', 3000);
       localStorage.setItem('token', response.headers.token);
     },
     onError: (error: AxiosError) => {
-      notify('error', '로그인에 실패하였습니다', 2000);
+      notify('error', '로그인에 실패하였습니다', 3000);
       console.error('Error Sign in:', error.message);
     },
   });
