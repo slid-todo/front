@@ -1,11 +1,14 @@
+'use client';
+
 import { GoalHeader } from '@/components/Dashboard/GoalList/GoalItem/GoalHeader';
 import { ProgressLine } from '@/components/Dashboard/GoalList/GoalItem/ProgressLine';
 import { TodoList } from '@/components/Dashboard/GoalList/GoalItem/TodoList';
-import { TodoTypes } from '@/constants/DashboardMockData';
+
+import { TodosResponse } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
 
 interface GoalItemProps {
   name: string;
-  todos: TodoTypes[];
+  todos: TodosResponse[];
 }
 
 export const GoalItem = ({ name, todos }: GoalItemProps) => {

@@ -1,13 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+
 import { AnimatePresence, motion } from 'motion/react';
+
 import { TodoHeader } from '@/components/Dashboard/GoalList/GoalItem/TodoList/TodoHeader';
 import { TodoPic } from '@/components/Dashboard/GoalList/GoalItem/TodoList/TodoPic';
-import { TodoTypes } from '@/constants/DashboardMockData';
+import { TodosResponse } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
 
 interface TodoListProps {
-  todo: TodoTypes;
+  todo: TodosResponse;
 }
 
 export const TodoList = ({ todo }: TodoListProps) => {
