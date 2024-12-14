@@ -12,7 +12,7 @@ interface TodoHeaderProps {
 
 export const TodoHeader = ({ open, todo, isOpen }: TodoHeaderProps) => {
   return (
-    <div onClick={open} className="relative my-16">
+    <div onClick={open} className="relative mt-16">
       <div className="">
         <p className="text-base-semibold">{todo.todoTitle}</p>
         <p className="text-xs-medium leading-6 text-custom-gray-100">

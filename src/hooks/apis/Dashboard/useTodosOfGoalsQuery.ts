@@ -38,13 +38,16 @@ export interface TodosOfGoalsResponse {
   timestamp: string;
 }
 
-const todosOfGoalsOptions: UseQueryOptions<TodosOfGoalsResponse, AxiosError> = {
+const todosOfGoalsOptions = (): UseQueryOptions<
+  TodosOfGoalsResponse,
+  AxiosError
+> => ({
   queryKey: [QUERY_KEYS.TODOS_OF_GOALS],
   queryFn: getTodosOfGoals,
-};
+});
 
 export const useTodosOfGoals = () => {
-  const { data, isLoading, isError, error } = useQuery(todosOfGoalsOptions);
+  const { data, isLoading, isError, error } = useQuery(todosOfGoalsOptions());
   const goals = data?.data ?? [];
 
   return { goals, isLoading, isError, error };

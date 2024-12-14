@@ -27,10 +27,10 @@ export const TodoList = ({ todo }: TodoListProps) => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="grid origin-top grid-cols-4 gap-x-4 gap-y-8"
-            initial={{ scaleY: 0, height: 0, opacity: 0 }}
-            animate={{ scaleY: 1, height: 'auto', opacity: 1 }}
-            exit={{ scaleY: 0, height: 0, opacity: 0 }}
+            className="grid origin-top grid-cols-4 gap-x-4 gap-y-8 overflow-hidden"
+            initial={{ height: 0 }}
+            animate={{ height: 'auto' }}
+            exit={{ height: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
             {todo.completes.map((complete, index) => (
