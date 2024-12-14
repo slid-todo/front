@@ -21,7 +21,7 @@ const todayProgressOptions = (): UseQueryOptions<
   queryFn: getTodayProgress,
 });
 
-export const useTodayProgress = () => {
+export const useTodayProgressQuery = () => {
   const { data, isLoading, isError, error } = useQuery(todayProgressOptions());
   const progress = data?.data.progress ?? 0;
 
