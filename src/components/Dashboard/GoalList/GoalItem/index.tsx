@@ -19,6 +19,11 @@ export const GoalItem = ({ title, todos }: GoalItemProps) => {
       {todos.map((todo) => (
         <TodoList key={todo.todoId} todo={todo} />
       ))}
+      {todos.length === 0 && (
+        <div className="flex-center pt-16 text-sm-normal text-custom-gray-100">
+          등록된 할 일이 없습니다
+        </div>
+      )}
     </div>
   );
 };

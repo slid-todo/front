@@ -12,7 +12,7 @@ export const GoalList = () => {
   return (
     <DashboardItemContainer title="목표 별 할 일">
       {goals.length > 0 ? (
-        <>
+        <div className="flex flex-col gap-16">
           {goals.map((goal) => (
             <GoalItem
               key={goal.goalId}
@@ -20,7 +20,7 @@ export const GoalList = () => {
               todos={goal.todos}
             />
           ))}
-        </>
+        </div>
       ) : (
         <Card>
           <p className="text-sm-normal text-custom-gray-100">
