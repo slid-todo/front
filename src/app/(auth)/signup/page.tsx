@@ -11,6 +11,7 @@ import { NameInput } from '@/components/AuthPage/NameInput';
 import { PasswordChkInput } from '@/components/AuthPage/PasswordChkInput';
 import { Button } from '@/components/common/Button/Button';
 import { AuthDataRequest } from '@/types/Auth/AuthDataRequest';
+import { useSignup } from '@/hooks/apis/Auth/useSignup';
 
 export default function Signup() {
   const {
@@ -20,8 +21,10 @@ export default function Signup() {
     formState: { errors },
   } = useForm<AuthDataRequest>({ mode: 'onBlur' });
 
+  const { mutate, isPending } = useSignup();
+
   const handleClick: SubmitHandler<AuthDataRequest> = (data) => {
-    console.log(data);
+    mutate(data);
   };
 
   return (
@@ -39,12 +42,12 @@ export default function Signup() {
             <PasswordInput register={register} error={errors.password} />
             <PasswordChkInput
               register={register}
-              error={errors.passwordChk}
+              error={errors.passwordCheck}
               getValues={getValues}
             />
           </div>
           <div className="flex w-full flex-col items-center gap-40">
-            <Button type="submit" size="large">
+            <Button type="submit" size="large" pending={isPending}>
               확인
             </Button>
             <AuthFooter

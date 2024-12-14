@@ -18,7 +18,7 @@ export default function Signin() {
     formState: { errors },
   } = useForm<AuthDataRequest>({ mode: 'onBlur' });
 
-  const { mutate } = useSignin();
+  const { mutate, isPending } = useSignin();
 
   const handleClick: SubmitHandler<AuthDataRequest> = (data) => {
     mutate({ email: data.email, password: data.password });
@@ -38,7 +38,7 @@ export default function Signin() {
             <PasswordInput register={register} error={errors.password} />
           </div>
           <div className="flex w-full flex-col items-center gap-40">
-            <Button type="submit" size="large">
+            <Button type="submit" size="large" pending={isPending}>
               확인
             </Button>
             <AuthFooter
