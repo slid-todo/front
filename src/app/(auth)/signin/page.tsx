@@ -8,7 +8,7 @@ import { AuthFooter } from '@/components/AuthPage/AuthFooter';
 import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
 import { MetaData } from '@/components/AuthPage/MetaData';
 import { Button } from '@/components/common/Button/Button';
-import { useSignin } from '@/hooks/apis/useSignin';
+import { useSignin } from '@/hooks/apis/Auth/useSignin';
 import { AuthDataRequest } from '@/types/Auth/AuthDataRequest';
 
 export default function Signin() {
