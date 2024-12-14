@@ -2,6 +2,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
+import { notify } from '@/store/useToastStore';
+
 import axiosInstance from '../../../../lib/axiosInstance';
 
 interface PostGoalTypes {
@@ -29,8 +31,11 @@ export const useSidebarGoalsMutation = () => {
   return useMutation({
     mutationFn: postSidebarGoals,
     onSuccess: () => {
-      console.log('성공');
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.SIDEBAR_GOALS] });
+    },
+    onError: (error) => {
+      console.error(error.message);
+      notify('error', '목표 등록에 실패했습니다.', 3000);
     },
   });
 };
