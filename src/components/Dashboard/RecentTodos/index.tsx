@@ -2,6 +2,8 @@
 
 import { FaAngleRight } from 'react-icons/fa6';
 
+import Link from 'next/link';
+
 import { DashboardItemContainer } from '@/components/Dashboard/DashboardItemContainer';
 import { TodoItem } from '@/components/Todos';
 import { Button } from '@/components/common/Button/Button';
@@ -13,9 +15,12 @@ export const RecentTodos = () => {
 
   return (
     <DashboardItemContainer title="최근 등록한 할일" className="relative">
-      <button className="flex-center absolute right-0 top-0 text-sm-medium text-custom-gray-100">
+      <Link
+        href="/todos"
+        className="flex-center absolute right-0 top-0 text-sm-medium text-custom-gray-100"
+      >
         모두 보기 <FaAngleRight className="ml-8" />
-      </button>
+      </Link>
       {todos.length === 0 ? (
         <Card>
           <p className="text-sm-normal text-custom-gray-100">
