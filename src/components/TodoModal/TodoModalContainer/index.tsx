@@ -13,7 +13,7 @@ import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { todoModalVariants } from '@/constants/motionVariants';
 import { todoDataValidation } from '@/utils/todoDataValidation';
-import { useCreateTodo } from '@/hooks/apis/useCreateTodo';
+import { useCreateTodo } from '@/hooks/apis/Todo/useCreateTodo';
 
 const TodoModal = ({ todoType }: TodoModalProps) => {
   const { close } = useTodoModalStore();
