@@ -35,7 +35,9 @@ export const MobileCapture = (props: MobileCaptureProps) => {
 
   return (
     <>
-      <Button onClick={handleButtonClick}>사진 촬영</Button>
+      <Button size="medium" onClick={handleButtonClick} className="w-120 px-12">
+        사진 촬영
+      </Button>
       <input
         type="file"
         accept="image/*"

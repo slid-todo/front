@@ -29,13 +29,15 @@ export const GalleryPicker = (props: GalleryPickerProps) => {
         onSelect(base64URL);
       };
 
-      reader.readAsDataURL(file); // Base64로 변환
+      reader.readAsDataURL(file);
     }
   };
 
   return (
     <>
-      <Button onClick={handleButtonClick}>앨범에서 선택</Button>
+      <Button size="medium" onClick={handleButtonClick} className="w-120 px-12">
+        앨범에서 선택
+      </Button>
       <input
         type="file"
         accept="image/*"
