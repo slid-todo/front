@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
+import { ChangeEvent, useRef, useState } from 'react';
+import { Button } from '../common/Button/Button';
 
 interface MobileCaptureProps {
   onCapture: (imageUrl: string) => void;
@@ -11,8 +11,15 @@ export const MobileCapture = (props: MobileCaptureProps) => {
   const { onCapture } = props;
 
   const [preview, setPreview] = useState<string>('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleCameraChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleCameraChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       const imageUrl = URL.createObjectURL(file);
@@ -22,21 +29,17 @@ export const MobileCapture = (props: MobileCaptureProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 p-4">
-      <h2 className="text-lg font-bold">카메라로 촬영하기</h2>
+    <>
+      <Button onClick={handleButtonClick}>사진 촬영</Button>
       <input
         type="file"
         accept="image/*"
         capture="environment"
         onChange={handleCameraChange}
+        ref={fileInputRef}
+        className="hidden"
       />
-      {preview && (
-        <Image
-          src={preview}
-          alt="Captured"
-          className="size-48 border border-gray-300 object-cover"
-        />
-      )}
-    </div>
+      {preview && <div>{preview}</div>}
+    </>
   );
 };
