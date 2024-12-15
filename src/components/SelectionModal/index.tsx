@@ -39,10 +39,6 @@ export const SelectionModal = (props: SelectionModalProps) => {
     return null;
   }
 
-  const handleConfirm = () => {
-    onConfirm();
-  };
-
   return createPortal(
     <ModalContainer onClose={onClose}>
       <motion.div
@@ -59,7 +55,7 @@ export const SelectionModal = (props: SelectionModalProps) => {
           <Button size="large" onClick={onClose}>
             {cancelButtonMessage}
           </Button>
-          <Button size="large" onClick={handleConfirm}>
+          <Button size="large" onClick={onConfirm}>
             {confirmButtonMessage}
           </Button>
         </div>
