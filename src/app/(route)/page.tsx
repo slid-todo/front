@@ -1,13 +1,15 @@
 'use client';
 
+import { useState } from 'react';
+
 import HeartIcon from '@/assets/icon-heart.svg';
+import Camera from '@/components/Camera'; // 기존 카메라 컴포넌트
 import { Filter } from '@/components/common/Filter';
 import { Header } from '@/components/common/Header';
 import { SelectionModal } from '@/components/SelectionModal';
 import TodoModal from '@/components/TodoModal/TodoModalContainer';
 import { notify } from '@/store/useToastStore';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
-import { useState } from 'react';
 
 export default function Home() {
   const { isOpen } = useTodoModalStore();
@@ -16,6 +18,9 @@ export default function Home() {
   const [isSelectionModalOpen, setIsSelectionModalOpen] =
     useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState<string>('');
+
+  // 모바일 카메라 촬영 이미지 상태
+  const [mobileSource, setMobileSource] = useState<string>('');
 
   const handleFilterChange = (filter: string) => {
     setCurrentFilter(filter);
@@ -46,6 +51,16 @@ export default function Home() {
   const handleConfirmModal = () => {
     setIsSelectionModalOpen(false);
     setSelectedValue('확인버튼클릭');
+  };
+
+  const handleMobileCapture = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const target = event.target;
+    if (target.files && target.files.length > 0) {
+      const file = target.files[0];
+      const newUrl = URL.createObjectURL(file);
+      setMobileSource(newUrl);
+      console.log('Captured Image File:', file);
+    }
   };
 
   return (
@@ -109,6 +124,37 @@ export default function Home() {
           confirmButtonMessage="확인"
         />
       )}
+
+      {/* 기존 카메라 컴포넌트 */}
+      <Camera />
+
+      {/* 모바일 카메라 호출 부분 */}
+      <div className="mt-8 rounded border p-4">
+        <h2 className="mb-4 text-lg font-semibold">모바일 카메라 호출</h2>
+        <p className="mb-4 text-sm text-gray-700">
+          아래 인풋을 클릭하면 모바일 기기에서는 카메라 앱이 실행되어 사진
+          촬영이 가능합니다.
+        </p>
+        <input
+          accept="image/*"
+          id="icon-button-file"
+          type="file"
+          capture="environment" // 후면카메라 호출
+          onChange={handleMobileCapture}
+          className="mb-4"
+        />
+
+        {mobileSource && (
+          <div className="mt-4">
+            <h3 className="text-md mb-2 font-semibold">촬영 결과</h3>
+            <img
+              src={mobileSource}
+              alt="MobileCapture"
+              className="max-w-md border border-gray-300"
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
