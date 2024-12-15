@@ -27,7 +27,7 @@ export const Button = ({
   const isDisabled = disabled || pending;
 
   const ButtonClassName = cn(
-    'inline-flex items-center justify-center transition-all duration-300 h-46 max-h-46 relative', // 'relative' 클래스 추가
+    'inline-flex items-center justify-center transition-all duration-300 h-46 max-h-46 relative',
     {
       'text-sm-medium py-8 px-18': size === 'small',
       'text-sm-medium py-12 px-52': size === 'medium',

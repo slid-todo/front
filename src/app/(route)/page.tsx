@@ -31,7 +31,6 @@ export default function Home() {
     notify('info', '정보 메시지입니다!', 3000);
   };
 
-  // 갤러리/카메라 모달 상태
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
 
   const handleOpenGalleryModal = () => {
