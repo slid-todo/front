@@ -1,6 +1,7 @@
+// MobileCapture.tsx
 'use client';
 
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useRef } from 'react';
 import { Button } from '../common/Button/Button';
 
 interface MobileCaptureProps {
@@ -10,7 +11,6 @@ interface MobileCaptureProps {
 export const MobileCapture = (props: MobileCaptureProps) => {
   const { onCapture } = props;
 
-  const [preview, setPreview] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleButtonClick = () => {
@@ -22,9 +22,14 @@ export const MobileCapture = (props: MobileCaptureProps) => {
   const handleCameraChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
-      const imageUrl = URL.createObjectURL(file);
-      setPreview(imageUrl);
-      onCapture(imageUrl);
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        const base64URL = reader.result as string;
+        onCapture(base64URL);
+      };
+
+      reader.readAsDataURL(file);
     }
   };
 
@@ -39,7 +44,6 @@ export const MobileCapture = (props: MobileCaptureProps) => {
         ref={fileInputRef}
         className="hidden"
       />
-      {preview && <div>{preview}</div>}
     </>
   );
 };
