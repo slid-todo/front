@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
+import { ChangeEvent, useRef, useState } from 'react';
+import { Button } from '../common/Button/Button';
 
 interface GalleryPickerProps {
   onSelect: (imageUrl: string) => void;
@@ -11,8 +11,15 @@ export const GalleryPicker = (props: GalleryPickerProps) => {
   const { onSelect } = props;
 
   const [preview, setPreview] = useState<string>('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleGalleryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleGalleryChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       const imageUrl = URL.createObjectURL(file);
@@ -22,16 +29,16 @@ export const GalleryPicker = (props: GalleryPickerProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 p-4">
-      <h2 className="text-lg font-bold">앨범에서 선택하기</h2>
-      <input type="file" accept="image/*" onChange={handleGalleryChange} />
-      {preview && (
-        <Image
-          src={preview}
-          alt="Selected"
-          className="size-48 border border-gray-300 object-cover"
-        />
-      )}
-    </div>
+    <>
+      <Button onClick={handleButtonClick}>앨범에서 선택</Button>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleGalleryChange}
+        ref={fileInputRef}
+        className="hidden"
+      />
+      <div>{preview}</div>
+    </>
   );
 };
