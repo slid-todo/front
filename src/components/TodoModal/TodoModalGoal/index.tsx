@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { TODO_MOCK_DATA } from '@/mocks/TodoMockData';
 import { Dropdown } from '@/components/common/Dropdown';
 import { Input } from '@/components/common/Input';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { Goal } from '@/types/Goals';
+import { useSidebarGoalsQuery } from '@/hooks/apis/Sidebar/useSidebarGoalsQuery';
 import { DropdownIcon } from './DropdownIcon';
 
 export const TodoModalGoal = () => {
+  const { goals } = useSidebarGoalsQuery();
   const { setTodoData } = useTodoDataStore();
   const [goalTitle, setGoalTitle] = useState<string>('');
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
@@ -46,7 +47,7 @@ export const TodoModalGoal = () => {
       </div>
 
       <Dropdown
-        dropdownData={TODO_MOCK_DATA}
+        dropdownData={goals}
         onSelectItem={handleSelectItem}
         isOpenDropdown={isOpenDropdown}
         renderItem={renderDropdownItem}
