@@ -31,13 +31,13 @@ export const InputModalContent = (props: InputModalContentProps) => {
         <span className="text-slate-800"> 인증하기</span>
       </h2>
 
-      <div className="my-16 flex flex-col gap-8">
-        <GalleryPicker onSelect={handleSelectFromGallery} />
+      <div className="my-32 flex gap-8">
         <MobileCapture onCapture={handleCapturePhoto} />
+        <GalleryPicker onSelect={handleSelectFromGallery} />
       </div>
 
       {selectedImageUrl && (
-        <div>
+        <div className="mt-4">
           <p>선택한 이미지 미리보기:</p>
           <Image
             src={selectedImageUrl}
