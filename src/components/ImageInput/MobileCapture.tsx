@@ -1,4 +1,3 @@
-// MobileCapture.tsx
 'use client';
 
 import { ChangeEvent, useRef } from 'react';
