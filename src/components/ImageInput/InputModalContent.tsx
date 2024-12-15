@@ -43,6 +43,8 @@ export const InputModalContent = (props: InputModalContentProps) => {
             src={selectedImageUrl}
             alt="Preview"
             className="max-h-64 max-w-full object-cover"
+            width={300}
+            height={200}
           />
         </div>
       )}
