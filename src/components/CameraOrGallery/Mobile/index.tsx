@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-function VideoCameraOrGallery() {
+function CameraOrGallery() {
   const [source, setSource] = useState<string>('');
 
   const handleCapture = (target: any) => {
@@ -51,4 +51,4 @@ function VideoCameraOrGallery() {
   );
 }
 
-export default VideoCameraOrGallery;
+export default CameraOrGallery;
