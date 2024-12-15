@@ -6,7 +6,7 @@ import {
   TodoModalGoal,
   TodoModalTitle,
 } from '@/components/TodoModal';
-import { ModalContainer } from '@/components/common/ModalContainer';
+
 import { Button } from '@/components/common/Button/Button';
 import { TodoModalProps } from '@/types/TodoType';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
@@ -14,6 +14,7 @@ import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { todoModalVariants } from '@/constants/motionVariants';
 import { todoDataValidation } from '@/utils/todoDataValidation';
 import { useCreateTodo } from '@/hooks/apis/Todo/useCreateTodo';
+import { ModalContainer } from '@/components/common/Modal';
 
 const TodoModal = ({ todoType }: TodoModalProps) => {
   const { close } = useTodoModalStore();
