@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
 
 interface ModalContainerProps {
@@ -12,7 +13,7 @@ export const ModalContainer = ({ children, onClose }: ModalContainerProps) => {
       onClose();
     }
   };
-  return (
+  return createPortal(
     <motion.div
       className="flex-center fixed inset-0 z-50 bg-black/80"
       initial={{ opacity: 0 }}
@@ -21,6 +22,7 @@ export const ModalContainer = ({ children, onClose }: ModalContainerProps) => {
       onClick={handleBackgroundClick}
     >
       {children}
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 };
