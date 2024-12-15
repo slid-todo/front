@@ -3,7 +3,6 @@
 import { useState } from 'react';
 
 import HeartIcon from '@/assets/icon-heart.svg';
-import Camera from '@/components/Camera'; // 기존 카메라 컴포넌트
 import { Filter } from '@/components/common/Filter';
 import { Header } from '@/components/common/Header';
 import { SelectionModal } from '@/components/SelectionModal';
@@ -124,9 +123,6 @@ export default function Home() {
           confirmButtonMessage="확인"
         />
       )}
-
-      {/* 기존 카메라 컴포넌트 */}
-      <Camera />
 
       {/* 모바일 카메라 호출 부분 */}
       <div className="mt-8 rounded border p-4">
