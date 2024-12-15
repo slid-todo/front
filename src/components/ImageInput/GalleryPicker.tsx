@@ -1,6 +1,7 @@
+// GalleryPicker.tsx
 'use client';
 
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useRef } from 'react';
 import { Button } from '../common/Button/Button';
 
 interface GalleryPickerProps {
@@ -10,7 +11,6 @@ interface GalleryPickerProps {
 export const GalleryPicker = (props: GalleryPickerProps) => {
   const { onSelect } = props;
 
-  const [preview, setPreview] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleButtonClick = () => {
@@ -22,9 +22,14 @@ export const GalleryPicker = (props: GalleryPickerProps) => {
   const handleGalleryChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
-      const imageUrl = URL.createObjectURL(file);
-      setPreview(imageUrl);
-      onSelect(imageUrl);
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        const base64URL = reader.result as string;
+        onSelect(base64URL);
+      };
+
+      reader.readAsDataURL(file); // Base64로 변환
     }
   };
 
@@ -38,7 +43,6 @@ export const GalleryPicker = (props: GalleryPickerProps) => {
         ref={fileInputRef}
         className="hidden"
       />
-      <div>{preview}</div>
     </>
   );
 };
