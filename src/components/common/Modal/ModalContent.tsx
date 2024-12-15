@@ -1,4 +1,3 @@
-import { createPortal } from 'react-dom';
 import { useEffect, ReactNode } from 'react';
 import { motion } from 'motion/react';
 import { ModalContainer } from './ModalContainer';
@@ -28,7 +27,7 @@ export const ModalContent = (props: ModalContentProps) => {
     return null;
   }
 
-  return createPortal(
+  return (
     <ModalContainer onClose={onClose}>
       <motion.div
         className="flex min-h-174 w-300 flex-col items-center justify-between rounded-8 bg-white pb-32 pt-40 shadow-md"
@@ -38,7 +37,6 @@ export const ModalContent = (props: ModalContentProps) => {
       >
         {children}
       </motion.div>
-    </ModalContainer>,
-    document.body,
+    </ModalContainer>
   );
 };
