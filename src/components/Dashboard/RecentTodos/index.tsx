@@ -10,9 +10,12 @@ import { Button } from '@/components/common/Button/Button';
 import { Card } from '@/components/common/Card';
 import { Skeleton } from '@/components/common/Skeleton';
 import { useRecentTodosQuery } from '@/hooks/apis/Dashboard/useRecnetTodosQuery';
+import { useSidebarStore } from '@/store/useSidebarStore';
 
 export const RecentTodos = () => {
   const { todos, isLoading } = useRecentTodosQuery();
+
+  const { open } = useSidebarStore();
 
   return (
     <DashboardItemContainer title="최근 등록한 할일" className="relative">
@@ -39,7 +42,9 @@ export const RecentTodos = () => {
           <p className="text-sm-normal text-custom-gray-100">
             목표 먼저 등록 후 할 일을 설정해주세요.
           </p>
-          <Button size="medium">새 목표 등록</Button>
+          <Button onClick={open} size="medium">
+            새 목표 등록
+          </Button>
         </Card>
       ) : (
         <ul>
