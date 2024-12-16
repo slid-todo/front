@@ -4,12 +4,25 @@ import { AxiosError } from 'axios';
 import { getRecentTodos } from '@/apis/Dashboard/getRecentTodos';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { BaseResponse } from '@/types/response';
+import { CompletesResponse } from './useTodosOfGoalsQuery';
 
-import { TodosResponse } from './useTodosOfGoalsQuery';
+interface TodoResponse {
+  completes: CompletesResponse[];
+  createdAt: string;
+  endDate: string;
+  goalColor: string;
+  goalTitle: string;
+  startDate: string;
+  todoId: number;
+  todoLink: string;
+  todoPic: string;
+  todoStatus: string;
+  todoTitle: string;
+}
 
 interface RecentTodosResponse extends BaseResponse {
   data: {
-    content: TodosResponse[];
+    content: TodoResponse[];
     empty: boolean;
     first: boolean;
     last: boolean;

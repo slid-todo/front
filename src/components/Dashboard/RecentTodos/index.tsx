@@ -34,7 +34,8 @@ export const RecentTodos = () => {
             <TodoItem
               key={todo.todoId}
               title={todo.todoTitle}
-              goal={'어떤 목표일까요??'}
+              goal={todo.goalTitle}
+              color={todo.goalColor}
             />
           ))}
         </ul>
