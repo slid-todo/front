@@ -10,9 +10,10 @@ import { TodosResponse } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
 
 interface TodoListProps {
   todo: TodosResponse;
+  color: string;
 }
 
-export const TodoList = ({ todo }: TodoListProps) => {
+export const TodoList = ({ todo, color }: TodoListProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClickToggle = () => {
@@ -34,7 +35,7 @@ export const TodoList = ({ todo }: TodoListProps) => {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
             {todo.completes.map((complete, index) => (
-              <TodoPic key={complete.completeId} index={index} />
+              <TodoPic key={complete.completeId} index={index} color={color} />
             ))}
           </motion.div>
         )}
