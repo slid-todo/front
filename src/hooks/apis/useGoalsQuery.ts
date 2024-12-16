@@ -2,7 +2,7 @@ import { AxiosError } from 'axios';
 
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
-import { getSidebarGoals } from '@/apis/Sidebar/getSidebarGoals';
+import { getGoals } from '@/apis/getGoals';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { Goal } from '@/types/Goals';
 
@@ -14,7 +14,7 @@ interface GoalsResponse {
 
 const goalsOptions: UseQueryOptions<GoalsResponse, AxiosError> = {
   queryKey: [QUERY_KEYS.SIDEBAR_GOALS],
-  queryFn: getSidebarGoals,
+  queryFn: getGoals,
 };
 
 export const useGoalsQuery = () => {
