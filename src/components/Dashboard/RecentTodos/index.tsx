@@ -10,12 +10,16 @@ import { Button } from '@/components/common/Button/Button';
 import { Card } from '@/components/common/Card';
 import { Skeleton } from '@/components/common/Skeleton';
 import { useRecentTodosQuery } from '@/hooks/apis/Dashboard/useRecnetTodosQuery';
+import { useGoalsQuery } from '@/hooks/apis/useGoalsQuery';
 import { useSidebarStore } from '@/store/useSidebarStore';
+import { useTodoModalStore } from '@/store/useTodoModalStore';
 
 export const RecentTodos = () => {
   const { todos, isLoading } = useRecentTodosQuery();
+  const { goals } = useGoalsQuery();
 
-  const { open } = useSidebarStore();
+  const { open: openModal } = useTodoModalStore();
+  const { open: openSidebar } = useSidebarStore();
 
   return (
     <DashboardItemContainer title="최근 등록한 할일" className="relative">
@@ -37,13 +41,22 @@ export const RecentTodos = () => {
             </div>
           ))}
         </div>
-      ) : todos.length === 0 ? (
+      ) : goals.length === 0 ? (
         <Card>
           <p className="text-sm-normal text-custom-gray-100">
             목표 먼저 등록 후 할 일을 설정해주세요.
           </p>
-          <Button onClick={open} size="medium">
+          <Button onClick={openSidebar} size="medium">
             새 목표 등록
+          </Button>
+        </Card>
+      ) : todos.length === 0 ? (
+        <Card>
+          <p className="text-sm-normal text-custom-gray-100">
+            등록된 할 일이 없습니다.
+          </p>
+          <Button onClick={openModal} size="medium">
+            새 할일 등록
           </Button>
         </Card>
       ) : (
