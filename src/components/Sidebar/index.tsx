@@ -9,6 +9,7 @@ import {
   FaListUl,
 } from 'react-icons/fa6';
 
+import { useRouter } from 'next/navigation';
 import { GoalList } from '@/components/Sidebar/GoalList';
 import { MenuItem } from '@/components/Sidebar/MenuItem';
 import { Profile } from '@/components/Sidebar/Profle';
@@ -18,11 +19,13 @@ import { useGoalsQuery } from '@/hooks/apis/useGoalsQuery';
 
 import { useNewGoalsStore } from '@/store/useNewGoalStore';
 import { useSidebarStore } from '@/store/useSidebarStore';
-
 import { useTodoModalStore } from '@/store/useTodoModalStore';
+
 import { cn } from '@/utils/className';
 
 export const Sidebar = () => {
+  const router = useRouter();
+
   const { goals } = useGoalsQuery();
 
   const { isOpen, open, close } = useSidebarStore();
@@ -68,6 +71,10 @@ export const Sidebar = () => {
           <MenuItem
             icon={<FaChartSimple className="size-28 p-4" />}
             label="홈"
+            onClick={() => {
+              router.push('/dashboard');
+              close();
+            }}
           />
           <MenuItem
             icon={<FaFlag className="size-28 p-4" />}
@@ -94,6 +101,10 @@ export const Sidebar = () => {
                 새 할일
               </SidebarButton>
             }
+            onClick={() => {
+              router.push('/todos');
+              close();
+            }}
           />
           <MenuItem icon={<FaFire className="size-28 p-4" />} label="팔로워" />
         </div>
