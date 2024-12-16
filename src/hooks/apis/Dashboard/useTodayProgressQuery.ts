@@ -1,7 +1,8 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
-import { getTodayProgress } from '@/apis/Dashboard/getTodayProgress';
+import { GET } from '@/apis/services/httpMethod';
+import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { BaseResponse } from '@/types/response';
 
@@ -13,12 +14,13 @@ interface TodayProgressResponse extends BaseResponse {
   data: ProgressResponse;
 }
 
-const todayProgressOptions = (): UseQueryOptions<
+export const todayProgressOptions = (): UseQueryOptions<
   TodayProgressResponse,
   AxiosError
 > => ({
   queryKey: [QUERY_KEYS.TODAY_PROGRESS],
-  queryFn: getTodayProgress,
+  queryFn: () =>
+    GET<TodayProgressResponse>(API_ENDPOINTS.TODOS.GET_TODAY_PROGRESS),
 });
 
 export const useTodayProgressQuery = () => {

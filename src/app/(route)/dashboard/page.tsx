@@ -1,8 +1,7 @@
 import { Header } from '@/components/common/Header';
+import { Follwer } from '@/components/Dashboard/Follwer';
 import { GoalList } from '@/components/Dashboard/GoalList';
 import { MyProgress } from '@/components/Dashboard/MyProgress';
-
-import { Follwer } from '@/components/Dashboard/Follwer';
 import { RecentTodos } from '@/components/Dashboard/RecentTodos';
 
 export default function DashBoardPage() {

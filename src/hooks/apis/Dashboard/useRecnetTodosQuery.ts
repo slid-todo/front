@@ -1,7 +1,8 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
-import { getRecentTodos } from '@/apis/Dashboard/getRecentTodos';
+import { GET } from '@/apis/services/httpMethod';
+import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { BaseResponse } from '@/types/response';
 import { CompletesResponse } from './useTodosOfGoalsQuery';
@@ -48,12 +49,15 @@ interface RecentTodosResponse extends BaseResponse {
   };
 }
 
-const recentTodosOptions = (): UseQueryOptions<
+export const recentTodosOptions = (): UseQueryOptions<
   RecentTodosResponse,
   AxiosError
 > => ({
   queryKey: [QUERY_KEYS.RECENT_TODOS],
-  queryFn: getRecentTodos,
+  queryFn: () =>
+    GET<RecentTodosResponse>(
+      `${API_ENDPOINTS.TODOS.GET_ALL}?lastTodoId=0&size=3`,
+    ),
 });
 
 export const useRecentTodosQuery = () => {
