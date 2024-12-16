@@ -1,7 +1,8 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
-import { getTodosOfGoals } from '@/apis/Dashboard/getTodosOfGoals';
+import { GET } from '@/apis/services/httpMethod';
+import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 
 export interface CompletesResponse {
@@ -39,12 +40,15 @@ export interface TodosOfGoalsResponse {
   timestamp: string;
 }
 
-const todosOfGoalsOptions = (): UseQueryOptions<
+export const todosOfGoalsOptions = (): UseQueryOptions<
   TodosOfGoalsResponse,
   AxiosError
 > => ({
   queryKey: [QUERY_KEYS.TODOS_OF_GOALS],
-  queryFn: getTodosOfGoals,
+  queryFn: () =>
+    GET<TodosOfGoalsResponse>(
+      `${API_ENDPOINTS.TODOS.GET_GOALS}?lastTodoId=0&size=3`,
+    ),
 });
 
 export const useTodosOfGoalsQuery = () => {
