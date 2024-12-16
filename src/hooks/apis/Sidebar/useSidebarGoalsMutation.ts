@@ -32,6 +32,12 @@ export const useSidebarGoalsMutation = () => {
     mutationFn: postSidebarGoals,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.SIDEBAR_GOALS] });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.TODOS_OF_GOALS],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.RECENT_TODOS],
+      });
     },
     onError: (error) => {
       console.error(error.message);
