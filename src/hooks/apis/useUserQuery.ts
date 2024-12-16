@@ -1,9 +1,9 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
+import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-import axiosInstance from '@/lib/axiosInstance';
 import { BaseResponse } from '@/types/response';
 
 interface UserResponse {
@@ -15,14 +15,9 @@ interface UserInfoResponse extends BaseResponse {
   data: UserResponse;
 }
 
-const getUserInfo = async () => {
-  const response = await axiosInstance.get(API_ENDPOINTS.AUTH.USER);
-  return response.data;
-};
-
 const userInfoOptions: UseQueryOptions<UserInfoResponse, AxiosError> = {
   queryKey: [QUERY_KEYS.USER_INFO],
-  queryFn: getUserInfo,
+  queryFn: () => GET<UserInfoResponse>(API_ENDPOINTS.AUTH.USER),
 };
 
 export const useUserQuery = () => {
