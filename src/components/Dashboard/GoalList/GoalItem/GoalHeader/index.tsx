@@ -5,15 +5,16 @@ import { useTodoModalStore } from '@/store/useTodoModalStore';
 
 interface GoalHeaderProps {
   title: string;
+  color: string;
 }
 
-export const GoalHeader = ({ title }: GoalHeaderProps) => {
+export const GoalHeader = ({ title, color }: GoalHeaderProps) => {
   const { isOpen, open } = useTodoModalStore();
 
   return (
     <>
       <span className="inline-flex items-center text-base-semibold">
-        <FaFlag className="mr-4 size-24 p-2 text-sub-purple" />
+        <FaFlag className="mr-4 size-24 p-2" style={{ fill: color }} />
         {title}
       </span>
       <button

@@ -29,6 +29,7 @@ export interface TodosResponse {
 export interface GoalsResponse {
   goalId: number;
   goalTitle: string;
+  goalColor: string;
   todos: TodosResponse[];
 }
 
