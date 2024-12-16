@@ -14,7 +14,7 @@ import { MenuItem } from '@/components/Sidebar/MenuItem';
 import { Profile } from '@/components/Sidebar/Profle';
 import { SidebarButton } from '@/components/Sidebar/SidebarButton';
 
-import { useSidebarGoalsQuery } from '@/hooks/apis/Sidebar/useSidebarGoalsQuery';
+import { useGoalsQuery } from '@/hooks/apis/useGoalsQuery';
 
 import { useNewGoalsStore } from '@/store/useNewGoalStore';
 import { useSidebarStore } from '@/store/useSidebarStore';
@@ -23,7 +23,7 @@ import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { cn } from '@/utils/className';
 
 export const Sidebar = () => {
-  const { goals } = useSidebarGoalsQuery();
+  const { goals } = useGoalsQuery();
 
   const { isOpen, open, close } = useSidebarStore();
   const { open: openModal } = useTodoModalStore();

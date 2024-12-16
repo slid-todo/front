@@ -6,19 +6,19 @@ import { getSidebarGoals } from '@/apis/Sidebar/getSidebarGoals';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { Goal } from '@/types/Goals';
 
-interface SidebarGoalsResponse {
+interface GoalsResponse {
   data: Goal[];
   statusCode: number;
   timestamp: string;
 }
 
-const sidebarGoalsOptions: UseQueryOptions<SidebarGoalsResponse, AxiosError> = {
+const goalsOptions: UseQueryOptions<GoalsResponse, AxiosError> = {
   queryKey: [QUERY_KEYS.SIDEBAR_GOALS],
   queryFn: getSidebarGoals,
 };
 
-export const useSidebarGoalsQuery = () => {
-  const { data, isLoading, isError, error } = useQuery(sidebarGoalsOptions);
+export const useGoalsQuery = () => {
+  const { data, isLoading, isError, error } = useQuery(goalsOptions);
   const goals = data?.data ?? [];
 
   return { goals, isLoading, isError, error };
