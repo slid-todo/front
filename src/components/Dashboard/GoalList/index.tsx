@@ -16,6 +16,7 @@ export const GoalList = () => {
           {goals.map((goal) => (
             <GoalItem
               key={goal.goalId}
+              id={goal.goalId}
               title={goal.goalTitle}
               color={goal.goalColor}
               todos={goal.todos}

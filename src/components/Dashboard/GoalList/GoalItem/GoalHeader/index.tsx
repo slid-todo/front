@@ -2,14 +2,23 @@ import { FaFlag, FaPlus } from 'react-icons/fa6';
 
 import TodoModal from '@/components/TodoModal/TodoModalContainer';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
+import { useTodoDataStore } from '@/store/useTodoDataStore';
 
 interface GoalHeaderProps {
+  id: number;
   title: string;
   color: string;
 }
 
-export const GoalHeader = ({ title, color }: GoalHeaderProps) => {
+export const GoalHeader = ({ id, title, color }: GoalHeaderProps) => {
   const { isOpen, open } = useTodoModalStore();
+  const { setTodoData, setGoalTitle } = useTodoDataStore();
+
+  const handleClick = () => {
+    open();
+    setTodoData({ goalId: id });
+    setGoalTitle(title);
+  };
 
   return (
     <>
@@ -18,7 +27,7 @@ export const GoalHeader = ({ title, color }: GoalHeaderProps) => {
         {title}
       </span>
       <button
-        onClick={open}
+        onClick={handleClick}
         className="absolute right-16 top-16 flex items-center text-primary-100"
       >
         <FaPlus className="size-24 p-4" />
