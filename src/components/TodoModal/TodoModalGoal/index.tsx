@@ -11,8 +11,7 @@ import { DropdownIcon } from './DropdownIcon';
 
 export const TodoModalGoal = () => {
   const { goals } = useGoalsQuery();
-  const { setTodoData } = useTodoDataStore();
-  const [goalTitle, setGoalTitle] = useState<string>('');
+  const { setTodoData, setGoalTitle, goalTitle } = useTodoDataStore();
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
 
   const handleDropdown = () => {
