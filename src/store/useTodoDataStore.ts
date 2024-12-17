@@ -3,7 +3,9 @@ import { CreateTodosRequest } from '@/types/CreateTodos/CreateTodosRequest';
 
 interface TodoDataStore {
   todoData: CreateTodosRequest;
+  goalTitle: string;
   setTodoData: (newData: Partial<CreateTodosRequest>) => void;
+  setGoalTitle: (goalTitle: string) => void;
   resetAll: () => void;
   resetFile: () => void;
   resetLink: () => void;
@@ -18,8 +20,8 @@ export const useTodoDataStore = create<TodoDataStore>((set) => ({
     imageName: '',
     imageEncodedBase64: '',
     goalId: 0,
-    goalTitle: '',
   },
+  goalTitle: '',
 
   setTodoData: (newData: Partial<TodoDataStore>) =>
     set((state) => ({
@@ -27,6 +29,10 @@ export const useTodoDataStore = create<TodoDataStore>((set) => ({
         ...state.todoData,
         ...newData,
       },
+    })),
+  setGoalTitle: (goalTitle: string) =>
+    set(() => ({
+      goalTitle,
     })),
   resetFile: () =>
     set((state) => ({
