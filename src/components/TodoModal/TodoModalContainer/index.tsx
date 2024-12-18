@@ -18,11 +18,11 @@ import { ModalContainer } from '@/components/common/Modal';
 
 const TodoModal = ({ todoType }: TodoModalProps) => {
   const { close } = useTodoModalStore();
-  const { resetAll, todoData } = useTodoDataStore();
+  const { resetAll, getCreateTodoData } = useTodoDataStore();
   const { mutate } = useCreateTodo();
 
   const handleClick = () => {
-    mutate(todoData);
+    mutate(getCreateTodoData());
   };
 
   const handleClose = () => {
@@ -52,10 +52,10 @@ const TodoModal = ({ todoType }: TodoModalProps) => {
             className="mt-auto"
             onClick={handleClick}
             disabled={todoDataValidation(
-              todoData.title,
-              todoData.goalId,
-              todoData.startDate,
-              todoData.endDate,
+              getCreateTodoData().title,
+              getCreateTodoData().goalId,
+              getCreateTodoData().startDate,
+              getCreateTodoData().endDate,
             )}
           >
             확인
