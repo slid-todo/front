@@ -8,7 +8,7 @@ import { notify } from '@/store/useToastStore';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { modifyTodo } from '@/apis/Todo/modifyTodo';
-import { ModifyTodosRequest } from '@/types/ModifyTodos/ModifyTodosRequest';
+import { ModifyTodosRequest } from '@/types/Todos/ModifyTodos/ModifyTodosRequest';
 
 interface ModifyMutationProps {
   todoId: string | number;

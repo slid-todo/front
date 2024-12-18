@@ -1,6 +1,6 @@
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
-import { CreateTodosRequest } from '@/types/CreateTodos/CreateTodosRequest';
 import axiosInstance from '@/lib/axiosInstance';
+import { CreateTodosRequest } from '@/types/Todos/CreateTodos/CreateTodosRequest';
 
 export const createTodo = async (data: CreateTodosRequest) => {
   try {
