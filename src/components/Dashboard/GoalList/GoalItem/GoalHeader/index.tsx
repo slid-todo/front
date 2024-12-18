@@ -1,8 +1,7 @@
 import { FaFlag, FaPlus } from 'react-icons/fa6';
 
-import TodoModal from '@/components/TodoModal/TodoModalContainer';
-import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
+import { useTodoModalStore } from '@/store/useTodoModalStore';
 
 interface GoalHeaderProps {
   id: number;
@@ -11,7 +10,7 @@ interface GoalHeaderProps {
 }
 
 export const GoalHeader = ({ id, title, color }: GoalHeaderProps) => {
-  const { isOpen, open } = useTodoModalStore();
+  const { open } = useTodoModalStore();
   const { setTodoData, setGoalTitle } = useTodoDataStore();
 
   const handleClick = () => {
@@ -33,7 +32,6 @@ export const GoalHeader = ({ id, title, color }: GoalHeaderProps) => {
         <FaPlus className="size-24 p-4" />
         <span className="text-sm-semibold">할일 추가</span>
       </button>
-      {isOpen && <TodoModal todoType="생성" />}
     </>
   );
 };

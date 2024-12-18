@@ -35,7 +35,7 @@ export const Sidebar = () => {
   const handleToggle = useNewGoalsStore((state) => state.toggleIsNew);
 
   const sidebarClass = cn(
-    'fixed top-0 left-0 z-20 flex flex-col items-center h-screen py-16 transition-all duration-200 ease-in-out bg-white border-r border-slate-100 md:flex',
+    'fixed md:sticky top-0 left-0 z-20 flex flex-col items-center h-screen py-16 transition-all duration-200 ease-in-out bg-white border-r border-custom-white-200',
     isOpen ? 'md:w-280 w-screen' : 'w-0 md:w-60 overflow-hidden',
   );
 
@@ -73,8 +73,8 @@ export const Sidebar = () => {
             icon={<FaChartSimple className="size-28 p-4" />}
             label="홈"
             onClick={() => {
-              router.push('/dashboard');
               close();
+              router.push('/dashboard');
             }}
           />
           <MenuItem
@@ -94,17 +94,14 @@ export const Sidebar = () => {
               <SidebarButton
                 type="invert"
                 disabled={goals.length === 0}
-                onClick={() => {
-                  close();
-                  openModal();
-                }}
+                onClick={openModal}
               >
                 새 할일
               </SidebarButton>
             }
             onClick={() => {
-              router.push('/todos');
               close();
+              router.push('/todos');
             }}
           />
           <MenuItem icon={<FaFire className="size-28 p-4" />} label="팔로워" />
