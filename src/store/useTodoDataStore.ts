@@ -1,38 +1,24 @@
 import { create } from 'zustand';
-import { CreateTodosRequest } from '@/types/CreateTodos/CreateTodosRequest';
+import { CreateTodosRequest } from '@/types/Todos/CreateTodos/CreateTodosRequest';
+import { COMMON_TODO_DATA } from '@/constants/Todos/CommonTodoData';
+import { ModifyTodosRequest } from '@/types/Todos/ModifyTodos/ModifyTodosRequest';
+import { getCreateTodoData, getModifyTodoData } from '@/utils/todoDataMappers';
 
 interface TodoDataStore {
-  todoData: CreateTodosRequest;
-  goalTitle: string;
-  setTodoData: (newData: Partial<CreateTodosRequest>) => void;
-  setGoalTitle: (goalTitle: string) => void;
-  resetAll: () => void;
+  todoData: typeof COMMON_TODO_DATA;
+  setTodoData: (newData: Partial<typeof COMMON_TODO_DATA>) => void;
   resetFile: () => void;
   resetLink: () => void;
+  resetAll: () => void;
+  getCreateTodoData: () => CreateTodosRequest;
+  getModifyTodoData: () => ModifyTodosRequest;
 }
 
-export const useTodoDataStore = create<TodoDataStore>((set) => ({
-  todoData: {
-    title: '',
-    startDate: '',
-    endDate: '',
-    todoLink: '',
-    imageName: '',
-    imageEncodedBase64: '',
-    goalId: 0,
-  },
-  goalTitle: '',
-
-  setTodoData: (newData: Partial<TodoDataStore>) =>
+export const useTodoDataStore = create<TodoDataStore>((set, get) => ({
+  todoData: { ...COMMON_TODO_DATA },
+  setTodoData: (newData: Partial<typeof COMMON_TODO_DATA>) =>
     set((state) => ({
-      todoData: {
-        ...state.todoData,
-        ...newData,
-      },
-    })),
-  setGoalTitle: (goalTitle: string) =>
-    set(() => ({
-      goalTitle,
+      todoData: { ...state.todoData, ...newData },
     })),
   resetFile: () =>
     set((state) => ({
@@ -42,16 +28,9 @@ export const useTodoDataStore = create<TodoDataStore>((set) => ({
     set((state) => ({
       todoData: { ...state.todoData, todoLink: '' },
     })),
-  resetAll: () =>
-    set({
-      todoData: {
-        title: '',
-        goalId: 0,
-        startDate: '',
-        endDate: '',
-        imageEncodedBase64: '',
-        imageName: '',
-        todoLink: '',
-      },
-    }),
+  resetAll: () => set({ todoData: { ...COMMON_TODO_DATA } }),
+
+  getCreateTodoData: () => getCreateTodoData(get().todoData),
+
+  getModifyTodoData: () => getModifyTodoData(get().todoData),
 }));
