@@ -2,19 +2,20 @@ import { AxiosError } from 'axios';
 
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
-import { getGoals } from '@/apis/getGoals';
+import { GET } from '@/apis/services/httpMethod';
+import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { Goal } from '@/types/Goals';
 
-interface GoalsResponse {
+export interface GoalsResponse {
   data: Goal[];
   statusCode: number;
   timestamp: string;
 }
 
 const goalsOptions: UseQueryOptions<GoalsResponse, AxiosError> = {
-  queryKey: [QUERY_KEYS.SIDEBAR_GOALS],
-  queryFn: getGoals,
+  queryKey: [QUERY_KEYS.GOALS],
+  queryFn: () => GET<GoalsResponse>(API_ENDPOINTS.GOAL.GOALS),
 };
 
 export const useGoalsQuery = () => {
