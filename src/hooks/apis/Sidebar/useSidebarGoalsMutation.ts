@@ -22,7 +22,6 @@ export const useSidebarGoalsMutation = () => {
 
       await queryClient.cancelQueries({ queryKey: [QUERY_KEYS.GOALS] });
       queryClient.setQueryData([QUERY_KEYS.GOALS], (oldData: GoalsResponse) => {
-        console.log(oldData);
         if (!oldData?.data) return oldData;
 
         return {
