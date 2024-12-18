@@ -4,41 +4,56 @@ import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { notify } from '@/store/useToastStore';
 
-import axiosInstance from '../../../lib/axiosInstance';
+import { POST } from '@/apis/services/httpMethod';
+import { GoalsResponse } from '../useGoalsQuery';
 
 interface PostGoalTypes {
   title: string;
-  userId: number;
 }
-
-const postSidebarGoals = async (newGoal: PostGoalTypes) => {
-  try {
-    const response = await axiosInstance.post(
-      API_ENDPOINTS.GOAL.GOALS,
-      newGoal,
-    );
-
-    return response.data;
-  } catch (error) {
-    console.error('사이드바 목표 추가 에러', error);
-    throw error;
-  }
-};
 
 export const useSidebarGoalsMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: postSidebarGoals,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.SIDEBAR_GOALS] });
+    mutationFn: (postData: PostGoalTypes) =>
+      POST<GoalsResponse, PostGoalTypes>(API_ENDPOINTS.GOAL.GOALS, postData),
+    onMutate: async ({ title }) => {
+      const prev = queryClient.getQueriesData({ queryKey: [QUERY_KEYS.GOALS] });
+
+      await queryClient.cancelQueries({ queryKey: [QUERY_KEYS.GOALS] });
+      queryClient.setQueryData([QUERY_KEYS.GOALS], (oldData: GoalsResponse) => {
+        console.log(oldData);
+        if (!oldData?.data) return oldData;
+
+        return {
+          ...oldData,
+          data: [
+            ...oldData.data,
+            {
+              goalId: Date.now(),
+              goalTitle: title,
+              color: '#848484',
+              createAt: new Date().toISOString(),
+            },
+          ],
+        };
+      });
+
+      return { prev };
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GOALS] });
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.TODOS_OF_GOALS],
       });
     },
-    onError: (error) => {
+    onError: (error, newGoal, context) => {
+      queryClient.setQueriesData(
+        { queryKey: [QUERY_KEYS.GOALS] },
+        context?.prev,
+      );
       console.error(error.message);
-      notify('error', '목표 등록에 실패했습니다.', 3000);
+      notify('error', `목표 등록에 실패했습니다.\n ${newGoal.title}`, 3000);
     },
   });
 };

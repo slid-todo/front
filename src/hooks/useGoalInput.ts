@@ -19,18 +19,7 @@ export const useGoalInput = () => {
   };
 
   const handlePostNewGoal = () => {
-    const postData = {
-      title: newGoal,
-      userId: 0,
-    };
-    postNewGoalMutation(postData, {
-      onSuccess: () => {
-        console.log('보내기 성공!');
-      },
-      onError: (error) => {
-        console.log('에러남', error);
-      },
-    });
+    postNewGoalMutation({ title: newGoal });
     setNewGoal('');
     toggleIsNew();
   };
