@@ -1,5 +1,7 @@
 import localFont from 'next/font/local';
+
 import QueryProvider from '@/provider/QueryProvider';
+
 import '@/styles/globals.css';
 
 const pretendard = localFont({
@@ -17,7 +19,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} font-pretendard`}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <div className="h-dvh w-screen overflow-y-auto overflow-x-hidden">
+            {children}
+          </div>
+        </QueryProvider>
       </body>
     </html>
   );

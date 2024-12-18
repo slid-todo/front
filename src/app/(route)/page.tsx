@@ -42,7 +42,7 @@ export default function Home() {
   };
 
   return (
-    <div className="pt-48 sm:px-60 sm:pt-0">
+    <div className="px-16 pt-48 sm:pt-0">
       <Header />
       <button className="size-100">안녕asdfasfd</button>
       <HeartIcon width="32" height="32" fill="#FF0000" />
