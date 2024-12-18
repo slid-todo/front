@@ -3,19 +3,17 @@ import {
   UseMutationResult,
   useQueryClient,
 } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
-
+import { AxiosError, AxiosResponse } from 'axios';
 import { createTodo } from '@/apis/Todo/createTodo';
+import { notify } from '@/store/useToastStore';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { useSidebarStore } from '@/store/useSidebarStore';
-import { notify } from '@/store/useToastStore';
-import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
-import { CreateTodosRequest } from '@/types/CreateTodos/CreateTodosRequest';
-import { CreateTodoResponse } from '@/types/CreateTodos/CreateTodosResponse';
+import { useTodoDataStore } from '@/store/useTodoDataStore';
+import { CreateTodosRequest } from '@/types/Todos/CreateTodos/CreateTodosRequest';
 
 export const useCreateTodo = (): UseMutationResult<
-  CreateTodoResponse,
+  AxiosResponse,
   AxiosError,
   CreateTodosRequest
 > => {
@@ -24,7 +22,7 @@ export const useCreateTodo = (): UseMutationResult<
   const { resetAll } = useTodoDataStore();
   const { close: closeSidebar } = useSidebarStore();
 
-  return useMutation<CreateTodoResponse, AxiosError, CreateTodosRequest>({
+  return useMutation<AxiosResponse, AxiosError, CreateTodosRequest>({
     mutationFn: (data) => createTodo(data),
     onSuccess: () => {
       notify('success', '등록에 성공하였습니다', 3000);

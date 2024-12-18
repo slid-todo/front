@@ -1,5 +1,5 @@
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
-import { ModifyTodosRequest } from '@/types/ModifyTodos/ModifyTodosRequest';
+import { ModifyTodosRequest } from '@/types/Todos/ModifyTodos/ModifyTodosRequest';
 import axiosInstance from '@/lib/axiosInstance';
 
 export const modifyTodo = async (
