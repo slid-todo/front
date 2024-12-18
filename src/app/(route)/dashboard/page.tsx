@@ -8,7 +8,7 @@ export default function DashBoardPage() {
   return (
     <>
       <Header title="대시보드" />
-      <div className="flex min-h-screen w-screen flex-col gap-16 overflow-y-scroll bg-custom-white-100 px-16 pb-16 pt-48">
+      <div className="flex min-h-screen w-screen flex-col gap-16 bg-custom-white-100 px-16 pb-16 pt-48">
         <Follwer />
         <RecentTodos />
         <MyProgress />
