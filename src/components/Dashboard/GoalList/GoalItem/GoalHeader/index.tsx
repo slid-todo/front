@@ -11,12 +11,11 @@ interface GoalHeaderProps {
 
 export const GoalHeader = ({ id, title, color }: GoalHeaderProps) => {
   const { open } = useTodoModalStore();
-  const { setTodoData, setGoalTitle } = useTodoDataStore();
+  const { setTodoData } = useTodoDataStore();
 
   const handleClick = () => {
     open();
-    setTodoData({ goalId: id });
-    setGoalTitle(title);
+    setTodoData({ goalId: id, goalTitle: title });
   };
 
   return (
