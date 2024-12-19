@@ -7,26 +7,28 @@ import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { BaseResponse } from '@/types/response';
 import { CompletesResponse } from '../Dashboard/useTodosOfGoalsQuery';
 
-interface TodayTodoResponese extends BaseResponse {
-  data: {
-    todoId: number;
-    todoTitle: string;
-    complete: CompletesResponse[];
-  };
+interface TodayTodoItem {
+  todoId: number;
+  todoTitle: string;
+  complete: CompletesResponse;
+}
+
+interface TodayTodoResponse extends BaseResponse {
+  data: TodayTodoItem[];
 }
 
 export const todayTodoOptions = (): UseQueryOptions<
-  TodayTodoResponese,
+  TodayTodoResponse,
   AxiosError
 > => ({
   queryKey: [QUERY_KEYS.TODAY_TODO],
-  queryFn: () => GET<TodayTodoResponese>(API_ENDPOINTS.TODOS.GET_TODAY_TODOS),
+  queryFn: () => GET<TodayTodoResponse>(API_ENDPOINTS.TODOS.GET_TODAY_TODOS),
 });
 
-export const useTodayProgressQuery = () => {
+export const useTodayTodoQuery = () => {
   const { data, isLoading, isError, error } = useQuery(todayTodoOptions());
 
-  const todayTodos = data?.data.complete ?? [];
+  const todayTodos = data?.data ?? [];
 
   return { todayTodos, isLoading, isError, error };
 };
