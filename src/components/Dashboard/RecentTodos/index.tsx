@@ -55,7 +55,7 @@ export const RecentTodos = () => {
           <p className="text-sm-normal text-custom-gray-100">
             등록된 할 일이 없습니다.
           </p>
-          <Button onClick={openModal} size="medium">
+          <Button onClick={() => openModal('생성')} size="medium">
             새 할일 등록
           </Button>
         </Card>
