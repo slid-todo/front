@@ -5,12 +5,21 @@ import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { BaseResponse } from '@/types/response';
-import { CompletesResponse } from '../Dashboard/useTodosOfGoalsQuery';
 
-interface TodayTodoItem {
+export interface TodoCompletesResponse {
+  completeId: number;
+  completePic: string;
+  note: string;
+  completeLink: string;
+  completeStatus: string;
+  createdAt: string;
+  startDate: string;
+}
+
+export interface TodayTodoItem {
   todoId: number;
   todoTitle: string;
-  complete: CompletesResponse;
+  complete: TodoCompletesResponse;
 }
 
 interface TodayTodoResponse extends BaseResponse {
