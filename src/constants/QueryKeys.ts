@@ -4,4 +4,5 @@ export const QUERY_KEYS = {
   TODAY_PROGRESS: 'todayProgress',
   RECENT_TODOS: 'recentTodos',
   USER_INFO: 'userInfo',
+  TODAY_TODO: 'todayTodo',
 };
