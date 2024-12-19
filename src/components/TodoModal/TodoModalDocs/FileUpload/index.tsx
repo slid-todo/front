@@ -1,4 +1,5 @@
 import { ChangeEvent, useRef } from 'react';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { todoModalVariants } from '@/constants/motionVariants';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
@@ -33,16 +34,24 @@ export const FileUpload = () => {
       initial="hidden"
       animate="visible"
     >
-      <FileUploadBtn
-        fileName={todoData.imageName}
-        onClick={() => fileUploadRef.current?.click()}
-      />
+      {todoData.imageEncodedBase64 ? (
+        <Image
+          src={todoData.imageEncodedBase64}
+          width={200}
+          height={200}
+          alt="preview"
+          className="size-full rounded-12 object-cover"
+          onClick={() => fileUploadRef.current?.click()}
+        />
+      ) : (
+        <FileUploadBtn onClick={() => fileUploadRef.current?.click()} />
+      )}
       <input
         id="file-input"
         ref={fileUploadRef}
         className="hidden"
         type={'file'}
-        accept="image/*"
+        accept="image/jpeg, image/jpg, image/png"
         onChange={handleFileName}
       />
     </motion.div>

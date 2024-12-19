@@ -2,7 +2,8 @@ export const API_ENDPOINTS = {
   TODOS: {
     GET_ALL: '/api/v1/todos',
     CREATE: '/api/v1/todos',
-    PUT: (todoId: string | number) => `api/vi/todos/${todoId}`,
+    PUT: (todoId: string | number) => `api/v1/todos/${todoId}`,
+    DELETE: (todoId: string | number) => `api/v1/todos/${todoId}`,
     GET_GOALS: '/api/v1/todos/goals',
     GET_GOAL_BY_ID: (goalId: string | number) =>
       `/api/v1/todos/goals/${goalId}`,
