@@ -94,7 +94,10 @@ export const Sidebar = () => {
               <SidebarButton
                 type="invert"
                 disabled={goals.length === 0}
-                onClick={openModal}
+                onClick={() => {
+                  close();
+                  openModal('생성');
+                }}
               >
                 새 할일
               </SidebarButton>
