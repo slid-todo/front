@@ -2,13 +2,20 @@ import { IoMdClose } from 'react-icons/io';
 import { Button } from '@/components/common/Button/Button';
 import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
 
-export const VerificationNoteHeader = () => {
+interface VerificationNoteHeaderProps {
+  onClose: () => void; // onClose prop 추가
+}
+
+export const VerificationNoteHeader = ({
+  onClose,
+}: VerificationNoteHeaderProps) => {
   const { review } = useVerificationNoteStore();
 
   return (
     <div className="flex w-full items-center justify-between py-4">
       <div className="flex items-center gap-16">
-        <IoMdClose className="size-24 cursor-pointer" />
+        {/* onClick 이벤트에 onClose 함수 연결 */}
+        <IoMdClose className="size-24 cursor-pointer" onClick={onClose} />
         <span className="text-xl-semibold">인증</span>
       </div>
       <Button
