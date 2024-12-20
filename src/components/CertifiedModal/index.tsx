@@ -14,6 +14,7 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
   const { isOpen, onClose } = props;
 
   const handleClose = () => {
+    console.log('CertifiedModal 닫기 호출');
     onClose();
   };
 
@@ -29,7 +30,7 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
         animate="visible"
         className="flex size-full flex-col items-start gap-10 overflow-y-auto bg-custom-white-100 px-16 py-24 sm:h-auto sm:w-520 sm:rounded-12 sm:p-24"
       >
-        <VerificationNote />
+        <VerificationNote onClose={handleClose} />
       </motion.div>
     </ModalContainer>
   );
