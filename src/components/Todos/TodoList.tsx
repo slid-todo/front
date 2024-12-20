@@ -1,10 +1,10 @@
-import { Todo } from '@/types/Todos';
 import { TODO_EMPTY_STATE_MESSAGES } from '@/constants/Todos/TodoMessages';
 import { TodoSection } from '@/components/Todos';
+import { TodayTodoItem } from '@/hooks/apis/Todo/useTodayTodo';
 
 interface TodoListProps {
-  inProgressTodos: Todo[];
-  completedTodos: Todo[];
+  inProgressTodos: TodayTodoItem[];
+  completedTodos: TodayTodoItem[];
 }
 
 export const TodoList = (props: TodoListProps) => {
