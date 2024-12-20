@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ModalContent } from '../common/Modal';
 import { GalleryPicker } from './GalleryPicker';
@@ -9,10 +9,11 @@ import { MobileCapture } from './MobileCapture';
 interface InputModalContentProps {
   isOpen: boolean;
   onClose: () => void;
+  onImageSelected?: (imageUrl: string) => void; // New callback prop
 }
 
 export const InputModalContent = (props: InputModalContentProps) => {
-  const { isOpen, onClose } = props;
+  const { isOpen, onClose, onImageSelected } = props;
 
   const [selectedImageUrl, setSelectedImageUrl] = useState<string>('');
 
@@ -23,6 +24,13 @@ export const InputModalContent = (props: InputModalContentProps) => {
   const handleCapturePhoto = (imageUrl: string) => {
     setSelectedImageUrl(imageUrl);
   };
+
+  // Use useEffect to notify parent when an image is selected
+  useEffect(() => {
+    if (selectedImageUrl && onImageSelected) {
+      onImageSelected(selectedImageUrl);
+    }
+  }, [selectedImageUrl, onImageSelected]);
 
   return (
     <ModalContent isOpen={isOpen} onClose={onClose}>
