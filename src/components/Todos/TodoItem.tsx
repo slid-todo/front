@@ -1,5 +1,3 @@
-// components/Todos/TodoItem.tsx
-
 'use client';
 
 import { useState } from 'react';
@@ -7,6 +5,8 @@ import { FaCamera } from 'react-icons/fa6';
 import Image from 'next/image';
 import { TodayTodoItem } from '@/hooks/apis/Todo/useTodayTodo';
 import { InputModalContent } from '../ImageInput';
+import { CertifiedModal } from '../CertifiedModal';
+// Import CertifiedModal
 
 interface TodoItemProps extends TodayTodoItem {
   className?: string;
@@ -16,6 +16,7 @@ export const TodoItem = (props: TodoItemProps) => {
   const { todoTitle, complete, className = '' } = props;
 
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
+  const [isCertifiedModalOpen, setIsCertifiedModalOpen] = useState(false); // New state
 
   const handleOpenGalleryModal = () => {
     setIsGalleryModalOpen(true);
@@ -23,6 +24,22 @@ export const TodoItem = (props: TodoItemProps) => {
 
   const handleCloseGalleryModal = () => {
     setIsGalleryModalOpen(false);
+  };
+
+  // Handler for when an image is selected
+  const handleImageSelected = (imageUrl: string) => {
+    // You might want to perform additional actions here, like updating the todo item with the new image
+    console.log('Image selected:', imageUrl);
+
+    // Close the gallery modal
+    setIsGalleryModalOpen(false);
+
+    // Open the certified modal
+    setIsCertifiedModalOpen(true);
+  };
+
+  const handleCloseCertifiedModal = () => {
+    setIsCertifiedModalOpen(false);
   };
 
   return (
@@ -56,9 +73,17 @@ export const TodoItem = (props: TodoItemProps) => {
         </div>
       </div>
 
+      {/* Input Modal */}
       <InputModalContent
         isOpen={isGalleryModalOpen}
         onClose={handleCloseGalleryModal}
+        onImageSelected={handleImageSelected} // Pass the callback
+      />
+
+      {/* Certified Modal */}
+      <CertifiedModal
+        isOpen={isCertifiedModalOpen}
+        onClose={handleCloseCertifiedModal}
       />
     </>
   );
