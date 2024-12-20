@@ -32,6 +32,13 @@ export const InputModalContent = (props: InputModalContentProps) => {
     }
   }, [selectedImageUrl, onImageSelected]);
 
+  // Reset selectedImageUrl when the modal is closed
+  useEffect(() => {
+    if (!isOpen) {
+      setSelectedImageUrl('');
+    }
+  }, [isOpen]);
+
   return (
     <ModalContent isOpen={isOpen} onClose={onClose}>
       <h2 className="text-base-medium text-primary-100">
