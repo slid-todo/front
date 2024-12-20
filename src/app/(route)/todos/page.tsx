@@ -4,7 +4,7 @@ import { TodoContainer } from '@/components/Todos';
 export default function DashBoardPage() {
   return (
     <>
-      <Header title="모든 할 일" />
+      <Header />
       <TodoContainer />
     </>
   );
