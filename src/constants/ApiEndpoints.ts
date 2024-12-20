@@ -9,6 +9,8 @@ export const API_ENDPOINTS = {
       `/api/v1/todos/goals/${goalId}`,
     GET_TODAY_PROGRESS: '/api/v1/todos/progress',
     GET_TODAY_TODOS: '/api/v1/todos/today',
+    PUT_CERTIFIED_TODO: (completeId: number) =>
+      `/api/v1/completes/${completeId}`,
   },
   AUTH: {
     SIGN_IN: '/api/v1/auths/login',
