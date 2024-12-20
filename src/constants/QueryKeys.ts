@@ -5,4 +5,7 @@ export const QUERY_KEYS = {
   RECENT_TODOS: 'recentTodos',
   USER_INFO: 'userInfo',
   TODAY_TODO: 'todayTodo',
+
+  CERTIFIED_TODO: 'certifiedTodo',
+  CERTIFIED_RECENT_TODO: 'certifiedRecentTodo',
 };
