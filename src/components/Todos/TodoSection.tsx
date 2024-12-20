@@ -1,10 +1,10 @@
 import { FaPlus } from 'react-icons/fa6';
-import { Todo } from '@/types/Todos';
 import { TodoItem } from '@/components/Todos';
+import { TodayTodoItem } from '@/hooks/apis/Todo/useTodayTodo';
 
 interface TodoSectionProps {
   title: string;
-  todos: Todo[];
+  todos: TodayTodoItem[];
   emptyMessage: string;
   showAddButton?: boolean;
 }
@@ -28,7 +28,7 @@ export const TodoSection = (props: TodoSectionProps) => {
             const isLastItem = index === todos.length - 1;
             return (
               <TodoItem
-                key={todo.id}
+                key={todo.todoId}
                 {...todo}
                 className={isLastItem ? '' : 'border-b border-custom-white-200'}
               />
