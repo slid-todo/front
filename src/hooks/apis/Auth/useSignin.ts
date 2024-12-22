@@ -14,8 +14,10 @@ export const useSignin = (): UseMutationResult<
 
   return useMutation({
     mutationFn: (data) => signin(data),
-    onSuccess: () => {
+    onSuccess: (res: AxiosResponse) => {
       notify('success', '로그인에 성공하였습니다', 3000);
+      document.cookie = `token=${res.headers.token}; max-age=3600;`;
+
       router.push('/dashboard');
     },
     onError: (error: AxiosError) => {
