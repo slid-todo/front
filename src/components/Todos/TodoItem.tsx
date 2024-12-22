@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { FaCamera } from 'react-icons/fa6';
 import Image from 'next/image';
 import { TodayTodoItem } from '@/hooks/apis/Todo/useTodayTodo';
+import { useVerificationNoteStore } from '@/store/useVerificationNoteStore'; // Zustand 스토어 임포트
 import { InputModalContent } from '../ImageInput';
 import { CertifiedModal } from '../CertifiedModal';
-// Import CertifiedModal
 
 interface TodoItemProps extends TodayTodoItem {
   className?: string;
@@ -16,9 +16,20 @@ export const TodoItem = (props: TodoItemProps) => {
   const { todoTitle, complete, className = '' } = props;
 
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
-  const [isCertifiedModalOpen, setIsCertifiedModalOpen] = useState(false); // New state
+  const [isCertifiedModalOpen, setIsCertifiedModalOpen] = useState(false);
+
+  const {
+    setCompleteId,
+    setImageUrl,
+    setCompletePicName,
+    setCompleteLink,
+    reset,
+  } = useVerificationNoteStore();
 
   const handleOpenGalleryModal = () => {
+    if (complete.completeId) {
+      setCompleteId(complete.completeId); // completeId 설정
+    }
     setIsGalleryModalOpen(true);
   };
 
@@ -26,26 +37,38 @@ export const TodoItem = (props: TodoItemProps) => {
     setIsGalleryModalOpen(false);
   };
 
-  // Handler for when an image is selected
   const handleImageSelected = (imageUrl: string) => {
-    // You might want to perform additional actions here, like updating the todo item with the new image
     console.log('Image selected:', imageUrl);
 
-    // Close the gallery modal
+    // 스토어에 이미지 URL 설정
+    setImageUrl(imageUrl);
+
+    // completePicName 설정 (completeId가 있어야 함)
+    if (complete.completeId) {
+      setCompletePicName(`${complete.completeId}-image`);
+    }
+
+    setCompleteLink('임시링크');
+
+    // 갤러리 모달 닫기
     setIsGalleryModalOpen(false);
 
-    // Open the certified modal
+    // 인증 모달 열기
     setIsCertifiedModalOpen(true);
   };
 
   const handleCloseCertifiedModal = () => {
+    console.log('Certified Modal closed');
     setIsCertifiedModalOpen(false);
+
+    // 인증 모달을 닫을 때 스토어 초기화
+    reset();
   };
 
   return (
     <>
       <div className={`flex h-72 ${className}`}>
-        {complete.completePic ? (
+        {complete?.completePic ? (
           <div className="flex-center my-8 size-56 overflow-hidden rounded-16 bg-sub-purple">
             <Image
               src={complete.completePic}
@@ -77,7 +100,7 @@ export const TodoItem = (props: TodoItemProps) => {
       <InputModalContent
         isOpen={isGalleryModalOpen}
         onClose={handleCloseGalleryModal}
-        onImageSelected={handleImageSelected} // Pass the callback
+        onImageSelected={handleImageSelected}
       />
 
       {/* Certified Modal */}

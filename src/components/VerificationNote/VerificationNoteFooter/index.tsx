@@ -2,7 +2,7 @@ import { FaLink } from 'react-icons/fa';
 import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
 
 export const VerificationNoteFooter = () => {
-  const { review } = useVerificationNoteStore();
+  const { note } = useVerificationNoteStore();
 
   return (
     <div className="mt-auto flex w-full items-center justify-between bg-custom-white-200 p-16">
@@ -13,9 +13,9 @@ export const VerificationNoteFooter = () => {
       <div className="flex items-center gap-16">
         <div>
           <span
-            className={`text-xs-medium ${review.length > 100 ? 'text-error' : 'text-custom-gray-300'} `}
+            className={`text-xs-medium ${note.length > 100 ? 'text-error' : 'text-custom-gray-300'} `}
           >
-            {review.length}
+            {note.length}
           </span>
           <span className="text-xs-medium text-custom-gray-300">/100</span>
         </div>
