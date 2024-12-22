@@ -3,12 +3,20 @@
 import { useState } from 'react';
 import { FaCamera } from 'react-icons/fa6';
 import Image from 'next/image';
-import { TodayTodoItem } from '@/hooks/apis/Todo/useTodayTodo';
+import { TodoCompletesResponse } from '@/hooks/apis/Todo/useTodayTodo';
 import { useVerificationNoteStore } from '@/store/useVerificationNoteStore'; // Zustand 스토어 임포트
 import { InputModalContent } from '../ImageInput';
 import { CertifiedModal } from '../CertifiedModal';
 
-interface TodoItemProps extends TodayTodoItem {
+// interface TodoItemProps extends TodayTodoItem {
+//   className?: string;
+// }
+// api 받아오는 타입이 달라서 잠시 닫아뒀어요
+
+interface TodoItemProps {
+  todoId: number;
+  todoTitle: string;
+  complete?: TodoCompletesResponse;
   className?: string;
 }
 
@@ -27,7 +35,7 @@ export const TodoItem = (props: TodoItemProps) => {
   } = useVerificationNoteStore();
 
   const handleOpenGalleryModal = () => {
-    if (complete.completeId) {
+    if (complete?.completeId) {
       setCompleteId(complete.completeId);
     }
     setIsGalleryModalOpen(true);
@@ -42,7 +50,7 @@ export const TodoItem = (props: TodoItemProps) => {
 
     setImageUrl(imageUrl);
 
-    if (complete.completeId) {
+    if (complete?.completeId) {
       setCompletePicName(`${complete.completeId}-image`);
     }
 

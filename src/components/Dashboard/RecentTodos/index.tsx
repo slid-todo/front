@@ -64,9 +64,8 @@ export const RecentTodos = () => {
           {todos.map((todo) => (
             <TodoItem
               key={todo.todoId}
-              title={todo.todoTitle}
-              goal={todo.goalTitle}
-              color={todo.goalColor}
+              todoTitle={todo.todoTitle}
+              todoId={todo.todoId}
             />
           ))}
         </ul>
