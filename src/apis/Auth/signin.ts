@@ -1,6 +1,7 @@
-import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import axiosInstance from '@/lib/axiosInstance';
-import { AuthDataRequest } from '@/types/Auth/AuthDataRequest';
+
+import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
+import type { AuthDataRequest } from '@/types/Auth/AuthDataRequest';
 
 export const signin = async (data: AuthDataRequest) => {
   try {
