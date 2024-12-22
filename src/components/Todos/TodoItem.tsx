@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { FaCamera } from 'react-icons/fa6';
 import Image from 'next/image';
 import { TodoCompletesResponse } from '@/hooks/apis/Todo/useTodayTodo';
-import { useVerificationNoteStore } from '@/store/useVerificationNoteStore'; // Zustand 스토어 임포트
+import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
 import { InputModalContent } from '../ImageInput';
 import { CertifiedModal } from '../CertifiedModal';
 
