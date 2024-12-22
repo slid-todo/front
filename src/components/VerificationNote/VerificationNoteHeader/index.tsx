@@ -4,7 +4,7 @@ import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
 
 interface VerificationNoteHeaderProps {
   onClose: () => void;
-  onSubmit: () => void; // 제출 함수 추가
+  onSubmit: () => void;
 }
 
 export const VerificationNoteHeader = ({
@@ -24,7 +24,7 @@ export const VerificationNoteHeader = ({
         size="small"
         radius={false}
         disabled={note.length > 100 ? true : false}
-        onClick={onSubmit} // 제출 함수 연결
+        onClick={onSubmit}
       >
         작성완료
       </Button>

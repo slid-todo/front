@@ -31,7 +31,7 @@ export const useVerificationNoteStore = create<VerificationNoteState>(
         imageUrl: '',
         completePicName: '',
         note: '',
-        completeLink: '임시링크',
+        completeLink: '임시링크', // 지금 회의내용으로는 링크 없애기로 했는데 아직 있어서 잠시 지정 이렇게 해놨어요
         completeId: null,
       }),
   }),

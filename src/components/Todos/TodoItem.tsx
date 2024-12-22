@@ -28,7 +28,7 @@ export const TodoItem = (props: TodoItemProps) => {
 
   const handleOpenGalleryModal = () => {
     if (complete.completeId) {
-      setCompleteId(complete.completeId); // completeId 설정
+      setCompleteId(complete.completeId);
     }
     setIsGalleryModalOpen(true);
   };
@@ -40,20 +40,16 @@ export const TodoItem = (props: TodoItemProps) => {
   const handleImageSelected = (imageUrl: string) => {
     console.log('Image selected:', imageUrl);
 
-    // 스토어에 이미지 URL 설정
     setImageUrl(imageUrl);
 
-    // completePicName 설정 (completeId가 있어야 함)
     if (complete.completeId) {
       setCompletePicName(`${complete.completeId}-image`);
     }
 
     setCompleteLink('임시링크');
 
-    // 갤러리 모달 닫기
     setIsGalleryModalOpen(false);
 
-    // 인증 모달 열기
     setIsCertifiedModalOpen(true);
   };
 
@@ -61,7 +57,6 @@ export const TodoItem = (props: TodoItemProps) => {
     console.log('Certified Modal closed');
     setIsCertifiedModalOpen(false);
 
-    // 인증 모달을 닫을 때 스토어 초기화
     reset();
   };
 
@@ -88,7 +83,8 @@ export const TodoItem = (props: TodoItemProps) => {
         )}
         <div className="my-14 ml-16">
           <div className="text-xs-medium text-custom-gray-100">
-            현재 목표가 안 나와요 ㅠ
+            현재 목표가 안 나와요 ㅠ(목표 api 수정된걸로 적용해야 하는데 서버
+            터져서 확인 못 하는 중)
           </div>
           <div className="text-base-medium text-custom-gray-300">
             {todoTitle}

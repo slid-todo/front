@@ -36,7 +36,7 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
     }
 
     const data = {
-      completePicBase64: imageUrl, // 실제로는 Base64 인코딩 필요
+      completePicBase64: imageUrl,
       completePicName: completePicName || `${completeId}-image`,
       note: note || '',
       completeLink: completeLink || '임시링크',

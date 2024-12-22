@@ -9,10 +9,7 @@ export const VerificationNoteImage = () => {
     useVerificationNoteStore();
 
   const handleReload = () => {
-    // 이미지 재촬영 로직을 구현하거나, 갤러리 모달을 다시 여는 로직을 추가할 수 있습니다.
-    // 예를 들어, 갤러리 모달을 다시 열려면:
-    // openGalleryModal(); // 이 함수는 상위 컴포넌트에서 전달받아야 할 수 있습니다.
-    // 여기서는 단순히 이미지 URL과 이름을 초기화합니다.
+    // 이미지 재촬영 로직 구현 예정
     setImageUrl('');
     setCompletePicName('');
   };
