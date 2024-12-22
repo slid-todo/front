@@ -10,7 +10,7 @@ import {
 
 interface VerificationNoteProps {
   onClose: () => void;
-  onSubmit: () => void; // 제출 함수 추가
+  onSubmit: () => void;
 }
 
 export const VerificationNote = ({

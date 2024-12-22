@@ -9,7 +9,7 @@ import { MobileCapture } from './MobileCapture';
 interface InputModalContentProps {
   isOpen: boolean;
   onClose: () => void;
-  onImageSelected?: (imageUrl: string) => void; // New callback prop
+  onImageSelected?: (imageUrl: string) => void;
 }
 
 export const InputModalContent = (props: InputModalContentProps) => {
@@ -25,14 +25,12 @@ export const InputModalContent = (props: InputModalContentProps) => {
     setSelectedImageUrl(imageUrl);
   };
 
-  // Use useEffect to notify parent when an image is selected
   useEffect(() => {
     if (selectedImageUrl && onImageSelected) {
       onImageSelected(selectedImageUrl);
     }
   }, [selectedImageUrl, onImageSelected]);
 
-  // Reset selectedImageUrl when the modal is closed
   useEffect(() => {
     if (!isOpen) {
       setSelectedImageUrl('');
