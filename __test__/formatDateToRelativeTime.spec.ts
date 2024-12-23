@@ -17,12 +17,12 @@ describe('formatDateToRelativeTime 테스트', () => {
   });
 
   it('5초 전', () => {
-    const date = new Date(fixedDate - 5000).toISOString();
+    const date = new Date(fixedDate - 5 * 1000).toISOString();
     expect('5초 전').toBe(formatDateToRelativeTime(date));
   });
 
   it('1분 전', () => {
-    const date = new Date(fixedDate - 60000).toISOString();
+    const date = new Date(fixedDate - 60 * 1000).toISOString();
     expect('1분 전').toBe(formatDateToRelativeTime(date));
   });
 
@@ -37,7 +37,7 @@ describe('formatDateToRelativeTime 테스트', () => {
   });
 
   it('미래 날짜 처리 (5초 후)', () => {
-    const date = new Date(fixedDate + 5000).toISOString();
+    const date = new Date(fixedDate + 5 * 1000).toISOString();
     expect('5초 후').toBe(formatDateToRelativeTime(date));
   });
 
