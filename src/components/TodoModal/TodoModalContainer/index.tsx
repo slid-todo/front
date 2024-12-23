@@ -62,10 +62,10 @@ const TodoModal = () => {
             className="mt-auto"
             onClick={handleClick}
             disabled={todoDataValidation(
-              getCreateTodoData().title,
-              getCreateTodoData().goalId,
-              getCreateTodoData().startDate,
-              getCreateTodoData().endDate,
+              todoData.title,
+              todoData.goalTitle,
+              todoData.startDate,
+              todoData.endDate,
             )}
           >
             확인
