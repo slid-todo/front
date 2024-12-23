@@ -9,6 +9,7 @@ import { BaseResponse } from '@/types/response';
 interface UserResponse {
   email: string;
   name: string;
+  profilePic: string;
 }
 
 interface UserInfoResponse extends BaseResponse {
@@ -24,6 +25,7 @@ export const useUserQuery = () => {
   const { data, isLoading, isError, error } = useQuery(userInfoOptions);
   const email = data?.data.email ?? '';
   const name = data?.data.name ?? '';
+  const profile = data?.data.profilePic ?? '';
 
-  return { email, name, isLoading, isError, error };
+  return { email, name, profile, isLoading, isError, error };
 };
