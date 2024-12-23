@@ -46,6 +46,7 @@ export const FileUpload = () => {
             width={200}
             height={200}
             alt="preview"
+            priority
             className="size-full rounded-12 object-cover"
             onClick={() => fileUploadRef.current?.click()}
           />
