@@ -17,9 +17,6 @@ export const GoalList = ({ goals }: GoalListProps) => {
 
   return (
     <div className="flex w-full flex-col px-8">
-      {goals.map((goal, index) => (
-        <GoalItem key={index} text={goal.goalTitle} color={goal.color} />
-      ))}
       {isNew && (
         <div className="flex items-center gap-16 px-8 pb-16">
           <div className="size-16 shrink-0 rounded-full bg-custom-gray-100" />
@@ -33,6 +30,9 @@ export const GoalList = ({ goals }: GoalListProps) => {
           />
         </div>
       )}
+      {goals.map((goal, index) => (
+        <GoalItem key={index} text={goal.goalTitle} color={goal.color} />
+      ))}
     </div>
   );
 };

@@ -27,13 +27,13 @@ export const useSidebarGoalsMutation = () => {
         return {
           ...oldData,
           data: [
-            ...oldData.data,
             {
               goalId: Date.now(),
               goalTitle: title,
               color: '#848484',
               createAt: new Date().toISOString(),
             },
+            ...oldData.data,
           ],
         };
       });
