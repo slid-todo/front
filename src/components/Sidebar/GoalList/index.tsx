@@ -30,8 +30,8 @@ export const GoalList = ({ goals }: GoalListProps) => {
           />
         </div>
       )}
-      {goals.map((goal, index) => (
-        <GoalItem key={index} text={goal.goalTitle} color={goal.color} />
+      {goals.map((goal) => (
+        <GoalItem key={goal.goalId} text={goal.goalTitle} color={goal.color} />
       ))}
     </div>
   );
