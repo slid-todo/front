@@ -1,10 +1,10 @@
 export const todoDataValidation = (
   title: string,
-  goalId: number,
+  goalTitle: string,
   startDate: string,
   endDate: string,
 ) => {
-  if (title && goalId && startDate && endDate) {
+  if (title && goalTitle && startDate && endDate) {
     return false;
   }
   return true;
