@@ -1,5 +1,5 @@
 import { Header } from '@/components/common/Header';
-import { Follwer } from '@/components/Dashboard/Follwer';
+import { Follwer } from '@/components/Dashboard/Follower';
 import { GoalList } from '@/components/Dashboard/GoalList';
 import { MyProgress } from '@/components/Dashboard/MyProgress';
 import { RecentTodos } from '@/components/Dashboard/RecentTodos';
