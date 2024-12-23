@@ -50,6 +50,13 @@ export const Sidebar = () => {
     isOpen ? 'opacity-50' : 'opacity-0',
   );
 
+  const recentGoals = goals
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    )
+    .slice(0, 3);
+
   return (
     <div className={sidebarClass}>
       <div className={iconContainerClass}>
@@ -86,7 +93,7 @@ export const Sidebar = () => {
               </SidebarButton>
             }
           />
-          <GoalList goals={goals} />
+          <GoalList goals={recentGoals} />
           <MenuItem
             icon={<FaListUl className="size-28 cursor-pointer p-4" />}
             label="내 할일"
