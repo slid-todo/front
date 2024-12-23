@@ -16,7 +16,7 @@ export const FOLLOWER_DATA = [
     comment: 5,
     like: 12,
     likeStatus: true,
-    createdAt: '2024-12-20T10:00:00',
+    createdAt: '2024-12-23T10:00:00',
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ export const FOLLOWER_DATA = [
     comment: 3,
     like: 8,
     likeStatus: false,
-    createdAt: '2024-12-19T10:00:00',
+    createdAt: '2024-12-23T10:00:00',
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ export const FOLLOWER_DATA = [
     comment: 7,
     like: 15,
     likeStatus: true,
-    createdAt: '2024-12-18T10:00:00',
+    createdAt: '2024-12-23T10:00:00',
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ export const FOLLOWER_DATA = [
     comment: 2,
     like: 4,
     likeStatus: false,
-    createdAt: '2024-12-17T10:00:00',
+    createdAt: '2024-12-22T10:00:00',
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ export const FOLLOWER_DATA = [
     comment: 10,
     like: 20,
     likeStatus: true,
-    createdAt: '2024-12-16T10:00:00',
+    createdAt: '2024-12-21T10:00:00',
   },
   {
     id: 6,
@@ -61,7 +61,7 @@ export const FOLLOWER_DATA = [
     comment: 6,
     like: 9,
     likeStatus: false,
-    createdAt: '2024-12-15T10:00:00',
+    createdAt: '2024-12-20T10:00:00',
   },
   {
     id: 7,
@@ -70,7 +70,7 @@ export const FOLLOWER_DATA = [
     comment: 4,
     like: 11,
     likeStatus: true,
-    createdAt: '2024-12-14T10:00:00',
+    createdAt: '2024-10-14T10:00:00',
   },
   {
     id: 8,
@@ -79,7 +79,7 @@ export const FOLLOWER_DATA = [
     comment: 8,
     like: 14,
     likeStatus: true,
-    createdAt: '2024-12-13T10:00:00',
+    createdAt: '2024-08-13T10:00:00',
   },
   {
     id: 9,
@@ -88,7 +88,7 @@ export const FOLLOWER_DATA = [
     comment: 1,
     like: 3,
     likeStatus: false,
-    createdAt: '2024-12-12T10:00:00',
+    createdAt: '2023-12-12T10:00:00',
   },
   {
     id: 10,
@@ -97,6 +97,6 @@ export const FOLLOWER_DATA = [
     comment: 9,
     like: 17,
     likeStatus: true,
-    createdAt: '2024-12-11T10:00:00',
+    createdAt: '2023-12-11T10:00:00',
   },
 ];
