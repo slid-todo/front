@@ -13,6 +13,14 @@ const nextConfig: NextConfig = {
     });
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'slid-todo.s3.ap-northeast-2.amazonaws.com',
+      },
+    ],
+  },
 };
 
 // withBundleAnalyzer를 통해 nextConfig를 래핑
