@@ -11,9 +11,11 @@ export const formatDateToPoint = (dateString: string) => {
 };
 
 export const formatDateToRelativeTime = (dateString: string): string => {
+  if (!dateString) return '';
+
   const date = new Date(dateString);
-  const now = new Date();
-  const timeDifference = date.getTime() - now.getTime();
+  const now = Date.now();
+  const timeDifference = date.getTime() - now;
   const rtf = new Intl.RelativeTimeFormat('ko', { numeric: 'auto' });
 
   const seconds = Math.floor(timeDifference / 1000);
