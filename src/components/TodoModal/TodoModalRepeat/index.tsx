@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DateRange } from 'react-day-picker';
 import { IoCalendarNumberOutline } from 'react-icons/io5';
 import { Input } from '@/components/common/Input';
@@ -8,7 +8,7 @@ import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { CalendarDropdown } from './CalendarDropdown';
 
 export const TodoModalRepeat = () => {
-  const { setTodoData } = useTodoDataStore();
+  const { todoData, setTodoData } = useTodoDataStore();
   const [isOpenCalendar, setIsOpenCalendar] = useState(false);
   const [selectedRange, setSelectedRange] = useState<DateRange | undefined>();
 
@@ -19,6 +19,15 @@ export const TodoModalRepeat = () => {
       endDate: formatDate(selectedRange?.to),
     });
   };
+
+  useEffect(() => {
+    if (todoData.startDate && todoData.endDate) {
+      setSelectedRange({
+        from: new Date(todoData.startDate),
+        to: new Date(todoData.endDate),
+      });
+    }
+  }, [todoData.startDate, todoData.endDate]);
 
   return (
     <div className="relative flex flex-col items-start gap-12 self-stretch">
