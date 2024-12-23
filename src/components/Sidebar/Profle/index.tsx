@@ -1,3 +1,7 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
 import Image from 'next/image';
 
 import { Skeleton } from '@/components/common/Skeleton';
@@ -5,10 +9,20 @@ import { useUserQuery } from '@/hooks/apis/useUserQuery';
 
 export const Profile = () => {
   const { email, name, profile, isLoading } = useUserQuery();
+  const [showSkeleton, setShowSkeleton] = useState(false);
+
+  useEffect(() => {
+    if (isLoading) {
+      const timer = setTimeout(() => setShowSkeleton(true), 200);
+      return () => clearTimeout(timer);
+    }
+
+    setShowSkeleton(false);
+  }, [isLoading]);
 
   return (
     <div className="flex w-full gap-8 p-16">
-      {isLoading ? (
+      {showSkeleton || isLoading ? (
         <>
           <Skeleton className="size-37 rounded-8" />
           <div className="flex flex-col gap-8 py-4">
