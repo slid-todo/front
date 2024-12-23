@@ -9,9 +9,10 @@ import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { modifyTodo } from '@/apis/Todo/modifyTodo';
 import { ModifyTodosRequest } from '@/types/Todos/ModifyTodos/ModifyTodosRequest';
+import { useTodoDataStore } from '@/store/useTodoDataStore';
 
 interface ModifyMutationProps {
-  todoId: string | number;
+  todoId: number;
   data: ModifyTodosRequest;
 }
 
@@ -22,6 +23,7 @@ export const useModifyTodo = (): UseMutationResult<
 > => {
   const queryClient = useQueryClient();
   const { close } = useTodoModalStore();
+  const { resetAll } = useTodoDataStore();
 
   return useMutation<AxiosResponse, AxiosError, ModifyMutationProps>({
     mutationFn: ({ todoId, data }: ModifyMutationProps) =>
@@ -31,10 +33,11 @@ export const useModifyTodo = (): UseMutationResult<
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TODOS_OF_GOALS] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.RECENT_TODOS] });
       close();
+      resetAll();
     },
     onError: (error: AxiosError) => {
       notify('error', '수정에 실패하였습니다', 3000);
-      console.error('Error creating todo:', error.message);
+      console.error('Error Modify todo:', error.message);
     },
   });
 };

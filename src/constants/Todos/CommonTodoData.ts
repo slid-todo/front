@@ -4,6 +4,7 @@ export const COMMON_TODO_DATA = {
   endDate: '',
   todoLink: '',
   todoStatus: '',
+  todoId: 0,
   imageName: '',
   imageEncodedBase64: '',
   goalId: 0,
