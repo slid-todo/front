@@ -1,4 +1,6 @@
 export const formatDateToPoint = (dateString: string) => {
+  if (!dateString) return '';
+
   const date = new Date(dateString);
 
   const year = date.getFullYear().toString().slice(2);
