@@ -23,9 +23,9 @@ export default function Home() {
     startDate: '2024-12-15',
     endDate: '2024-12-17',
     todoStatus: '진행',
-    todoLink: '',
-    todoPic:
+    todoLink:
       'https://slid-todo.s3.ap-northeast-2.amazonaws.com/a19c4793-d33b-4be6-9f65-097bed5a6709_testmouse1.png',
+    todoPic: '',
   };
 
   const handleFilterChange = (filter: string) => {
@@ -57,7 +57,9 @@ export default function Home() {
   };
 
   const handleOpenModify = async () => {
-    const base64Image = await convertImageToBase64(data.todoPic);
+    const base64Image = data.todoPic
+      ? await convertImageToBase64(data.todoPic)
+      : '';
     setTodoData({
       todoId: data.todoId,
       goalTitle: data.goalTitle,
