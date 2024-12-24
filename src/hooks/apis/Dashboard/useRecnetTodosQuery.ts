@@ -4,6 +4,7 @@ import { AxiosError } from 'axios';
 import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
+import { BasePageableTypes } from '@/types/pageable';
 import { BaseResponse } from '@/types/response';
 import { TodoCompletesResponse } from '../Todo/useTodayTodo';
 
@@ -22,31 +23,7 @@ interface TodoResponse {
 }
 
 interface RecentTodosResponse extends BaseResponse {
-  data: {
-    content: TodoResponse[];
-    empty: boolean;
-    first: boolean;
-    last: boolean;
-    number: number;
-    numberOfElement: number;
-    pageable: {
-      offset: number;
-      pageNumber: number;
-      paged: boolean;
-      sort: {
-        empty: boolean;
-        sorted: boolean;
-        unsorted: boolean;
-      };
-      unpaged: boolean;
-    };
-    size: number;
-    sort: {
-      empty: boolean;
-      sorted: boolean;
-      unsorted: boolean;
-    };
-  };
+  data: BasePageableTypes<TodoResponse[]>;
 }
 
 export const recentTodosOptions = (): UseQueryOptions<
