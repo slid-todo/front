@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { ERROR_MESSAGE } from '@/constants/ToastMessages';
+import { ERROR_MESSAGE } from '@/constants/Messages';
 
 interface ToastState {
   type: 'success' | 'error' | 'info' | null;
