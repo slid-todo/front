@@ -100,14 +100,12 @@ export const TodoItem = (props: TodoItemProps) => {
         </div>
       </div>
 
-      {/* Input Modal */}
       <InputModalContent
         isOpen={isGalleryModalOpen}
         onClose={handleCloseGalleryModal}
         onImageSelected={handleImageSelected}
       />
 
-      {/* Certified Modal */}
       <CertifiedModal
         isOpen={isCertifiedModalOpen}
         onClose={handleCloseCertifiedModal}
