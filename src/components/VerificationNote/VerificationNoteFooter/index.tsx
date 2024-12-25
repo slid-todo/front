@@ -1,8 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaLink } from 'react-icons/fa';
+
 import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
+import { ConfirmationModal } from '@/components/ConfirmationModal';
+import { notify } from '@/store/useToastStore';
+import { MODAL_MESSAGES, TOAST_MESSAGES } from '@/constants/Messages';
 
 export const VerificationNoteFooter = () => {
   const {
@@ -18,10 +22,12 @@ export const VerificationNoteFooter = () => {
     setCompleteId,
   } = useVerificationNoteStore();
 
-  // 로컬 스토리지에 이미 저장된 내용이 있는지 여부
   const [isSaved, setIsSaved] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [confirmationMode, setConfirmationMode] = useState<'save' | 'load'>(
+    'save',
+  );
 
-  // 컴포넌트 마운트 시점에 한번 확인
   useEffect(() => {
     const savedData = localStorage.getItem('verificationNote');
     if (savedData) {
@@ -29,44 +35,52 @@ export const VerificationNoteFooter = () => {
     }
   }, []);
 
-  const handleSaveOrLoad = () => {
+  const handleClick = () => {
     if (isSaved) {
-      // 이미 저장된 데이터가 있으므로 '불러오기' 로직
-      if (window.confirm('임시 저장된 내용을 불러오시겠습니까?')) {
-        const savedData = localStorage.getItem('verificationNote');
-        if (savedData) {
-          const parsedData = JSON.parse(savedData);
-
-          // store 업데이트
-          setImageUrl(parsedData.imageUrl);
-          setCompletePicName(parsedData.completePicName);
-          setNote(parsedData.note);
-          setCompleteLink(parsedData.completeLink);
-          setCompleteId(parsedData.completeId);
-
-          // 불러오기를 완료하면 로컬 스토리지에서 삭제
-          localStorage.removeItem('verificationNote');
-          setIsSaved(false);
-
-          console.log('임시 저장된 내용이 불러와졌습니다!');
-        }
-      }
+      setConfirmationMode('load');
     } else {
-      // 저장된 데이터가 없으므로 '임시저장' 로직
-      if (window.confirm('내용을 임시저장하시겠습니까?')) {
-        const dataToSave = {
-          imageUrl,
-          completePicName,
-          note,
-          completeLink,
-          completeId,
-        };
+      setConfirmationMode('save');
+    }
+    setIsModalOpen(true);
+  };
 
-        localStorage.setItem('verificationNote', JSON.stringify(dataToSave));
-        console.log('임시 저장 되었습니다!');
-        setIsSaved(true); // 이제 저장된 상태로 표시
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleConfirm = () => {
+    if (confirmationMode === 'save') {
+      const dataToSave = {
+        imageUrl,
+        completePicName,
+        note,
+        completeLink,
+        completeId,
+      };
+      localStorage.setItem('verificationNote', JSON.stringify(dataToSave));
+
+      notify('success', TOAST_MESSAGES.SAVE_SUCCESS, 3000);
+      setIsSaved(true);
+    } else {
+      const savedData = localStorage.getItem('verificationNote');
+      if (savedData) {
+        const parsedData = JSON.parse(savedData);
+        setImageUrl(parsedData.imageUrl);
+        setCompletePicName(parsedData.completePicName);
+        setNote(parsedData.note);
+        setCompleteLink(parsedData.completeLink);
+        setCompleteId(parsedData.completeId);
+
+        localStorage.removeItem('verificationNote');
+        setIsSaved(false);
+        notify('success', TOAST_MESSAGES.LOAD_SUCCESS, 3000);
       }
     }
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -86,13 +100,33 @@ export const VerificationNoteFooter = () => {
           </span>
           <span className="text-xs-medium text-custom-gray-300">/100</span>
         </div>
+
         <span
           className="cursor-pointer text-sm-medium text-primary-100"
-          onClick={handleSaveOrLoad}
+          onClick={handleClick}
         >
-          {isSaved ? '불러오기' : '임시저장'}
+          {isSaved ? MODAL_MESSAGES.LOAD_TITLE : MODAL_MESSAGES.SAVE_TITLE}
         </span>
       </div>
+
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirm}
+        onCancel={handleCancel}
+        title={
+          confirmationMode === 'save'
+            ? MODAL_MESSAGES.SAVE_TITLE
+            : MODAL_MESSAGES.LOAD_TITLE
+        }
+        description={
+          confirmationMode === 'save'
+            ? MODAL_MESSAGES.SAVE_CONFIRM_DESCRIPTION
+            : MODAL_MESSAGES.LOAD_CONFIRM_DESCRIPTION
+        }
+        confirmText={MODAL_MESSAGES.CONFIRM_TEXT}
+        cancelText={MODAL_MESSAGES.CANCEL_TEXT}
+      />
     </div>
   );
 };
