@@ -6,18 +6,22 @@ import { useTodoModalStore } from '@/store/useTodoModalStore';
 interface TodoSectionProps {
   title: string;
   todos: TodayTodoItem[];
-  emptyMessage: string;
+  // emptyMessage: string;
   showAddButton?: boolean;
 }
 
 export const TodoSection = (props: TodoSectionProps) => {
-  const { title, todos, emptyMessage, showAddButton } = props;
-
+  const { title, todos, showAddButton } = props;
   const openModal = useTodoModalStore((state) => state.open);
 
   const handleClick = () => {
     openModal('생성');
   };
+
+  // todos가 비어있으면 섹션 자체를 렌더링하지 않음
+  if (todos.length === 0) {
+    return null;
+  }
 
   return (
     <div className="mt-24 first:mt-0">
@@ -32,24 +36,20 @@ export const TodoSection = (props: TodoSectionProps) => {
           </div>
         )}
       </div>
-      {todos.length > 0 ? (
-        <div className="mt-12 space-y-2">
-          {todos.map((todo, index) => {
-            const isLastItem = index === todos.length - 1;
-            return (
-              <TodoItem
-                key={todo.todoId}
-                {...todo}
-                className={isLastItem ? '' : 'border-b border-custom-white-200'}
-              />
-            );
-          })}
-        </div>
-      ) : (
-        <div className="flex-center h-120 text-sm-normal text-custom-gray-100">
-          {emptyMessage}
-        </div>
-      )}
+
+      {/* 여기서는 todos가 비어있지 않으므로, 바로 목록을 렌더링 */}
+      <div className="mt-12 space-y-2">
+        {todos.map((todo, index) => {
+          const isLastItem = index === todos.length - 1;
+          return (
+            <TodoItem
+              key={todo.todoId}
+              {...todo}
+              className={isLastItem ? '' : 'border-b border-custom-white-200'}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
