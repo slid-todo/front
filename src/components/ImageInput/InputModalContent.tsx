@@ -8,27 +8,34 @@ import { MobileCapture } from './MobileCapture';
 interface InputModalContentProps {
   isOpen: boolean;
   onClose: () => void;
-  onImageSelected?: (imageUrl: string) => void;
+  onImageSelected?: (imageUrl: string, imageExtension: string) => void;
 }
 
 export const InputModalContent = (props: InputModalContentProps) => {
   const { isOpen, onClose, onImageSelected } = props;
 
   const [selectedImageUrl, setSelectedImageUrl] = useState<string>('');
+  const [selectedImageExtension, setSelectedImageExtension] =
+    useState<string>('');
 
-  const handleSelectFromGallery = (imageUrl: string) => {
+  const handleSelectFromGallery = (
+    imageUrl: string,
+    imageExtension: string,
+  ) => {
     setSelectedImageUrl(imageUrl);
+    setSelectedImageExtension(imageExtension);
   };
 
-  const handleCapturePhoto = (imageUrl: string) => {
+  const handleCapturePhoto = (imageUrl: string, imageExtension: string) => {
     setSelectedImageUrl(imageUrl);
+    setSelectedImageExtension(imageExtension);
   };
 
   useEffect(() => {
     if (selectedImageUrl && onImageSelected) {
-      onImageSelected(selectedImageUrl);
+      onImageSelected(selectedImageUrl, selectedImageExtension);
     }
-  }, [selectedImageUrl, onImageSelected]);
+  }, [selectedImageUrl, selectedImageExtension, onImageSelected]);
 
   useEffect(() => {
     if (!isOpen) {
