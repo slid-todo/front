@@ -27,16 +27,18 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
     reset,
     setImageUrl,
     setCompletePicName,
-    setCompleteLink,
   } = useVerificationNoteStore();
 
   const { mutate } = useCertifiedTodo();
 
   const [isReCaptureOpen, setIsReCaptureOpen] = useState(false);
 
+  const [prevImageUrl, setPrevImageUrl] = useState<string>('');
+
   useEffect(() => {
-    if (isOpen === false) {
+    if (!isOpen) {
       setIsReCaptureOpen(false);
+      setPrevImageUrl('');
     }
   }, [isOpen]);
 
@@ -63,17 +65,20 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
       completeLink: completeLink || '임시링크',
     };
 
+    console.log(data);
     mutate({ completeId, data });
   };
 
   const handleReCapture = () => {
-    setImageUrl('');
-    setCompletePicName('');
-    setCompleteLink('');
+    setPrevImageUrl(imageUrl);
+
     setIsReCaptureOpen(true);
   };
 
   const handleCloseReCaptureModal = () => {
+    if (!imageUrl) {
+      setImageUrl(prevImageUrl);
+    }
     setIsReCaptureOpen(false);
   };
 
@@ -101,7 +106,6 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
           onReCapture={handleReCapture}
         />
       </motion.div>
-
       <InputModalContent
         isOpen={isReCaptureOpen}
         onClose={handleCloseReCaptureModal}

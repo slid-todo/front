@@ -8,11 +8,6 @@ import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
 import { InputModalContent } from '../ImageInput';
 import { CertifiedModal } from '../CertifiedModal';
 
-// interface TodoItemProps extends TodayTodoItem {
-//   className?: string;
-// }
-// api 받아오는 타입이 달라서 잠시 닫아뒀어요
-
 interface TodoItemProps {
   todoId: number;
   todoTitle: string;
@@ -45,26 +40,24 @@ export const TodoItem = (props: TodoItemProps) => {
     setIsGalleryModalOpen(false);
   };
 
-  const handleImageSelected = (imageUrl: string) => {
-    console.log('Image selected:', imageUrl);
-
+  const handleImageSelected = (imageUrl: string, imageExtension: string) => {
     setImageUrl(imageUrl);
 
+    const ext = imageExtension || 'png';
     if (complete?.completeId) {
-      setCompletePicName(`${complete.completeId}-image`);
+      setCompletePicName(`${complete.completeId}-image.${ext}`);
+    } else {
+      setCompletePicName(`temp-image.${ext}`);
     }
 
     setCompleteLink('임시링크');
-
     setIsGalleryModalOpen(false);
-
     setIsCertifiedModalOpen(true);
   };
 
+  // 인증 모달 닫기
   const handleCloseCertifiedModal = () => {
-    console.log('Certified Modal closed');
     setIsCertifiedModalOpen(false);
-
     reset();
   };
 
