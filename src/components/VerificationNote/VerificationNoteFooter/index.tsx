@@ -44,6 +44,10 @@ export const VerificationNoteFooter = () => {
           setCompleteLink(parsedData.completeLink);
           setCompleteId(parsedData.completeId);
 
+          // 불러오기를 완료하면 로컬 스토리지에서 삭제
+          localStorage.removeItem('verificationNote');
+          setIsSaved(false);
+
           console.log('임시 저장된 내용이 불러와졌습니다!');
         }
       }
@@ -82,7 +86,6 @@ export const VerificationNoteFooter = () => {
           </span>
           <span className="text-xs-medium text-custom-gray-300">/100</span>
         </div>
-        {/* 여기 span이 클릭 시 임시저장 / 불러오기 로직을 수행 */}
         <span
           className="cursor-pointer text-sm-medium text-primary-100"
           onClick={handleSaveOrLoad}
