@@ -4,14 +4,19 @@ import { IoReload } from 'react-icons/io5';
 import Image from 'next/image';
 import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
 
-export const VerificationNoteImage = () => {
-  const { imageUrl, setImageUrl, setCompletePicName } =
-    useVerificationNoteStore();
+interface VerificationNoteImageProps {
+  onReCapture?: () => void;
+}
+
+export const VerificationNoteImage = (props: VerificationNoteImageProps) => {
+  const { onReCapture } = props;
+
+  const { imageUrl } = useVerificationNoteStore();
 
   const handleReload = () => {
-    // 이미지 재촬영 로직 구현 예정
-    setImageUrl('');
-    setCompletePicName('');
+    if (onReCapture) {
+      onReCapture();
+    }
   };
 
   if (!imageUrl) {
