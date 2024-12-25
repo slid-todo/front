@@ -6,22 +6,36 @@ export function useFilteredTodos(
   currentSortFilter: string,
 ) {
   const { inProgressTodos, completedTodos } = useMemo(() => {
-    let inProgress: TodayTodoItem[] = [];
-    let completed: TodayTodoItem[] = [];
-
-    if (currentSortFilter === '진행' || currentSortFilter === '전체') {
-      inProgress = todos.filter(
-        (todo) => todo.complete.completeStatus === '진행',
-      );
+    if (currentSortFilter === '전체') {
+      return {
+        inProgressTodos: todos.filter(
+          (t) => t.complete.completeStatus === '진행',
+        ),
+        completedTodos: todos.filter(
+          (t) => t.complete.completeStatus === '인증',
+        ),
+      };
     }
 
-    if (currentSortFilter === '인증' || currentSortFilter === '전체') {
-      completed = todos.filter(
-        (todo) => todo.complete.completeStatus === '인증',
-      );
+    if (currentSortFilter === '진행') {
+      return {
+        inProgressTodos: todos.filter(
+          (t) => t.complete.completeStatus === '진행',
+        ),
+        completedTodos: [],
+      };
     }
 
-    return { inProgressTodos: inProgress, completedTodos: completed };
+    if (currentSortFilter === '인증') {
+      return {
+        inProgressTodos: [],
+        completedTodos: todos.filter(
+          (t) => t.complete.completeStatus === '인증',
+        ),
+      };
+    }
+
+    return { inProgressTodos: [], completedTodos: [] };
   }, [todos, currentSortFilter]);
 
   return { inProgressTodos, completedTodos };
