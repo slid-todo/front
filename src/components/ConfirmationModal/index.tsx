@@ -31,9 +31,13 @@ export const ConfirmationModal = (props: ConfirmationModalProps) => {
 
         <p className="mb-24">{description}</p>
 
-        <div className="flex w-full justify-between">
-          <Button onClick={onConfirm}>{confirmText}</Button>
-          <Button onClick={onCancel}>{cancelText}</Button>
+        <div className="flex w-full justify-between gap-10">
+          <Button size="medium" className="w-120 px-12" onClick={onConfirm}>
+            {confirmText}
+          </Button>
+          <Button size="medium" className="w-120 px-12" onClick={onCancel}>
+            {cancelText}
+          </Button>
         </div>
       </div>
     </ModalContent>
