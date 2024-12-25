@@ -3,7 +3,7 @@
 import { FaLink } from 'react-icons/fa';
 import { ConfirmationModal } from '@/components/ConfirmationModal';
 import { MODAL_MESSAGES } from '@/constants/Messages';
-import { useVerificationNoteFooter } from '@/hooks/useVerificationNoteFooter';
+import { useVerificationNoteFooter } from '@/hooks/apis/Todo/Verification/useVerificationNoteFooter';
 
 export const VerificationNoteFooter = () => {
   const {
