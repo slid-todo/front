@@ -15,9 +15,9 @@ export function useFilteredTodos(
       );
     }
 
-    if (currentSortFilter === '완료' || currentSortFilter === '전체') {
+    if (currentSortFilter === '인증' || currentSortFilter === '전체') {
       completed = todos.filter(
-        (todo) => todo.complete.completeStatus === '완료',
+        (todo) => todo.complete.completeStatus === '인증',
       );
     }
 

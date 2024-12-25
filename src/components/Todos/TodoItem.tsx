@@ -55,7 +55,6 @@ export const TodoItem = (props: TodoItemProps) => {
     setIsCertifiedModalOpen(true);
   };
 
-  // 인증 모달 닫기
   const handleCloseCertifiedModal = () => {
     setIsCertifiedModalOpen(false);
     reset();
