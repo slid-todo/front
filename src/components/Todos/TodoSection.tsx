@@ -1,6 +1,7 @@
 import { FaPlus } from 'react-icons/fa6';
 import { TodoItem } from '@/components/Todos';
 import { TodayTodoItem } from '@/hooks/apis/Todo/useTodayTodo';
+import { useTodoModalStore } from '@/store/useTodoModalStore';
 
 interface TodoSectionProps {
   title: string;
@@ -12,12 +13,21 @@ interface TodoSectionProps {
 export const TodoSection = (props: TodoSectionProps) => {
   const { title, todos, emptyMessage, showAddButton } = props;
 
+  const openModal = useTodoModalStore((state) => state.open);
+
+  const handleClick = () => {
+    openModal('생성');
+  };
+
   return (
     <div className="mt-24 first:mt-0">
       <div className="flex justify-between text-xs-bold text-custom-gray-100">
         {title} ({todos.length})
         {showAddButton && (
-          <div className="flex cursor-pointer items-center gap-2 text-sm-medium text-primary-100">
+          <div
+            className="flex cursor-pointer items-center gap-2 text-sm-medium text-primary-100"
+            onClick={handleClick}
+          >
             <FaPlus /> 할 일 추가
           </div>
         )}
