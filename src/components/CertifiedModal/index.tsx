@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { todoModalVariants } from '@/constants/motionVariants';
 import { useCertifiedTodo } from '@/hooks/apis/Todo/useCertifiedTodo';
@@ -7,6 +8,7 @@ import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
 import { notify } from '@/store/useToastStore';
 import { VerificationNote } from '../VerificationNote/VerificationNoteContainer';
 import { ModalContainer } from '../common/Modal';
+import { InputModalContent } from '../ImageInput';
 
 interface CertifiedModalProps {
   isOpen: boolean;
@@ -15,9 +17,28 @@ interface CertifiedModalProps {
 
 export const CertifiedModal = (props: CertifiedModalProps) => {
   const { isOpen, onClose } = props;
-  const { imageUrl, completePicName, note, completeLink, completeId, reset } =
-    useVerificationNoteStore();
+
+  const {
+    imageUrl,
+    completePicName,
+    note,
+    completeLink,
+    completeId,
+    reset,
+    setImageUrl,
+    setCompletePicName,
+    setCompleteLink,
+  } = useVerificationNoteStore();
+
   const { mutate } = useCertifiedTodo();
+
+  const [isReCaptureOpen, setIsReCaptureOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen === false) {
+      setIsReCaptureOpen(false);
+    }
+  }, [isOpen]);
 
   const handleClose = () => {
     onClose();
@@ -45,6 +66,23 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
     mutate({ completeId, data });
   };
 
+  const handleReCapture = () => {
+    setImageUrl('');
+    setCompletePicName('');
+    setCompleteLink('');
+    setIsReCaptureOpen(true);
+  };
+
+  const handleCloseReCaptureModal = () => {
+    setIsReCaptureOpen(false);
+  };
+
+  const handleReCaptureSelected = (newImageUrl: string) => {
+    setImageUrl(newImageUrl);
+    setCompletePicName(`${completeId ?? 'temp'}-image`);
+    setIsReCaptureOpen(false);
+  };
+
   if (!isOpen) {
     return null;
   }
@@ -57,8 +95,18 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
         animate="visible"
         className="flex size-full flex-col items-start gap-10 overflow-y-auto bg-custom-white-100 px-16 py-24 sm:h-auto sm:w-520 sm:rounded-12 sm:p-24"
       >
-        <VerificationNote onClose={handleClose} onSubmit={handleSubmit} />
+        <VerificationNote
+          onClose={handleClose}
+          onSubmit={handleSubmit}
+          onReCapture={handleReCapture}
+        />
       </motion.div>
+
+      <InputModalContent
+        isOpen={isReCaptureOpen}
+        onClose={handleCloseReCaptureModal}
+        onImageSelected={handleReCaptureSelected}
+      />
     </ModalContainer>
   );
 };
