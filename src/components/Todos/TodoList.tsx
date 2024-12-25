@@ -13,13 +13,13 @@ export const TodoList = (props: TodoListProps) => {
   return (
     <>
       <TodoSection
-        title="진행 중"
+        title="진행"
         todos={inProgressTodos}
         emptyMessage={TODO_EMPTY_STATE_MESSAGES.IN_PROGRESS}
         showAddButton={true}
       />
       <TodoSection
-        title="완료"
+        title="인증"
         todos={completedTodos}
         emptyMessage={TODO_EMPTY_STATE_MESSAGES.COMPLETED}
       />
