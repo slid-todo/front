@@ -39,6 +39,7 @@ export const useCertifiedTodo = (): UseMutationResult<
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.CERTIFIED_RECENT_TODO],
       });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TODAY_TODO] });
       close();
     },
     onError: (error: AxiosError) => {
