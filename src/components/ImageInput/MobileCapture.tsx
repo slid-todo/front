@@ -1,6 +1,6 @@
 'use client';
 
-import { useFilePicker } from '@/hooks/apis/Todo/Verification/useFilePicker';
+import { useFilePicker } from '@/hooks/Verification/useFilePicker';
 import { Button } from '../common/Button/Button';
 
 interface MobileCaptureProps {
