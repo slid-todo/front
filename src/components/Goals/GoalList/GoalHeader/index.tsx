@@ -1,6 +1,8 @@
 import { FaEllipsisVertical, FaFlag } from 'react-icons/fa6';
 
 import { Dropdown } from '@/components/common/Dropdown';
+import { ConfirmationModal } from '@/components/ConfirmationModal';
+import { useDeleteGoalMutation } from '@/hooks/apis/Goals/useDeleteGoalMutation';
 import { useSelectGoalMenu } from '@/hooks/useSelectGoalMenu';
 
 interface GoalHeaderProps {
@@ -10,8 +12,16 @@ interface GoalHeaderProps {
 }
 
 export const GoalHeader = ({ id, title, color }: GoalHeaderProps) => {
-  const { isOpen, handleOpenMenu, handleCloseMenu, handleSelectItem } =
-    useSelectGoalMenu({ id, title });
+  const {
+    isOpenTodoMoal,
+    isOpenDeleteModal,
+    handleOpenMenu,
+    handleCloseMenu,
+    handleSelectItem,
+    handleCloseConfirmationModal,
+  } = useSelectGoalMenu({ id, title });
+
+  const { mutate: deleteGoalMutation } = useDeleteGoalMutation();
 
   const renderDropdownItem = (item: { value: string }) => {
     return <span>{item.value} </span>;
@@ -38,10 +48,23 @@ export const GoalHeader = ({ id, title, color }: GoalHeaderProps) => {
         <Dropdown
           dropdownData={dropdownData}
           onSelectItem={handleSelectItem}
-          isOpenDropdown={isOpen}
+          isOpenDropdown={isOpenTodoMoal}
           renderItem={renderDropdownItem}
         />
       </div>
+      <ConfirmationModal
+        isOpen={isOpenDeleteModal}
+        onClose={handleCloseConfirmationModal}
+        onConfirm={() => {
+          deleteGoalMutation(id);
+          handleCloseConfirmationModal();
+        }}
+        onCancel={handleCloseConfirmationModal}
+        title={`${title} 삭제`}
+        description="할 일 및 인증이 모두 삭제됩니다."
+        confirmText="확인"
+        cancelText="취소"
+      />
     </>
   );
 };
