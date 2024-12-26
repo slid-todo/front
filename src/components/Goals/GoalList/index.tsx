@@ -2,7 +2,9 @@
 
 import { ProgressLine } from '@/components/Dashboard/GoalList/GoalItem/ProgressLine';
 import { TodoList } from '@/components/Dashboard/GoalList/GoalItem/TodoList';
-import { useAllGoalsQuery } from '@/hooks/apis/Goals/useAllgoalsQuery';
+
+import { useAllGoalsQuery } from '@/hooks/apis/Goals/useAllGoalsQuery';
+
 import { GoalHeader } from './GoalHeader';
 
 export const GoalList = () => {

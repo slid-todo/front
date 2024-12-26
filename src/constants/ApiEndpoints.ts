@@ -20,5 +20,6 @@ export const API_ENDPOINTS = {
   GOAL: {
     GOALS: '/api/v1/goals',
     ALL_GOALS: '/api/v1/goals/all',
+    GOAL: (goalId: number) => `/api/v1/goals/${goalId}`,
   },
 };
