@@ -6,6 +6,7 @@ import { todoModalVariants } from '@/constants/motionVariants';
 import { useCertifiedTodo } from '@/hooks/apis/Todo/useCertifiedTodo';
 import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
 import { notify } from '@/store/useToastStore';
+import { TOAST_MESSAGES } from '@/constants/Messages';
 import { VerificationNote } from '../VerificationNote/VerificationNoteContainer';
 import { ModalContainer } from '../common/Modal';
 import { InputModalContent } from '../ImageInput';
@@ -24,6 +25,7 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
     note,
     completeLink,
     completeId,
+    todoTitle,
     reset,
     setImageUrl,
     setCompletePicName,
@@ -49,12 +51,12 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
 
   const handleSubmit = () => {
     if (!completeId) {
-      notify('error', 'completeId가 설정되지 않았습니다.', 3000);
+      notify('error', TOAST_MESSAGES.CERTIFIED_COMPLETEID, 3000);
       return;
     }
 
     if (!imageUrl) {
-      notify('error', '이미지가 선택되지 않았습니다.', 3000);
+      notify('error', TOAST_MESSAGES.CERTIFIED_IMG, 3000);
       return;
     }
 
@@ -65,7 +67,6 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
       completeLink: completeLink || '임시링크',
     };
 
-    console.log(data);
     mutate({ completeId, data });
   };
 
@@ -107,6 +108,7 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
         />
       </motion.div>
       <InputModalContent
+        todoTitle={todoTitle}
         isOpen={isReCaptureOpen}
         onClose={handleCloseReCaptureModal}
         onImageSelected={handleReCaptureSelected}
