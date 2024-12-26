@@ -7,7 +7,6 @@ import { GoalHeader } from './GoalHeader';
 
 export const GoalList = () => {
   const { goals } = useAllGoalsQuery();
-  console.log(goals);
 
   return (
     <div className="flex flex-col gap-16">
@@ -16,7 +15,11 @@ export const GoalList = () => {
           key={goal.goalId}
           className="relative w-full rounded-12 bg-white p-16 shadow-sm"
         >
-          <GoalHeader title={goal.goalTitle} color={goal.goalColor} />
+          <GoalHeader
+            id={goal.goalId}
+            title={goal.goalTitle}
+            color={goal.goalColor}
+          />
           <ProgressLine percent={goal.progress} color={goal.goalColor} />
           {goal.todos.map((todo) => (
             <TodoList key={todo.todoId} todo={todo} color={goal.goalColor} />
