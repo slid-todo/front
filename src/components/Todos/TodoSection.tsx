@@ -6,28 +6,29 @@ import { useTodoModalStore } from '@/store/useTodoModalStore';
 interface TodoSectionProps {
   title: string;
   todos: TodayTodoItem[];
-  // emptyMessage: string;
+  emptyMessage: string;
   showAddButton?: boolean;
+  currentSortFilter: string;
 }
 
 export const TodoSection = (props: TodoSectionProps) => {
-  const { title, todos, showAddButton } = props;
+  const { title, todos, emptyMessage, showAddButton, currentSortFilter } =
+    props;
   const openModal = useTodoModalStore((state) => state.open);
+
+  if (currentSortFilter !== '전체' && title !== currentSortFilter) {
+    return null;
+  }
 
   const handleClick = () => {
     openModal('생성');
   };
 
-  // todos가 비어있으면 섹션 자체를 렌더링하지 않음
-  if (todos.length === 0) {
-    return null;
-  }
-
   return (
     <div className="mt-24 first:mt-0">
       <div className="flex justify-between text-xs-bold text-custom-gray-100">
         {title} ({todos.length})
-        {showAddButton && (
+        {(showAddButton || currentSortFilter === '인증') && (
           <div
             className="flex cursor-pointer items-center gap-2 text-sm-medium text-primary-100"
             onClick={handleClick}
@@ -37,19 +38,25 @@ export const TodoSection = (props: TodoSectionProps) => {
         )}
       </div>
 
-      {/* 여기서는 todos가 비어있지 않으므로, 바로 목록을 렌더링 */}
-      <div className="mt-12 space-y-2">
-        {todos.map((todo, index) => {
-          const isLastItem = index === todos.length - 1;
-          return (
+      {todos.length > 0 ? (
+        <div className="mt-12 space-y-2">
+          {todos.map((todo, index) => (
             <TodoItem
               key={todo.todoId}
               {...todo}
-              className={isLastItem ? '' : 'border-b border-custom-white-200'}
+              className={
+                index === todos.length - 1
+                  ? ''
+                  : 'border-b border-custom-white-200'
+              }
             />
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex-center h-120 text-sm-normal text-custom-gray-100">
+          {emptyMessage}
+        </div>
+      )}
     </div>
   );
 };
