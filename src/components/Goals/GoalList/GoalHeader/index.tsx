@@ -3,6 +3,7 @@ import { FaEllipsisVertical, FaFlag } from 'react-icons/fa6';
 import { Dropdown } from '@/components/common/Dropdown';
 import { Input } from '@/components/common/Input';
 import { ConfirmationModal } from '@/components/ConfirmationModal';
+import { DROPDOWN } from '@/constants/dropdown';
 import { useDeleteGoalMutation } from '@/hooks/apis/Goals/useDeleteGoalMutation';
 import { useSelectGoalMenu } from '@/hooks/useSelectGoalMenu';
 
@@ -31,12 +32,8 @@ export const GoalHeader = ({ id, title, color }: GoalHeaderProps) => {
   const { mutate: deleteGoalMutation } = useDeleteGoalMutation();
 
   const renderDropdownItem = (item: { value: string }) => {
-    return <span>{item.value} </span>;
+    return <span>{item.value}</span>;
   };
-
-  const dropdownData = ['할일추가', '수정하기', '삭제하기'].map((str) => ({
-    value: str,
-  }));
 
   return (
     <>
@@ -64,7 +61,7 @@ export const GoalHeader = ({ id, title, color }: GoalHeaderProps) => {
       </button>
       <div className="absolute right-16 top-44 w-81">
         <Dropdown
-          dropdownData={dropdownData}
+          dropdownData={DROPDOWN.GOAL_HEADER_MENU}
           onSelectItem={handleSelectItem}
           isOpenDropdown={isOpenTodoMoal}
           renderItem={renderDropdownItem}
