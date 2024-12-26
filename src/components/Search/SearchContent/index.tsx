@@ -124,7 +124,7 @@ export const SearchContent = () => {
                   className="flex items-start gap-8 py-16 pl-48 pr-16"
                   key={item.goalId}
                 >
-                  <FaFlag className="size-24 " style={{ fill: item.color }} />
+                  <FaFlag className="size-18" style={{ fill: item.color }} />
                   <span className="text-base-medium">{item.goalTitle}</span>
                 </div>
               ))}
