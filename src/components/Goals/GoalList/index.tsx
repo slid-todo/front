@@ -3,12 +3,12 @@
 import { ProgressLine } from '@/components/Dashboard/GoalList/GoalItem/ProgressLine';
 import { TodoList } from '@/components/Dashboard/GoalList/GoalItem/TodoList';
 
-import { useAllGoalsQuery } from '@/hooks/apis/Goals/useAllGoalsQuery';
+import { useGoalsDetailQuery } from '@/hooks/apis/Goals/useGoalsDetailQuery';
 
 import { GoalHeader } from './GoalHeader';
 
 export const GoalList = () => {
-  const { goals } = useAllGoalsQuery();
+  const { goals } = useGoalsDetailQuery();
 
   return (
     <div className="flex flex-col gap-16">
