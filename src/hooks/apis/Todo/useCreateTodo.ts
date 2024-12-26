@@ -28,6 +28,7 @@ export const useCreateTodo = (): UseMutationResult<
       notify('success', '등록에 성공하였습니다', 3000);
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TODOS_OF_GOALS] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.RECENT_TODOS] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TODAY_TODO] });
       resetAll();
       close();
       closeSidebar();
