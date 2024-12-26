@@ -4,16 +4,7 @@ import { AxiosError } from 'axios';
 import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-
-export interface CompletesResponse {
-  completeId: number;
-  completePic: string;
-  note: string;
-  completeLink: string;
-  completeFile: string;
-  createdAt: string;
-  completedDate: string;
-}
+import { TodoCompletesResponse } from '../Todo/useTodayTodo';
 
 export interface TodosResponse {
   todoId: number;
@@ -24,7 +15,7 @@ export interface TodosResponse {
   todoLink: string;
   todoPic: string;
   createdAt: string;
-  completes: CompletesResponse[];
+  completes: TodoCompletesResponse[];
 }
 
 export interface GoalsResponse {
