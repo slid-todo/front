@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
+import { useDeleteGoalMutation } from './apis/Goals/useDeleteGoalMutation';
 
 interface useSelectedGoalMenuProps {
   id: number;
@@ -9,6 +10,8 @@ interface useSelectedGoalMenuProps {
 }
 
 export const useSelectGoalMenu = ({ id, title }: useSelectedGoalMenuProps) => {
+  const { mutate: deleteGoalMutation } = useDeleteGoalMutation();
+
   const openModal = useTodoModalStore((state) => state.open);
   const setTodoData = useTodoDataStore((state) => state.setTodoData);
 
@@ -31,7 +34,7 @@ export const useSelectGoalMenu = ({ id, title }: useSelectedGoalMenuProps) => {
       openModal('수정');
       setTodoData({ goalId: id, goalTitle: title });
     } else if (item.value === '삭제하기') {
-      console.log(item.value, '삭제');
+      deleteGoalMutation(id);
     }
   };
 
