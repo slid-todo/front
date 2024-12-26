@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FaCamera } from 'react-icons/fa6';
+import { FaCamera, FaCircleCheck } from 'react-icons/fa6';
 import Image from 'next/image';
 import { TodoCompletesResponse } from '@/hooks/apis/Todo/useTodayTodo';
 import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
@@ -11,12 +11,14 @@ import { CertifiedModal } from '../CertifiedModal';
 interface TodoItemProps {
   todoId: number;
   todoTitle: string;
+  goalTitle: string;
+  goalColor: string;
   complete?: TodoCompletesResponse;
   className?: string;
 }
 
 export const TodoItem = (props: TodoItemProps) => {
-  const { todoTitle, complete, className = '' } = props;
+  const { todoTitle, goalTitle, goalColor, complete, className = '' } = props;
 
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [isCertifiedModalOpen, setIsCertifiedModalOpen] = useState(false);
@@ -64,28 +66,26 @@ export const TodoItem = (props: TodoItemProps) => {
     <>
       <div className={`flex h-72 ${className}`}>
         {complete?.completePic ? (
-          <div className="flex-center my-8 size-56 overflow-hidden rounded-16 bg-sub-purple">
+          <div className="flex-center relative my-8 size-56 overflow-hidden rounded-16">
             <Image
               src={complete.completePic}
               alt="Complete Picture"
-              width={56}
-              height={56}
-              className="object-cover"
+              fill
+              className="object-fill"
             />
+            <FaCircleCheck fill="white" className="absolute" />
           </div>
         ) : (
           <div
-            className="flex-center my-8 size-56 cursor-pointer rounded-16 bg-sub-purple"
+            className="flex-center my-8 size-56 cursor-pointer rounded-16"
+            style={{ backgroundColor: goalColor }}
             onClick={handleOpenGalleryModal}
           >
             <FaCamera fill="white" />
           </div>
         )}
         <div className="my-14 ml-16">
-          <div className="text-xs-medium text-custom-gray-100">
-            현재 목표가 안 나와요 ㅠ(목표 api 수정된걸로 적용해야 하는데 서버
-            터져서 확인 못 하는 중)
-          </div>
+          <div className="text-xs-medium text-custom-gray-100">{goalTitle}</div>
           <div className="text-base-medium text-custom-gray-300">
             {todoTitle}
           </div>
