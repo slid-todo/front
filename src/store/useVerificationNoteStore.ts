@@ -1,3 +1,4 @@
+// store/useVerificationNoteStore.ts
 import { create } from 'zustand/react';
 
 interface VerificationNoteState {
@@ -6,11 +7,19 @@ interface VerificationNoteState {
   note: string;
   completeLink: string;
   completeId: number | null;
+
+  todoTitle: string;
+  goalTitle: string;
+
   setImageUrl: (url: string) => void;
   setCompletePicName: (name: string) => void;
   setNote: (note: string) => void;
   setCompleteLink: (link: string) => void;
   setCompleteId: (id: number) => void;
+
+  setTodoTitle: (title: string) => void;
+  setGoalTitle: (title: string) => void;
+
   reset: () => void;
 }
 
@@ -21,18 +30,28 @@ export const useVerificationNoteStore = create<VerificationNoteState>(
     note: '',
     completeLink: '임시링크',
     completeId: null,
+
+    todoTitle: '',
+    goalTitle: '',
+
     setImageUrl: (url) => set({ imageUrl: url }),
     setCompletePicName: (name) => set({ completePicName: name }),
     setNote: (note) => set({ note }),
     setCompleteLink: (link) => set({ completeLink: link }),
     setCompleteId: (id) => set({ completeId: id }),
+
+    setTodoTitle: (title) => set({ todoTitle: title }),
+    setGoalTitle: (title) => set({ goalTitle: title }),
+
     reset: () =>
       set({
         imageUrl: '',
         completePicName: '',
         note: '',
-        completeLink: '임시링크', // 지금 회의내용으로는 링크 없애기로 했는데 아직 있어서 잠시 지정 이렇게 해놨어요
+        completeLink: '임시링크',
         completeId: null,
+        todoTitle: '',
+        goalTitle: '',
       }),
   }),
 );
