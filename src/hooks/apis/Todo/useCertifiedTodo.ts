@@ -4,7 +4,6 @@ import {
   useQueryClient,
 } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
-import router from 'next/router';
 import { notify } from '@/store/useToastStore';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
@@ -41,7 +40,6 @@ export const useCertifiedTodo = (): UseMutationResult<
         queryKey: [QUERY_KEYS.CERTIFIED_RECENT_TODO],
       });
       close();
-      router.push('/todos');
     },
     onError: (error: AxiosError) => {
       notify('error', TOAST_MESSAGES.CERTIFIED_ERROR, 3000);
