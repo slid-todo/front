@@ -28,10 +28,14 @@ export const TodoItem = (props: TodoItemProps) => {
     setImageUrl,
     setCompletePicName,
     setCompleteLink,
+    setTodoTitle,
+    setGoalTitle,
     reset,
   } = useVerificationNoteStore();
 
   const handleOpenGalleryModal = () => {
+    setTodoTitle(todoTitle);
+    setGoalTitle(goalTitle);
     if (complete?.completeId) {
       setCompleteId(complete.completeId);
     }
@@ -93,11 +97,11 @@ export const TodoItem = (props: TodoItemProps) => {
       </div>
 
       <InputModalContent
+        todoTitle={todoTitle}
         isOpen={isGalleryModalOpen}
         onClose={handleCloseGalleryModal}
         onImageSelected={handleImageSelected}
       />
-
       <CertifiedModal
         isOpen={isCertifiedModalOpen}
         onClose={handleCloseCertifiedModal}

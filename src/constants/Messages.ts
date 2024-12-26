@@ -3,6 +3,8 @@ export const ERROR_MESSAGE = 'Toast 메시지는 비어있을 수 없습니다.'
 export const TOAST_MESSAGES = {
   SAVE_SUCCESS: '임시 저장 되었습니다.',
   LOAD_SUCCESS: '불러오기가 완료되었습니다.',
+  CERTIFIED_IMG: 'completeId가 설정되지 않았습니다.',
+  CERTIFIED_COMPLETEID: '이미지가 선택되지 않았습니다.',
 };
 
 export const MODAL_MESSAGES = {
