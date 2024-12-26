@@ -68,6 +68,8 @@ export const CertifiedModal = (props: CertifiedModalProps) => {
     };
 
     mutate({ completeId, data });
+    onClose();
+    reset();
   };
 
   const handleReCapture = () => {
