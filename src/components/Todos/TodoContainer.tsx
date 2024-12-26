@@ -40,6 +40,7 @@ export const TodoContainer = () => {
       <TodoList
         inProgressTodos={inProgressTodos}
         completedTodos={completedTodos}
+        currentSortFilter={currentSortFilter}
       />
     </div>
   );

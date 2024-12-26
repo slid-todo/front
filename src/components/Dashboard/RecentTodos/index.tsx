@@ -66,6 +66,8 @@ export const RecentTodos = () => {
               key={todo.todoId}
               todoTitle={todo.todoTitle}
               todoId={todo.todoId}
+              goalTitle={todo.goalTitle}
+              goalColor={todo.goalColor}
             />
           ))}
         </ul>
