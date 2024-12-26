@@ -1,4 +1,7 @@
+'use client';
+
 import { IoMdClose } from 'react-icons/io';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Button } from '@/components/common/Button/Button';
 
@@ -7,9 +10,15 @@ interface UserProfileHeader {
 }
 
 export const UserProfileHeader = ({ userId }: UserProfileHeader) => {
+  const router = useRouter();
+
+  const handleBack = () => {
+    router.back();
+  };
+
   return (
     <>
-      <IoMdClose className="size-24 cursor-pointer" />
+      <IoMdClose className="size-24 cursor-pointer" onClick={handleBack} />
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-8">
           <Image
