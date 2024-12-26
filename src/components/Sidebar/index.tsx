@@ -80,8 +80,8 @@ export const Sidebar = () => {
             icon={<FaChartSimple className="size-28 cursor-pointer p-4" />}
             label="홈"
             onClick={() => {
-              close();
               router.push('/dashboard');
+              close();
             }}
           />
           <MenuItem
@@ -92,6 +92,10 @@ export const Sidebar = () => {
                 새 목표
               </SidebarButton>
             }
+            onClick={() => {
+              router.push('/goals');
+              close();
+            }}
           />
           <GoalList goals={recentGoals} />
           <MenuItem
@@ -110,8 +114,8 @@ export const Sidebar = () => {
               </SidebarButton>
             }
             onClick={() => {
-              close();
               router.push('/todos');
+              close();
             }}
           />
           <MenuItem
