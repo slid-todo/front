@@ -5,10 +5,10 @@ import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { BaseResponse } from '@/types/response';
-import { CompletesResponse } from './useTodosOfGoalsQuery';
+import { TodoCompletesResponse } from '../Todo/useTodayTodo';
 
 interface TodoResponse {
-  completes: CompletesResponse[];
+  completes: TodoCompletesResponse[];
   createdAt: string;
   endDate: string;
   goalColor: string;

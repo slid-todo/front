@@ -19,6 +19,8 @@ export interface TodoCompletesResponse {
 export interface TodayTodoItem {
   todoId: number;
   todoTitle: string;
+  goalTitle: string;
+  goalColor: string;
   complete: TodoCompletesResponse;
 }
 
