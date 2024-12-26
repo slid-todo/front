@@ -1,6 +1,7 @@
 import { FaEllipsisVertical, FaFlag } from 'react-icons/fa6';
 
 import { Dropdown } from '@/components/common/Dropdown';
+import { Input } from '@/components/common/Input';
 import { ConfirmationModal } from '@/components/ConfirmationModal';
 import { useDeleteGoalMutation } from '@/hooks/apis/Goals/useDeleteGoalMutation';
 import { useSelectGoalMenu } from '@/hooks/useSelectGoalMenu';
@@ -13,8 +14,14 @@ interface GoalHeaderProps {
 
 export const GoalHeader = ({ id, title, color }: GoalHeaderProps) => {
   const {
+    inputRef,
+    editTitle,
+    isEdit,
     isOpenTodoMoal,
     isOpenDeleteModal,
+    handleKeyDown,
+    handleBlur,
+    handleChangeGoalTitle,
     handleOpenMenu,
     handleCloseMenu,
     handleSelectItem,
@@ -35,7 +42,18 @@ export const GoalHeader = ({ id, title, color }: GoalHeaderProps) => {
     <>
       <span className="inline-flex items-center text-base-semibold">
         <FaFlag className="mr-4 size-24 p-2" style={{ fill: color }} />
-        {title}
+        {isEdit ? (
+          <Input
+            ref={inputRef}
+            value={editTitle}
+            onChange={handleChangeGoalTitle}
+            onKeyDown={handleKeyDown}
+            onBlur={handleBlur}
+            className="bg-custom-white-100 px-12 py-4 text-base-semibold"
+          />
+        ) : (
+          title
+        )}
       </span>
       <button
         onBlur={handleCloseMenu}
