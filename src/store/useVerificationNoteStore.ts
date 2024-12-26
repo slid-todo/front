@@ -1,4 +1,3 @@
-// store/useVerificationNoteStore.ts
 import { create } from 'zustand/react';
 
 interface VerificationNoteState {
