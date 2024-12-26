@@ -22,6 +22,7 @@ export interface GoalsResponse {
   goalId: number;
   goalTitle: string;
   goalColor: string;
+  progress: number;
   todos: TodosResponse[];
 }
 

@@ -19,6 +19,7 @@ export const GoalList = () => {
               id={goal.goalId}
               title={goal.goalTitle}
               color={goal.goalColor}
+              percent={goal.progress}
               todos={goal.todos}
             />
           ))}

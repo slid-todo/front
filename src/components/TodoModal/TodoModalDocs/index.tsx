@@ -1,13 +1,19 @@
 import { useState } from 'react';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { Chip } from '@/components/common/Chip';
+import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { FileUpload } from './FileUpload';
 import { LinkUpload } from './LinkUpload';
 
 export const TodoModalDocs = () => {
-  const { resetFile, resetLink } = useTodoDataStore();
-  const [isFileActive, setIsFileActive] = useState(true);
-  const [isLinkActive, setIsLinkActive] = useState(false);
+  const { resetFile, resetLink, todoData } = useTodoDataStore();
+  const { todoType } = useTodoModalStore();
+  const [isFileActive, setIsFileActive] = useState(
+    todoType === '생성' || !!todoData.imageEncodedBase64 || !todoData.todoLink,
+  );
+  const [isLinkActive, setIsLinkActive] = useState(
+    todoType === '생성' ? false : !!todoData.todoLink,
+  );
 
   const onClickFileChip = () => {
     setIsFileActive((prev) => !prev);

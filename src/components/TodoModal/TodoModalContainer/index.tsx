@@ -14,14 +14,21 @@ import { todoModalVariants } from '@/constants/motionVariants';
 import { todoDataValidation } from '@/utils/todoDataValidation';
 import { useCreateTodo } from '@/hooks/apis/Todo/useCreateTodo';
 import { ModalContainer } from '@/components/common/Modal';
+import { useModifyTodo } from '@/hooks/apis/Todo/useModifyTodo';
 
 const TodoModal = () => {
   const { isOpen, close, todoType } = useTodoModalStore();
-  const { resetAll, getCreateTodoData } = useTodoDataStore();
-  const { mutate } = useCreateTodo();
+  const { resetAll, getCreateTodoData, getModifyTodoData, todoData } =
+    useTodoDataStore();
+  const { mutate: createTodoMutate } = useCreateTodo();
+  const { mutate: modifyTodoMutate } = useModifyTodo();
 
   const handleClick = () => {
-    mutate(getCreateTodoData());
+    if (todoType === '생성') {
+      createTodoMutate(getCreateTodoData());
+    } else {
+      modifyTodoMutate({ todoId: todoData.todoId, data: getModifyTodoData() });
+    }
   };
 
   const handleClose = () => {
@@ -55,10 +62,10 @@ const TodoModal = () => {
             className="mt-auto"
             onClick={handleClick}
             disabled={todoDataValidation(
-              getCreateTodoData().title,
-              getCreateTodoData().goalId,
-              getCreateTodoData().startDate,
-              getCreateTodoData().endDate,
+              todoData.title,
+              todoData.goalTitle,
+              todoData.startDate,
+              todoData.endDate,
             )}
           >
             확인

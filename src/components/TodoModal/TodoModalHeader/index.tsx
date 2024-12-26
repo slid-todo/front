@@ -1,23 +1,13 @@
-import { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
-import { FaCheck } from 'react-icons/fa6';
 import { TodoModalProps } from '@/types/TodoType';
-import { cn } from '@/utils/className';
+import { useTodoDataStore } from '@/store/useTodoDataStore';
+import { StatusButton } from './StatusButton';
 
 export const TodoModalHeader = ({ todoType, onClose }: TodoModalProps) => {
-  const [isChkClick, setIstChkClick] = useState(false);
-
-  const iconContainerClass = cn(
-    'flex size-18 items-start justify-center rounded-6 border border-slate-200',
-    isChkClick ? 'bg-blue-600' : 'bg-white',
-  );
+  const { todoData, setTodoData } = useTodoDataStore();
 
   const handleClose = () => {
     onClose?.();
-  };
-
-  const handleClick = () => {
-    setIstChkClick(!isChkClick);
   };
 
   return (
@@ -28,15 +18,18 @@ export const TodoModalHeader = ({ todoType, onClose }: TodoModalProps) => {
         </span>
         <IoMdClose className="size-24 cursor-pointer" onClick={handleClose} />
       </div>
-      {todoType === '생성' ? (
-        <></>
-      ) : (
-        <div className="flex items-center gap-6">
-          <button className={iconContainerClass} onClick={handleClick}>
-            {isChkClick ? <FaCheck className="size-16 text-white" /> : <></>}
-          </button>
-
-          <span className="text-base-semibold text-slate-600">Done</span>
+      {todoType !== '생성' && (
+        <div className="flex gap-18">
+          <StatusButton
+            todoStatus="진행"
+            activeStatus={todoData.todoStatus}
+            onClick={() => setTodoData({ todoStatus: '진행' })}
+          />
+          <StatusButton
+            todoStatus="인증"
+            activeStatus={todoData.todoStatus}
+            onClick={() => setTodoData({ todoStatus: '인증' })}
+          />
         </div>
       )}
     </div>

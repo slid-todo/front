@@ -1,12 +1,13 @@
 import { ChangeEvent, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
+import { MdDelete } from 'react-icons/md';
 import { todoModalVariants } from '@/constants/motionVariants';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { FileUploadBtn } from './FileUploadBtn';
 
 export const FileUpload = () => {
-  const { todoData, setTodoData } = useTodoDataStore();
+  const { todoData, setTodoData, resetFile } = useTodoDataStore();
   const fileUploadRef = useRef<HTMLInputElement>(null);
 
   const handleFileName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +28,10 @@ export const FileUpload = () => {
     reader.readAsDataURL(file);
   };
 
+  const handleDeleteImage = () => {
+    resetFile();
+  };
+
   return (
     <motion.div
       className="flex-center h-184 w-full shrink-0  rounded-12 bg-white"
@@ -35,14 +40,21 @@ export const FileUpload = () => {
       animate="visible"
     >
       {todoData.imageEncodedBase64 ? (
-        <Image
-          src={todoData.imageEncodedBase64}
-          width={200}
-          height={200}
-          alt="preview"
-          className="size-full rounded-12 object-cover"
-          onClick={() => fileUploadRef.current?.click()}
-        />
+        <div className="relative size-full rounded-12">
+          <Image
+            src={todoData.imageEncodedBase64}
+            width={200}
+            height={200}
+            alt="preview"
+            priority
+            className="size-full rounded-12 object-cover"
+            onClick={() => fileUploadRef.current?.click()}
+          />
+          <MdDelete
+            className="absolute right-2 top-2 size-30 cursor-pointer text-error"
+            onClick={handleDeleteImage}
+          />
+        </div>
       ) : (
         <FileUploadBtn onClick={() => fileUploadRef.current?.click()} />
       )}
