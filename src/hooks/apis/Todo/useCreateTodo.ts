@@ -4,12 +4,13 @@ import {
   useQueryClient,
 } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
+
 import { createTodo } from '@/apis/Todo/createTodo';
-import { notify } from '@/store/useToastStore';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { useSidebarStore } from '@/store/useSidebarStore';
-import { useTodoModalStore } from '@/store/useTodoModalStore';
+import { notify } from '@/store/useToastStore';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
+import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { CreateTodosRequest } from '@/types/Todos/CreateTodos/CreateTodosRequest';
 
 export const useCreateTodo = (): UseMutationResult<
@@ -29,6 +30,7 @@ export const useCreateTodo = (): UseMutationResult<
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TODOS_OF_GOALS] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.RECENT_TODOS] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TODAY_TODO] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ALL_GOALS] });
       resetAll();
       close();
       closeSidebar();
