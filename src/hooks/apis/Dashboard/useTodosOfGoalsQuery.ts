@@ -41,19 +41,20 @@ export interface TodosOfGoalsResponse extends BaseResponse {
   data: BasePageableTypes<GoalsResponse[]>;
 }
 
-export const todosOfGoalsOptions = (): UseQueryOptions<
-  TodosOfGoalsResponse,
-  AxiosError
-> => ({
-  queryKey: [QUERY_KEYS.TODOS_OF_GOALS],
+export const todosOfGoalsOptions = (
+  lastGoalId: number,
+): UseQueryOptions<TodosOfGoalsResponse, AxiosError> => ({
+  queryKey: [QUERY_KEYS.TODOS_OF_GOALS, lastGoalId],
   queryFn: () =>
     GET<TodosOfGoalsResponse>(
-      `${API_ENDPOINTS.TODOS.GET_GOALS}?lastGoalId=0&size=3`,
+      `${API_ENDPOINTS.TODOS.GET_GOALS}?lastGoalId=${lastGoalId}&size=5`,
     ),
 });
 
-export const useTodosOfGoalsQuery = () => {
-  const { data, isLoading, isError, error } = useQuery(todosOfGoalsOptions());
+export const useTodosOfGoalsQuery = (lastGoalId: number) => {
+  const { data, isLoading, isError, error } = useQuery(
+    todosOfGoalsOptions(lastGoalId),
+  );
   const goals = data?.data.content ?? [];
 
   return { goals, isLoading, isError, error };
