@@ -22,10 +22,10 @@ const userInfoOptions: UseQueryOptions<UserInfoResponse, AxiosError> = {
 };
 
 export const useUserQuery = () => {
-  const { data, isLoading, isError, error } = useQuery(userInfoOptions);
+  const { data, ...etc } = useQuery(userInfoOptions);
   const email = data?.data.email ?? '';
   const name = data?.data.name ?? '';
   const profile = data?.data.profilePic ?? '';
 
-  return { email, name, profile, isLoading, isError, error };
+  return { email, name, profile, ...etc };
 };
