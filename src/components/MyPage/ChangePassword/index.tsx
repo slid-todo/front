@@ -22,11 +22,15 @@ export const ChangePassword = () => {
   return (
     <div className="flex flex-col gap-8">
       <form
-        className="flex flex-col gap-24"
+        className="flex flex-col gap-16"
         onSubmit={handleSubmit(handleClick)}
       >
-        <CurrentPassword register={register} />
-        <NewPassword register={register} />
+        <CurrentPassword register={register} error={errors.currentPassword} />
+        <NewPassword
+          register={register}
+          getValues={getValues}
+          error={errors.newPassword}
+        />
         <NewPasswordChk
           register={register}
           getValues={getValues}

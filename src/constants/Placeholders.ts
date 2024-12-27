@@ -9,4 +9,7 @@ export const PLACEHOLDERS = {
   PASSWORD: '비밀번호를 입력해주세요',
   PASSWORD_CHECK: '비밀번호를 다시 입력해주세요',
   SEARCH: '검색어를 입력해주세요',
+  CURRENT_PASSWORD: '현재 비밀번호를 입력해주세요',
+  NEW_PASSWORD: '새 비밀번호를 입력해주세요',
+  NEW_PASSWORD_CHK: '새 비밀번호를 다시 입력해주세요',
 };
