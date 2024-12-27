@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { MdEdit } from 'react-icons/md';
 import { useUserQuery } from '@/hooks/apis/useUserQuery';
@@ -17,12 +17,17 @@ export const MyProfile = () => {
 
   const { mutate: modifyProfilePic } = useModifyProfilePic();
 
+  useEffect(() => {
+    if (profilePicBase64 && profilePicName) {
+      modifyProfilePic({ profilePicName, profilePicBase64 });
+    }
+  }, [profilePicBase64, profilePicName, modifyProfilePic]);
+
   const handleFileName = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
       setProfilePicName(selectedFile.name);
       encodeFileToBase64(selectedFile);
-      modifyProfilePic({ profilePicName, profilePicBase64 });
     }
   };
 
