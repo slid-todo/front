@@ -17,7 +17,7 @@ export const ChangePassword = () => {
     formState: { errors },
   } = useForm<ChangePasswordRequest>({ mode: 'onBlur' });
 
-  const { mutate: changePassword } = useChangePassword(reset);
+  const { mutate: changePassword, isPending } = useChangePassword(reset);
 
   const handleClick: SubmitHandler<ChangePasswordRequest> = (
     data: ChangePasswordRequest,
@@ -47,6 +47,7 @@ export const ChangePassword = () => {
           primary={true}
           className="cursor-pointer"
           type="submit"
+          pending={isPending}
         >
           비밀번호 변경
         </Button>
