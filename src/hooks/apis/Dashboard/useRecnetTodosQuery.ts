@@ -38,8 +38,8 @@ export const recentTodosOptions = (): UseQueryOptions<
 });
 
 export const useRecentTodosQuery = () => {
-  const { data, isLoading, isError, error } = useQuery(recentTodosOptions());
+  const { data, ...etc } = useQuery(recentTodosOptions());
   const todos = data?.data.content ?? [];
 
-  return { todos, isLoading, isError, error };
+  return { todos, ...etc };
 };

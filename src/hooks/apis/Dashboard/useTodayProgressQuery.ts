@@ -24,8 +24,8 @@ export const todayProgressOptions = (): UseQueryOptions<
 });
 
 export const useTodayProgressQuery = () => {
-  const { data, isLoading, isError, error } = useQuery(todayProgressOptions());
+  const { data, ...etc } = useQuery(todayProgressOptions());
   const progress = data?.data.progress ?? 0;
 
-  return { progress, isLoading, isError, error };
+  return { progress, ...etc };
 };

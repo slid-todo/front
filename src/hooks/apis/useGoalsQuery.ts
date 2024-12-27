@@ -19,8 +19,8 @@ const goalsOptions: UseQueryOptions<GoalsResponse, AxiosError> = {
 };
 
 export const useGoalsQuery = () => {
-  const { data, isLoading, isError, error } = useQuery(goalsOptions);
+  const { data, ...etc } = useQuery(goalsOptions);
   const goals = data?.data ?? [];
 
-  return { goals, isLoading, isError, error };
+  return { goals, ...etc };
 };

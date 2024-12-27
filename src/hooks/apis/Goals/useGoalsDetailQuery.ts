@@ -26,8 +26,8 @@ const GoalsDetailResponse = (): UseQueryOptions<
 });
 
 export const useGoalsDetailQuery = () => {
-  const { data, isLoading, isError, error } = useQuery(GoalsDetailResponse());
+  const { data, ...etc } = useQuery(GoalsDetailResponse());
   const goals = data?.data.content ?? [];
 
-  return { goals, isLoading, isError, error };
+  return { goals, ...etc };
 };
