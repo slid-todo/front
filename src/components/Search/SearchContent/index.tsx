@@ -4,95 +4,23 @@ import Image from 'next/image';
 import { FaFlag } from 'react-icons/fa6';
 import { useSearchStore } from '@/store/useSearchStore';
 import { Goal } from '@/types/Goals';
-
-const users = [
-  {
-    profilePic:
-      'https://slid-todo.s3.ap-northeast-2.amazonaws.com/a19c4793-d33b-4be6-9f65-097bed5a6709_testmouse1.png',
-    name: '닉네임1',
-  },
-  {
-    profilePic:
-      'https://slid-todo.s3.ap-northeast-2.amazonaws.com/a19c4793-d33b-4be6-9f65-097bed5a6709_testmouse1.png',
-    name: '닉네임2',
-  },
-  {
-    profilePic:
-      'https://slid-todo.s3.ap-northeast-2.amazonaws.com/a19c4793-d33b-4be6-9f65-097bed5a6709_testmouse1.png',
-    name: '닉네임3',
-  },
-  {
-    profilePic:
-      'https://slid-todo.s3.ap-northeast-2.amazonaws.com/a19c4793-d33b-4be6-9f65-097bed5a6709_testmouse1.png',
-    name: '닉네임4',
-  },
-  {
-    profilePic:
-      'https://slid-todo.s3.ap-northeast-2.amazonaws.com/a19c4793-d33b-4be6-9f65-097bed5a6709_testmouse1.png',
-    name: '닉네임5',
-  },
-];
-
-const userGoals = [
-  {
-    profilePic:
-      'https://slid-todo.s3.ap-northeast-2.amazonaws.com/a19c4793-d33b-4be6-9f65-097bed5a6709_testmouse1.png',
-    name: '닉네임1',
-    goals: [
-      {
-        goalId: 1,
-        goalTitle: '목표 1',
-        color: 'orange',
-        createdAt: '',
-      },
-      {
-        goalId: 2,
-        goalTitle: '목표 2',
-        color: 'purple',
-        createdAt: '',
-      },
-    ],
-  },
-  {
-    profilePic:
-      'https://slid-todo.s3.ap-northeast-2.amazonaws.com/a19c4793-d33b-4be6-9f65-097bed5a6709_testmouse1.png',
-    name: '닉네임2',
-    goals: [
-      {
-        goalId: 1,
-        goalTitle: '목표 1',
-        color: 'orange',
-        createdAt: '',
-      },
-      {
-        goalId: 2,
-        goalTitle: '목표 2',
-        color: 'purple',
-        createdAt: '',
-      },
-    ],
-  },
-];
-
-interface Users {
-  profilePic: string;
-  name: string;
-}
-
-interface UserGoals {
-  profilePic: string;
-  name: string;
-  goals: Goal[];
-}
+import {
+  SearchResponseData,
+  useSearchQuery,
+} from '@/hooks/apis/Search/useSearchQuery';
 
 export const SearchContent = () => {
-  const { searchFilter } = useSearchStore();
+  const { searchFilter, searchKeyword } = useSearchStore();
+  const { data: searchData } = useSearchQuery({
+    searchField: searchFilter,
+    keyword: searchKeyword,
+  });
 
   return (
     <div>
       {searchFilter === '유저명' ? (
         <ul className="flex flex-col gap-16">
-          {users.map((item: Users) => (
+          {searchData?.data.map((item: SearchResponseData) => (
             <li className="flex w-full items-center gap-8" key={item.name}>
               <Image
                 width={48}
@@ -107,7 +35,7 @@ export const SearchContent = () => {
         </ul>
       ) : (
         <ul className="flex flex-col gap-16">
-          {userGoals.map((item: UserGoals) => (
+          {searchData?.data.map((item: SearchResponseData) => (
             <li className="flex w-full flex-col" key={item.name}>
               <div className="flex w-full items-center gap-8">
                 <Image

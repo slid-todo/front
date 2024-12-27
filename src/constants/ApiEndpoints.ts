@@ -26,4 +26,5 @@ export const API_ENDPOINTS = {
     ALL_GOALS: '/api/v1/goals/all',
     GOAL: (goalId: number) => `/api/v1/goals/${goalId}`,
   },
+  SEARCH: '/api/v1/searches',
 };
