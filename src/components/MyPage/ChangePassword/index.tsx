@@ -3,6 +3,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button } from '@/components/common/Button/Button';
 import { ChangePasswordRequest } from '@/types/Auth/ChangePasswordRequest';
+import { useChangePassword } from '@/hooks/apis/Auth/useChangePassword';
 import { CurrentPassword } from './CurrentPassword';
 import { NewPassword } from './NewPassword';
 import { NewPasswordChk } from './NewPasswordChk';
@@ -12,11 +13,16 @@ export const ChangePassword = () => {
     getValues,
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ChangePasswordRequest>({ mode: 'onBlur' });
 
-  const handleClick: SubmitHandler<ChangePasswordRequest> = () => {
-    console.log('dd');
+  const { mutate: changePassword } = useChangePassword(reset);
+
+  const handleClick: SubmitHandler<ChangePasswordRequest> = (
+    data: ChangePasswordRequest,
+  ) => {
+    changePassword(data);
   };
 
   return (
@@ -36,7 +42,12 @@ export const ChangePassword = () => {
           getValues={getValues}
           error={errors.newPasswordCheck}
         />
-        <Button size="small" primary={true} className="cursor-pointer">
+        <Button
+          size="small"
+          primary={true}
+          className="cursor-pointer"
+          type="submit"
+        >
           비밀번호 변경
         </Button>
       </form>

@@ -17,6 +17,7 @@ export const API_ENDPOINTS = {
     SIGN_UP: '/api/v1/auths/signup',
     USER: '/api/v1/auths/user',
     PROFILE_PIC: '/api/v1/auths/profilepic',
+    PASSWORD: '/api/v1/auths/password',
   },
   GOAL: {
     GOALS: '/api/v1/goals',
