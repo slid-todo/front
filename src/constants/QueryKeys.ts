@@ -6,7 +6,7 @@ export const QUERY_KEYS = {
   RECENT_TODOS: 'recentTodos',
   USER_INFO: 'userInfo',
   TODAY_TODO: 'todayTodo',
-
+  SEARCH_DATA: 'searchData',
   CERTIFIED_TODO: 'certifiedTodo',
   CERTIFIED_RECENT_TODO: 'certifiedRecentTodo',
   FOLLOW_COUNT: 'followCount',
