@@ -24,6 +24,10 @@ export const NewPassword = ({
           placeholder={PLACEHOLDERS.NEW_PASSWORD}
           {...register('newPassword', {
             required: '새 비밀번호를 입력해주세요',
+            minLength: {
+              value: 4,
+              message: '비밀번호는 최소 4자 이상이어야 합니다.',
+            },
             validate: {
               matchesPassword: (value: string | undefined) =>
                 value !== getValues?.('currentPassword') ||
