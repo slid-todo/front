@@ -3,6 +3,7 @@ export interface BasePageableTypes<T> {
   empty: boolean;
   first: boolean;
   last: boolean;
+  nextCursor: number;
   number: number;
   numberOfElement: number;
   pageable: {

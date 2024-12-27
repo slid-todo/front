@@ -1,4 +1,7 @@
-import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import {
+  useInfiniteQuery,
+  UseInfiniteQueryOptions,
+} from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
 import { GET } from '@/apis/services/httpMethod';
@@ -41,21 +44,31 @@ export interface TodosOfGoalsResponse extends BaseResponse {
   data: BasePageableTypes<GoalsResponse[]>;
 }
 
-export const todosOfGoalsOptions = (
-  lastGoalId: number,
-): UseQueryOptions<TodosOfGoalsResponse, AxiosError> => ({
-  queryKey: [QUERY_KEYS.TODOS_OF_GOALS, lastGoalId],
-  queryFn: () =>
+interface InfiniteQueryResponse {
+  pageParams: number[];
+  pages: TodosOfGoalsResponse[];
+}
+
+export const todosOfGoalsOptions = (): UseInfiniteQueryOptions<
+  TodosOfGoalsResponse,
+  AxiosError,
+  InfiniteQueryResponse
+> => ({
+  queryKey: [QUERY_KEYS.TODOS_OF_GOALS],
+  queryFn: ({ pageParam = 0 }) =>
     GET<TodosOfGoalsResponse>(
-      `${API_ENDPOINTS.TODOS.GET_GOALS}?lastGoalId=${lastGoalId}&size=5`,
+      `${API_ENDPOINTS.TODOS.GET_GOALS}?lastGoalId=${pageParam}&size=3`,
     ),
+  getNextPageParam: (lastPage) => {
+    const nextCursor = lastPage.data.nextCursor;
+    return nextCursor !== 0 ? nextCursor : undefined;
+  },
+  initialPageParam: 0,
 });
 
-export const useTodosOfGoalsQuery = (lastGoalId: number) => {
-  const { data, isLoading, isError, error } = useQuery(
-    todosOfGoalsOptions(lastGoalId),
-  );
-  const goals = data?.data.content ?? [];
+export const useTodosOfGoalsQuery = () => {
+  const { data, ...etc } = useInfiniteQuery(todosOfGoalsOptions());
+  const goals = data?.pages.flatMap((page) => page.data.content) ?? [];
 
-  return { goals, isLoading, isError, error };
+  return { goals, ...etc };
 };
