@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import { Skeleton } from '@/components/common/Skeleton';
 import { cn } from '@/utils/className';
+import { isDatePast } from '@/utils/date';
 
 interface TodoItemProps {
   index: number;
@@ -15,9 +16,7 @@ interface TodoItemProps {
 
 export const TodoPic = ({ index, color, pic, status, date }: TodoItemProps) => {
   const [isLoaded, setIsLoaded] = useState(pic === '' || false);
-  const today = new Date().setHours(0, 0, 0, 0);
-  const thisDay = new Date(date).setHours(0, 0, 0, 0);
-  const isPast = today > thisDay;
+  const isPast = isDatePast(date);
   const backgroundColor =
     status === '인증' ? color : isPast ? '#E9E9E9' : color;
   const textClass = cn(
