@@ -35,7 +35,12 @@ export const TodoList = ({ todo, color }: TodoListProps) => {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
             {todo.completes.map((complete, index) => (
-              <TodoPic key={complete.completeId} index={index} color={color} />
+              <TodoPic
+                key={complete.completeId}
+                index={index}
+                color={color}
+                pic={complete.completePic}
+              />
             ))}
           </motion.div>
         )}
