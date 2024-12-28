@@ -3,13 +3,23 @@
 import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { Skeleton } from '@/components/common/Skeleton';
 import { useUserQuery } from '@/hooks/apis/useUserQuery';
+import { useSidebarStore } from '@/store/useSidebarStore';
 
 export const Profile = () => {
   const { email, name, profile, isLoading } = useUserQuery();
   const [showSkeleton, setShowSkeleton] = useState(false);
+
+  const router = useRouter();
+  const { close } = useSidebarStore();
+
+  const handleClick = () => {
+    router.push('/myPage');
+    close();
+  };
 
   useEffect(() => {
     if (isLoading) {
@@ -43,7 +53,7 @@ export const Profile = () => {
             />
           )}
           <div className="flex w-full justify-between">
-            <div>
+            <div onClick={handleClick}>
               <p className="text-sm-medium">{name}</p>
               <p className="text-xs-medium">{email}</p>
             </div>
