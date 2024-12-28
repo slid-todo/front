@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { Skeleton } from '@/components/common/Skeleton';
 import { useUserQuery } from '@/hooks/apis/useUserQuery';
 import { useSidebarStore } from '@/store/useSidebarStore';
+import { useLogout } from '@/hooks/useLogout';
 
 export const Profile = () => {
   const { email, name, profile, isLoading } = useUserQuery();
@@ -15,6 +16,7 @@ export const Profile = () => {
 
   const router = useRouter();
   const { close } = useSidebarStore();
+  const { logout } = useLogout();
 
   const handleClick = () => {
     router.push('/myPage');
@@ -57,7 +59,9 @@ export const Profile = () => {
               <p className="text-sm-medium">{name}</p>
               <p className="text-xs-medium">{email}</p>
             </div>
-            <button className="text-xs-normal">로그아웃</button>
+            <button className="text-xs-normal" onClick={logout}>
+              로그아웃
+            </button>
           </div>
         </>
       )}
