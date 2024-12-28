@@ -4,11 +4,12 @@ describe('formatDateToRelativeTime 테스트', () => {
   const fixedDate = new Date('2024-12-23T00:00:00Z').getTime();
 
   beforeAll(() => {
-    jest.spyOn(Date, 'now').mockReturnValue(fixedDate);
+    jest.useFakeTimers();
+    jest.setSystemTime(fixedDate);
   });
 
   afterAll(() => {
-    jest.restoreAllMocks();
+    jest.useRealTimers();
   });
 
   it('현재 날짜와 동일한 시간', () => {
