@@ -46,3 +46,12 @@ export const formatDateToRelativeTime = (dateString: string): string => {
   const years = Math.floor(months / 12);
   return rtf.format(years, 'year');
 };
+
+export const isDatePast = (dateString: string): boolean => {
+  if (!dateString) return false;
+
+  const today = new Date().setHours(0, 0, 0, 0);
+  const thisDay = new Date(dateString).setHours(0, 0, 0, 0);
+
+  return today > thisDay;
+};
