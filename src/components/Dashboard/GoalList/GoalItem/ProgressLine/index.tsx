@@ -9,11 +9,11 @@ export const ProgressLine = ({ percent, color }: ProgressLineProps) => {
       <div className="h-12 w-full rounded-full bg-custom-white-200">
         <div
           className="h-12 rounded-full"
-          style={{ width: `${percent}%`, backgroundColor: color }}
+          style={{ width: `${Math.floor(percent)}%`, backgroundColor: color }}
         />
       </div>
       <p className="text-sm-semibold" style={{ color: color }}>
-        {percent}%
+        {Math.floor(percent).toLocaleString()}%
       </p>
     </div>
   );
