@@ -18,6 +18,7 @@ export const API_ENDPOINTS = {
     USER: '/api/v1/auths/user',
     PROFILE_PIC: '/api/v1/auths/profilepic',
     PASSWORD: '/api/v1/auths/password',
+    FOLLOW_COUNT: '/api/v1/auths/mypage',
   },
   GOAL: {
     GOALS: '/api/v1/goals',
