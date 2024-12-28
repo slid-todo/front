@@ -1,19 +1,14 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { Button } from '@/components/common/Button/Button';
+import { useLogout } from '@/hooks/useLogout';
 
 export const MyPageFooter = () => {
-  const router = useRouter();
-
-  const handleLogout = () => {
-    document.cookie = 'token=; max-age=0; path=/;';
-    router.push('/signin');
-  };
+  const { logout } = useLogout();
 
   return (
     <div className="mt-auto flex w-full items-center justify-between">
-      <Button size="small" primary={false} onClick={handleLogout}>
+      <Button size="small" primary={false} onClick={logout}>
         로그아웃
       </Button>
       <Button size="small" primary={false}>
