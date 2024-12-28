@@ -14,8 +14,8 @@ export const formatDateToRelativeTime = (dateString: string): string => {
   if (!dateString) return '';
 
   const date = new Date(dateString);
-  const now = Date.now();
-  const timeDifference = date.getTime() - now;
+  const now = new Date();
+  const timeDifference = date.getTime() - now.getTime();
   const rtf = new Intl.RelativeTimeFormat('ko', { numeric: 'auto' });
 
   const seconds = Math.floor(timeDifference / 1000);
