@@ -40,6 +40,8 @@ export const TodoList = ({ todo, color }: TodoListProps) => {
                 index={index}
                 color={color}
                 pic={complete.completePic}
+                status={complete.completeStatus}
+                date={complete.startDate}
               />
             ))}
           </motion.div>
