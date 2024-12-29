@@ -1,40 +1,15 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-
 import { Card } from '@/components/common/Card';
 import { DashboardItemContainer } from '@/components/Dashboard/DashboardItemContainer';
 import { GoalItem } from '@/components/Dashboard/GoalList/GoalItem';
 
 import { useTodosOfGoalsQuery } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 
 export const GoalList = () => {
-  const observerRef = useRef<HTMLDivElement | null>(null);
-
   const { goals, fetchNextPage, isLoading } = useTodosOfGoalsQuery();
-
-  useEffect(() => {
-    if (!observerRef.current) return;
-
-    const observerCallback: IntersectionObserverCallback = (entries) => {
-      const lastEntry = entries[0];
-      if (lastEntry.isIntersecting && !isLoading) {
-        fetchNextPage();
-      }
-    };
-
-    const observer = new IntersectionObserver(observerCallback, {
-      threshold: 1.0,
-    });
-
-    if (observerRef.current) {
-      observer.observe(observerRef.current);
-    }
-
-    observer.observe(observerRef.current);
-
-    return () => observer.disconnect();
-  }, [fetchNextPage, isLoading]);
+  const { observerRef } = useInfiniteScroll({ fetchNextPage, isLoading });
 
   return (
     <DashboardItemContainer title="목표 별 할 일">
