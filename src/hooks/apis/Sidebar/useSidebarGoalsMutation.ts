@@ -45,14 +45,15 @@ export const useSidebarGoalsMutation = () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.TODOS_OF_GOALS],
       });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ALL_GOALS] });
     },
-    onError: (error, newGoal, context) => {
+    onError: (error, _, context) => {
       queryClient.setQueriesData(
         { queryKey: [QUERY_KEYS.GOALS] },
         context?.prev,
       );
       console.error(error.message);
-      notify('error', `목표 등록에 실패했습니다.\n ${newGoal.title}`, 3000);
+      notify('error', '목표 등록에 실패했습니다.', 3000);
     },
   });
 };

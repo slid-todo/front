@@ -29,7 +29,7 @@ const GoalsDetailResponse = (): UseInfiniteQueryOptions<
   queryKey: [QUERY_KEYS.ALL_GOALS],
   queryFn: ({ pageParam = 0 }) =>
     GET<GoalsDetailResponse>(
-      `${API_ENDPOINTS.GOAL.ALL_GOALS}?lastGoalId=${pageParam}&size=3`,
+      `${API_ENDPOINTS.GOAL.ALL_GOALS}?lastGoalId=${pageParam}&size=5`,
     ),
   getNextPageParam: (lastPage) => {
     const nextCursor = lastPage.data.nextCursor;
