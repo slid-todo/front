@@ -30,8 +30,5 @@ const searchOptions = (
 });
 
 export const useSearchQuery = (request: SearchRequest) => {
-  const { data, isLoading, isError, error, refetch } = useQuery(
-    searchOptions(request),
-  );
-  return { data, isLoading, isError, error, refetch };
+  return useQuery(searchOptions(request));
 };
