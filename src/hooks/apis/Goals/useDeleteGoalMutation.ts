@@ -4,18 +4,14 @@ import { DELETE } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { notify } from '@/store/useToastStore';
-import { BaseResponse } from '@/types/response';
-
-interface DeleteResponse extends BaseResponse {
-  data: { goalId: number };
-}
+import { DeleteGoalResponse } from '@/types/response';
 
 export const useDeleteGoalMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: (goalId: number) =>
-      DELETE<DeleteResponse>(API_ENDPOINTS.GOAL.GOAL(goalId)),
+      DELETE<DeleteGoalResponse>(API_ENDPOINTS.GOAL.GOAL(goalId)),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ALL_GOALS] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GOALS] });

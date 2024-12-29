@@ -3,8 +3,7 @@ import { GoalItem } from '@/components/Sidebar/GoalList/GoalItem';
 
 import { useGoalInput } from '@/hooks/useGoalInput';
 import { useNewGoalsStore } from '@/store/useNewGoalStore';
-
-import { GoalTypes } from '@/types/goal';
+import { GoalTypes } from '@/types/data';
 
 interface GoalListProps {
   goals: GoalTypes[];

@@ -5,7 +5,7 @@ import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { notify } from '@/store/useToastStore';
 
 import { POST } from '@/apis/services/httpMethod';
-import { GoalsResponse } from '../useGoalsQuery';
+import { GoalsResponse } from '@/types/response';
 
 interface PostGoalTypes {
   title: string;
