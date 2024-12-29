@@ -3,15 +3,14 @@
 import { GoalHeader } from '@/components/Dashboard/GoalList/GoalItem/GoalHeader';
 import { ProgressLine } from '@/components/Dashboard/GoalList/GoalItem/ProgressLine';
 import { TodoList } from '@/components/Dashboard/GoalList/GoalItem/TodoList';
-
-import { TodosResponse } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
+import { TodoTypes } from '@/types/data';
 
 interface GoalItemProps {
   id: number;
   title: string;
   color: string;
   percent: number;
-  todos: TodosResponse[];
+  todos: TodoTypes[];
 }
 
 export const GoalItem = ({

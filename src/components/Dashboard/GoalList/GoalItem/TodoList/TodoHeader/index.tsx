@@ -1,12 +1,12 @@
 import { motion } from 'motion/react';
 import { FaAngleDown } from 'react-icons/fa6';
 
-import { TodosResponse } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
+import { TodoTypes } from '@/types/data';
 import { formatDateToPoint } from '@/utils/date';
 
 interface TodoHeaderProps {
   open: () => void;
-  todo: TodosResponse;
+  todo: TodoTypes;
   isOpen: boolean;
 }
 

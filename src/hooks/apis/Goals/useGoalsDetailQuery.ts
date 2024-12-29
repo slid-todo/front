@@ -7,24 +7,15 @@ import { AxiosError } from 'axios';
 import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-import { BaseResponse } from '@/types/response';
+import {
+  BaseInfiniteQueryResponse,
+  GoalsDetailResponse,
+} from '@/types/response';
 
-import { BasePageableTypes } from '@/types/pageable';
-import { GoalsResponse } from '../Dashboard/useTodosOfGoalsQuery';
-
-interface GoalsDetailResponse extends BaseResponse {
-  data: BasePageableTypes<GoalsResponse[]>;
-}
-
-interface InfiniteQueryResponse {
-  pageParams: number[];
-  pages: GoalsDetailResponse[];
-}
-
-const GoalsDetailResponse = (): UseInfiniteQueryOptions<
+const GoalsDetailOptions = (): UseInfiniteQueryOptions<
   GoalsDetailResponse,
   AxiosError,
-  InfiniteQueryResponse
+  BaseInfiniteQueryResponse<GoalsDetailResponse[]>
 > => ({
   queryKey: [QUERY_KEYS.ALL_GOALS],
   queryFn: ({ pageParam = 0 }) =>
@@ -39,7 +30,7 @@ const GoalsDetailResponse = (): UseInfiniteQueryOptions<
 });
 
 export const useGoalsDetailQuery = () => {
-  const { data, ...etc } = useInfiniteQuery(GoalsDetailResponse());
+  const { data, ...etc } = useInfiniteQuery(GoalsDetailOptions());
   const goals = data?.pages.flatMap((page) => page.data.content) ?? [];
 
   return { goals, ...etc };

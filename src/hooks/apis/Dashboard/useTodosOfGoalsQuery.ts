@@ -7,52 +7,15 @@ import { AxiosError } from 'axios';
 import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-import { BasePageableTypes } from '@/types/pageable';
-import { BaseResponse } from '@/types/response';
-
-export interface CompletesResponse {
-  completeId: number;
-  completePic: string;
-  note: string;
-  completeLink: string;
-  completeStatus: string;
-  createdAt: string;
-  startDate: string;
-}
-
-export interface TodosResponse {
-  todoId: number;
-  todoTitle: string;
-  startDate: string;
-  endDate: string;
-  todoStatus: string;
-  todoLink: string;
-  todoPic: string;
-  createdAt: string;
-  completes: CompletesResponse[];
-}
-
-export interface GoalsResponse {
-  goalId: number;
-  goalTitle: string;
-  goalColor: string;
-  progress: number;
-  todos: TodosResponse[];
-}
-
-export interface TodosOfGoalsResponse extends BaseResponse {
-  data: BasePageableTypes<GoalsResponse[]>;
-}
-
-interface InfiniteQueryResponse {
-  pageParams: number[];
-  pages: TodosOfGoalsResponse[];
-}
+import {
+  BaseInfiniteQueryResponse,
+  TodosOfGoalsResponse,
+} from '@/types/response';
 
 export const todosOfGoalsOptions = (): UseInfiniteQueryOptions<
   TodosOfGoalsResponse,
   AxiosError,
-  InfiniteQueryResponse
+  BaseInfiniteQueryResponse<TodosOfGoalsResponse[]>
 > => ({
   queryKey: [QUERY_KEYS.TODOS_OF_GOALS],
   queryFn: ({ pageParam = 0 }) =>

@@ -6,10 +6,10 @@ import { AnimatePresence, motion } from 'motion/react';
 
 import { TodoHeader } from '@/components/Dashboard/GoalList/GoalItem/TodoList/TodoHeader';
 import { TodoPic } from '@/components/Dashboard/GoalList/GoalItem/TodoList/TodoPic';
-import { TodosResponse } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
+import { TodoTypes } from '@/types/data';
 
 interface TodoListProps {
-  todo: TodosResponse;
+  todo: TodoTypes;
   color: string;
 }
 
