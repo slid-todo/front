@@ -42,6 +42,7 @@ export const useCertifiedTodo = (): UseMutationResult<
       });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TODAY_TODO] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TODOS_OF_GOALS] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ALL_GOALS] });
       close();
     },
     onError: (error: AxiosError) => {
