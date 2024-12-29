@@ -2,14 +2,20 @@ import { useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa6';
 import { Dropdown } from '@/components/common/Dropdown';
 import { SEARCH_FILTER_ARRAY } from '@/constants/SearchFilterArray';
-import { useSearchStore } from '@/store/useSearchStore';
 
 interface filterType {
   searchFilter: string;
 }
 
-export const SearchFilterDropdown = () => {
-  const { searchFilter, setSearchFilter } = useSearchStore();
+interface SearchFilterDropdownProps {
+  localFilter: string;
+  setLocalFilter: (filter: string) => void;
+}
+
+export const SearchFilterDropdown = ({
+  localFilter,
+  setLocalFilter,
+}: SearchFilterDropdownProps) => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
 
   const handleDropdown = () => {
@@ -17,7 +23,7 @@ export const SearchFilterDropdown = () => {
   };
 
   const handleSelectItem = (item: filterType) => {
-    setSearchFilter(item.searchFilter);
+    setLocalFilter(item.searchFilter);
   };
 
   const renderDropdownItem = (item: filterType) => {
@@ -33,11 +39,9 @@ export const SearchFilterDropdown = () => {
       className="relative flex w-80 cursor-pointer items-center gap-4"
       onClick={handleDropdown}
     >
-      <span className="text-sm-medium text-custom-gray-100">
-        {searchFilter}
-      </span>
+      <span className="text-sm-medium text-custom-gray-100">{localFilter}</span>
       <FaAngleDown
-        className={`size-14 cursor-pointer text-custom-gray-100 transition-transform duration-300 ${isOpenDropdown ? 'rotate-180' : ''}`}
+        className={`size-18 cursor-pointer text-custom-gray-100 transition-transform duration-300 ${isOpenDropdown ? 'rotate-180' : ''}`}
       />
       <Dropdown
         dropdownData={SEARCH_FILTER_ARRAY}
