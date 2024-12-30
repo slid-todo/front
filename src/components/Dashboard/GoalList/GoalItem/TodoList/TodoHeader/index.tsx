@@ -2,7 +2,8 @@ import { motion } from 'motion/react';
 import { FaAngleDown } from 'react-icons/fa6';
 
 import { TodoTypes } from '@/types/data';
-import { formatDateToPoint } from '@/utils/date';
+import { cn } from '@/utils/className';
+import { formatDateToPoint, isDatePast } from '@/utils/date';
 
 interface TodoHeaderProps {
   open: () => void;
@@ -11,12 +12,17 @@ interface TodoHeaderProps {
 }
 
 export const TodoHeader = ({ open, todo, isOpen }: TodoHeaderProps) => {
+  const isPast = isDatePast(todo.endDate);
+  const titleClass = cn('text-base-semibold', isPast && 'text-custom-gray-100');
+
   return (
     <div onClick={open} className="relative mt-16">
       <div className="">
-        <p className="text-base-semibold">{todo.todoTitle}</p>
+        <p className={titleClass}>{todo.todoTitle}</p>
         <p className="text-xs-medium leading-6 text-custom-gray-100">
-          {`${formatDateToPoint(todo.startDate)} - 
+          {isPast
+            ? '종료'
+            : `${formatDateToPoint(todo.startDate)} - 
           ${formatDateToPoint(todo.endDate)}`}
         </p>
       </div>
