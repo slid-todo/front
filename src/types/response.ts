@@ -43,6 +43,6 @@ export interface EditGoalTitleResponse extends BaseResponse {
 
 export interface WithdrawalResponse extends BaseResponse {
   data: {
-    user: number;
+    userId: number;
   };
 }
