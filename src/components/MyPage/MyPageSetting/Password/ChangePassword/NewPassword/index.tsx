@@ -3,6 +3,7 @@ import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { ChangePasswordProps } from '@/types/Auth/ChangePasswordProps';
 import { VisibilityIcon } from '@/components/AuthPage/VisibilityIcon';
+import { newPasswordValidation } from '@/utils/authValidation';
 
 export const NewPassword = ({
   register,
@@ -21,18 +22,7 @@ export const NewPassword = ({
         <Input
           type={isVisible ? 'text' : 'password'}
           placeholder={PLACEHOLDERS.NEW_PASSWORD}
-          {...register('newPassword', {
-            required: '새 비밀번호를 입력해주세요',
-            minLength: {
-              value: 4,
-              message: '비밀번호는 최소 4자 이상이어야 합니다.',
-            },
-            validate: {
-              matchesPassword: (value: string | undefined) =>
-                value !== getValues?.('currentPassword') ||
-                '현재 비밀번호와 동일합니다.',
-            },
-          })}
+          {...register('newPassword', newPasswordValidation({ getValues }))}
         />
         <VisibilityIcon isVisible={isVisible} onClick={handleClickIcon} />
       </div>
