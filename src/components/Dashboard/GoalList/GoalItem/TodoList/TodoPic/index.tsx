@@ -21,7 +21,7 @@ export const TodoPic = ({ index, color, pic, status, date }: TodoItemProps) => {
     status === '인증' ? color : isPast ? '#E9E9E9' : color;
   const textClass = cn(
     'absolute inset-0 flex-center !text-base-medium',
-    isPast ? 'text-custom-gray-100' : 'text-custom-gray-300',
+    isPast && !pic ? 'text-custom-gray-100' : 'text-custom-gray-300',
   );
 
   return (
