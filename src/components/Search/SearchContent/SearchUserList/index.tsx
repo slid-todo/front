@@ -18,10 +18,12 @@ export const SearchUserList = ({
   return (
     <ul className="flex flex-col gap-16">
       {isError ? (
-        <div className="text-center text-error">{`'${keyword}' ${error?.message}`}</div>
+        <div className="text-center text-error">
+          {keyword ? `'${keyword}' ${error?.message}` : error?.message}
+        </div>
       ) : (
-        searchData?.data.map((item: SearchResponseData, index) => (
-          <li className="flex w-full items-center gap-8" key={index}>
+        searchData?.data.map((item: SearchResponseData) => (
+          <li className="flex w-full items-center gap-8" key={item.userId}>
             <Image
               width={48}
               height={48}

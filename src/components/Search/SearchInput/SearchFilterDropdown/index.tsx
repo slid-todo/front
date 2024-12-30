@@ -41,7 +41,7 @@ export const SearchFilterDropdown = ({
     >
       <span className="text-sm-medium text-custom-gray-100">{localFilter}</span>
       <FaAngleDown
-        className={`size-18 cursor-pointer text-custom-gray-100 transition-transform duration-300 ${isOpenDropdown ? 'rotate-180' : ''}`}
+        className={`size-14 cursor-pointer text-custom-gray-100 transition-transform duration-300 ${isOpenDropdown ? 'rotate-180' : ''}`}
       />
       <Dropdown
         dropdownData={SEARCH_FILTER_ARRAY}

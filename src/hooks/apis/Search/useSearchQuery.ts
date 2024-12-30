@@ -1,13 +1,14 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { Goal } from '@/types/Goals';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { getSearch } from '@/apis/Search/getSearch';
+import { GoalTypes } from '@/types/data';
 
 export interface SearchResponseData {
+  userId: number;
   name: string;
   profilePic: string;
-  goals: Goal[];
+  goals: GoalTypes[];
 }
 
 export interface SearchResponse {
