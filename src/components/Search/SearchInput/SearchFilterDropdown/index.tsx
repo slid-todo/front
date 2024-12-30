@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IoMdArrowDropdown } from 'react-icons/io';
+import { FaAngleDown } from 'react-icons/fa6';
 import { Dropdown } from '@/components/common/Dropdown';
 import { SEARCH_FILTER_ARRAY } from '@/constants/SearchFilterArray';
 import { useSearchStore } from '@/store/useSearchStore';
@@ -30,14 +30,14 @@ export const SearchFilterDropdown = () => {
 
   return (
     <div
-      className="relative flex w-80 cursor-pointer items-center gap-2"
+      className="relative flex w-80 cursor-pointer items-center gap-4"
       onClick={handleDropdown}
     >
       <span className="text-sm-medium text-custom-gray-100">
         {searchFilter}
       </span>
-      <IoMdArrowDropdown
-        className={`size-18 cursor-pointer text-custom-gray-100 transition-transform duration-300 ${isOpenDropdown ? 'rotate-180' : ''}`}
+      <FaAngleDown
+        className={`size-14 cursor-pointer text-custom-gray-100 transition-transform duration-300 ${isOpenDropdown ? 'rotate-180' : ''}`}
       />
       <Dropdown
         dropdownData={SEARCH_FILTER_ARRAY}

@@ -1,7 +1,7 @@
 import { ChangeEvent, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import { MdDelete } from 'react-icons/md';
+import { FaTrashCan } from 'react-icons/fa6';
 import { todoModalVariants } from '@/constants/motionVariants';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { FileUploadBtn } from './FileUploadBtn';
@@ -50,7 +50,7 @@ export const FileUpload = () => {
             className="size-full rounded-12 object-cover"
             onClick={() => fileUploadRef.current?.click()}
           />
-          <MdDelete
+          <FaTrashCan
             className="absolute right-2 top-2 size-30 cursor-pointer text-error"
             onClick={handleDeleteImage}
           />
