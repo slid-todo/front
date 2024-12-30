@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IoMdArrowDropdown } from 'react-icons/io';
+import { FaAngleDown } from 'react-icons/fa6';
 import { ChangePassword } from './ChangePassword';
 
 export const Password = () => {
@@ -16,8 +16,8 @@ export const Password = () => {
         onClick={handleDropdown}
       >
         <span className="cursor-pointer text-sm-normal">비밀번호 변경</span>
-        <IoMdArrowDropdown
-          className={`size-24 cursor-pointer transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+        <FaAngleDown
+          className={`size-14 cursor-pointer transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
         />
       </div>
       {isOpen && <ChangePassword isOpen={isOpen} />}

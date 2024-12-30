@@ -1,4 +1,4 @@
-import { IoMdArrowDropdown } from 'react-icons/io';
+import { FaAngleDown } from 'react-icons/fa6';
 
 interface DropdownIconProps {
   isOpenDropdown: boolean;
@@ -17,8 +17,8 @@ export const DropdownIcon = ({
 
   return (
     <>
-      <IoMdArrowDropdown
-        className={`size-24 cursor-pointer transition-transform duration-300 ${isOpenDropdown ? 'rotate-180' : ''} ${hidden ? 'hidden' : ''}`}
+      <FaAngleDown
+        className={`size-18 cursor-pointer transition-transform duration-300 ${isOpenDropdown ? 'rotate-180' : ''} ${hidden ? 'hidden' : ''}`}
         onClick={handleDropdown}
       />
     </>

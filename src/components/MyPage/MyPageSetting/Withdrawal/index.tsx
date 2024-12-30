@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaTrashCan } from 'react-icons/fa6';
 import { WithdrawalModal } from './WithdrawalModal';
 
 export const Withdrawal = () => {
@@ -19,6 +20,7 @@ export const Withdrawal = () => {
         onClick={handleModalOpen}
       >
         <span className="cursor-pointer text-sm-normal">회원탈퇴</span>
+        <FaTrashCan className="cursor-pointer" />
       </div>
       <WithdrawalModal isOpen={isOpenModal} onClose={handleModalClose} />
     </>
