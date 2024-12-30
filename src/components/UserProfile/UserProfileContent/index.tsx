@@ -1,25 +1,42 @@
-import Image from 'next/image';
+'use client';
 
-export const UserProfileContent = () => {
-  const images = Array.from({ length: 10 }, (_, index) => ({
-    id: index,
-    src: 'https://slid-todo.s3.ap-northeast-2.amazonaws.com/a19c4793-d33b-4be6-9f65-097bed5a6709_testmouse1.png',
-    alt: `프로필 사진 ${index + 1}`,
-  }));
+import Image from 'next/image';
+import { useUserProfileQuery } from '@/hooks/apis/Auth/useUserProfileQuery';
+import { Spinner } from '@/components/common/Spinner';
+
+interface UserProfileContent {
+  userId: string;
+}
+
+export const UserProfileContent = ({ userId }: UserProfileContent) => {
+  const { completeResponses, isLoading } = useUserProfileQuery(Number(userId));
 
   return (
     <div className="mt-8 grid grid-cols-3 gap-8">
-      {images.map((image) => (
-        <Image
-          key={image.id}
-          width={48}
-          height={48}
-          className="flex h-109 w-full rounded-4"
-          priority
-          src={image.src}
-          alt={image.alt}
-        />
-      ))}
+      {isLoading ? (
+        <div className="col-span-3 flex items-center justify-center">
+          <Spinner />
+        </div>
+      ) : (
+        completeResponses.map((complete) =>
+          complete.completePic ? (
+            <Image
+              key={complete.completeId}
+              width={48}
+              height={48}
+              className="flex h-109 w-full rounded-4"
+              priority
+              src={complete.completePic}
+              alt="인증한 이미지"
+            />
+          ) : (
+            <div
+              key={complete.completeId}
+              className="flex h-109 w-full rounded-4 bg-gray-200"
+            />
+          ),
+        )
+      )}
     </div>
   );
 };
