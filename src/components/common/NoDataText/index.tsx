@@ -5,10 +5,11 @@ interface EmptyStateTextProps {
   classNeme?: string;
 }
 
-export const EmptyStateText = ({ text, classNeme }: EmptyStateTextProps) => {
+export const NoDataText = ({ text, classNeme }: EmptyStateTextProps) => {
   const textClass = cn(
-    'text-center !text-sm-normal text-custom-gray-200',
+    'text-center !text-sm-normal text-custom-gray-100',
     classNeme,
   );
+
   return <p className={textClass}>{text}</p>;
 };

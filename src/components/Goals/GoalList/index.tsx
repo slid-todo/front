@@ -5,7 +5,7 @@ import { TodoList } from '@/components/Dashboard/GoalList/GoalItem/TodoList';
 
 import { useGoalsDetailQuery } from '@/hooks/apis/Goals/useGoalsDetailQuery';
 
-import { EmptyStateText } from '@/components/common/EmptyStateText';
+import { NoDataText } from '@/components/common/NoDataText';
 import { Spinner } from '@/components/common/Spinner';
 import { GoalListSkeleon } from '@/components/Skeletons/GoalListSkeleton';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
@@ -38,7 +38,7 @@ export const GoalList = () => {
           </div>
         ))
       ) : (
-        <EmptyStateText text="등록된 목표가 없습니다." />
+        <NoDataText text="등록된 목표가 없습니다." />
       )}
       {isFetchingNextPage && <Spinner />}
       <div ref={observerRef} style={{ height: '1px' }} />
