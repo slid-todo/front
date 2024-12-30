@@ -1,4 +1,4 @@
-import { TodoDetailTypes } from './data';
+import { TodoDetailTypes, UserProfileTypes } from './data';
 
 export interface BaseResponse {
   statusCode: number;
@@ -18,4 +18,8 @@ export interface WithdrawalResponse extends BaseResponse {
 
 export interface TodoDetailResponse extends BaseResponse {
   data: TodoDetailTypes;
+}
+
+export interface UserProfileResponse extends BaseResponse {
+  data: UserProfileTypes;
 }

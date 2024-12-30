@@ -22,6 +22,7 @@ export const API_ENDPOINTS = {
     PASSWORD: '/api/v1/auths/password',
     FOLLOW_COUNT: '/api/v1/auths/mypage',
     WITHDRAWAL: '/api/v1/auths/withdrawl',
+    USER_PROFILE: (userId: number) => `/api/v1/auths/profile/${userId}`,
   },
 
   GOAL: {
