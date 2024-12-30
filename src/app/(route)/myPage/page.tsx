@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/components/common/Header';
 import { MyProfile } from '@/components/MyPage/MyProfile';
 import { MyFollow } from '@/components/MyPage/MyFollow';
-import { ChangePassword } from '@/components/MyPage/ChangePassword';
-import { MyPageFooter } from '@/components/MyPage/MyPageFooter';
+import { MyPageSetting } from '@/components/MyPage/MyPageSetting';
 
 export const metadata: Metadata = {
   title: 'My page',
@@ -18,8 +17,7 @@ export default function myPage() {
         <MyProfile />
         <MyFollow />
         <hr className="my-8 h-6 w-full bg-custom-white-200" />
-        <ChangePassword />
-        <MyPageFooter />
+        <MyPageSetting />
       </div>
     </>
   );
