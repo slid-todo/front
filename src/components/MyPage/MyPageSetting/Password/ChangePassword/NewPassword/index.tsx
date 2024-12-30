@@ -4,7 +4,7 @@ import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { ChangePasswordProps } from '@/types/Auth/ChangePasswordProps';
 import { VisibilityIcon } from '@/components/AuthPage/VisibilityIcon';
 
-export const NewPasswordChk = ({
+export const NewPassword = ({
   register,
   getValues,
   error,
@@ -17,22 +17,26 @@ export const NewPasswordChk = ({
 
   return (
     <div className="flex flex-col gap-8">
-      <span className="text-sm-normal">새 비밀번호 확인</span>
       <div className="flex w-full items-center justify-between gap-10 rounded-12 bg-white pr-24">
         <Input
           type={isVisible ? 'text' : 'password'}
-          placeholder={PLACEHOLDERS.NEW_PASSWORD_CHK}
-          {...register('newPasswordCheck', {
-            required: '새 비밀번호를 다시 입력해주세요',
+          placeholder={PLACEHOLDERS.NEW_PASSWORD}
+          {...register('newPassword', {
+            required: '새 비밀번호를 입력해주세요',
+            minLength: {
+              value: 4,
+              message: '비밀번호는 최소 4자 이상이어야 합니다.',
+            },
             validate: {
               matchesPassword: (value: string | undefined) =>
-                value === getValues?.('newPassword') ||
-                '비밀번호가 일치하지 않습니다.',
+                value !== getValues?.('currentPassword') ||
+                '현재 비밀번호와 동일합니다.',
             },
           })}
         />
         <VisibilityIcon isVisible={isVisible} onClick={handleClickIcon} />
       </div>
+
       <span className="text-xs-normal text-error">{error?.message}</span>
     </div>
   );
