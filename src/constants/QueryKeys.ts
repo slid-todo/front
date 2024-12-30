@@ -12,4 +12,5 @@ export const QUERY_KEYS = {
   FOLLOW_COUNT: 'followCount',
   FOLLOWS: 'follows',
   TODOS_DETAIL: 'todosDetail',
+  USER_PROFILE: 'userProfile',
 };

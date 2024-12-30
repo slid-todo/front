@@ -48,3 +48,9 @@ export interface ContentTypes {
 export interface TodoDetailTypes extends TodoTypes {
   todoPicName: string;
 }
+export interface UserProfileTypes {
+  name: string;
+  profilePic: string;
+  isFollow: boolean;
+  completeResponses: CompleteTypes[];
+}
