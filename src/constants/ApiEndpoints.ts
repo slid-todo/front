@@ -19,6 +19,7 @@ export const API_ENDPOINTS = {
     PROFILE_PIC: '/api/v1/auths/profilepic',
     PASSWORD: '/api/v1/auths/password',
     FOLLOW_COUNT: '/api/v1/auths/mypage',
+    WITHDRAWAL: '/api/v1/auths/withdrawl',
   },
   GOAL: {
     GOALS: '/api/v1/goals',

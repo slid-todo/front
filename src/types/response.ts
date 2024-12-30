@@ -40,3 +40,9 @@ export interface EditGoalTitleResponse extends BaseResponse {
     goalId: number;
   };
 }
+
+export interface WithdrawalResponse extends BaseResponse {
+  data: {
+    user: number;
+  };
+}
