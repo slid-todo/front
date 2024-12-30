@@ -10,6 +10,7 @@ import { Spinner } from '@/components/common/Spinner';
 import { GoalListSkeleon } from '@/components/Skeletons/GoalListSkeleton';
 import { NO_DATA_TEXT } from '@/constants/NoDataText';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
+import { compareDates } from '@/utils/date';
 import { GoalHeader } from './GoalHeader';
 
 export const GoalList = () => {
@@ -23,26 +24,32 @@ export const GoalList = () => {
         <GoalListSkeleon />
       ) : goals.length > 0 ? (
         <div className="flex flex-col gap-16">
-          {goals.map((goal) => (
-            <div
-              key={goal.goalId}
-              className="relative w-full rounded-12 bg-white p-16 shadow-sm"
-            >
-              <GoalHeader
-                id={goal.goalId}
-                title={goal.goalTitle}
-                color={goal.goalColor}
-              />
-              <ProgressLine percent={goal.progress} color={goal.goalColor} />
-              {goal.todos.map((todo) => (
-                <TodoList
-                  key={todo.todoId}
-                  todo={todo}
+          {goals.map((goal) => {
+            const todos = goal.todos.sort((a, b) =>
+              compareDates(b.endDate, a.endDate),
+            );
+
+            return (
+              <div
+                key={goal.goalId}
+                className="relative w-full rounded-12 bg-white p-16 shadow-sm"
+              >
+                <GoalHeader
+                  id={goal.goalId}
+                  title={goal.goalTitle}
                   color={goal.goalColor}
                 />
-              ))}
-            </div>
-          ))}
+                <ProgressLine percent={goal.progress} color={goal.goalColor} />
+                {todos.map((todo) => (
+                  <TodoList
+                    key={todo.todoId}
+                    todo={todo}
+                    color={goal.goalColor}
+                  />
+                ))}
+              </div>
+            );
+          })}
           {isFetchingNextPage && <Spinner />}
           <div ref={observerRef} style={{ height: '1px' }} />
         </div>
