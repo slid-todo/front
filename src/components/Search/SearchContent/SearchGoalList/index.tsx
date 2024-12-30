@@ -20,7 +20,9 @@ export const SearchGoalList = ({
   return (
     <ul className="flex flex-col gap-16">
       {isError ? (
-        <div className="text-center text-error">{`'${keyword}' ${error?.message}`}</div>
+        <div className="text-center text-error">
+          {keyword ? `'${keyword}' ${error?.message}` : error?.message}
+        </div>
       ) : (
         searchData?.data.map((item: SearchResponseData, index) => (
           <li className="flex w-full flex-col" key={index}>
