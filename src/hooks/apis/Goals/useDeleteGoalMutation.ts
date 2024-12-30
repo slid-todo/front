@@ -15,6 +15,8 @@ export const useDeleteGoalMutation = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ALL_GOALS] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GOALS] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.RECENT_TODOS] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TODOS_OF_GOALS] });
       notify('success', '목표 삭제에 성공했습니다.', 3000);
     },
     onError: (error) => {
