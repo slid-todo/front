@@ -24,8 +24,8 @@ export const SearchGoalList = ({
           {keyword ? `'${keyword}' ${error?.message}` : error?.message}
         </div>
       ) : (
-        searchData?.data.map((item: SearchResponseData, index) => (
-          <li className="flex w-full flex-col" key={index}>
+        searchData?.data.map((item: SearchResponseData) => (
+          <li className="flex w-full flex-col" key={item.userId}>
             <div className="flex w-full items-center gap-8">
               <Image
                 width={48}
