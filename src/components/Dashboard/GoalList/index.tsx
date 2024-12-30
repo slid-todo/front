@@ -6,6 +6,7 @@ import { Spinner } from '@/components/common/Spinner';
 import { DashboardItemContainer } from '@/components/Dashboard/DashboardItemContainer';
 import { GoalItem } from '@/components/Dashboard/GoalList/GoalItem';
 import { GoalListSkeleon } from '@/components/Skeletons/GoalListSkeleton';
+import { NO_DATA_TEXT } from '@/constants/NoDataText';
 
 import { useTodosOfGoalsQuery } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
@@ -36,7 +37,7 @@ export const GoalList = () => {
         </div>
       ) : (
         <Card>
-          <NoDataText text="등록된 목표가 없습니다." />
+          <NoDataText text={NO_DATA_TEXT.NO_GOAL} />
         </Card>
       )}
     </DashboardItemContainer>

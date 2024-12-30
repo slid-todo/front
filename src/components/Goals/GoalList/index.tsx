@@ -8,6 +8,7 @@ import { useGoalsDetailQuery } from '@/hooks/apis/Goals/useGoalsDetailQuery';
 import { NoDataText } from '@/components/common/NoDataText';
 import { Spinner } from '@/components/common/Spinner';
 import { GoalListSkeleon } from '@/components/Skeletons/GoalListSkeleton';
+import { NO_DATA_TEXT } from '@/constants/NoDataText';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { GoalHeader } from './GoalHeader';
 
@@ -46,7 +47,7 @@ export const GoalList = () => {
           <div ref={observerRef} style={{ height: '1px' }} />
         </div>
       ) : (
-        <NoDataText text="등록된 목표가 없습니다." />
+        <NoDataText text={NO_DATA_TEXT.NO_GOAL} />
       )}
     </>
   );
