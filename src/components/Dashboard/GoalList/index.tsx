@@ -1,19 +1,25 @@
 'use client';
 
 import { Card } from '@/components/common/Card';
+import { NoDataText } from '@/components/common/NoDataText';
+import { Spinner } from '@/components/common/Spinner';
 import { DashboardItemContainer } from '@/components/Dashboard/DashboardItemContainer';
 import { GoalItem } from '@/components/Dashboard/GoalList/GoalItem';
+import { GoalListSkeleon } from '@/components/Skeletons/GoalListSkeleton';
 
 import { useTodosOfGoalsQuery } from '@/hooks/apis/Dashboard/useTodosOfGoalsQuery';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 
 export const GoalList = () => {
-  const { goals, fetchNextPage, isLoading } = useTodosOfGoalsQuery();
+  const { goals, fetchNextPage, isLoading, isFetchingNextPage } =
+    useTodosOfGoalsQuery();
   const { observerRef } = useInfiniteScroll({ fetchNextPage, isLoading });
 
   return (
     <DashboardItemContainer title="목표 별 할 일">
-      {goals.length > 0 ? (
+      {isLoading ? (
+        <GoalListSkeleon />
+      ) : goals.length > 0 ? (
         <div className="flex flex-col gap-16">
           {goals.map((goal) => (
             <GoalItem
@@ -25,13 +31,12 @@ export const GoalList = () => {
               todos={goal.todos}
             />
           ))}
+          {isFetchingNextPage && <Spinner />}
           <div ref={observerRef} style={{ height: '1px' }} />
         </div>
       ) : (
         <Card>
-          <p className="text-sm-normal text-custom-gray-100">
-            등록된 목표가 없습니다.
-          </p>
+          <NoDataText text="등록된 목표가 없습니다." />
         </Card>
       )}
     </DashboardItemContainer>
