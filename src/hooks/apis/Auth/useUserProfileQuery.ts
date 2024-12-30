@@ -14,5 +14,10 @@ const userProfileOptions = (
 });
 
 export const useUserProfileQuery = (userId: number) => {
-  return useQuery(userProfileOptions(userId));
+  const { data, isLoading } = useQuery(userProfileOptions(userId));
+  const name = data?.data.name;
+  const profilePic = data?.data.profilePic;
+  const isFollow = data?.data.isFollow;
+  const completeResponses = data?.data.completeResponses ?? [];
+  return { name, profilePic, isFollow, completeResponses, isLoading };
 };
