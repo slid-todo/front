@@ -3,6 +3,7 @@ import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
 import { ChangePasswordProps } from '@/types/Auth/ChangePasswordProps';
 import { VisibilityIcon } from '@/components/AuthPage/VisibilityIcon';
+import { newPasswordChkValidation } from '@/utils/authValidation';
 
 export const NewPasswordChk = ({
   register,
@@ -21,14 +22,10 @@ export const NewPasswordChk = ({
         <Input
           type={isVisible ? 'text' : 'password'}
           placeholder={PLACEHOLDERS.NEW_PASSWORD_CHK}
-          {...register('newPasswordCheck', {
-            required: '새 비밀번호를 다시 입력해주세요',
-            validate: {
-              matchesPassword: (value: string | undefined) =>
-                value === getValues?.('newPassword') ||
-                '비밀번호가 일치하지 않습니다.',
-            },
-          })}
+          {...register(
+            'newPasswordCheck',
+            newPasswordChkValidation({ getValues }),
+          )}
         />
         <VisibilityIcon isVisible={isVisible} onClick={handleClickIcon} />
       </div>
