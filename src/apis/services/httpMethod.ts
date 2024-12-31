@@ -9,7 +9,7 @@ export async function GET<T>(url: string): Promise<T> {
   }
 }
 
-export async function POST<T, U>(url: string, data: U): Promise<T> {
+export async function POST<T, U>(url: string, data?: U): Promise<T> {
   try {
     const response = await axiosInstance.post(url, data);
     return response.data;
