@@ -1,4 +1,5 @@
 import { AxiosError } from 'axios';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { FaFlag } from 'react-icons/fa6';
 import { Goal } from '@/types/Goals';
@@ -17,6 +18,12 @@ export const SearchGoalList = ({
   searchData,
   keyword,
 }: SearchGoalListProps) => {
+  const router = useRouter();
+
+  const handleClickProfile = (userId: number) => {
+    router.push(`/userProfile/${userId}`);
+  };
+
   return (
     <ul className="flex flex-col gap-16">
       {isError ? (
@@ -26,7 +33,10 @@ export const SearchGoalList = ({
       ) : (
         searchData?.data.map((item: SearchResponseData) => (
           <li className="flex w-full flex-col" key={item.userId}>
-            <div className="flex w-full items-center gap-8">
+            <div
+              className="flex w-full items-center gap-8"
+              onClick={() => handleClickProfile(item.userId)}
+            >
               <Image
                 width={48}
                 height={48}
