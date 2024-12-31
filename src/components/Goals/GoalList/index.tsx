@@ -50,7 +50,11 @@ export const GoalList = () => {
               </div>
             );
           })}
-          {isFetchingNextPage && <Spinner />}
+          {isFetchingNextPage && (
+            <span className="flex w-full justify-center">
+              <Spinner className="size-18" />
+            </span>
+          )}
           <div ref={observerRef} style={{ height: '1px' }} />
         </div>
       ) : (

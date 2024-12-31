@@ -1,6 +1,10 @@
-export const Spinner = () => (
+interface SpinnerProps {
+  className?: string;
+}
+
+export const Spinner = ({ className }: SpinnerProps) => (
   <svg
-    className="size-12 animate-spin text-current"
+    className={`size-12 animate-spin text-current ${className}`}
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
