@@ -36,6 +36,8 @@ export const API_ENDPOINTS = {
   FOLLOW: {
     CREATE: (followerId: number) => `api/v1/follows/${followerId}`,
     DELETE: (followerId: number) => `api/v1/follows/${followerId}`,
+    ASSIGN_FOLLOW: (followId: number) => `/api/v1/follows/${followId}`,
+    DELETE_FOLLOW: (followId: number) => `/api/v1/follows/${followId}`,
     GET: `/api/v1/follows`,
   },
 

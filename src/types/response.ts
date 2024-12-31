@@ -23,3 +23,16 @@ export interface TodoDetailResponse extends BaseResponse {
 export interface UserProfileResponse extends BaseResponse {
   data: UserProfileTypes;
 }
+
+export interface AssignFollowResponse extends BaseResponse {
+  data: {
+    followId: number;
+  };
+}
+
+export interface DeleteFollowResponse extends BaseResponse {
+  data: {
+    followerId: number;
+    followeeId: number;
+  };
+}
