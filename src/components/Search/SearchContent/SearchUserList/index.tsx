@@ -1,4 +1,5 @@
 import { AxiosError } from 'axios';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { SearchResponseData } from '@/hooks/apis/Search/useSearchQuery';
 
@@ -15,6 +16,12 @@ export const SearchUserList = ({
   searchData,
   keyword,
 }: SearchUserListProps) => {
+  const router = useRouter();
+
+  const handleClickProfile = (userId: number) => {
+    router.push(`/userProfile/${userId}`);
+  };
+
   return (
     <ul className="flex flex-col gap-16">
       {isError ? (
@@ -23,7 +30,11 @@ export const SearchUserList = ({
         </div>
       ) : (
         searchData?.data.map((item: SearchResponseData) => (
-          <li className="flex w-full items-center gap-8" key={item.userId}>
+          <li
+            className="flex w-full items-center gap-8"
+            key={item.userId}
+            onClick={() => handleClickProfile(item.userId)}
+          >
             <Image
               width={48}
               height={48}
