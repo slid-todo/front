@@ -27,4 +27,9 @@ export const API_ENDPOINTS = {
     GOAL: (goalId: number) => `/api/v1/goals/${goalId}`,
   },
   SEARCH: '/api/v1/searches',
+  FOLLOW: {
+    CREATE: (followerId: number) => `api/v1/follows/${followerId}`,
+    DELETE: (followerId: number) => `api/v1/follows/${followerId}`,
+    GET: `/api/v1/follows`,
+  },
 };
