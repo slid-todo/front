@@ -4,18 +4,21 @@ interface PostImageProps {
   completePic: string;
 }
 
-export function PostImage({ completePic }: PostImageProps) {
+export function PostImage(props: PostImageProps) {
+  const { completePic } = props;
+
   if (!completePic) {
     return (
-      <div style={{ marginBottom: '8px', color: 'gray' }}>
-        이미지가 없습니다.
-      </div>
+      <div
+        className="my-8 w-full bg-slate-600"
+        style={{ aspectRatio: '1 / 1' }}
+      />
     );
   }
 
   return (
-    <div style={{ marginBottom: '8px' }}>
-      <Image src={completePic} alt="post-image" width={100} height={100} />
+    <div className="my-8 w-full" style={{ aspectRatio: '1 / 1' }}>
+      <Image src={completePic} alt="post-image" fill />
     </div>
   );
 }
