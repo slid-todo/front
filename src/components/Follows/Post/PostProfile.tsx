@@ -1,15 +1,22 @@
+import { formatDateToRelativeTime } from '@/utils/date';
+
 interface PostProfileProps {
   createdAt: string;
   userName: string;
 }
 
-export function PostProfile({ createdAt, userName }: PostProfileProps) {
+export function PostProfile(props: PostProfileProps) {
+  const { createdAt, userName } = props;
+
+  const relativeTime = formatDateToRelativeTime(createdAt);
+
   return (
-    <div style={{ marginBottom: '8px' }}>
+    <div className="flex h-40 items-center gap-10 px-16">
+      <div className="size-40 rounded-full bg-sub-yellow" />
       <div>
-        <strong>{userName}</strong>
+        <div className="text-sm-medium text-custom-gray-300">{userName}</div>
       </div>
-      <div>작성일: {createdAt}</div>
+      <div className="text-xs-medium text-custom-gray-100">{relativeTime}</div>
     </div>
   );
 }
