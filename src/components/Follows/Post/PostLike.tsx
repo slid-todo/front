@@ -1,19 +1,21 @@
-import React from 'react';
+import { FaRegHeart, FaHeart } from 'react-icons/fa6';
 
 interface PostLikeProps {
   likeStatus: boolean;
   likeCount: number;
 }
 
-export function PostLike({ likeStatus, likeCount }: PostLikeProps) {
+export function PostLike(props: PostLikeProps) {
+  const { likeStatus, likeCount } = props;
+
   return (
-    <div style={{ marginBottom: '8px' }}>
+    <div className="flex items-center">
       {likeStatus ? (
-        <span style={{ color: 'red', marginRight: '8px' }}>♥</span>
+        <FaHeart className="m-12 size-22 bg-sub-pink" />
       ) : (
-        <span style={{ marginRight: '8px' }}>♡</span>
+        <FaRegHeart className="ml-16 mr-12 size-22" />
       )}
-      <span>{likeCount}</span>
+      <div className="text-sm-normal text-custom-gray-200">{likeCount}</div>
     </div>
   );
 }
