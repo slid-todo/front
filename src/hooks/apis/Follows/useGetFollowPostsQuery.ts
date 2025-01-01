@@ -12,7 +12,10 @@ export const getFollowPostsOptions = (): UseQueryOptions<
   AxiosError
 > => ({
   queryKey: [QUERY_KEYS.FOLLOWS],
-  queryFn: () => GET<GetFollowsResponse>(API_ENDPOINTS.FOLLOW.GET),
+  queryFn: ({ pageParam = 0 }) =>
+    GET<GetFollowsResponse>(
+      `${API_ENDPOINTS.FOLLOW.GET}?lastCompleteId=${pageParam}&size=10`,
+    ),
 });
 
 export const useGetFollowPosts = () => {
