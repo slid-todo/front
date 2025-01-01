@@ -1,4 +1,4 @@
-import { ContentTypes, GoalTypes, ProgressTypes, TodoTypes } from './data';
+import { GoalTypes, ProgressTypes, TodoTypes } from './data';
 import { BasePageableTypes } from './pageable';
 
 export interface BaseResponse {
@@ -45,22 +45,4 @@ export interface WithdrawalResponse extends BaseResponse {
   data: {
     userId: number;
   };
-}
-
-// follows
-export interface CreateFollowsResponse extends BaseResponse {
-  data: {
-    followId: number;
-  };
-}
-
-export interface DeleteFollowsResponse extends BaseResponse {
-  data: {
-    followerId: number;
-    followeeId: number;
-  };
-}
-
-export interface GetFollowsResponse extends BaseResponse {
-  data: BasePageableTypes<ContentTypes[]>;
 }
