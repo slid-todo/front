@@ -12,6 +12,7 @@ export const API_ENDPOINTS = {
     PUT_CERTIFIED_TODO: (completeId: number) =>
       `/api/v1/completes/${completeId}`,
   },
+
   AUTH: {
     SIGN_IN: '/api/v1/auths/login',
     SIGN_UP: '/api/v1/auths/signup',
@@ -21,15 +22,23 @@ export const API_ENDPOINTS = {
     FOLLOW_COUNT: '/api/v1/auths/mypage',
     WITHDRAWAL: '/api/v1/auths/withdrawl',
   },
+
   GOAL: {
     GOALS: '/api/v1/goals',
     ALL_GOALS: '/api/v1/goals/all',
     GOAL: (goalId: number) => `/api/v1/goals/${goalId}`,
   },
+
   SEARCH: '/api/v1/searches',
+
   FOLLOW: {
     CREATE: (followerId: number) => `api/v1/follows/${followerId}`,
     DELETE: (followerId: number) => `api/v1/follows/${followerId}`,
     GET: `/api/v1/follows`,
+  },
+
+  LIKE: {
+    CREATE: (completeId: number) => `api/v1/completes/${completeId}/likes`,
+    DELETE: (completeId: number) => `api/v1/completes/${completeId}/likes`,
   },
 };
