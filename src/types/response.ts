@@ -46,3 +46,7 @@ export interface WithdrawalResponse extends BaseResponse {
     userId: number;
   };
 }
+
+export interface TodoDetailResponse extends BaseResponse {
+  data: TodoTypes;
+}

@@ -11,6 +11,7 @@ export const API_ENDPOINTS = {
     GET_TODAY_TODOS: '/api/v1/todos/today',
     PUT_CERTIFIED_TODO: (completeId: number) =>
       `/api/v1/completes/${completeId}`,
+    GET_DETAIL: (todoId: number) => `/api/v1/todos/${todoId}`,
   },
 
   AUTH: {
