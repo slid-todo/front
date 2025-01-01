@@ -11,4 +11,5 @@ export const QUERY_KEYS = {
   CERTIFIED_RECENT_TODO: 'certifiedRecentTodo',
   FOLLOW_COUNT: 'followCount',
   FOLLOWS: 'follows',
+  TODOS_DETAIL: 'todosDetail',
 };
