@@ -4,27 +4,7 @@ import { AxiosError } from 'axios';
 import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-import { BasePageableTypes } from '@/types/pageable';
-import { BaseResponse } from '@/types/response';
-import { TodoCompletesResponse } from '../Todo/useTodayTodo';
-
-interface TodoResponse {
-  completes: TodoCompletesResponse[];
-  createdAt: string;
-  endDate: string;
-  goalColor: string;
-  goalTitle: string;
-  startDate: string;
-  todoId: number;
-  todoLink: string;
-  todoPic: string;
-  todoStatus: string;
-  todoTitle: string;
-}
-
-interface RecentTodosResponse extends BaseResponse {
-  data: BasePageableTypes<TodoResponse[]>;
-}
+import { RecentTodosResponse } from '@/types/response';
 
 export const recentTodosOptions = (): UseQueryOptions<
   RecentTodosResponse,

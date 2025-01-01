@@ -3,13 +3,25 @@
 import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { Skeleton } from '@/components/common/Skeleton';
 import { useUserQuery } from '@/hooks/apis/useUserQuery';
+import { useSidebarStore } from '@/store/useSidebarStore';
+import { useLogout } from '@/hooks/useLogout';
 
 export const Profile = () => {
   const { email, name, profile, isLoading } = useUserQuery();
   const [showSkeleton, setShowSkeleton] = useState(false);
+
+  const router = useRouter();
+  const { close } = useSidebarStore();
+  const { logout } = useLogout();
+
+  const handleClick = () => {
+    router.push('/myPage');
+    close();
+  };
 
   useEffect(() => {
     if (isLoading) {
@@ -43,11 +55,13 @@ export const Profile = () => {
             />
           )}
           <div className="flex w-full justify-between">
-            <div>
+            <div onClick={handleClick}>
               <p className="text-sm-medium">{name}</p>
               <p className="text-xs-medium">{email}</p>
             </div>
-            <button className="text-xs-normal">로그아웃</button>
+            <button className="text-xs-normal" onClick={logout}>
+              로그아웃
+            </button>
           </div>
         </>
       )}

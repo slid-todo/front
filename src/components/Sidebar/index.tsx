@@ -11,6 +11,8 @@ import {
 
 import { useRouter } from 'next/navigation';
 
+import LogoIcon from '@/assets/svg/svg-logo-icon.svg';
+import LogoSide from '@/assets/svg/svg-logo-side.svg';
 import { GoalList } from '@/components/Sidebar/GoalList';
 import { MenuItem } from '@/components/Sidebar/MenuItem';
 import { Profile } from '@/components/Sidebar/Profle';
@@ -36,7 +38,7 @@ export const Sidebar = () => {
 
   const sidebarClass = cn(
     'fixed md:sticky top-0 left-0 z-20 flex flex-col items-center h-screen py-16 transition-all duration-200 ease-in-out bg-white border-r border-custom-white-200',
-    isOpen ? 'md:w-280 w-screen' : 'w-0 md:w-60 overflow-hidden',
+    isOpen ? 'md:w-280 w-screen' : 'w-0 md:min-w-60 overflow-hidden',
   );
 
   const iconContainerClass = cn(
@@ -60,15 +62,15 @@ export const Sidebar = () => {
   return (
     <div className={sidebarClass}>
       <div className={iconContainerClass}>
-        <div className="size-24 bg-slate-500">{/* 로고 들어갈 예정 */}</div>
+        {isOpen ? <LogoSide /> : <LogoIcon />}
         {isOpen ? (
           <FaAnglesLeft
-            className="size-24 cursor-pointer p-2 text-slate-400"
+            className="size-28 cursor-pointer p-4 text-slate-400"
             onClick={close}
           />
         ) : (
           <FaBars
-            className="size-24 cursor-pointer p-2 text-slate-400"
+            className="size-28 cursor-pointer p-4 text-slate-400"
             onClick={open}
           />
         )}

@@ -1,5 +1,6 @@
 import { UseFormGetValues } from 'react-hook-form';
 import { AuthDataRequest } from '@/types/Auth/AuthDataRequest';
+import { ChangePasswordRequest } from '@/types/Auth/ChangePasswordRequest';
 
 export const nameValidation = {
   required: '이름을 입력해주세요.',
@@ -39,6 +40,43 @@ export const passwordChkValidation = ({
         getValues && value === getValues('password')
           ? true
           : '비밀번호가 일치하지 않습니다.',
+    },
+  };
+};
+
+export interface NewPasswordValidationProps {
+  getValues?: UseFormGetValues<ChangePasswordRequest>;
+}
+
+export const newPasswordValidation = ({
+  getValues,
+}: NewPasswordValidationProps) => {
+  return {
+    required: '새 비밀번호를 입력해주세요',
+    minLength: {
+      value: 4,
+      message: '비밀번호는 최소 4자 이상이어야 합니다.',
+    },
+    validate: {
+      matchesPassword: (value: string | undefined) =>
+        value !== getValues?.('currentPassword') ||
+        '현재 비밀번호와 동일합니다.',
+    },
+  };
+};
+
+export interface NewPasswordChkValidationProps {
+  getValues?: UseFormGetValues<ChangePasswordRequest>;
+}
+
+export const newPasswordChkValidation = ({
+  getValues,
+}: NewPasswordValidationProps) => {
+  return {
+    required: '새 비밀번호를 다시 입력해주세요',
+    validate: {
+      matchesPassword: (value: string | undefined) =>
+        value === getValues?.('newPassword') || '비밀번호가 일치하지 않습니다.',
     },
   };
 };

@@ -1,13 +1,14 @@
 'use client';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Logo } from '@/components/AuthPage/Logo';
-import { EmailInput } from '@/components/AuthPage/EmailInput';
-import { PasswordInput } from '@/components/AuthPage/PasswordInput';
+
 import { AuthFooter } from '@/components/AuthPage/AuthFooter';
-import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
+import { EmailInput } from '@/components/AuthPage/EmailInput';
+import { Logo } from '@/components/AuthPage/Logo';
 import { MetaData } from '@/components/AuthPage/MetaData';
+import { PasswordInput } from '@/components/AuthPage/PasswordInput';
 import { Button } from '@/components/common/Button/Button';
+import { AUTH_FOOTER_MESSAGES } from '@/constants/AuthFooterMessages';
 import { useSignin } from '@/hooks/apis/Auth/useSignin';
 import { AuthDataRequest } from '@/types/Auth/AuthDataRequest';
 

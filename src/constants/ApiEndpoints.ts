@@ -16,10 +16,15 @@ export const API_ENDPOINTS = {
     SIGN_IN: '/api/v1/auths/login',
     SIGN_UP: '/api/v1/auths/signup',
     USER: '/api/v1/auths/user',
+    PROFILE_PIC: '/api/v1/auths/profilepic',
+    PASSWORD: '/api/v1/auths/password',
+    FOLLOW_COUNT: '/api/v1/auths/mypage',
+    WITHDRAWAL: '/api/v1/auths/withdrawl',
   },
   GOAL: {
     GOALS: '/api/v1/goals',
     ALL_GOALS: '/api/v1/goals/all',
     GOAL: (goalId: number) => `/api/v1/goals/${goalId}`,
   },
+  SEARCH: '/api/v1/searches',
 };
