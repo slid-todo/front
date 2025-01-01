@@ -1,5 +1,7 @@
 'use client';
 
+import { useTodoDetailQuery } from '@/hooks/apis/Todo/useTodoDetailQuery';
+import { Spinner } from '@/components/common/Spinner';
 import { TodoDocs } from './TodoDocs';
 import { TodoProfile } from './TodoProfile';
 import { TodoRepeat } from './TodoRepeat';
@@ -9,13 +11,29 @@ interface TodosDetailContentProps {
 }
 
 export const TodosDetailContent = ({ todoId }: TodosDetailContentProps) => {
-  console.log(todoId);
+  const { details, isLoading } = useTodoDetailQuery(Number(todoId));
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Spinner className="size-28" />
+      </div>
+    );
+  }
+
+  if (!details || Array.isArray(details)) {
+    return <div>Error loading todo details</div>;
+  }
 
   return (
     <div className="flex flex-col gap-16">
-      <TodoProfile />
-      <TodoRepeat />
-      <TodoDocs />
+      <TodoProfile
+        goalColor={details.goalColor}
+        goalTitle={details.goalTitle}
+        todoTitle={details.todoTitle}
+      />
+      <TodoRepeat startDate={details.startDate} endDate={details.endDate} />
+      <TodoDocs todoLink={details.todoLink} todoPic={details.todoPic} />
     </div>
   );
 };
