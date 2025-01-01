@@ -1,15 +1,18 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import { FaLink } from 'react-icons/fa';
 
-export const TodoDocs = () => {
-  const [file] = useState('');
-  const [link] = useState('dd');
+interface TodoDocsProps {
+  todoLink: string;
+  todoPic: string;
+}
 
+export const TodoDocs = ({ todoLink, todoPic }: TodoDocsProps) => {
   return (
     <div className="flex flex-col gap-8">
-      {(file || link) && <span className="text-sm-semibold">첨부된 자료</span>}
-      {file && !link && (
+      {(todoPic || todoLink) && (
+        <span className="text-sm-semibold">첨부된 자료</span>
+      )}
+      {todoPic && !todoLink && (
         <Image
           width={340}
           height={340}
@@ -19,7 +22,7 @@ export const TodoDocs = () => {
           alt="프로필 사진"
         />
       )}
-      {!file && link && (
+      {!todoPic && todoLink && (
         <div className="flex items-center gap-8 rounded-8 bg-custom-white-200 p-12">
           <FaLink className="size-24 shrink-0 cursor-pointer text-primary-100" />
           <span className="truncate text-sm-normal text-custom-gray-100">
