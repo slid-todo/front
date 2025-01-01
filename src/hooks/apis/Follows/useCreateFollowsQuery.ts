@@ -3,6 +3,7 @@ import { AxiosError } from 'axios';
 import { notify } from '@/store/useToastStore';
 import { createFollows } from '@/apis/Follows/createFollows';
 import { CreateFollowsResponse } from '@/types/Follows';
+import { TOAST_MESSAGES } from '@/constants/Messages';
 
 export const useCreateFollows = (): UseMutationResult<
   CreateFollowsResponse,
@@ -13,11 +14,11 @@ export const useCreateFollows = (): UseMutationResult<
     mutationFn: (followerId: number) => createFollows(followerId),
 
     onSuccess: () => {
-      notify('success', '팔로우가 추가되었습니다.', 3000);
+      notify('success', TOAST_MESSAGES.CREATE_FOLLOW_SUCCESS, 3000);
     },
 
     onError: (error: AxiosError) => {
-      notify('error', '등록에 실패하였습니다', 3000);
+      notify('error', TOAST_MESSAGES.CREATE_FOLLOW_ERROR, 3000);
       console.error('Error creating todo:', error.message);
     },
   });
