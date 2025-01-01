@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { FaCamera, FaCircleCheck } from 'react-icons/fa6';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { TodoCompletesResponse } from '@/hooks/apis/Todo/useTodayTodo';
 import { useVerificationNoteStore } from '@/store/useVerificationNoteStore';
 import { InputModalContent } from '../ImageInput';
@@ -18,10 +19,19 @@ interface TodoItemProps {
 }
 
 export const TodoItem = (props: TodoItemProps) => {
-  const { todoTitle, goalTitle, goalColor, complete, className = '' } = props;
+  const {
+    todoTitle,
+    goalTitle,
+    goalColor,
+    complete,
+    todoId,
+    className = '',
+  } = props;
 
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [isCertifiedModalOpen, setIsCertifiedModalOpen] = useState(false);
+
+  const router = useRouter();
 
   const {
     setCompleteId,
@@ -88,7 +98,10 @@ export const TodoItem = (props: TodoItemProps) => {
             <FaCamera fill="white" />
           </div>
         )}
-        <div className="my-14 ml-16">
+        <div
+          className="my-14 ml-16"
+          onClick={() => router.push(`/todos/${todoId}`)}
+        >
           <div className="text-xs-medium text-custom-gray-100">{goalTitle}</div>
           <div className="text-base-medium text-custom-gray-300">
             {todoTitle}
