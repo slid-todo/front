@@ -35,3 +35,12 @@ export interface GoalTypes {
 export interface ProgressTypes {
   progress: number;
 }
+
+export interface ContentTypes {
+  completeId: number;
+  completePic: string;
+  createdAt: string;
+  likeStatus: boolean;
+  liklikeCount: number;
+  commentCount: number;
+}
