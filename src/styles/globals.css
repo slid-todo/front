@@ -2,9 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
   .flex-center {
     @apply flex items-center justify-center;
   }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #848484;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
