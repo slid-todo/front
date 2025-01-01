@@ -41,6 +41,6 @@ export interface ContentTypes {
   completePic: string;
   createdAt: string;
   likeStatus: boolean;
-  liklikeCount: number;
+  likeCount: number;
   commentCount: number;
 }
