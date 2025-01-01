@@ -1,4 +1,5 @@
 import { FaRegHeart, FaHeart } from 'react-icons/fa6';
+import { motion } from 'motion/react';
 import { useCreateLike } from '@/hooks/apis/Likes/useCreateLikeQuery';
 import { useDeleteLike } from '@/hooks/apis/Likes/useDeleteLikeQuery';
 
@@ -22,17 +23,19 @@ export function PostLike({ completeId, likeStatus, likeCount }: PostLikeProps) {
 
   return (
     <div className="flex items-center">
-      {likeStatus ? (
-        <FaHeart
-          className="ml-16 mr-12 size-22 cursor-pointer fill-sub-pink"
-          onClick={handleClickLike}
-        />
-      ) : (
-        <FaRegHeart
-          className="ml-16 mr-12 size-22 cursor-pointer"
-          onClick={handleClickLike}
-        />
-      )}
+      <motion.div
+        className="ml-16 mr-12 size-22 cursor-pointer"
+        onClick={handleClickLike}
+        whileTap={{ scale: 1.0 }}
+        whileHover={{ scale: 1.2 }}
+        transition={{ type: 'spring', stiffness: 300 }}
+      >
+        {likeStatus ? (
+          <FaHeart className="size-22 fill-sub-pink" />
+        ) : (
+          <FaRegHeart className="size-22" />
+        )}
+      </motion.div>
       <div className="text-sm-normal text-custom-gray-200">{likeCount}</div>
     </div>
   );
