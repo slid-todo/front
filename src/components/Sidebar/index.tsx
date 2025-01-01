@@ -123,6 +123,10 @@ export const Sidebar = () => {
           <MenuItem
             icon={<FaFire className="size-28 cursor-pointer p-4" />}
             label="팔로워"
+            onClick={() => {
+              router.push('/follows');
+              close();
+            }}
           />
         </div>
       )}
