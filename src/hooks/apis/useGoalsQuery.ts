@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-import { GoalsResponse } from '@/types/response';
+import { GoalsResponse } from '@/types/Goals';
 
 const goalsOptions: UseQueryOptions<GoalsResponse, AxiosError> = {
   queryKey: [QUERY_KEYS.GOALS],
