@@ -1,6 +1,7 @@
 'use client';
 
 import { useTodoDetailQuery } from '@/hooks/apis/Todo/useTodoDetailQuery';
+import { Spinner } from '@/components/common/Spinner';
 import { TodoTypes } from '@/types/data';
 import { TodoDocs } from './TodoDocs';
 import { TodoProfile } from './TodoProfile';
@@ -11,9 +12,18 @@ interface TodosDetailContentProps {
 }
 
 export const TodosDetailContent = ({ todoId }: TodosDetailContentProps) => {
-  const { details } = useTodoDetailQuery(Number(todoId)) as {
+  const { details, isLoading } = useTodoDetailQuery(Number(todoId)) as {
     details: TodoTypes;
+    isLoading: boolean;
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Spinner className="size-28" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-16">
