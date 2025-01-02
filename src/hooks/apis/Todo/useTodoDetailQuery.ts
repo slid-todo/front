@@ -17,7 +17,7 @@ export const useTodoDetailQuery = (todoId: number) => {
   const { data, isLoading, error, isError } = useQuery(
     todoDetailOptions(todoId),
   );
-  const details = data?.data ?? [];
+  const details = data?.data;
 
   return { details, isLoading, error, isError };
 };

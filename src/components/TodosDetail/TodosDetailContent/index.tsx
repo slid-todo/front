@@ -2,7 +2,6 @@
 
 import { useTodoDetailQuery } from '@/hooks/apis/Todo/useTodoDetailQuery';
 import { Spinner } from '@/components/common/Spinner';
-import { TodoTypes } from '@/types/data';
 import { TodoDocs } from './TodoDocs';
 import { TodoProfile } from './TodoProfile';
 import { TodoRepeat } from './TodoRepeat';
@@ -12,10 +11,7 @@ interface TodosDetailContentProps {
 }
 
 export const TodosDetailContent = ({ todoId }: TodosDetailContentProps) => {
-  const { details, isLoading } = useTodoDetailQuery(Number(todoId)) as {
-    details: TodoTypes;
-    isLoading: boolean;
-  };
+  const { details, isLoading } = useTodoDetailQuery(Number(todoId));
 
   if (isLoading) {
     return (
@@ -28,12 +24,12 @@ export const TodosDetailContent = ({ todoId }: TodosDetailContentProps) => {
   return (
     <div className="flex flex-col gap-16">
       <TodoProfile
-        goalColor={details.goalColor}
-        goalTitle={details.goalTitle}
-        todoTitle={details.todoTitle}
+        goalColor={details?.goalColor}
+        goalTitle={details?.goalTitle}
+        todoTitle={details?.todoTitle}
       />
-      <TodoRepeat startDate={details.startDate} endDate={details.endDate} />
-      <TodoDocs todoLink={details.todoLink} todoPic={details.todoPic} />
+      <TodoRepeat startDate={details?.startDate} endDate={details?.endDate} />
+      <TodoDocs todoLink={details?.todoLink} todoPic={details?.todoPic} />
     </div>
   );
 };

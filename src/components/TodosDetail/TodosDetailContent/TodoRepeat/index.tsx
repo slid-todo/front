@@ -1,6 +1,6 @@
 interface TodoRepeatProps {
-  startDate: string;
-  endDate: string;
+  startDate: string | undefined;
+  endDate: string | undefined;
 }
 
 export const TodoRepeat = ({ startDate, endDate }: TodoRepeatProps) => {
