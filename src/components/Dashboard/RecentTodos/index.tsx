@@ -10,7 +10,8 @@ import { TodoItem } from '@/components/Todos';
 import { Button } from '@/components/common/Button/Button';
 import { Card } from '@/components/common/Card';
 import { NoDataText } from '@/components/common/NoDataText';
-import { NO_DATA_TEXT } from '@/constants/NoDataText';
+
+import { NO_DATA_MESSAGES } from '@/constants/Messages';
 import { useRecentTodosQuery } from '@/hooks/apis/Dashboard/useRecnetTodosQuery';
 import { useGoalsQuery } from '@/hooks/apis/useGoalsQuery';
 import { useSidebarStore } from '@/store/useSidebarStore';
@@ -35,14 +36,14 @@ export const RecentTodos = () => {
         <TodoListSkeleton />
       ) : goals.length === 0 ? (
         <Card>
-          <NoDataText text={NO_DATA_TEXT.NO_TODO_AND_GOAL} />
+          <NoDataText text={NO_DATA_MESSAGES.NO_TODO_AND_GOAL} />
           <Button onClick={openSidebar} size="medium">
             새 목표 등록
           </Button>
         </Card>
       ) : todos.length === 0 ? (
         <Card>
-          <NoDataText text={NO_DATA_TEXT.NO_TODO} />
+          <NoDataText text={NO_DATA_MESSAGES.NO_TODO} />
           <Button onClick={() => openModal('생성')} size="medium">
             새 할일 등록
           </Button>
