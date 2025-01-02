@@ -21,7 +21,7 @@ export const getFollowPostsOptions = (): UseQueryOptions<
 export const useGetFollowPosts = () => {
   const { data, ...etc } = useQuery(getFollowPostsOptions());
 
-  const follows = data?.data.content;
+  const follows = data?.data.content ?? [];
 
   return { follows, ...etc };
 };
