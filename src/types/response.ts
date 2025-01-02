@@ -1,4 +1,4 @@
-import { GoalTypes, ProgressTypes, TodoTypes } from './data';
+import { GoalTypes, ProgressTypes, TodoDetailTypes, TodoTypes } from './data';
 import { BasePageableTypes } from './pageable';
 
 export interface BaseResponse {
@@ -48,5 +48,5 @@ export interface WithdrawalResponse extends BaseResponse {
 }
 
 export interface TodoDetailResponse extends BaseResponse {
-  data: TodoTypes;
+  data: TodoDetailTypes;
 }

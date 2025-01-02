@@ -46,6 +46,7 @@ export const TodosDetailHeader = ({ todoId }: TodosDetailHeaderProps) => {
       todoStatus: details?.todoStatus,
       todoLink: details?.todoLink,
       imageEncodedBase64: imageUrl,
+      imageName: details?.todoPicName,
       goalTitle: details?.goalTitle,
     });
     open('수정');
