@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-import { TodayProgressResponse } from '@/types/response';
+import { TodayProgressResponse } from '@/types/Dashboard';
 
 export const todayProgressOptions = (): UseQueryOptions<
   TodayProgressResponse,

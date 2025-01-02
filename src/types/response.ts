@@ -1,5 +1,4 @@
-import { GoalTypes, ProgressTypes, TodoDetailTypes, TodoTypes } from './data';
-import { BasePageableTypes } from './pageable';
+import { TodoDetailTypes } from './data';
 
 export interface BaseResponse {
   statusCode: number;
@@ -9,36 +8,6 @@ export interface BaseResponse {
 export interface BaseInfiniteQueryResponse<T> {
   pageParams: number[];
   pages: T;
-}
-
-export interface RecentTodosResponse extends BaseResponse {
-  data: BasePageableTypes<TodoTypes[]>;
-}
-
-export interface TodayProgressResponse extends BaseResponse {
-  data: ProgressTypes;
-}
-
-export interface TodosOfGoalsResponse extends BaseResponse {
-  data: BasePageableTypes<GoalTypes[]>;
-}
-
-export interface GoalsDetailResponse extends BaseResponse {
-  data: BasePageableTypes<GoalTypes[]>;
-}
-
-export interface GoalsResponse extends BaseResponse {
-  data: GoalTypes[];
-}
-
-export interface DeleteGoalResponse extends BaseResponse {
-  data: { goalId: number };
-}
-
-export interface EditGoalTitleResponse extends BaseResponse {
-  data: {
-    goalId: number;
-  };
 }
 
 export interface WithdrawalResponse extends BaseResponse {

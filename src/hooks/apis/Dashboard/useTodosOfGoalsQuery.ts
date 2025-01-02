@@ -7,10 +7,8 @@ import { AxiosError } from 'axios';
 import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-import {
-  BaseInfiniteQueryResponse,
-  TodosOfGoalsResponse,
-} from '@/types/response';
+import { TodosOfGoalsResponse } from '@/types/Dashboard';
+import { BaseInfiniteQueryResponse } from '@/types/response';
 
 export const todosOfGoalsOptions = (): UseInfiniteQueryOptions<
   TodosOfGoalsResponse,
