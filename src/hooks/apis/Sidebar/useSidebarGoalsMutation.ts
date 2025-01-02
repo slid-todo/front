@@ -1,11 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
+import { POST } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { notify } from '@/store/useToastStore';
-
-import { POST } from '@/apis/services/httpMethod';
-import { GoalsResponse } from '@/types/response';
+import { GoalsResponse } from '@/types/Goals';
 
 interface PostGoalTypes {
   title: string;
