@@ -15,7 +15,7 @@ export const TodoProfile = ({
     <div className="flex items-center gap-16">
       <div
         className="flex-center my-8 size-56 cursor-pointer rounded-16"
-        style={{ backgroundColor: goalColor }} //goalColor
+        style={{ backgroundColor: goalColor }}
       >
         <FaCamera fill="white" />
       </div>
