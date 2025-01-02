@@ -1,13 +1,7 @@
-import type { Metadata } from 'next';
 import { Header } from '@/components/common/Header';
 import { MyProfile } from '@/components/MyPage/MyProfile';
 import { MyFollow } from '@/components/MyPage/MyFollow';
 import { MyPageSetting } from '@/components/MyPage/MyPageSetting';
-
-export const metadata: Metadata = {
-  title: 'My page',
-  description: 'My page',
-};
 
 export default function myPage() {
   return (
