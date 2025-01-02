@@ -1,4 +1,3 @@
-// useDeleteLikeQuery.ts
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { DELETE } from '@/apis/services/httpMethod';
 import { DeleteLikeResponse } from '@/types/Likes';

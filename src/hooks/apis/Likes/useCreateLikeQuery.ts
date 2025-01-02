@@ -1,4 +1,3 @@
-// useCreateLikeQuery.ts
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { createLike } from '@/apis/Likes/createLike';
