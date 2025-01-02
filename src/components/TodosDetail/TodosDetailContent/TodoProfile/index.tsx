@@ -1,9 +1,9 @@
 import { FaCamera } from 'react-icons/fa6';
 
 interface TodoProfileProps {
-  goalColor: string;
-  goalTitle: string;
-  todoTitle: string;
+  goalColor: string | undefined;
+  goalTitle: string | undefined;
+  todoTitle: string | undefined;
 }
 
 export const TodoProfile = ({

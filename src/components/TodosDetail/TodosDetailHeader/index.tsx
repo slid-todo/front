@@ -7,7 +7,6 @@ import { FaEllipsisVertical } from 'react-icons/fa6';
 import { useTodoDetailQuery } from '@/hooks/apis/Todo/useTodoDetailQuery';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
-import { TodoTypes } from '@/types/data';
 import { convertImageToBase64 } from '@/apis/Todo/convertImageToBase64';
 import { useDeleteTodo } from '@/hooks/apis/Todo/useDeleteTodo';
 
@@ -19,9 +18,7 @@ export const TodosDetailHeader = ({ todoId }: TodosDetailHeaderProps) => {
   const [isOpenTab, setIsOpenTab] = useState(false);
 
   const router = useRouter();
-  const { details } = useTodoDetailQuery(Number(todoId)) as {
-    details: TodoTypes;
-  };
+  const { details } = useTodoDetailQuery(Number(todoId));
   const { open } = useTodoModalStore();
   const { setTodoData } = useTodoDataStore();
   const { mutate: deleteTodo } = useDeleteTodo();
@@ -37,19 +34,19 @@ export const TodosDetailHeader = ({ todoId }: TodosDetailHeaderProps) => {
   const handleOpenModify = async () => {
     let imageUrl: string | undefined = undefined;
 
-    if (details.todoPic) {
+    if (details?.todoPic) {
       imageUrl = await convertImageToBase64(details.todoPic);
     }
 
     setTodoData({
       todoId: Number(todoId),
-      title: details.todoTitle,
-      startDate: details.startDate,
-      endDate: details.endDate,
-      todoStatus: details.todoStatus,
-      todoLink: details.todoLink,
+      title: details?.todoTitle,
+      startDate: details?.startDate,
+      endDate: details?.endDate,
+      todoStatus: details?.todoStatus,
+      todoLink: details?.todoLink,
       imageEncodedBase64: imageUrl,
-      goalTitle: details.goalTitle,
+      goalTitle: details?.goalTitle,
     });
     open('수정');
     setIsOpenTab(false);

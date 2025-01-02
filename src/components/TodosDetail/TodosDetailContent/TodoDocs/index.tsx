@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { FaLink } from 'react-icons/fa';
 
 interface TodoDocsProps {
-  todoLink: string;
-  todoPic: string;
+  todoLink: string | undefined;
+  todoPic: string | undefined;
 }
 
 export const TodoDocs = ({ todoLink, todoPic }: TodoDocsProps) => {
