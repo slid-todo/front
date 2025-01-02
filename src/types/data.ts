@@ -44,3 +44,7 @@ export interface ContentTypes {
   likeCount: number;
   commentCount: number;
 }
+
+export interface TodoDetailTypes extends TodoTypes {
+  todoPicName: string;
+}
