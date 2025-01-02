@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import QueryProvider from '@/provider/QueryProvider';
@@ -10,6 +11,14 @@ const pretendard = localFont({
   weight: '45 920',
   variable: '--font-pretendard',
 });
+
+export const metadata: Metadata = {
+  title: '찍찍이',
+  description: '같이 찍어서 인증 시작해 볼까요?',
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
 
 export default function RootLayout({
   children,
