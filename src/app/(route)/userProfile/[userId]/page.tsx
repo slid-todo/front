@@ -1,3 +1,4 @@
+import { PageContainer } from '@/components/common/PageContainer';
 import { UserProfileContent } from '@/components/UserProfile/UserProfileContent';
 import { UserProfileHeader } from '@/components/UserProfile/UserProfileHeader';
 
@@ -11,10 +12,11 @@ export default async function userProfile({
   params: Promise<UserProfileProps>;
 }) {
   const { userId } = await params;
+
   return (
-    <div className="flex min-h-screen w-screen flex-col gap-16 bg-custom-white-100 p-16 md:px-200 xl:px-400 2xl:px-650">
+    <PageContainer>
       <UserProfileHeader userId={userId} />
       <UserProfileContent userId={userId} />
-    </div>
+    </PageContainer>
   );
 }
