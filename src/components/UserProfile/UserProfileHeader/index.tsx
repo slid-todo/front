@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Button } from '@/components/common/Button/Button';
 import { useUserProfileQuery } from '@/hooks/apis/Auth/useUserProfileQuery';
-// import { useAssignFollowMutation } from '@/hooks/apis/Follow/useAssignFollowMutation';
-// import { useDeleteFollowMutation } from '@/hooks/apis/Follow/useDeleteFollowMutation';
+import { useAssignFollowMutation } from '@/hooks/apis/Follow/useAssignFollowMutation';
+import { useDeleteFollowMutation } from '@/hooks/apis/Follow/useDeleteFollowMutation';
 
 interface UserProfileHeader {
   userId: string;
@@ -16,8 +16,8 @@ export const UserProfileHeader = ({ userId }: UserProfileHeader) => {
   const router = useRouter();
 
   const { name, profilePic, isFollow } = useUserProfileQuery(Number(userId));
-  // const { mutate: assignFollow, isPending } = useAssignFollowMutation();
-  // const { mutate: deleteFollow } = useDeleteFollowMutation();
+  const { mutate: assignFollow } = useAssignFollowMutation();
+  const { mutate: deleteFollow } = useDeleteFollowMutation();
 
   const handleBack = () => {
     router.back();
@@ -25,10 +25,9 @@ export const UserProfileHeader = ({ userId }: UserProfileHeader) => {
 
   const handleClickFollow = () => {
     if (isFollow) {
-      console.log('dddd');
+      deleteFollow(Number(userId));
     } else {
-      //assignFollow(Number(userId));
-      //deleteFollow(Number(userId));
+      assignFollow(Number(userId));
     }
   };
 
@@ -53,9 +52,8 @@ export const UserProfileHeader = ({ userId }: UserProfileHeader) => {
           size="small"
           primary={isFollow ? false : true}
           onClick={handleClickFollow}
-          // pending={isPending}
         >
-          {isFollow ? '팔로우' : '팔로잉'}
+          {isFollow === true ? '팔로잉' : '팔로우'}
         </Button>
       </div>
     </>
