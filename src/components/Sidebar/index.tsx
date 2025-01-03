@@ -38,18 +38,13 @@ export const Sidebar = () => {
 
   const sidebarClass = cn(
     'fixed md:sticky top-0 left-0 z-20 flex flex-col items-center h-screen py-16 transition-all duration-200 ease-in-out bg-white border-r border-custom-white-200',
-    isOpen ? 'md:w-280 w-screen' : 'w-0 md:min-w-60 overflow-hidden',
+    isOpen ? 'md:max-w-280 w-screen' : 'w-0 md:min-w-60 overflow-hidden',
   );
 
   const iconContainerClass = cn(
     isOpen
       ? 'flex w-full items-center justify-between px-16'
       : 'flex flex-col gap-16',
-  );
-
-  const backGroundClass = cn(
-    'fixed left-280 top-0 hidden h-screen w-full bg-black transition-opacity duration-200 ease-in-out md:block lg:hidden',
-    isOpen ? 'opacity-50' : 'opacity-0',
   );
 
   const recentGoals = goals
@@ -130,7 +125,6 @@ export const Sidebar = () => {
           />
         </div>
       )}
-      <div className={backGroundClass} onClick={close} />
     </div>
   );
 };
