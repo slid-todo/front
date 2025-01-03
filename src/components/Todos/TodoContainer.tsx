@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+
 import { Filter } from '@/components/common/Filter';
+import { PageContainer } from '@/components/common/PageContainer';
 import { TodoList } from '@/components/Todos';
-import { useFilteredTodos } from '@/hooks/useFilteredTodos';
-import { useTodayTodoQuery } from '@/hooks/apis/Todo/useTodayTodo';
 import { sortFilters } from '@/constants/Todos/TodoFilter';
+import { useTodayTodoQuery } from '@/hooks/apis/Todo/useTodayTodo';
+import { useFilteredTodos } from '@/hooks/useFilteredTodos';
 
 export const TodoContainer = () => {
   const { todayTodos, isLoading, isError, error } = useTodayTodoQuery();
@@ -30,7 +32,7 @@ export const TodoContainer = () => {
   }
 
   return (
-    <div className="flex h-screen w-screen flex-col gap-16 bg-custom-white-100 px-16 pt-48">
+    <PageContainer>
       <div className="mt-16 text-xl-bold text-custom-gray-300">내 할 일</div>
       <Filter
         filters={sortFilters}
@@ -42,6 +44,6 @@ export const TodoContainer = () => {
         completedTodos={completedTodos}
         currentSortFilter={currentSortFilter}
       />
-    </div>
+    </PageContainer>
   );
 };
