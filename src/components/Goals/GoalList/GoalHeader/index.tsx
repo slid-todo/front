@@ -55,9 +55,13 @@ export const GoalHeader = ({ id, title, color }: GoalHeaderProps) => {
       <button
         onBlur={handleCloseMenu}
         onClick={handleOpenMenu}
+        aria-label="Open goal menu"
         className="absolute right-16 top-16 flex items-center text-primary-100"
       >
-        <FaEllipsisVertical className="size-24 p-2 text-custom-gray-100" />
+        <FaEllipsisVertical
+          aria-hidden="true"
+          className="size-24 p-2 text-custom-gray-100"
+        />
       </button>
       <div className="absolute right-16 top-44 w-81">
         <Dropdown
