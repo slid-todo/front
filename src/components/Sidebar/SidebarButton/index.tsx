@@ -14,11 +14,11 @@ interface SidebarButtonProps {
 export const SidebarButton = ({
   type,
   disabled = false,
-  onClick = () => {},
+  onClick,
   children,
 }: SidebarButtonProps) => {
   const buttonClass = cn(
-    'rounded-12 px-10 py-8 md:w-248 md:py-12 flex-center',
+    'rounded-12 px-10 py-8 flex-center',
     {
       default: 'bg-white border border-primary-100 text-primary-100',
       invert: disabled
@@ -30,9 +30,9 @@ export const SidebarButton = ({
   return (
     <button onClick={onClick} disabled={disabled} className={buttonClass}>
       <span className="mr-4">
-        <FaPlus className="size-18 p-2 md:size-24" />
+        <FaPlus className="size-18 p-2" />
       </span>
-      <span className="text-sm-medium md:text-base-medium">{children}</span>
+      <span className="text-sm-medium">{children}</span>
     </button>
   );
 };
