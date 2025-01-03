@@ -1,4 +1,5 @@
 import { Header } from '@/components/common/Header';
+import { PageContainer } from '@/components/common/PageContainer';
 import { Follwer } from '@/components/Dashboard/Follower';
 import { GoalList } from '@/components/Dashboard/GoalList';
 import { MyProgress } from '@/components/Dashboard/MyProgress';
@@ -8,12 +9,12 @@ export default function DashBoardPage() {
   return (
     <>
       <Header title="대시보드" />
-      <div className="flex min-h-screen w-screen flex-col gap-16 bg-custom-white-100 px-16 pb-16 pt-48">
+      <PageContainer>
         <Follwer />
         <RecentTodos />
         <MyProgress />
         <GoalList />
-      </div>
+      </PageContainer>
     </>
   );
 }
