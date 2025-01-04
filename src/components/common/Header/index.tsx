@@ -1,7 +1,7 @@
 'use client';
 
 import { FaBarsStaggered, FaBell, FaMagnifyingGlass } from 'react-icons/fa6';
-import router from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useSidebarStore } from '@/store/useSidebarStore';
 
 interface HeaderProps {
@@ -10,10 +10,11 @@ interface HeaderProps {
 }
 
 export const Header = ({ title = '', search = false }: HeaderProps) => {
+  const router = useRouter();
   const { open } = useSidebarStore();
 
   const handleClickMagnifyingGlass = () => {
-    router.push('/follows');
+    router.push('/search');
   };
 
   return (
