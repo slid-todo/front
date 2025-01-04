@@ -8,6 +8,23 @@ export interface CompleteTypes {
   startDate: string;
 }
 
+export interface CompleteDetailTypes extends CompleteTypes {
+  likeStatus: boolean;
+  likeCount: number;
+  commentCount: number;
+  goalName: string;
+  todoName: string;
+  comments: CommentTypes[];
+}
+
+export interface CommentTypes {
+  commentId: number;
+  content: string;
+  userName: string;
+  profileImage: string;
+  createAt: string;
+}
+
 export interface TodoTypes {
   todoId: number;
   goalTitle: string;
