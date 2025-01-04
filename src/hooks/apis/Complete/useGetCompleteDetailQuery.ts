@@ -8,7 +8,7 @@ import { GetCompleteDetailResponse } from '@/types/Completes';
 const GetCompleteDetailOptions = (
   completeId: number,
 ): UseQueryOptions<GetCompleteDetailResponse, AxiosError> => ({
-  queryKey: [QUERY_KEYS.COMPLETE_DETAIL, completeId],
+  queryKey: [QUERY_KEYS.COMPLETE_DETAIL],
   queryFn: () =>
     GET<GetCompleteDetailResponse>(
       API_ENDPOINTS.TODOS.GET_CERTIFIED_TODO(completeId),
