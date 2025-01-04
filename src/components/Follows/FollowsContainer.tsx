@@ -22,7 +22,7 @@ export const FollowsContainer = () => {
   }
 
   return (
-    <div className="mt-48 overflow-y-hidden">
+    <div className="mt-48">
       <div className="fixed h-44 w-full bg-white px-16 py-8 text-xl-semibold text-custom-gray-300">
         팔로워
       </div>
