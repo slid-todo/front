@@ -1,11 +1,13 @@
 'use client';
 
-import router from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useGetFollowPosts } from '@/hooks/apis/Follows/useGetFollowPostsQuery';
 import { FollowsSkeleton } from '../Skeletons/FollowsSkeleton';
 import { Post } from './Post';
 
 export const FollowsContainer = () => {
+  const router = useRouter();
+
   const { follows, isLoading, isError } = useGetFollowPosts();
 
   if (isError) {
