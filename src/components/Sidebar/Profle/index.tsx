@@ -7,8 +7,8 @@ import { useRouter } from 'next/navigation';
 
 import { Skeleton } from '@/components/common/Skeleton';
 import { useUserQuery } from '@/hooks/apis/useUserQuery';
-import { useSidebarStore } from '@/store/useSidebarStore';
 import { useLogout } from '@/hooks/useLogout';
+import { useSidebarStore } from '@/store/useSidebarStore';
 
 export const Profile = () => {
   const { email, name, profile, isLoading } = useUserQuery();
@@ -18,7 +18,7 @@ export const Profile = () => {
   const { close } = useSidebarStore();
   const { logout } = useLogout();
 
-  const handleClick = () => {
+  const handleRouteMyPage = () => {
     router.push('/myPage');
     close();
   };
@@ -43,27 +43,33 @@ export const Profile = () => {
           </div>
         </>
       ) : (
-        <>
+        <div
+          onClick={handleRouteMyPage}
+          className="flex w-full cursor-pointer items-center justify-start"
+        >
           {!isLoading && (
             <Image
               src={profile}
               alt="profile picture"
               width={37}
               height={37}
-              className="shrink-0 rounded-8"
+              className="aspect-square shrink-0 rounded-8 p-2"
               priority
             />
           )}
-          <div className="flex w-full justify-between">
-            <div onClick={handleClick}>
+          <div className="flex w-full items-center justify-between pl-8">
+            <div>
               <p className="text-sm-medium">{name}</p>
-              <p className="text-xs-medium">{email}</p>
+              <p className="text-xs-medium text-custom-gray-200">{email}</p>
             </div>
-            <button className="text-xs-normal" onClick={logout}>
+            <button
+              className="text-xs-normal text-custom-gray-100"
+              onClick={logout}
+            >
               로그아웃
             </button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

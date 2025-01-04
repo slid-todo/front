@@ -74,7 +74,7 @@ export const Sidebar = () => {
         <div className="flex w-full flex-col items-center">
           <Profile />
           <MenuItem
-            icon={<FaChartSimple className="size-28 cursor-pointer p-4" />}
+            icon={<FaChartSimple className="size-28 p-4" />}
             label="홈"
             onClick={() => {
               router.push('/dashboard');
@@ -96,7 +96,7 @@ export const Sidebar = () => {
           />
           <GoalList goals={recentGoals} />
           <MenuItem
-            icon={<FaListUl className="size-28 cursor-pointer p-4" />}
+            icon={<FaListUl className="size-28 p-4" />}
             label="내 할일"
             addButton={
               <SidebarButton
@@ -116,7 +116,7 @@ export const Sidebar = () => {
             }}
           />
           <MenuItem
-            icon={<FaFire className="size-28 cursor-pointer p-4" />}
+            icon={<FaFire className="size-28 p-4" />}
             label="팔로워"
             onClick={() => {
               router.push('/follows');
