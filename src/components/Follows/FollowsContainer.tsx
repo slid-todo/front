@@ -1,17 +1,17 @@
 'use client';
 
+import router from 'next/router';
 import { useGetFollowPosts } from '@/hooks/apis/Follows/useGetFollowPostsQuery';
+import { FollowsSkeleton } from '../Skeletons/FollowsSkeleton';
 import { Post } from './Post';
 
 export const FollowsContainer = () => {
-  const { follows, isLoading, isError, error } = useGetFollowPosts();
-
-  if (isLoading) {
-    return <div>로딩 중...</div>;
-  }
+  const { follows, isLoading, isError } = useGetFollowPosts();
 
   if (isError) {
-    return <div>에러가 발생했습니다: {error?.message}</div>;
+    router.push('/500');
+
+    return null;
   }
 
   return (
@@ -20,7 +20,9 @@ export const FollowsContainer = () => {
         팔로워
       </div>
       <div className="mb-8 h-48" />
-      {follows && follows.length > 0 ? (
+      {isLoading ? (
+        <FollowsSkeleton />
+      ) : follows && follows.length > 0 ? (
         follows.map((post) => <Post key={post.completeId} post={post} />)
       ) : (
         <div>게시글이 없습니다.</div>
