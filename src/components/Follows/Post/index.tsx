@@ -21,7 +21,7 @@ export function Post(props: PostProps) {
         userId="2"
       />
 
-      <PostImage completePic={post.completePic} />
+      <PostImage completePic={post.completePic} completeId={post.completeId} />
 
       <div className="my-12 flex gap-16">
         <PostLike
@@ -32,7 +32,7 @@ export function Post(props: PostProps) {
         <PostComments commentCount={post.commentCount} />
       </div>
 
-      <PostContent text={post.completeContent} />
+      <PostContent text={post.completeContent} completeId={post.completeId} />
     </div>
   );
 }
