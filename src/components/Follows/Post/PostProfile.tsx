@@ -1,3 +1,6 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { formatDateToRelativeTime } from '@/utils/date';
 
@@ -5,15 +8,24 @@ interface PostProfileProps {
   createdAt: string;
   username: string;
   profilePic: string;
+  userId: string;
 }
 
 export function PostProfile(props: PostProfileProps) {
-  const { createdAt, username, profilePic } = props;
+  const { createdAt, username, profilePic, userId } = props;
+  const router = useRouter();
 
   const relativeTime = formatDateToRelativeTime(createdAt);
 
+  const handleClickProfile = () => {
+    router.push(`/userProfile/${userId}`);
+  };
+
   return (
-    <div className="flex h-40 items-center gap-10 px-16">
+    <div
+      className="flex h-40 cursor-pointer items-center gap-10 px-16"
+      onClick={handleClickProfile}
+    >
       <Image
         src={profilePic}
         alt="profilePic"
