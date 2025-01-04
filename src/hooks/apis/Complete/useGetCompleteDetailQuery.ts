@@ -3,14 +3,16 @@ import { AxiosError } from 'axios';
 import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-import { TodoDetailResponse } from '@/types/response';
+import { GetCompleteDetailResponse } from '@/types/Completes';
 
 const GetCompleteDetailOptions = (
   completeId: number,
-): UseQueryOptions<TodoDetailResponse, AxiosError> => ({
+): UseQueryOptions<GetCompleteDetailResponse, AxiosError> => ({
   queryKey: [QUERY_KEYS.COMPLETE_DETAIL, completeId],
   queryFn: () =>
-    GET<TodoDetailResponse>(API_ENDPOINTS.TODOS.GET_CERTIFIED_TODO(completeId)),
+    GET<GetCompleteDetailResponse>(
+      API_ENDPOINTS.TODOS.GET_CERTIFIED_TODO(completeId),
+    ),
 });
 
 export const useGetCompleteDetailQuery = (completeId: number) => {
