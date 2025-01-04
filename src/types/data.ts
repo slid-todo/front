@@ -39,6 +39,9 @@ export interface ProgressTypes {
 export interface ContentTypes {
   completeId: number;
   completePic: string;
+  completeContent: string;
+  profilePic: string;
+  username: string;
   createdAt: string;
   likeStatus: boolean;
   likeCount: number;
