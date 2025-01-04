@@ -1,5 +1,8 @@
+import { CompleteHeader } from '@/components/Complete/CompleteHeader';
+import { CompletePost } from '@/components/Complete/Post';
+
 interface CompletePageProps {
-  completeId: string;
+  completeId: number;
 }
 
 export default async function CompletePage({
@@ -9,7 +12,9 @@ export default async function CompletePage({
 }) {
   const { completeId } = await params;
   return (
-    <div className="flex min-h-screen w-screen flex-col gap-16 bg-custom-white-100 p-16 md:px-200 xl:px-400 2xl:px-650">
+    <div className="flex min-h-screen w-screen flex-col gap-16 bg-custom-white-100 py-16 md:px-200 xl:px-400 2xl:px-650">
+      <CompleteHeader />
+      <CompletePost completeId={completeId} />
       {completeId}
     </div>
   );
