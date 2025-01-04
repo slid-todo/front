@@ -15,7 +15,7 @@ export const MenuItem = ({
 }: MenuItemProps) => {
   return (
     <div className="flex w-full items-center justify-between border-t border-slate-200 p-16">
-      <div onClick={onClick} className="flex items-center gap-8">
+      <div onClick={onClick} className="flex cursor-pointer items-center gap-8">
         {icon}
         <span className="text-lg-semibold">{label}</span>
       </div>
