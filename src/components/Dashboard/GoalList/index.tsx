@@ -40,9 +40,11 @@ export const GoalList = () => {
           <div ref={observerRef} style={{ height: '1px' }} />
         </div>
       ) : (
-        <Card>
-          <NoDataText text={NO_DATA_MESSAGES.NO_GOAL} />
-        </Card>
+        <div className="pb-16">
+          <Card>
+            <NoDataText text={NO_DATA_MESSAGES.NO_GOAL} />
+          </Card>
+        </div>
       )}
     </DashboardItemContainer>
   );
