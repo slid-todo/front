@@ -9,6 +9,7 @@ export const QUERY_KEYS = {
   SEARCH_DATA: 'searchData',
   CERTIFIED_TODO: 'certifiedTodo',
   CERTIFIED_RECENT_TODO: 'certifiedRecentTodo',
+  COMPLETE_DETAIL: 'completeDetail',
   FOLLOW_COUNT: 'followCount',
   FOLLOWS: 'follows',
   TODOS_DETAIL: 'todosDetail',
