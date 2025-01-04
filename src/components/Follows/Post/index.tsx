@@ -32,7 +32,11 @@ export function Post(props: PostProps) {
         <PostComments commentCount={post.commentCount} />
       </div>
 
-      <PostContent text={post.completeContent} completeId={post.completeId} />
+      <PostContent
+        text={post.completeContent}
+        completeId={post.completeId}
+        push
+      />
     </div>
   );
 }

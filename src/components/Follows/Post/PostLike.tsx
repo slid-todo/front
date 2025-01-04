@@ -9,7 +9,9 @@ interface PostLikeProps {
   likeCount: number;
 }
 
-export function PostLike({ completeId, likeStatus, likeCount }: PostLikeProps) {
+export function PostLike(props: PostLikeProps) {
+  const { completeId, likeStatus, likeCount } = props;
+
   const { mutate: createLike } = useCreateLike();
   const { mutate: deleteLike } = useDeleteLike();
 
