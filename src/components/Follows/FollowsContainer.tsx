@@ -2,13 +2,18 @@
 
 import { useRouter } from 'next/navigation';
 import { useGetFollowPosts } from '@/hooks/apis/Follows/useGetFollowPostsQuery';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { FollowsSkeleton } from '../Skeletons/FollowsSkeleton';
+import { Spinner } from '../common/Spinner';
 import { Post } from './Post';
 
 export const FollowsContainer = () => {
   const router = useRouter();
 
-  const { follows, isLoading, isError } = useGetFollowPosts();
+  const { follows, isLoading, isError, fetchNextPage, isFetchingNextPage } =
+    useGetFollowPosts();
+
+  const { observerRef } = useInfiniteScroll({ fetchNextPage, isLoading });
 
   if (isError) {
     router.push('/500');
@@ -24,8 +29,18 @@ export const FollowsContainer = () => {
       <div className="mb-8 h-48" />
       {isLoading ? (
         <FollowsSkeleton />
-      ) : follows && follows.length > 0 ? (
-        follows.map((post) => <Post key={post.completeId} post={post} />)
+      ) : follows.length > 0 ? (
+        <div>
+          {follows.map((post) => (
+            <Post key={post.completeId} post={post} />
+          ))}
+          {isFetchingNextPage && (
+            <span className="flex w-full justify-center">
+              <Spinner className="size-18" />
+            </span>
+          )}
+          <div ref={observerRef} style={{ height: '1px' }} />
+        </div>
       ) : (
         <div>게시글이 없습니다.</div>
       )}
