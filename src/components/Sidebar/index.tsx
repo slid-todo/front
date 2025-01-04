@@ -11,6 +11,7 @@ import {
 
 import { useRouter } from 'next/navigation';
 
+import Link from 'next/link';
 import LogoIcon from '@/assets/svg/svg-logo-icon.svg';
 import LogoSide from '@/assets/svg/svg-logo-side.svg';
 import { GoalList } from '@/components/Sidebar/GoalList';
@@ -57,7 +58,7 @@ export const Sidebar = () => {
   return (
     <div className={sidebarClass}>
       <div className={iconContainerClass}>
-        {isOpen ? <LogoSide /> : <LogoIcon />}
+        <Link href="/dashboard">{isOpen ? <LogoSide /> : <LogoIcon />}</Link>
         {isOpen ? (
           <FaAnglesLeft
             className="size-28 cursor-pointer p-4 text-slate-400"
