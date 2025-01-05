@@ -14,7 +14,7 @@ export default async function todoDetail({
   const { todoId } = await params;
 
   return (
-    <PageContainer>
+    <PageContainer header={false}>
       <TodosDetailHeader todoId={todoId} />
       <TodosDetailContent todoId={todoId} />
     </PageContainer>
