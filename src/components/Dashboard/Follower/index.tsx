@@ -13,7 +13,6 @@ export const Follwer = () => {
     useGetFollowPosts();
   const { observerRef } = useInfiniteScroll({ fetchNextPage, isLoading });
 
-  console.log(follows);
   return (
     <DashboardItemContainer
       title="팔로워 현황"
