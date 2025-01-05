@@ -45,6 +45,7 @@ export const FileUpload = () => {
             src={todoData.imageEncodedBase64}
             width={200}
             height={200}
+            sizes="100vw"
             alt="preview"
             priority
             className="size-full rounded-12 object-cover"

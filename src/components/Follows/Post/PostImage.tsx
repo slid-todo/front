@@ -28,6 +28,7 @@ export function PostImage(props: PostImageProps) {
       src={completePic}
       alt="post-image"
       width={100}
+      sizes="100vw"
       height={100}
       className="my-8 aspect-square w-full cursor-pointer"
       onClick={handleClickImage}

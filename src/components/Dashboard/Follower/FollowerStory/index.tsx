@@ -26,6 +26,7 @@ export const FollowerStory = ({ follower }: FollowerStoryProps) => {
           src={pic}
           width={120}
           height={120}
+          sizes="100vw"
           alt="팔로워 인증 사진"
           className="size-120 rounded-20 object-cover"
         />

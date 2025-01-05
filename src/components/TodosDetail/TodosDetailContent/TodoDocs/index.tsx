@@ -16,6 +16,7 @@ export const TodoDocs = ({ todoLink, todoPic }: TodoDocsProps) => {
         <Image
           width={340}
           height={340}
+          sizes="100vw"
           className="h-340 w-full rounded-16 object-cover"
           priority
           src={todoPic}

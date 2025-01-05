@@ -49,6 +49,7 @@ export const MyProfile = () => {
             <Image
               width={123}
               height={123}
+              sizes="100vw"
               className="size-123 rounded-23 bg-custom-white-200"
               alt="프로필 사진"
               priority

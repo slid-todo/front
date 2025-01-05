@@ -53,6 +53,7 @@ export const Profile = () => {
               alt="profile picture"
               width={37}
               height={37}
+              sizes="100vw"
               className="aspect-square shrink-0 rounded-8 p-2"
               priority
             />

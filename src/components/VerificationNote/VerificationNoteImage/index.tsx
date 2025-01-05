@@ -28,6 +28,7 @@ export const VerificationNoteImage = (props: VerificationNoteImageProps) => {
       <Image
         src={imageUrl}
         alt="Selected Image"
+        sizes="100vw"
         className="size-full rounded-16 object-cover"
         fill
       />
