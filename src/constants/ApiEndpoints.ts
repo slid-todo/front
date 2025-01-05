@@ -47,4 +47,10 @@ export const API_ENDPOINTS = {
     CREATE: (completeId: number) => `api/v1/completes/${completeId}/likes`,
     DELETE: (completeId: number) => `api/v1/completes/${completeId}/likes`,
   },
+
+  COMMENT: {
+    PUT: (commentId: number) => `api/v1/comments/${commentId}`,
+    DELETE: (commentId: number) => `api/v1/comments/${commentId}`,
+    CREATE: `api/v1/comments`,
+  },
 };
