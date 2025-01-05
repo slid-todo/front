@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 import { DashboardItemContainer } from '@/components/Dashboard/DashboardItemContainer';
 import { TodoListSkeleton } from '@/components/Skeletons/TodoListSkeleton';
-import { TodoItem } from '@/components/Todos';
 import { Button } from '@/components/common/Button/Button';
 import { Card } from '@/components/common/Card';
 import { NoDataText } from '@/components/common/NoDataText';
@@ -16,6 +15,7 @@ import { useRecentTodosQuery } from '@/hooks/apis/Dashboard/useRecnetTodosQuery'
 import { useGoalsQuery } from '@/hooks/apis/useGoalsQuery';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
+import { BasicTodoItem } from '@/components/TodosDetail/TodosDetailContent/TodoProfile/BasicTodoItem';
 
 export const RecentTodos = () => {
   const { todos, isLoading } = useRecentTodosQuery();
@@ -51,12 +51,12 @@ export const RecentTodos = () => {
       ) : (
         <ul>
           {todos.map((todo) => (
-            <TodoItem
+            <BasicTodoItem
               key={todo.todoId}
+              goalColor={todo.goalColor}
+              goalTitle={todo.goalTitle}
               todoTitle={todo.todoTitle}
               todoId={todo.todoId}
-              goalTitle={todo.goalTitle}
-              goalColor={todo.goalColor}
             />
           ))}
         </ul>
