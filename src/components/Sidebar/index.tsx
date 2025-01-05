@@ -65,7 +65,9 @@ export const Sidebar = () => {
             close();
           }}
         >
-          {isOpen ? <LogoSide /> : <LogoIcon />}
+          <span className="cursor-pointer">
+            {isOpen ? <LogoSide /> : <LogoIcon />}
+          </span>
         </div>
         {isOpen ? (
           <FaAnglesLeft
