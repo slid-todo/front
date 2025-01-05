@@ -1,7 +1,8 @@
 'use client';
 
-import { FaBarsStaggered, FaBell, FaMagnifyingGlass } from 'react-icons/fa6';
 import { useRouter } from 'next/navigation';
+import { FaBars, FaBell, FaMagnifyingGlass } from 'react-icons/fa6';
+
 import { useSidebarStore } from '@/store/useSidebarStore';
 
 interface HeaderProps {
@@ -20,7 +21,7 @@ export const Header = ({ title = '', search = false }: HeaderProps) => {
   return (
     <div className="fixed left-0 top-0 z-10 flex h-48 w-full items-center justify-between bg-white px-16 md:hidden">
       <div className="flex items-center">
-        <FaBarsStaggered
+        <FaBars
           className="w-24 cursor-pointer text-primary-100"
           onClick={open}
           style={{ strokeWidth: 15 }}
