@@ -1,5 +1,6 @@
-import { FaRegHeart, FaHeart } from 'react-icons/fa6';
 import { motion } from 'motion/react';
+import { FaHeart, FaRegHeart } from 'react-icons/fa6';
+
 import { useCreateLike } from '@/hooks/apis/Likes/useCreateLikeQuery';
 import { useDeleteLike } from '@/hooks/apis/Likes/useDeleteLikeQuery';
 
@@ -38,7 +39,7 @@ export function PostLike(props: PostLikeProps) {
           <FaRegHeart className="size-22" />
         )}
       </motion.div>
-      <div className="text-sm-normal text-custom-gray-200">{likeCount}</div>
+      <p className="text-sm-semibold text-custom-gray-200">{likeCount}</p>
     </div>
   );
 }
