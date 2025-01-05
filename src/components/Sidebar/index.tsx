@@ -71,12 +71,12 @@ export const Sidebar = () => {
         </div>
         {isOpen ? (
           <FaAnglesLeft
-            className="size-28 cursor-pointer p-4 text-custom-gray-200"
+            className="size-28 cursor-pointer p-4 text-custom-gray-100"
             onClick={close}
           />
         ) : (
           <FaBars
-            className="size-28 cursor-pointer p-4 text-slate-400"
+            className="size-28 cursor-pointer p-4 text-custom-gray-100"
             onClick={open}
           />
         )}
