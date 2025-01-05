@@ -32,7 +32,7 @@ export const UserProfileHeader = ({ userId }: UserProfileHeader) => {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-16">
       <IoMdClose className="size-24 cursor-pointer" onClick={handleBack} />
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-8">
@@ -56,6 +56,6 @@ export const UserProfileHeader = ({ userId }: UserProfileHeader) => {
           {isFollow === true ? '팔로잉' : '팔로우'}
         </Button>
       </div>
-    </>
+    </div>
   );
 };
