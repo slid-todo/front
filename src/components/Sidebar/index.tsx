@@ -30,7 +30,6 @@ import { cn } from '@/utils/className';
 export const Sidebar = () => {
   const router = useRouter();
   const path = usePathname();
-  console.log(path);
 
   const { goals } = useGoalsQuery();
 
