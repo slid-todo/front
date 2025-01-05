@@ -61,8 +61,7 @@ export const CommentOptions = (props: CommentOptionsProps) => {
     },
   };
 
-  const buttonBaseClasses =
-    'w-full px-16 py-8 text-center text-sm-normal hover:text-sm-bold';
+  const buttonBaseClasses = 'w-full px-16 py-8 text-center hover:text-sm-bold';
 
   return (
     <div ref={optionsRef} className="relative">
@@ -73,7 +72,7 @@ export const CommentOptions = (props: CommentOptionsProps) => {
       <AnimatePresence>
         {showOptions && (
           <motion.div
-            className="absolute right-0 z-10 mx-16 my-8 flex min-w-100 flex-col rounded-12 bg-white shadow-lg"
+            className="absolute right-0 z-10  mx-16 my-8 flex min-w-100 flex-col rounded-12 bg-white text-sm-normal shadow-lg"
             variants={dropdownVariants}
             initial="hidden"
             animate="visible"
