@@ -1,22 +1,16 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { POST } from '@/apis/services/httpMethod';
+import { DELETE } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { DeleteFollowResponse, UserProfileResponse } from '@/types/response';
 import { notify } from '@/store/useToastStore';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-
-interface FollowId {
-  userId: number;
-}
 
 export const useDeleteFollowMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: (userId: number) =>
-      POST<DeleteFollowResponse, FollowId>(
-        API_ENDPOINTS.FOLLOW.DELETE_FOLLOW(userId),
-      ),
+      DELETE<DeleteFollowResponse>(API_ENDPOINTS.FOLLOW.DELETE_FOLLOW(userId)),
     onMutate: async (userId) => {
       const previousData = queryClient.getQueriesData<UserProfileResponse>({
         queryKey: [QUERY_KEYS.USER_PROFILE, userId],
