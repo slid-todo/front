@@ -42,7 +42,7 @@ export const MyProfile = () => {
   };
 
   return (
-    <div className="flex-center flex-col gap-16">
+    <div className="flex-center mt-16 flex-col gap-16">
       <div className="relative flex">
         {!isLoading ? (
           profile ? (
