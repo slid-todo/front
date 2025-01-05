@@ -8,7 +8,7 @@ interface PostProfileProps {
   createdAt: string;
   username: string;
   profilePic: string;
-  userId: string;
+  userId: number;
 }
 
 export function PostProfile(props: PostProfileProps) {

@@ -36,9 +36,9 @@ export const CompletePost = (props: CompletePostProps) => {
           <div className="mr-16 flex justify-between">
             <PostProfile
               createdAt={complete.createdAt}
-              username="홍길동"
-              profilePic="https://slid-todo.s3.ap-northeast-2.amazonaws.com/auth/default_profilepic_mouse.png"
-              userId="2"
+              username={complete.userName}
+              profilePic={complete.profilePic}
+              userId={complete.userId}
             />
             <PostLike
               likeStatus={complete.likeStatus}

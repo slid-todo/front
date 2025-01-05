@@ -18,7 +18,7 @@ export function Post(props: PostProps) {
         createdAt={post.createdAt}
         username={post.username}
         profilePic={post.profilePic}
-        userId="2"
+        userId={post.userId}
       />
 
       <PostImage completePic={post.completePic} completeId={post.completeId} />
