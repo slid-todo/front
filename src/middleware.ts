@@ -19,6 +19,10 @@ export const middleware = async (request: NextRequest) => {
     return NextResponse.next();
   }
 
+  if (pathname === '/' && token) {
+    return NextResponse.redirect(new URL('/dashboard', request.url));
+  }
+
   if (!token) {
     return NextResponse.redirect(new URL('/signin', request.url));
   }
