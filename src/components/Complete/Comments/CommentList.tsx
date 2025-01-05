@@ -7,7 +7,9 @@ interface CommentListProps {
   comments: CommentTypes[];
 }
 
-export const CommentList = ({ comments }: CommentListProps) => {
+export const CommentList = (props: CommentListProps) => {
+  const { comments } = props;
+
   return (
     <div className="mb-76 mt-4 space-y-4">
       {comments.length > 0 ? (

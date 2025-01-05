@@ -13,7 +13,9 @@ interface CommentItemProps {
   comment: CommentTypes;
 }
 
-export const CommentItem = ({ comment }: CommentItemProps) => {
+export const CommentItem = (props: CommentItemProps) => {
+  const { comment } = props;
+
   const putCommentMutation = usePutComment();
   const deleteCommentMutation = useDeleteComment();
 
@@ -53,7 +55,7 @@ export const CommentItem = ({ comment }: CommentItemProps) => {
   };
 
   return (
-    <div className="relative  my-12 bg-gray-50 px-16 py-20 shadow">
+    <div className="relative my-12 bg-gray-50 px-16 py-20 shadow">
       <div className="">
         <div className="-ml-12 flex items-start justify-between rounded">
           <PostProfile
