@@ -7,9 +7,10 @@ import {
   FaFire,
   FaFlag,
   FaListUl,
+  FaMagnifyingGlass,
 } from 'react-icons/fa6';
 
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import LogoIcon from '@/assets/svg/svg-logo-icon.svg';
 import LogoSide from '@/assets/svg/svg-logo-side.svg';
@@ -28,6 +29,8 @@ import { cn } from '@/utils/className';
 
 export const Sidebar = () => {
   const router = useRouter();
+  const path = usePathname();
+  console.log(path);
 
   const { goals } = useGoalsQuery();
 
@@ -67,13 +70,21 @@ export const Sidebar = () => {
         </div>
         {isOpen ? (
           <FaAnglesLeft
-            className="size-28 cursor-pointer p-4 text-slate-400"
+            className="size-28 cursor-pointer p-4 text-custom-gray-200"
             onClick={close}
           />
         ) : (
           <FaBars
             className="size-28 cursor-pointer p-4 text-slate-400"
             onClick={open}
+          />
+        )}
+        {path === '/follows' && !isOpen && (
+          <FaMagnifyingGlass
+            className="size-28 cursor-pointer p-4 text-primary-100"
+            onClick={() => {
+              router.push('/search');
+            }}
           />
         )}
       </div>
