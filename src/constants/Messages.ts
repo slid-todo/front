@@ -15,6 +15,13 @@ export const TOAST_MESSAGES = {
   DELETE_FOLLOW_ERROR: `팔로우 취소에 실패하였습니다.`,
 
   LIKE_ERROR: `다시 시도해주세요.`,
+
+  COMMENT_CREATE_SUCCESS: '댓글이 등록되었습니다.',
+  COMMENT_CREATE_ERROR: '댓글 등록이 실패하였습니다.',
+  COMMENT_PUT_SUCCESS: '댓글이 수정되었습니다.',
+  COMMENT_PUT_ERROR: '댓글 수정이 실패하였습니다.',
+  COMMENT_DELETE_SUCCESS: '댓글이 삭제되었습니다.',
+  COMMENT_DELETE_ERROR: '댓글 삭제에 실패하였습니다.',
 };
 
 export const MODAL_MESSAGES = {
