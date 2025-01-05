@@ -1,5 +1,7 @@
 import { FaHeart } from 'react-icons/fa6';
 
+import { useRouter } from 'next/navigation';
+
 import { ContentTypes } from '@/types/data';
 import { cn } from '@/utils/className';
 import { formatDateToRelativeTime } from '@/utils/date';
@@ -9,13 +11,22 @@ interface FollowerStoryProps {
 }
 
 export const FollowerStory = ({ follower }: FollowerStoryProps) => {
+  const router = useRouter();
+
   const heartClass = cn(
     'absolute right-8 top-8 size-28 p-4',
     follower.likeStatus ? 'text-error' : 'text-custom-gray-200',
   );
 
+  const handleClickImage = () => {
+    router.push(`/completes/${follower.completeId}`);
+  };
+
   return (
-    <div className="shrink-0 snap-start">
+    <div
+      onClick={handleClickImage}
+      className="shrink-0 cursor-pointer snap-start"
+    >
       <div className="relative size-120 rounded-20 bg-custom-white-300">
         <FaHeart className={heartClass} />
       </div>
