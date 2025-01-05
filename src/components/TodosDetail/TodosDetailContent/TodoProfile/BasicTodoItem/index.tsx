@@ -28,7 +28,7 @@ export const BasicTodoItem = ({
       >
         <FaListUl fill="white" />
       </div>
-      <div className="flex flex-col items-start">
+      <div className="flex cursor-pointer flex-col items-start ">
         <span className="text-xs-medium text-custom-gray-100">{goalTitle}</span>
         <span className="text-base-medium">{todoTitle}</span>
       </div>
