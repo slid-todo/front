@@ -1,9 +1,11 @@
+import { ReactNode } from 'react';
+
 import { Sidebar } from '@/components/Sidebar';
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <div className="flex">
