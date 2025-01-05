@@ -23,12 +23,11 @@ export const FollowsContainer = () => {
   }
 
   return (
-    <PageContainer className="!px-0">
-      <div>
-        <h1 className="fixed h-44 px-16 py-8 text-xl-semibold text-custom-gray-300">
+    <PageContainer className="!px-0 !pt-0">
+      <div className="relative">
+        <h1 className="sticky right-0 top-48 h-44 w-full bg-custom-white-100 px-16 py-8 text-xl-semibold text-custom-gray-300 md:top-0">
           팔로워
         </h1>
-        <div className="mb-8 h-48" />
         {isLoading ? (
           <FollowsSkeleton />
         ) : follows.length > 0 ? (
