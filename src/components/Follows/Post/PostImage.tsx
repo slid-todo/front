@@ -24,11 +24,14 @@ export function PostImage(props: PostImageProps) {
   }
 
   return (
-    <div
+    <Image
+      src={completePic}
+      alt="post-image"
+      sizes="100vw"
+      width={100}
+      height={100}
       className="my-8 aspect-square w-full cursor-pointer"
       onClick={handleClickImage}
-    >
-      <Image src={completePic} alt="post-image" fill />
-    </div>
+    />
   );
 }
