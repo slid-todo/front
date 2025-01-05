@@ -9,6 +9,9 @@ export interface CompleteTypes {
 }
 
 export interface CompleteDetailTypes extends CompleteTypes {
+  userId: number;
+  profilePic: string;
+  userName: string;
   likeStatus: boolean;
   likeCount: number;
   commentCount: number;
@@ -54,6 +57,7 @@ export interface ProgressTypes {
 }
 
 export interface ContentTypes {
+  userId: number;
   completeId: number;
   completePic: string;
   completeContent: string;
