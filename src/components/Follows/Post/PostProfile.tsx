@@ -31,7 +31,7 @@ export function PostProfile(props: PostProfileProps) {
         alt="profilePic"
         width={40}
         height={40}
-        className="rounded-full"
+        className="max-h-40 max-w-40 rounded-full"
       />
       <div>
         <div className="text-sm-medium text-custom-gray-300">{username}</div>
