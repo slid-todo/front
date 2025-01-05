@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+
 import { useGetFollowPosts } from '@/hooks/apis/Follows/useGetFollowPostsQuery';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { FollowsSkeleton } from '../Skeletons/FollowsSkeleton';
@@ -24,7 +25,7 @@ export const FollowsContainer = () => {
 
   return (
     <PageContainer className="!px-0 !pt-0">
-      <div className="relative">
+      <div className="relative pt-48 md:pt-0">
         <h1 className="sticky right-0 top-48 h-44 w-full bg-custom-white-100 px-16 py-8 text-xl-semibold text-custom-gray-300 md:top-0">
           팔로워
         </h1>
