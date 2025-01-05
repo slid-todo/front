@@ -29,6 +29,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="z39r-2JIYzXYwS1QN_IVZHpSCp4wfM4qOvr5AVfSASc"
+        />
+      </head>
       <body className={`${pretendard.variable} font-pretendard`}>
         <QueryProvider>
           <div className="flex-center h-dvh w-screen overflow-y-auto bg-custom-white-300">
