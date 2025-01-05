@@ -22,12 +22,8 @@ export const useInfiniteScroll = ({
     };
 
     const observer = new IntersectionObserver(observerCallback, {
-      threshold: 1.0,
+      threshold: 0.1,
     });
-
-    if (observerRef.current) {
-      observer.observe(observerRef.current);
-    }
 
     observer.observe(observerRef.current);
 
