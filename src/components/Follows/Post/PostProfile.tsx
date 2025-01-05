@@ -36,7 +36,9 @@ export function PostProfile(props: PostProfileProps) {
       <div>
         <div className="text-sm-medium text-custom-gray-300">{username}</div>
       </div>
-      <div className="text-xs-medium text-custom-gray-100">{relativeTime}</div>
+      <div className="mt-2 text-xs-medium text-custom-gray-100">
+        {relativeTime}
+      </div>
     </div>
   );
 }

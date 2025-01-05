@@ -9,7 +9,7 @@ interface CommentListProps {
 
 export const CommentList = ({ comments }: CommentListProps) => {
   return (
-    <div className="mt-4 space-y-4">
+    <div className="mb-76 mt-4 space-y-4">
       {comments.length > 0 ? (
         comments.map((comment) => (
           <CommentItem key={comment.commentId} comment={comment} />

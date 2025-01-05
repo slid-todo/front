@@ -26,7 +26,7 @@ export const CompleteComments = ({ completeId }: CompleteCommentsProps) => {
         <FollowsSkeleton />
       ) : complete ? (
         <div className="mx-auto w-full max-w-3xl flex-col px-4">
-          <span className="text-sm-medium text-custom-gray-100">
+          <span className="mx-8 text-sm-medium text-custom-gray-100">
             댓글 ({complete.commentCount})
           </span>
           <CommentList comments={complete.comments} />
