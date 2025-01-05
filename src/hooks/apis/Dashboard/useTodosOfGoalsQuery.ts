@@ -18,7 +18,7 @@ export const todosOfGoalsOptions = (): UseInfiniteQueryOptions<
   queryKey: [QUERY_KEYS.TODOS_OF_GOALS],
   queryFn: ({ pageParam = 0 }) =>
     GET<TodosOfGoalsResponse>(
-      `${API_ENDPOINTS.TODOS.GET_GOALS}?lastGoalId=${pageParam}&size=3`,
+      `${API_ENDPOINTS.TODOS.GET_GOALS}?lastGoalId=${pageParam}&size=5`,
     ),
   getNextPageParam: (lastPage) => {
     const nextCursor = lastPage.data.nextCursor;
