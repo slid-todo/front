@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+
 import { useQueryClient } from '@tanstack/react-query';
 import { FaArrowUp } from 'react-icons/fa6';
-import { GetCommentRequest } from '@/types/Comment';
-import { useCreateComment } from '@/hooks/apis/Comment/useCreateCommentQuery';
+
 import { QUERY_KEYS } from '@/constants/QueryKeys';
+import { useCreateComment } from '@/hooks/apis/Comment/useCreateCommentQuery';
+import { GetCommentRequest } from '@/types/Comment';
 import { GetCompleteDetailResponse } from '@/types/Completes';
 import { cn } from '@/utils/className';
 
@@ -55,7 +57,6 @@ export const CommentInput = (props: CommentInputProps) => {
           },
         );
       },
-      onError: () => {},
     });
   };
 
@@ -70,7 +71,7 @@ export const CommentInput = (props: CommentInputProps) => {
     : 'text-custom-gray-100 cursor-not-allowed';
 
   return (
-    <div className="inset-x-0 bottom-0 h-76 gap-10 px-16 py-12 shadow">
+    <div className="fixed inset-x-0 bottom-0 h-76 gap-10 px-16 py-12 shadow">
       <div className="relative flex items-center justify-center">
         <input
           type="text"
