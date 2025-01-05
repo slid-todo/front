@@ -9,6 +9,8 @@ import { useTodoModalStore } from '@/store/useTodoModalStore';
 import { useTodoDataStore } from '@/store/useTodoDataStore';
 import { convertImageToBase64 } from '@/apis/Todo/convertImageToBase64';
 import { useDeleteTodo } from '@/hooks/apis/Todo/useDeleteTodo';
+import { Dropdown } from '@/components/common/Dropdown';
+import { DROPDOWN } from '@/constants/dropdown';
 
 interface TodosDetailHeaderProps {
   todoId: string;
@@ -57,32 +59,37 @@ export const TodosDetailHeader = ({ todoId }: TodosDetailHeaderProps) => {
     deleteTodo({ todoId: Number(todoId) });
   };
 
+  const handleSelectItem = (item: { value: string }) => {
+    if (item.value === '수정하기') {
+      handleOpenModify();
+    } else if (item.value === '삭제하기') {
+      handleDelete();
+    }
+  };
+
+  const renderDropdownItem = (item: { value: string }) => {
+    return <span>{item.value}</span>;
+  };
+
   return (
-    <div className="flex items-center justify-between">
+    <div className="relative flex items-center justify-between">
       <div className="flex items-center gap-16">
         <IoMdClose className="size-24 cursor-pointer" onClick={handleBack} />
         <span className="text-xl-semibold">할 일 상세보기</span>
       </div>
+
       <FaEllipsisVertical
-        className="relative size-24 p-2 text-custom-gray-100"
+        className="size-24 p-2 text-custom-gray-100"
         onClick={handleClick}
       />
-      {isOpenTab && (
-        <div className="absolute right-16 top-48 flex flex-col rounded-12 bg-white">
-          <div
-            className="flex-center cursor-pointer rounded-t-12 px-16 py-8 text-sm-normal hover:bg-custom-white-200"
-            onClick={handleOpenModify}
-          >
-            수정하기
-          </div>
-          <div
-            className="flex-center cursor-pointer rounded-b-12 px-16 py-8 text-sm-normal hover:bg-custom-white-200"
-            onClick={handleDelete}
-          >
-            삭제하기
-          </div>
-        </div>
-      )}
+      <div className="absolute right-0 top-40 w-81">
+        <Dropdown
+          dropdownData={DROPDOWN.TODO_DETAIL_MENU}
+          onSelectItem={handleSelectItem}
+          isOpenDropdown={isOpenTab}
+          renderItem={renderDropdownItem}
+        />
+      </div>
     </div>
   );
 };
