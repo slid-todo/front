@@ -25,7 +25,7 @@ export interface CommentTypes {
   content: string;
   userName: string;
   profileImage: string;
-  createAt: string;
+  createdAt: string;
 }
 
 export interface TodoTypes {
