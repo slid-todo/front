@@ -4,7 +4,7 @@ export const FollowsSkeleton = () => {
   return (
     <>
       {Array.from({ length: 5 }, (_, index) => (
-        <div key={index} className="w-screen flex-col gap-16 pb-24">
+        <div key={index} className="w-full flex-col gap-16 pb-24">
           <div className="flex h-40 items-center gap-8 px-16">
             <Skeleton className="size-40 rounded-full" />
             <div>
@@ -29,7 +29,7 @@ export const FollowsSkeleton = () => {
             </div>
           </div>
 
-          <Skeleton className="mx-16 my-8 h-20 w-400 rounded-16" />
+          <Skeleton className="mx-16 my-8 h-20 w-240 rounded-16" />
         </div>
       ))}
     </>
