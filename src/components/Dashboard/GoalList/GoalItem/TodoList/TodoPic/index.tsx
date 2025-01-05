@@ -36,6 +36,7 @@ export const TodoPic = ({ index, color, pic, status, date }: TodoItemProps) => {
         <Image
           src={pic}
           fill
+          sizes="100vw"
           alt="인증 사진"
           onLoad={() => setIsLoaded(true)}
           className="rounded-16 object-cover opacity-50"

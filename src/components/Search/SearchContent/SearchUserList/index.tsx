@@ -38,6 +38,7 @@ export const SearchUserList = ({
             <Image
               width={48}
               height={48}
+              sizes="100vw"
               className="flex size-48 rounded-90"
               src={item.profilePic}
               alt="프로필 사진"

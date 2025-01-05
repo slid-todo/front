@@ -32,6 +32,7 @@ export const UserProfileContent = ({ userId }: UserProfileContent) => {
         complete.completePic ? (
           <Image
             key={complete.completeId}
+            sizes="100vw"
             width={48}
             height={48}
             className="flex h-109 w-full rounded-4"

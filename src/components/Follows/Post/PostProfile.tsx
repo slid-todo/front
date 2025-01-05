@@ -29,6 +29,7 @@ export function PostProfile(props: PostProfileProps) {
       <Image
         src={profilePic}
         alt="profilePic"
+        sizes="100vw"
         width={40}
         height={40}
         className="max-h-40 max-w-40 rounded-full"

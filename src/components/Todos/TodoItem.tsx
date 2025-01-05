@@ -84,6 +84,7 @@ export const TodoItem = (props: TodoItemProps) => {
             <Image
               src={complete.completePic}
               alt="Complete Picture"
+              sizes="100vw"
               fill
               className="object-fill"
             />

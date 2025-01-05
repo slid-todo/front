@@ -40,6 +40,7 @@ export const UserProfileHeader = ({ userId }: UserProfileHeader) => {
             <Image
               width={48}
               height={48}
+              sizes="100vw"
               className="flex size-64 rounded-full"
               priority
               src={profilePic}
