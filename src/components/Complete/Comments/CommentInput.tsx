@@ -13,7 +13,9 @@ interface CommentInputProps {
   completeId: number;
 }
 
-export const CommentInput = ({ completeId }: CommentInputProps) => {
+export const CommentInput = (props: CommentInputProps) => {
+  const { completeId } = props;
+
   const [newComment, setNewComment] = useState('');
   const createCommentMutation = useCreateComment();
   const queryClient = useQueryClient();
@@ -68,7 +70,7 @@ export const CommentInput = ({ completeId }: CommentInputProps) => {
     : 'text-custom-gray-100 cursor-not-allowed';
 
   return (
-    <div className="fixed inset-x-0 bottom-0 h-76 gap-10 px-16 py-12 shadow">
+    <div className="inset-x-0 bottom-0 h-76 gap-10 px-16 py-12 shadow">
       <div className="relative flex items-center justify-center">
         <input
           type="text"

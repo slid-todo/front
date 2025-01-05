@@ -10,7 +10,9 @@ interface CompleteCommentsProps {
   completeId: number;
 }
 
-export const CompleteComments = ({ completeId }: CompleteCommentsProps) => {
+export const CompleteComments = (props: CompleteCommentsProps) => {
+  const { completeId } = props;
+
   const router = useRouter();
   const { complete, isLoading, isError } =
     useGetCompleteDetailQuery(completeId);
@@ -34,7 +36,6 @@ export const CompleteComments = ({ completeId }: CompleteCommentsProps) => {
       ) : (
         <div className="text-center text-gray-500">게시글이 없습니다.</div>
       )}
-      {/* 고정된 댓글 입력 칸 */}
       <CommentInput completeId={completeId} />
     </div>
   );

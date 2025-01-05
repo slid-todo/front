@@ -15,6 +15,7 @@ interface CommentOptionsProps {
 
 export const CommentOptions = (props: CommentOptionsProps) => {
   const { isEditing, onSave, onCancel, onEdit, onDelete } = props;
+
   const [showOptions, setShowOptions] = useState(false);
   const optionsRef = useRef<HTMLDivElement>(null);
 
