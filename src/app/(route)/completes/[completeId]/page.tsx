@@ -15,7 +15,7 @@ export default async function CompletePage({
   const { completeId } = await params;
 
   return (
-    <PageContainer className="!px-0">
+    <PageContainer header={false} className="!px-0">
       <CompleteHeader />
       <CompletePost completeId={completeId} />
 
