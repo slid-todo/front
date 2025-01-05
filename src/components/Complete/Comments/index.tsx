@@ -21,7 +21,7 @@ export const CompleteComments = ({ completeId }: CompleteCommentsProps) => {
   }
 
   return (
-    <div className="relative min-h-screen pb-20">
+    <div className="relative pb-20">
       {isLoading ? (
         <FollowsSkeleton />
       ) : complete ? (
