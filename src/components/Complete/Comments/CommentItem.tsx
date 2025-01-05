@@ -6,6 +6,7 @@ import { usePutComment } from '@/hooks/apis/Comment/usePutCommentQuery';
 import { useDeleteComment } from '@/hooks/apis/Comment/useDeleteCommentQuery';
 import { PutCommentRequest } from '@/types/Comment';
 import { CommentTypes } from '@/types/data';
+import { PostProfile } from '@/components/Follows/Post/PostProfile';
 import { CommentOptions } from './CommentOptions';
 
 interface CommentItemProps {
@@ -52,31 +53,37 @@ export const CommentItem = ({ comment }: CommentItemProps) => {
   };
 
   return (
-    <div className="relative flex items-start justify-between rounded bg-gray-50 p-4 shadow">
-      <div className="flex-1">
-        <p className="font-semibold">{comment.userName}</p>
+    <div className="relative  my-12 bg-gray-50 px-16 py-20 shadow">
+      <div className="">
+        <div className="-ml-12 flex items-start justify-between rounded">
+          <PostProfile
+            createdAt={comment.createdAt}
+            username={comment.userName}
+            profilePic={comment.profileImage}
+            userId={2} //userId 또 받아야댐 ㅠ
+          />
+          <div className="mt-10">
+            <CommentOptions
+              isEditing={isEditing}
+              onSave={handleSave}
+              onCancel={handleCancel}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
+          </div>
+        </div>
         {isEditing ? (
           <textarea
             value={editedContent}
             onChange={(e) => setEditedContent(e.target.value)}
-            className="mt-1 w-full resize-none rounded border p-2"
+            className="mt-6 w-full resize-none rounded p-10 text-sm-normal outline-none"
             rows={3}
           />
         ) : (
-          <p className="mt-1">{comment.content}</p>
+          <p className="text-sm-normal text-custom-gray-300">
+            {comment.content}
+          </p>
         )}
-        <p className="mt-1 text-xs text-gray-400">
-          {new Date(comment.createdAt).toLocaleString()}
-        </p>
-      </div>
-      <div className="ml-4">
-        <CommentOptions
-          isEditing={isEditing}
-          onSave={handleSave}
-          onCancel={handleCancel}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        />
       </div>
     </div>
   );
