@@ -2,9 +2,9 @@
 
 import { useRouter } from 'next/navigation';
 
-import { FollowsSkeleton } from '@/components/Skeletons/FollowsSkeleton';
 import { useGetCompleteDetailQuery } from '@/hooks/apis/Complete/useGetCompleteDetailQuery';
 
+import { Spinner } from '@/components/common/Spinner';
 import { CommentInput } from './CommentInput';
 import { CommentList } from './CommentList';
 
@@ -27,7 +27,9 @@ export const CompleteComments = (props: CompleteCommentsProps) => {
   return (
     <div className="relative">
       {isLoading ? (
-        <FollowsSkeleton />
+        <span className="flex-center">
+          <Spinner className="size-18" />
+        </span>
       ) : complete ? (
         <div className="mx-auto w-full max-w-3xl flex-col px-4">
           <span className="mx-8 text-sm-medium text-custom-gray-100">

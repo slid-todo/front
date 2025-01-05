@@ -6,7 +6,7 @@ import { PostContent } from '@/components/Follows/Post/PostContent';
 import { PostImage } from '@/components/Follows/Post/PostImage';
 import { PostLike } from '@/components/Follows/Post/PostLike';
 import { PostProfile } from '@/components/Follows/Post/PostProfile';
-import { FollowsSkeleton } from '@/components/Skeletons/FollowsSkeleton';
+import { CompleteSkeleton } from '@/components/Skeletons/CompleteSkeleton';
 import { useGetCompleteDetailQuery } from '@/hooks/apis/Complete/useGetCompleteDetailQuery';
 import { PostGoalAndTodo } from './PostGoalAndTodo';
 
@@ -31,7 +31,7 @@ export const CompletePost = (props: CompletePostProps) => {
   return (
     <div>
       {isLoading ? (
-        <FollowsSkeleton />
+        <CompleteSkeleton />
       ) : complete ? (
         <div className="w-full flex-col">
           <div className="mr-16 flex justify-between">
