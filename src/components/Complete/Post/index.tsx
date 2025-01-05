@@ -1,12 +1,13 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { FollowsSkeleton } from '@/components/Skeletons/FollowsSkeleton';
-import { useGetCompleteDetailQuery } from '@/hooks/apis/Complete/useGetCompleteDetailQuery';
+
 import { PostContent } from '@/components/Follows/Post/PostContent';
 import { PostImage } from '@/components/Follows/Post/PostImage';
 import { PostLike } from '@/components/Follows/Post/PostLike';
 import { PostProfile } from '@/components/Follows/Post/PostProfile';
+import { FollowsSkeleton } from '@/components/Skeletons/FollowsSkeleton';
+import { useGetCompleteDetailQuery } from '@/hooks/apis/Complete/useGetCompleteDetailQuery';
 import { PostGoalAndTodo } from './PostGoalAndTodo';
 
 interface CompletePostProps {
@@ -32,7 +33,7 @@ export const CompletePost = (props: CompletePostProps) => {
       {isLoading ? (
         <FollowsSkeleton />
       ) : complete ? (
-        <div className="w-screen flex-col">
+        <div className="w-full flex-col">
           <div className="mr-16 flex justify-between">
             <PostProfile
               createdAt={complete.createdAt}

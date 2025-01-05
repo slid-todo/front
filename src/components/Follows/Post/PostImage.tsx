@@ -17,7 +17,7 @@ export function PostImage(props: PostImageProps) {
   if (!completePic) {
     return (
       <div
-        className="my-8 aspect-square  cursor-pointer bg-slate-600"
+        className="my-8 aspect-square cursor-pointer bg-slate-600"
         onClick={handleClickImage}
       />
     );
@@ -27,7 +27,6 @@ export function PostImage(props: PostImageProps) {
     <Image
       src={completePic}
       alt="post-image"
-      sizes="100vw"
       width={100}
       height={100}
       className="my-8 aspect-square w-full cursor-pointer"

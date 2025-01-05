@@ -1,10 +1,12 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+
 import { FollowsSkeleton } from '@/components/Skeletons/FollowsSkeleton';
 import { useGetCompleteDetailQuery } from '@/hooks/apis/Complete/useGetCompleteDetailQuery';
-import { CommentList } from './CommentList';
+
 import { CommentInput } from './CommentInput';
+import { CommentList } from './CommentList';
 
 interface CompleteCommentsProps {
   completeId: number;
@@ -23,7 +25,7 @@ export const CompleteComments = (props: CompleteCommentsProps) => {
   }
 
   return (
-    <div className="relative pb-20">
+    <div className="relative">
       {isLoading ? (
         <FollowsSkeleton />
       ) : complete ? (
