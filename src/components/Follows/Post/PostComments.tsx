@@ -10,7 +10,7 @@ export function PostComments(props: PostCommentsProps) {
   return (
     <div className="flex items-center">
       <FaRegComment className="ml-16 mr-12 size-22" />
-      <div className="text-sm-normal text-custom-gray-200">{commentCount}</div>
+      <p className="text-sm-semibold text-custom-gray-200">{commentCount}</p>
     </div>
   );
 }

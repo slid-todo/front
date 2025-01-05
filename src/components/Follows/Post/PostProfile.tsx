@@ -1,7 +1,8 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+
 import { formatDateToRelativeTime } from '@/utils/date';
 
 interface PostProfileProps {
@@ -31,7 +32,7 @@ export function PostProfile(props: PostProfileProps) {
         alt="profilePic"
         width={40}
         height={40}
-        className="max-h-40 max-w-40 rounded-full"
+        className="size-40 rounded-full"
       />
       <div>
         <div className="text-sm-medium text-custom-gray-300">{username}</div>
