@@ -70,7 +70,7 @@ export const CommentInput = (props: CommentInputProps) => {
     : 'text-custom-gray-100 cursor-not-allowed';
 
   return (
-    <div className="inset-x-0 bottom-0 h-76 gap-10 px-16 py-12 shadow">
+    <div className="fixed inset-x-0 bottom-0 h-76 gap-10 px-16 py-12 shadow">
       <div className="relative flex items-center justify-center">
         <input
           type="text"
