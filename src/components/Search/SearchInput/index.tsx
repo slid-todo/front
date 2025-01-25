@@ -2,15 +2,24 @@
 
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 import { Input } from '@/components/common/Input';
 import { PLACEHOLDERS } from '@/constants/Placeholders';
-import { useSearchStore } from '@/store/useSearchStore';
 import { SearchFilterDropdown } from './SearchFilterDropdown';
 
-export const SearchInput = () => {
-  const [localKeyword, setLocalKeyword] = useState('');
-  const [localFilter, setLocalFilter] = useState('유저명');
-  const { setSearchKeyword, setSearchFilter } = useSearchStore();
+interface SearchInputProps {
+  currentFilter: string;
+  currentKeyword: string;
+}
+
+export const SearchInput = ({
+  currentFilter,
+  currentKeyword,
+}: SearchInputProps) => {
+  const router = useRouter();
+
+  const [localKeyword, setLocalKeyword] = useState(currentKeyword);
+  const [localFilter, setLocalFilter] = useState(currentFilter);
 
   const handleKeyword = (e: ChangeEvent<HTMLInputElement>) => {
     setLocalKeyword(e.target.value);
@@ -18,13 +27,15 @@ export const SearchInput = () => {
 
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handleClick();
+      updateSearchParams();
     }
   };
 
-  const handleClick = () => {
-    setSearchKeyword(localKeyword);
-    setSearchFilter(localFilter);
+  const updateSearchParams = () => {
+    const newParams = new URLSearchParams();
+    newParams.set('filter', localFilter);
+    newParams.set('keyword', localKeyword);
+    router.push(`?${newParams.toString()}`);
   };
 
   return (
@@ -44,7 +55,7 @@ export const SearchInput = () => {
       </div>
       <FaSearch
         className="size-18 cursor-pointer text-custom-gray-100"
-        onClick={handleClick}
+        onClick={updateSearchParams}
       />
     </div>
   );

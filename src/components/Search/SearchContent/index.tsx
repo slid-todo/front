@@ -1,46 +1,51 @@
 'use client';
 
 import { useEffect } from 'react';
-
-import { useSearchStore } from '@/store/useSearchStore';
 import { useSearchQuery } from '@/hooks/apis/Search/useSearchQuery';
 
 import { SearchUserList } from './SearchUserList';
 import { SearchGoalList } from './SearchGoalList';
 
-export const SearchContent = () => {
-  const { searchFilter, searchKeyword } = useSearchStore();
+interface SearchContentProps {
+  currentFilter: string;
+  currentKeyword: string;
+}
+
+export const SearchContent = ({
+  currentFilter,
+  currentKeyword,
+}: SearchContentProps) => {
   const {
     data: searchData,
     refetch,
     isError,
     error,
   } = useSearchQuery({
-    searchField: searchFilter,
-    keyword: searchKeyword,
+    searchField: currentFilter,
+    keyword: currentKeyword,
   });
 
   useEffect(() => {
-    if (searchKeyword || searchFilter) {
+    if (currentFilter || currentKeyword) {
       refetch();
     }
-  }, [searchKeyword, searchFilter, refetch]);
+  }, [currentFilter, currentKeyword, refetch]);
 
   return (
-    <div>
-      {searchFilter === '유저명' ? (
+    <div className="overflow-y-auto">
+      {currentFilter === '유저명' ? (
         <SearchUserList
           isError={isError}
           error={error}
           searchData={searchData}
-          keyword={searchKeyword}
+          keyword={currentKeyword}
         />
       ) : (
         <SearchGoalList
           isError={isError}
           error={error}
           searchData={searchData}
-          keyword={searchKeyword}
+          keyword={currentKeyword}
         />
       )}
     </div>
