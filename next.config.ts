@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'slid-todo.s3.ap-northeast-2.amazonaws.com',
+        hostname: 'zzikzzik-bucket.s3.ap-northeast-2.amazonaws.com',
       },
     ],
   },
