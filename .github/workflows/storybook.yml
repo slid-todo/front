@@ -22,11 +22,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Corepack 활성화
-        run: corepack enable
-
-      - name: pnpm 설치
-        run: corepack prepare pnpm@latest --activate
+      - name: pnpm 직접 설치
+        run: npm install -g pnpm
+            pnpm --version
+  
 
       - name: 캐시 종속성
         id: cache
