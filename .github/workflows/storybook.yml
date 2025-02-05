@@ -22,8 +22,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Node.js 설정
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
       - name: pnpm 직접 설치
-        run: npm install -g pnpm
+        run: |
+            npm install -g pnpm
             pnpm --version
   
 
