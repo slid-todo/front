@@ -3,14 +3,13 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useUserProfileQuery } from '@/hooks/apis/Auth/useUserProfileQuery';
-import { Spinner } from '@/components/common/Spinner';
 
 interface UserProfileContent {
   userId: string;
 }
 
 export const UserProfileContent = ({ userId }: UserProfileContent) => {
-  const { completeResponses, isLoading } = useUserProfileQuery(Number(userId));
+  const { completeResponses } = useUserProfileQuery(Number(userId));
 
   const router = useRouter();
 
@@ -18,33 +17,29 @@ export const UserProfileContent = ({ userId }: UserProfileContent) => {
     router.push(`/completes/${completeId}`);
   };
 
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Spinner className="size-28" />
-      </div>
-    );
-  }
-
   return (
     <div className="mt-8 grid grid-cols-3 gap-8">
       {completeResponses.map((complete) =>
         complete.completePic ? (
-          <Image
+          <div
             key={complete.completeId}
-            sizes="100vw"
-            width={48}
-            height={48}
-            className="flex h-109 w-full rounded-4"
-            priority
-            src={complete.completePic}
-            alt="인증한 이미지"
+            className="relative aspect-square w-full overflow-hidden rounded-4"
             onClick={() => handleClick(complete.completeId)}
-          />
+          >
+            <Image
+              priority
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              style={{ objectFit: 'cover' }}
+              className="rounded-4"
+              src={complete.completePic}
+              alt="인증한 이미지"
+            />
+          </div>
         ) : (
           <div
             key={complete.completeId}
-            className="flex h-109 w-full rounded-4 bg-gray-200"
+            className="flex aspect-square w-full rounded-4 bg-gray-200"
           />
         ),
       )}
