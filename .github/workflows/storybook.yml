@@ -25,11 +25,19 @@ jobs:
       - name: Corepack 최신 버전 설치
         run: npm install -g corepack@latest
   
-      - name: Corepack 활성화 및 PNPM 설치
+      - name: 기존 pnpm 제거 (필요한 경우만)
+        run: |
+            if command -v pnpm &> /dev/null; then
+              echo "pnpm detected, removing..."
+              npm uninstall -g pnpm
+            fi
+  
+      - name: Corepack 활성화 및 최신 pnpm 설치
         run: |
             corepack enable
             corepack prepare pnpm@latest-10 --activate
-            npm install -g pnpm@latest
+            npm install -g pnpm@latest || echo "pnpm already installed"
+  
 
       - name: 캐시 종속성
         id: cache
