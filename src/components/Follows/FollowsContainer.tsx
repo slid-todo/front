@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-
+import { FaPersonCircleXmark } from 'react-icons/fa6';
 import { useGetFollowPosts } from '@/hooks/apis/Follows/useGetFollowPostsQuery';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { FollowsSkeleton } from '../Skeletons/FollowsSkeleton';
@@ -44,7 +44,10 @@ export const FollowsContainer = () => {
             <div ref={observerRef} style={{ height: '1px' }} />
           </div>
         ) : (
-          <div>게시글이 없습니다.</div>
+          <div className="flex-center h-screen flex-col gap-30 overflow-hidden">
+            <FaPersonCircleXmark className="mb-4 size-150 text-gray-400" />
+            <div className="text-center">팔로워 게시글이 없습니다.</div>
+          </div>
         )}
       </div>
     </PageContainer>
