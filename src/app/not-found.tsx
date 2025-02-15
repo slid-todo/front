@@ -1,11 +1,14 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
+
 import LogoMain from '@/assets/svg/svg-logo-main.svg';
 import { Button } from '@/components/common/Button/Button';
 import { Header } from '@/components/common/Header';
 import { PageContainer } from '@/components/common/PageContainer';
-import { Sidebar } from '@/components/Sidebar';
+
+const Sidebar = dynamic(() => import('@/components/Sidebar'));
 
 export default function NotFound() {
   const router = useRouter();

@@ -27,7 +27,7 @@ import { useTodoModalStore } from '@/store/useTodoModalStore';
 
 import { cn } from '@/utils/className';
 
-export const Sidebar = () => {
+const Sidebar = () => {
   const router = useRouter();
   const path = usePathname();
 
@@ -147,3 +147,5 @@ export const Sidebar = () => {
     </div>
   );
 };
+
+export default Sidebar;
