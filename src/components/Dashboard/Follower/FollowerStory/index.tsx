@@ -6,9 +6,10 @@ import { formatDateToRelativeTime } from '@/utils/date';
 
 interface FollowerStoryProps {
   follower: ContentTypes;
+  priority: boolean;
 }
 
-export const FollowerStory = ({ follower }: FollowerStoryProps) => {
+export const FollowerStory = ({ follower, priority }: FollowerStoryProps) => {
   const router = useRouter();
   const pic = follower.completePic;
 
@@ -26,7 +27,8 @@ export const FollowerStory = ({ follower }: FollowerStoryProps) => {
           src={pic}
           width={120}
           height={120}
-          sizes="100vw"
+          sizes="120px"
+          priority={priority}
           alt="팔로워 인증 사진"
           className="size-120 rounded-20 object-cover"
         />
