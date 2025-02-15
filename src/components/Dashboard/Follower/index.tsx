@@ -32,8 +32,12 @@ export const Follower = () => {
 
       {!isLoading && hasFollowers && (
         <div className="flex snap-x snap-mandatory items-center gap-8  overflow-x-scroll scrollbar-hide">
-          {follows.map((follower) => (
-            <FollowerStory key={follower.completeId} follower={follower} />
+          {follows.map((follower, index) => (
+            <FollowerStory
+              key={follower.completeId}
+              follower={follower}
+              priority={index < 4}
+            />
           ))}
           {isFetchingNextPage && (
             <span className="flex w-full justify-center">
