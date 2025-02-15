@@ -10,12 +10,12 @@ import { Button } from '@/components/common/Button/Button';
 import { Card } from '@/components/common/Card';
 import { NoDataText } from '@/components/common/NoDataText';
 
+import { BasicTodoItem } from '@/components/TodosDetail/TodosDetailContent/TodoProfile/BasicTodoItem';
 import { NO_DATA_MESSAGES } from '@/constants/Messages';
-import { useRecentTodosQuery } from '@/hooks/apis/Dashboard/useRecnetTodosQuery';
+import { useRecentTodosQuery } from '@/hooks/apis/Dashboard/useRecentTodosQuery';
 import { useGoalsQuery } from '@/hooks/apis/useGoalsQuery';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
-import { BasicTodoItem } from '@/components/TodosDetail/TodosDetailContent/TodoProfile/BasicTodoItem';
 
 export const RecentTodos = () => {
   const { todos, isLoading } = useRecentTodosQuery();
@@ -23,6 +23,9 @@ export const RecentTodos = () => {
 
   const { open: openModal } = useTodoModalStore();
   const { open: openSidebar } = useSidebarStore();
+
+  const hasTodos = todos.length > 0;
+  const hasGoals = goals.length > 0;
 
   return (
     <DashboardItemContainer title="최근 등록한 할일" className="relative">
@@ -32,23 +35,28 @@ export const RecentTodos = () => {
       >
         모두 보기 <FaAngleRight className="ml-8" />
       </Link>
-      {isLoading ? (
-        <TodoListSkeleton />
-      ) : goals.length === 0 ? (
+
+      {isLoading && <TodoListSkeleton />}
+
+      {!isLoading && !hasGoals && (
         <Card>
           <NoDataText text={NO_DATA_MESSAGES.NO_TODO_AND_GOAL} />
           <Button onClick={openSidebar} size="medium">
             새 목표 등록
           </Button>
         </Card>
-      ) : todos.length === 0 ? (
+      )}
+
+      {!isLoading && hasGoals && !hasTodos && (
         <Card>
           <NoDataText text={NO_DATA_MESSAGES.NO_TODO} />
           <Button onClick={() => openModal('생성')} size="medium">
             새 할일 등록
           </Button>
         </Card>
-      ) : (
+      )}
+
+      {!isLoading && hasGoals && hasTodos && (
         <ul>
           {todos.map((todo) => (
             <BasicTodoItem
