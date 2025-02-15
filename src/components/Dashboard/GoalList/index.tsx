@@ -16,11 +16,21 @@ export const GoalList = () => {
     useTodosOfGoalsQuery();
   const { observerRef } = useInfiniteScroll({ fetchNextPage, isLoading });
 
+  const hasGoals = goals.length > 0;
+
   return (
     <DashboardItemContainer title="목표 별 할 일">
-      {isLoading ? (
-        <GoalListSkeleon />
-      ) : goals.length > 0 ? (
+      {isLoading && <GoalListSkeleon />}
+
+      {!isLoading && !hasGoals && (
+        <div className="pb-16">
+          <Card>
+            <NoDataText text={NO_DATA_MESSAGES.NO_GOAL} />
+          </Card>
+        </div>
+      )}
+
+      {!isLoading && hasGoals && (
         <div className="flex flex-col gap-16">
           {goals.map((goal) => (
             <GoalItem
@@ -32,18 +42,12 @@ export const GoalList = () => {
               todos={goal.todos}
             />
           ))}
+          <div ref={observerRef} style={{ height: '1px' }} />
           {isFetchingNextPage && (
             <span className="flex w-full justify-center">
               <Spinner className="size-18" />
             </span>
           )}
-          <div ref={observerRef} style={{ height: '1px' }} />
-        </div>
-      ) : (
-        <div className="pb-16">
-          <Card>
-            <NoDataText text={NO_DATA_MESSAGES.NO_GOAL} />
-          </Card>
         </div>
       )}
     </DashboardItemContainer>
