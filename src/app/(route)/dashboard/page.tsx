@@ -1,6 +1,6 @@
 import { Header } from '@/components/common/Header';
 import { PageContainer } from '@/components/common/PageContainer';
-import { Follwer } from '@/components/Dashboard/Follower';
+import { Follower } from '@/components/Dashboard/Follower';
 import { GoalList } from '@/components/Dashboard/GoalList';
 import { MyProgress } from '@/components/Dashboard/MyProgress';
 import { RecentTodos } from '@/components/Dashboard/RecentTodos';
@@ -10,7 +10,7 @@ export default function DashBoardPage() {
     <>
       <Header title="대시보드" />
       <PageContainer>
-        <Follwer />
+        <Follower />
         <RecentTodos />
         <MyProgress />
         <GoalList />
