@@ -34,6 +34,8 @@ export default function RootLayout({
           name="google-site-verification"
           content="z39r-2JIYzXYwS1QN_IVZHpSCp4wfM4qOvr5AVfSASc"
         />
+        <link rel="preconnect" href="https://solidtodo.shop" />
+        <link rel="dns-prefetch" href="https://solidtodo.shop" />
       </head>
       <body className={`${pretendard.variable} font-pretendard`}>
         <QueryProvider>
