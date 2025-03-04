@@ -1,18 +1,25 @@
-import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import {
+  useSuspenseQuery,
+  UseSuspenseQueryOptions,
+} from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
 import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
+import { getQueryClient } from '@/lib/query/getQueryClient';
 import { GoalsResponse } from '@/types/Goals';
 
-const goalsOptions: UseQueryOptions<GoalsResponse, AxiosError> = {
+export const goalsOptions = (
+  token?: string,
+): UseSuspenseQueryOptions<GoalsResponse, AxiosError> => ({
   queryKey: [QUERY_KEYS.GOALS],
-  queryFn: () => GET<GoalsResponse>(API_ENDPOINTS.GOAL.GOALS),
-};
+  queryFn: () => GET<GoalsResponse>(API_ENDPOINTS.GOAL.GOALS, token),
+  initialData: getQueryClient().getQueryData([QUERY_KEYS.GOALS]),
+});
 
 export const useGoalsQuery = () => {
-  const { data, ...etc } = useQuery(goalsOptions);
+  const { data, ...etc } = useSuspenseQuery(goalsOptions());
   const goals = data?.data ?? [];
 
   return { goals, ...etc };
