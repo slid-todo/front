@@ -1,7 +1,10 @@
-import axiosInstance from '@/lib/axiosInstance';
+import axiosInstance, { setAuthToken } from '@/lib/axiosInstance';
 
-export async function GET<T>(url: string): Promise<T> {
+export async function GET<T>(url: string, token?: string): Promise<T> {
   try {
+    if (token) {
+      setAuthToken(token);
+    }
     const response = await axiosInstance.get(url);
     return response.data;
   } catch (error) {
