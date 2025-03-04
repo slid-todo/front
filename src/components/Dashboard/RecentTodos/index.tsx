@@ -5,7 +5,6 @@ import { FaAngleRight } from 'react-icons/fa6';
 import Link from 'next/link';
 
 import { DashboardItemContainer } from '@/components/Dashboard/DashboardItemContainer';
-import { TodoListSkeleton } from '@/components/Skeletons/TodoListSkeleton';
 import { Button } from '@/components/common/Button/Button';
 import { Card } from '@/components/common/Card';
 import { NoDataText } from '@/components/common/NoDataText';
@@ -18,7 +17,7 @@ import { useSidebarStore } from '@/store/useSidebarStore';
 import { useTodoModalStore } from '@/store/useTodoModalStore';
 
 export const RecentTodos = () => {
-  const { todos, isLoading } = useRecentTodosQuery();
+  const { todos } = useRecentTodosQuery();
   const { goals } = useGoalsQuery();
 
   const { open: openModal } = useTodoModalStore();
@@ -36,9 +35,7 @@ export const RecentTodos = () => {
         모두 보기 <FaAngleRight className="ml-8" />
       </Link>
 
-      {isLoading && <TodoListSkeleton />}
-
-      {!isLoading && !hasGoals && (
+      {!hasGoals && (
         <Card>
           <NoDataText text={NO_DATA_MESSAGES.NO_TODO_AND_GOAL} />
           <Button onClick={openSidebar} size="medium">
@@ -47,7 +44,7 @@ export const RecentTodos = () => {
         </Card>
       )}
 
-      {!isLoading && hasGoals && !hasTodos && (
+      {hasGoals && !hasTodos && (
         <Card>
           <NoDataText text={NO_DATA_MESSAGES.NO_TODO} />
           <Button onClick={() => openModal('생성')} size="medium">
@@ -56,7 +53,7 @@ export const RecentTodos = () => {
         </Card>
       )}
 
-      {!isLoading && hasGoals && hasTodos && (
+      {hasGoals && hasTodos && (
         <ul>
           {todos.map((todo) => (
             <BasicTodoItem
