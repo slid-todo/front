@@ -9,19 +9,26 @@ const axiosInstance = axios.create({
   },
 });
 
+export const setAuthToken = (token: string) => {
+  if (token) {
+    axiosInstance.defaults.headers['token'] = token;
+  }
+};
+
 axiosInstance.interceptors.request.use(
   (config) => {
-    const getCookie = (name: string) => {
-      const matches = document.cookie.match(
-        new RegExp(`(^|; )${name}=([^;]*)`),
-      );
-      return matches ? decodeURIComponent(matches[2]) : null;
-    };
+    if (typeof window !== 'undefined') {
+      const getCookie = (name: string) => {
+        const matches = document.cookie.match(
+          new RegExp(`(^|; )${name}=([^;]*)`),
+        );
+        return matches ? decodeURIComponent(matches[2]) : null;
+      };
 
-    const token = getCookie('token'); // 'token' 쿠키 값을 가져옴
-
-    if (token) {
-      config.headers['token'] = token; // 헤더에 추가
+      const token = getCookie('token');
+      if (token) {
+        config.headers['token'] = token;
+      }
     }
 
     return config;
@@ -30,4 +37,5 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   },
 );
+
 export default axiosInstance;
