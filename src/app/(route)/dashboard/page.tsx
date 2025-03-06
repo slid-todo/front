@@ -10,16 +10,11 @@ import { MyProgress } from '@/components/Dashboard/MyProgress';
 import { RecentTodos } from '@/components/Dashboard/RecentTodos';
 import { TodoListSkeleton } from '@/components/Skeletons/TodoListSkeleton';
 import { recentTodosOptions } from '@/hooks/apis/Dashboard/useRecentTodosQuery';
-import { todayProgressOptions } from '@/hooks/apis/Dashboard/useTodayProgressQuery';
 import { ServerFetchBoundary } from '@/lib/query/ServerFetchBoundary';
 
 export default async function DashBoardPage() {
   const cookieStore = await cookies();
   const token = cookieStore.get('token')?.value || '';
-  const serverFetchOptions = [
-    todayProgressOptions(token),
-    recentTodosOptions(token),
-  ];
 
   return (
     <>
@@ -27,11 +22,11 @@ export default async function DashBoardPage() {
       <PageContainer>
         <Follower />
         <Suspense fallback={<TodoListSkeleton />}>
-          <ServerFetchBoundary fetchOptions={serverFetchOptions}>
+          <ServerFetchBoundary fetchOptions={recentTodosOptions(token)}>
             <RecentTodos />
-            <MyProgress />
           </ServerFetchBoundary>
         </Suspense>
+        <MyProgress />
         <GoalList />
       </PageContainer>
     </>
