@@ -3,6 +3,7 @@ import { ReactNode, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { cookies } from 'next/headers';
 
+import { Spinner } from '@/components/common/Spinner';
 import { goalsOptions } from '@/hooks/apis/useGoalsQuery';
 import { ServerFetchBoundary } from '@/lib/query/ServerFetchBoundary';
 
@@ -15,12 +16,11 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies();
   const token = cookieStore.get('token')?.value || '';
-  const serverFetchOptions = [goalsOptions(token)];
 
   return (
     <div className="flex">
-      <Suspense fallback={<>로딩중</>}>
-        <ServerFetchBoundary fetchOptions={serverFetchOptions}>
+      <Suspense fallback={<Spinner />}>
+        <ServerFetchBoundary fetchOptions={goalsOptions(token)}>
           <Sidebar />
         </ServerFetchBoundary>
       </Suspense>
