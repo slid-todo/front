@@ -7,7 +7,6 @@ import { AxiosError } from 'axios';
 import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-import { getQueryClient } from '@/lib/query/getQueryClient';
 import { GoalsResponse } from '@/types/Goals';
 
 export const goalsOptions = (
@@ -15,7 +14,6 @@ export const goalsOptions = (
 ): UseSuspenseQueryOptions<GoalsResponse, AxiosError> => ({
   queryKey: [QUERY_KEYS.GOALS],
   queryFn: () => GET<GoalsResponse>(API_ENDPOINTS.GOAL.GOALS, token),
-  initialData: getQueryClient().getQueryData([QUERY_KEYS.GOALS]),
 });
 
 export const useGoalsQuery = () => {
