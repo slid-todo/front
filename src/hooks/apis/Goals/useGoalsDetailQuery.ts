@@ -4,7 +4,7 @@ import {
 } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
-import { GET } from '@/apis/services/httpMethod';
+import { API } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { GoalsDetailResponse } from '@/types/Goals';
@@ -17,7 +17,7 @@ const GoalsDetailOptions = (): UseInfiniteQueryOptions<
 > => ({
   queryKey: [QUERY_KEYS.ALL_GOALS],
   queryFn: ({ pageParam = 0 }) =>
-    GET<GoalsDetailResponse>(
+    API.get<GoalsDetailResponse>(
       `${API_ENDPOINTS.GOAL.ALL_GOALS}?lastGoalId=${pageParam}&size=5`,
     ),
   getNextPageParam: (lastPage) => {
