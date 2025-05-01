@@ -1,9 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { POST } from '@/apis/services/httpMethod';
+
+import { API } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
-import { AssignFollowResponse, UserProfileResponse } from '@/types/response';
-import { notify } from '@/store/useToastStore';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
+import { notify } from '@/store/useToastStore';
+import { AssignFollowResponse, UserProfileResponse } from '@/types/response';
 
 interface FollowId {
   userId: number;
@@ -14,7 +15,7 @@ export const useAssignFollowMutation = () => {
 
   return useMutation({
     mutationFn: (userId: number) =>
-      POST<AssignFollowResponse, FollowId>(
+      API.post<AssignFollowResponse, FollowId>(
         API_ENDPOINTS.FOLLOW.ASSIGN_FOLLOW(userId),
       ),
     onMutate: async (userId) => {

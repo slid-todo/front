@@ -1,18 +1,18 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { POST } from '@/apis/services/httpMethod';
+import { API } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
+import { TOAST_MESSAGES } from '@/constants/Messages';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { notify } from '@/store/useToastStore';
 import { CommentResponse, GetCommentRequest } from '@/types/Comment';
-import { TOAST_MESSAGES } from '@/constants/Messages';
 
 export const useCreateComment = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: (postData: GetCommentRequest) =>
-      POST<CommentResponse, GetCommentRequest>(
+      API.post<CommentResponse, GetCommentRequest>(
         API_ENDPOINTS.COMMENT.CREATE,
         postData,
       ),
