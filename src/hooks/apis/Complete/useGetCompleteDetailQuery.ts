@@ -1,7 +1,7 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
-import { GET } from '@/apis/services/httpMethod';
+import { API } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { GetCompleteDetailResponse } from '@/types/Completes';
@@ -11,7 +11,7 @@ const GetCompleteDetailOptions = (
 ): UseQueryOptions<GetCompleteDetailResponse, AxiosError> => ({
   queryKey: [QUERY_KEYS.COMPLETE_DETAIL, completeId],
   queryFn: () =>
-    GET<GetCompleteDetailResponse>(
+    API.get<GetCompleteDetailResponse>(
       API_ENDPOINTS.TODOS.GET_CERTIFIED_TODO(completeId),
     ),
 });

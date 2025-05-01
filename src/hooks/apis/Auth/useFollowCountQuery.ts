@@ -1,6 +1,7 @@
-import { AxiosError } from 'axios';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { GET } from '@/apis/services/httpMethod';
+import { AxiosError } from 'axios';
+
+import { API } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 
@@ -17,7 +18,7 @@ export interface FollowCountResponse {
 
 const followCountOptions: UseQueryOptions<FollowCountResponse, AxiosError> = {
   queryKey: [QUERY_KEYS.FOLLOW_COUNT],
-  queryFn: () => GET<FollowCountResponse>(API_ENDPOINTS.AUTH.FOLLOW_COUNT),
+  queryFn: () => API.get<FollowCountResponse>(API_ENDPOINTS.AUTH.FOLLOW_COUNT),
 };
 
 export const useFollowCountQuery = () => {
