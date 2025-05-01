@@ -1,9 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { notify } from '@/store/useToastStore';
-import { DELETE } from '@/apis/services/httpMethod';
+
+import { API } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
-import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { TOAST_MESSAGES } from '@/constants/Messages';
+import { QUERY_KEYS } from '@/constants/QueryKeys';
+import { notify } from '@/store/useToastStore';
 import { CommentResponse } from '@/types/Comment';
 
 export const useDeleteComment = () => {
@@ -11,7 +12,7 @@ export const useDeleteComment = () => {
 
   return useMutation({
     mutationFn: (commentId: number) =>
-      DELETE<CommentResponse>(API_ENDPOINTS.COMMENT.DELETE(commentId)),
+      API.delete<CommentResponse>(API_ENDPOINTS.COMMENT.DELETE(commentId)),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMPLETE_DETAIL] });
       notify('success', TOAST_MESSAGES.COMMENT_DELETE_SUCCESS, 3000);
