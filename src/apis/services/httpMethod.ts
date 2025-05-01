@@ -1,40 +1,44 @@
 import axiosInstance, { setAuthToken } from '@/lib/axiosInstance';
+import { handleHttpError } from '@/utils/handleHttpError';
 
-export async function GET<T>(url: string, token?: string): Promise<T> {
+type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+
+interface RequestOptionsProps {
+  method: HttpMethod;
+  url: string;
+  data?: unknown;
+  token?: string;
+}
+
+async function request<T>({
+  method,
+  url,
+  data,
+  token,
+}: RequestOptionsProps): Promise<T> {
   try {
     if (token) {
       setAuthToken(token);
     }
-    const response = await axiosInstance.get(url);
+
+    const response = await axiosInstance.request<T>({
+      method,
+      url,
+      data,
+    });
+
     return response.data;
   } catch (error) {
-    throw new Error(error instanceof Error ? error.message : String(error));
+    handleHttpError(error);
+    throw error;
   }
 }
 
-export async function POST<T, U>(url: string, data?: U): Promise<T> {
-  try {
-    const response = await axiosInstance.post(url, data);
-    return response.data;
-  } catch (error) {
-    throw new Error(error instanceof Error ? error.message : String(error));
-  }
-}
-
-export async function PUT<T, U>(url: string, data: U): Promise<T> {
-  try {
-    const response = await axiosInstance.put(url, data);
-    return response.data;
-  } catch (error) {
-    throw new Error(error instanceof Error ? error.message : String(error));
-  }
-}
-
-export async function DELETE<T>(url: string): Promise<T> {
-  try {
-    const response = await axiosInstance.delete(url);
-    return response.data;
-  } catch (error) {
-    throw new Error(error instanceof Error ? error.message : String(error));
-  }
-}
+export const API = {
+  get: <T>(url: string, token?: string) =>
+    request<T>({ method: 'GET', url, token }),
+  post: <T, U>(url: string, data?: U) =>
+    request<T>({ method: 'POST', url, data }),
+  put: <T, U>(url: string, data: U) => request<T>({ method: 'PUT', url, data }),
+  delete: <T>(url: string) => request<T>({ method: 'DELETE', url }),
+};
