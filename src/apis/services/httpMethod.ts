@@ -1,5 +1,6 @@
+import { AxiosError } from 'axios';
+
 import axiosInstance, { setAuthToken } from '@/lib/axiosInstance';
-import { handleHttpError } from '@/utils/handleHttpError';
 
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
@@ -29,8 +30,14 @@ async function request<T>({
 
     return response.data;
   } catch (error) {
-    handleHttpError(error);
-    throw error;
+    if (!(error instanceof AxiosError)) {
+      throw new Error('오류가 발생했습니다.');
+    }
+
+    const status = error.response?.status;
+    const message = error.response?.data.message || error.message;
+
+    throw new Error(JSON.stringify({ status, message }));
   }
 }
 
