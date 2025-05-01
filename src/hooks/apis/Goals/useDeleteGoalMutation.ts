@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { DELETE } from '@/apis/services/httpMethod';
+import { API } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { notify } from '@/store/useToastStore';
@@ -11,7 +11,7 @@ export const useDeleteGoalMutation = () => {
 
   return useMutation({
     mutationFn: (goalId: number) =>
-      DELETE<DeleteGoalResponse>(API_ENDPOINTS.GOAL.GOAL(goalId)),
+      API.delete<DeleteGoalResponse>(API_ENDPOINTS.GOAL.GOAL(goalId)),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ALL_GOALS] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GOALS] });
