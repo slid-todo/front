@@ -1,9 +1,10 @@
 import { useMutation, UseMutationResult } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
+
+import { API } from '@/apis/services/httpMethod';
+import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { notify } from '@/store/useToastStore';
 import { ChangePasswordRequest } from '@/types/Auth/ChangePasswordRequest';
-import { PUT } from '@/apis/services/httpMethod';
-import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 
 interface ErrorResponse {
   message: string;
@@ -18,7 +19,7 @@ export const useChangePassword = (
 > => {
   return useMutation({
     mutationFn: (data: ChangePasswordRequest) =>
-      PUT<AxiosResponse, ChangePasswordRequest>(
+      API.put<AxiosResponse, ChangePasswordRequest>(
         API_ENDPOINTS.AUTH.PASSWORD,
         data,
       ),
