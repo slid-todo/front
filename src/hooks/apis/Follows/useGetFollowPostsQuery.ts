@@ -4,7 +4,7 @@ import {
 } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
-import { API } from '@/apis/services/httpMethod';
+import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { GetFollowsResponse } from '@/types/Follows';
@@ -17,7 +17,7 @@ export const getFollowPostsOptions = (): UseInfiniteQueryOptions<
 > => ({
   queryKey: [QUERY_KEYS.FOLLOWS],
   queryFn: ({ pageParam = 0 }) =>
-    API.get<GetFollowsResponse>(
+    GET<GetFollowsResponse>(
       `${API_ENDPOINTS.FOLLOW.GET}?lastCompleteId=${pageParam}&size=6`,
     ),
   getNextPageParam: (lastPage) => {

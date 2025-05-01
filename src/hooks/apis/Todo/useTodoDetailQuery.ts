@@ -1,7 +1,6 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-
-import { API } from '@/apis/services/httpMethod';
+import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { TodoDetailResponse } from '@/types/response';
@@ -11,7 +10,7 @@ const todoDetailOptions = (
 ): UseQueryOptions<TodoDetailResponse, AxiosError> => ({
   queryKey: [QUERY_KEYS.TODOS_DETAIL, todoId],
   queryFn: () =>
-    API.get<TodoDetailResponse>(API_ENDPOINTS.TODOS.GET_DETAIL(todoId)),
+    GET<TodoDetailResponse>(API_ENDPOINTS.TODOS.GET_DETAIL(todoId)),
 });
 
 export const useTodoDetailQuery = (todoId: number) => {

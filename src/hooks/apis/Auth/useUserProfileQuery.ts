@@ -1,7 +1,6 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-
-import { API } from '@/apis/services/httpMethod';
+import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { UserProfileResponse } from '@/types/response';
@@ -11,7 +10,7 @@ const userProfileOptions = (
 ): UseQueryOptions<UserProfileResponse, AxiosError> => ({
   queryKey: [QUERY_KEYS.USER_PROFILE, userId],
   queryFn: () =>
-    API.get<UserProfileResponse>(API_ENDPOINTS.AUTH.USER_PROFILE(userId)),
+    GET<UserProfileResponse>(API_ENDPOINTS.AUTH.USER_PROFILE(userId)),
 });
 
 export const useUserProfileQuery = (userId: number) => {

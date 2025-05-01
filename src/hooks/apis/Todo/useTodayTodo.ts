@@ -1,7 +1,7 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
-import { API } from '@/apis/services/httpMethod';
+import { GET } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { BaseResponse } from '@/types/response';
@@ -33,8 +33,7 @@ export const todayTodoOptions = (): UseQueryOptions<
   AxiosError
 > => ({
   queryKey: [QUERY_KEYS.TODAY_TODO],
-  queryFn: () =>
-    API.get<TodayTodoResponse>(API_ENDPOINTS.TODOS.GET_TODAY_TODOS),
+  queryFn: () => GET<TodayTodoResponse>(API_ENDPOINTS.TODOS.GET_TODAY_TODOS),
 });
 
 export const useTodayTodoQuery = () => {
