@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { PUT } from '@/apis/services/httpMethod';
+import { API } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { notify } from '@/store/useToastStore';
@@ -16,7 +16,7 @@ export const useEditGoalTitleMutation = (editGoalId: number) => {
 
   return useMutation({
     mutationFn: (postData: PostDataTypes) =>
-      PUT<EditGoalTitleResponse, PostDataTypes>(
+      API.put<EditGoalTitleResponse, PostDataTypes>(
         API_ENDPOINTS.GOAL.GOAL(editGoalId),
         postData,
       ),
