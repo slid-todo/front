@@ -1,11 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-
-import { API } from '@/apis/services/httpMethod';
+import { notify } from '@/store/useToastStore';
+import { PUT } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
+import { CommentResponse, PutCommentRequest } from '@/types/Comment';
 import { TOAST_MESSAGES } from '@/constants/Messages';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
-import { notify } from '@/store/useToastStore';
-import { CommentResponse, PutCommentRequest } from '@/types/Comment';
 
 interface PutCommentVariables {
   data: PutCommentRequest;
@@ -17,7 +16,7 @@ export const usePutComment = () => {
 
   return useMutation<CommentResponse, Error, PutCommentVariables>({
     mutationFn: ({ data, commentId }) =>
-      API.put<CommentResponse, PutCommentRequest>(
+      PUT<CommentResponse, PutCommentRequest>(
         API_ENDPOINTS.COMMENT.PUT(commentId),
         data,
       ),

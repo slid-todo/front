@@ -4,12 +4,11 @@ import {
   useQueryClient,
 } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
-
-import { API } from '@/apis/services/httpMethod';
-import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
-import { QUERY_KEYS } from '@/constants/QueryKeys';
-import { notify } from '@/store/useToastStore';
 import { ModifyProfilePicRequest } from '@/types/Auth/ModifyProfilePicRequest';
+import { notify } from '@/store/useToastStore';
+import { QUERY_KEYS } from '@/constants/QueryKeys';
+import { PUT } from '@/apis/services/httpMethod';
+import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 
 export const useModifyProfilePic = (): UseMutationResult<
   AxiosResponse,
@@ -20,7 +19,7 @@ export const useModifyProfilePic = (): UseMutationResult<
 
   return useMutation({
     mutationFn: (data: ModifyProfilePicRequest) =>
-      API.put<AxiosResponse, ModifyProfilePicRequest>(
+      PUT<AxiosResponse, ModifyProfilePicRequest>(
         API_ENDPOINTS.AUTH.PROFILE_PIC,
         data,
       ),
