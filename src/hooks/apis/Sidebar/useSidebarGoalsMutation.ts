@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { API } from '@/apis/services/httpMethod';
+import { POST } from '@/apis/services/httpMethod';
 import { API_ENDPOINTS } from '@/constants/ApiEndpoints';
 import { QUERY_KEYS } from '@/constants/QueryKeys';
 import { notify } from '@/store/useToastStore';
@@ -15,10 +15,7 @@ export const useSidebarGoalsMutation = () => {
 
   return useMutation({
     mutationFn: (postData: PostGoalTypes) =>
-      API.post<GoalsResponse, PostGoalTypes>(
-        API_ENDPOINTS.GOAL.GOALS,
-        postData,
-      ),
+      POST<GoalsResponse, PostGoalTypes>(API_ENDPOINTS.GOAL.GOALS, postData),
     onMutate: async ({ title }) => {
       const prev = queryClient.getQueriesData({ queryKey: [QUERY_KEYS.GOALS] });
 
